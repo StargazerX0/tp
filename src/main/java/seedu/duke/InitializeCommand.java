@@ -8,21 +8,20 @@ import java.util.Scanner;
 public class InitializeCommand {
 
     public static void main (String[] args) {
-        ResponseManager responseManager = new ResponseManager();
 
         Scanner scanner = new Scanner(System.in);
-        responseManager.printInitializationMessage();
+        ResponseManager.printInitializationMessage();
 
         String playerName = scanner.nextLine();
 
 
-        responseManager.printJobSelectionMessage();
+        ResponseManager.printJobSelectionMessage();
         String jobType = scanner.nextLine();
 
         // verify user input
         while (!jobType.equals("Robotics") && !jobType.equals("Semiconductor industry")
                 && !jobType.equals("Artificial intelligence")) {
-            responseManager.printJobSelectionErrorMessage();
+            ResponseManager.printJobSelectionErrorMessage();
             jobType = scanner.nextLine();
         }
 
