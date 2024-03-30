@@ -32,16 +32,17 @@ public class EconoCraftLogic {
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            ResponseManager.indentPrint("Error loading profile: " + e.getMessage());
+            ResponseManager.indentPrint("No previous record, creating new profile: \n");
         }
 
         if (playerProfile == null) {
             ResponseManager.printGameInit();
             String playerName = "";
             String jobType = "";
-
+            
             try {
                 playerName = getName();
+                ResponseManager.printJobSelect();
                 jobType = getJob();
             } catch (NoSuchElementException e) {
                 ResponseManager.printGoodbye();
