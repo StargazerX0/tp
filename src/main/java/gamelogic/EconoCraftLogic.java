@@ -3,6 +3,7 @@ package gamelogic;
 import command.Command;
 import command.CommandFactory;
 import exception.CommandInputException;
+import exception.GameException;
 import exception.JobSelectException;
 import exception.NameInputException;
 import file.Loader;
@@ -51,7 +52,6 @@ public class EconoCraftLogic {
         Saver.saveProfile(playerProfile);
         ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
-
     }
 
     private static String getJob() {
@@ -81,17 +81,44 @@ public class EconoCraftLogic {
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
+        int actionCount = 0;
 
         while (!exitFlag) {
+            ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
+                    playerProfile.actionPerRound() - actionCount);
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
                 Saver.saveProfile(playerProfile);
-                exitFlag = command.isExit();
-            } catch (CommandInputException error) {
+                actionCount++;
+                if (actionCount >= playerProfile.actionPerRound()) {
+                    playerProfile.nextRound();
+                    actionCount = 0;
+                }
+                playerProfile.updatePlayer();
+                exitFlag = command.isExit() || playerProfile.isFinished();
+            } catch (CommandInputException | GameException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }
+        printEndMessage(playerProfile);
         userInput.close();
+    }
+
+    private void printEndMessage(PlayerProfile playerProfile) {
+        switch (playerProfile.checkWin()) {
+        case 1:
+            ResponseManager.indentPrint("Congratulations! You have won the game!\n");
+            break;
+
+        case -1:
+            ResponseManager.indentPrint("You have lost the game. Better luck next time!\n");
+            break;
+
+        default:
+            ResponseManager.indentPrint("Game has been saved.\n");
+            break;
+        }
+
     }
 }

@@ -1,21 +1,60 @@
 package company;
 
+import player.Asset;
+import ui.ResponseManager;
+
 public class Company {
     private final String name;
     private int numberOfEmployees;
-    private int revenue;
+    private int employeeSalary;
+    private int revenuePerEmployee;
 
-    public Company(String name, int numberOfEmployees, int revenue) {
-        this.name = name;
-        this.numberOfEmployees = numberOfEmployees;
-        this.revenue = revenue;
+    public Company() {
+        this.name = "SIU";
+        this.numberOfEmployees = 0;
+        this.employeeSalary = 800;
+        this.revenuePerEmployee = 1000;
     }
 
-    public void hireEmployee() {
-        numberOfEmployees++;
+    public void hireEmployee(int number) {
+        numberOfEmployees += number;
     }
 
-    public void fireEmployee() {
-        numberOfEmployees--;
+    public void removeEmployee(int number) {
+        numberOfEmployees -= number;
+    }
+
+    public int getNumberOfEmployees() {
+        return numberOfEmployees;
+    }
+
+    public int getEmployeeSalary() {
+        return employeeSalary;
+    }
+
+    private int paySalaries() {
+        return numberOfEmployees * employeeSalary;
+    }
+
+    private int receiveRevenue() {
+        return numberOfEmployees * revenuePerEmployee;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void updateRevenue(int amount) {
+        revenuePerEmployee += amount;
+    }
+
+    public void updateSalary(int amount) {
+        employeeSalary += amount;
+    }
+
+    public void updatePlayer(Asset asset) {
+        int profit = receiveRevenue() - paySalaries();
+        asset.addAsset(profit);
+        ResponseManager.printCompanyProfit(profit);
     }
 }

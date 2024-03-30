@@ -39,11 +39,10 @@ public class Loader {
         String occupation = extractValue(json, "occupation");
         int asset = Integer.parseInt(extractValue(json, "asset"));
         int health = Integer.parseInt(extractValue(json, "health"));
-        PlayerProfile playerProfile = new PlayerProfile(name, occupation);
-        playerProfile.addAsset(asset - 5000);
-        playerProfile.addHealth(health - 100);
+        int currentRound = Integer.parseInt(extractValue(json, "currentRound"));
+        boolean isAdvancedPlayer = Boolean.parseBoolean(extractValue(json, "isAdvancedPlayer"));
 
-        return playerProfile;
+        return new PlayerProfile(name, occupation, health, asset, currentRound, isAdvancedPlayer);
     }
 
     private static String extractValue(String json, String key) {

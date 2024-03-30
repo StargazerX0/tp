@@ -8,8 +8,11 @@ public enum CommandType {
     EXIT("(?i)bye\\s*"),
     EXERCISE("(?i)exercise\\s*"),
     STATUS("(?i)status\\s*"),
+    UPGRADE("(?i)upgrade\\s*"),
+    HIRE("(?i)hire\\s+\\d+\\s*"),
+    FIRE("(?i)fire\\s+\\d+\\s*"),
+    ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
     HELP("(?i)help\\s*");
-
 
     private final String command;
 
