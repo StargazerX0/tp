@@ -1,5 +1,6 @@
 package file;
 
+import exception.SaveProfileException;
 import player.PlayerProfile;
 import ui.ResponseManager;
 
@@ -10,29 +11,32 @@ import java.io.IOException;
 public class Saver {
     private static final String FILE_PATH = "data/PlayerProfile.json";
 
-    public static void saveProfile(PlayerProfile playerProfile) {
-        File file = new File(FILE_PATH);
-
+    public static void saveProfile(PlayerProfile playerProfile) throws SaveProfileException {
         try {
+            File file = new File(FILE_PATH);
 
             if (file.createNewFile()) {
                 ResponseManager.indentPrint("File created: " + file.getName() + "\n");
             }
-            String json = constructJson(playerProfile);
 
-            try (FileWriter fileWriter = new FileWriter(FILE_PATH)) {
-                fileWriter.write(json);
-                fileWriter.flush();
-            } catch (IOException e) {
-                ResponseManager.indentPrint("Error saving profile: " + e.getMessage() + "\n");
-            }
+            writeJsonToFile(file, constructJson(playerProfile));
         } catch (IOException e) {
-            ResponseManager.indentPrint("Error saving profile: " + e.getMessage() + "\n");
+            throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
         }
+    }
 
+    private static void writeJsonToFile(File file, String json) throws SaveProfileException {
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(json);
+            fileWriter.flush();
+            ResponseManager.indentPrint("Profile saved successfully.\n");
+        } catch (IOException e) {
+            throw new SaveProfileException("Error writing to file: " + FILE_PATH + "\n");
+        }
     }
 
     private static String constructJson(PlayerProfile playerProfile) {
+        // Construct JSON method remains the same
         return "{\n" +
             " \"name\": \"" + playerProfile.getName() + "\", \n" +
             " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
@@ -48,5 +52,4 @@ public class Saver {
             " }\n" +
             "}";
     }
-
 }
