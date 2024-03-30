@@ -36,8 +36,9 @@ public class Saver {
         return "{\n" +
                 " \"name\": \"" + playerProfile.getName() + "\", \n" +
                 " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-                " \"asset\": \"" + playerProfile.getAsset().outputAsset() + "\", \n" +
-                " \"health\": \"" + playerProfile.getHealth().outputHealth() + "\", \n" +
+                " \"asset\": \"" + playerProfile.getAsset() + "\", \n" +
+                " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
+                " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
                 "}";
     }
 

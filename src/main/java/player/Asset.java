@@ -1,11 +1,15 @@
 package player;
 
 public class Asset {
-    private static int totalAsset = 5000;
-    private final int goal;
+    private static final int GOAL = 100000;
+    private int totalAsset;
 
-    public Asset(int goal) {
-        this.goal = goal;
+    public Asset() {
+        this.totalAsset = 5000;
+    }
+
+    public Asset(int totalAsset) {
+        this.totalAsset = totalAsset;
     }
 
     public void addAsset(int amount) {
@@ -16,11 +20,11 @@ public class Asset {
         totalAsset -= amount;
     }
 
-    public boolean checkGoal() {
-        return totalAsset >= this.goal;
+    public boolean isAchieved() {
+        return totalAsset >= GOAL;
     }
 
-    public boolean checkBankrupt() {
+    public boolean isBankrupt() {
         return totalAsset <= 0;
     }
 
@@ -28,6 +32,7 @@ public class Asset {
         return "" + totalAsset;
     }
 
-
-
+    public String toString() {
+        return String.format("%d", totalAsset);
+    }
 }

@@ -6,7 +6,7 @@ public class ResponseManager {
     private static final String INITIALIZATION_MESSAGE = "Initializing...\n"
         + "Enter your name: \n";
     private static final String INDENTATION =
-            "===".repeat(10);
+            "===".repeat(20);
     private static final String JOB_SELECT_MSG = "Choose your job type: \n" +
             "for Robotics, enter '/r'\n" +
             "for Semiconductor industry, enter '/s'\n" +
@@ -46,6 +46,12 @@ public class ResponseManager {
 
     public static void printGoodbye() {
         System.out.println(BYE_MSG);
+    }
+
+    public static void printCurrentRound(int currentRound) {
+        System.out.println("Current round: " + currentRound + "\n" +
+                "you have " + (20 - currentRound) + " rounds left");
+        System.out.println("Input your action! If needed, type 'help' for more info");
     }
 
     public static void printHelp() {

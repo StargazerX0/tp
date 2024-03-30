@@ -51,7 +51,6 @@ public class EconoCraftLogic {
         Saver.saveProfile(playerProfile);
         ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
-
     }
 
     private static String getJob() {
@@ -83,15 +82,34 @@ public class EconoCraftLogic {
         boolean exitFlag = false;
 
         while (!exitFlag) {
+            ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
                 Saver.saveProfile(playerProfile);
-                exitFlag = command.isExit();
+                exitFlag = command.isExit() || playerProfile.isFinished();
             } catch (CommandInputException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }
+        printEndMessage(playerProfile);
         userInput.close();
+    }
+
+    private void printEndMessage(PlayerProfile playerProfile) {
+        switch (playerProfile.checkWin()) {
+        case 1:
+            ResponseManager.indentPrint("Congratulations! You have won the game!");
+            break;
+
+        case 0:
+            ResponseManager.indentPrint("You have lost the game. Better luck next time!");
+            break;
+
+        default:
+            ResponseManager.indentPrint("Game has been saved.");
+            break;
+        }
+
     }
 }

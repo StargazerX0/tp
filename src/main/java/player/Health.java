@@ -1,7 +1,15 @@
 package player;
 
 public class Health {
-    private static int healthBar = 100;
+    private int healthBar;
+
+    public Health() {
+        this.healthBar = 100;
+    }
+
+    public Health(int healthBar) {
+        this.healthBar = healthBar;
+    }
 
     public void add(int amount) {
         healthBar += amount;
@@ -11,7 +19,7 @@ public class Health {
         healthBar -= amount;
     }
 
-    public boolean checkHealth() {
+    public boolean isDead() {
         return healthBar <= 0;
     }
 
@@ -19,5 +27,7 @@ public class Health {
         return "" + healthBar;
     }
 
-
+    public String toString() {
+        return String.format("%d", healthBar);
+    }
 }
