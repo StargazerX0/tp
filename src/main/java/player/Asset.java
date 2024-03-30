@@ -1,7 +1,8 @@
 package player;
 
 public class Asset {
-    private static final int GOAL = 100000;
+    private static final int FINAL_GOAL = 1000000;
+
     private int totalAsset;
 
     public Asset() {
@@ -21,7 +22,7 @@ public class Asset {
     }
 
     public boolean isAchieved() {
-        return totalAsset >= GOAL;
+        return totalAsset >= FINAL_GOAL;
     }
 
     public boolean isBankrupt() {
@@ -30,6 +31,10 @@ public class Asset {
 
     public String outputAsset() {
         return "" + totalAsset;
+    }
+
+    public boolean moreThan(int amount) {
+        return totalAsset > amount;
     }
 
     public String toString() {

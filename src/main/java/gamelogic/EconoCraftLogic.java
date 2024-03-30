@@ -2,9 +2,8 @@ package gamelogic;
 
 import command.Command;
 import command.CommandFactory;
-import exception.CommandInputException;
-import exception.JobSelectException;
-import exception.NameInputException;
+import company.Company;
+import exception.*;
 import file.Loader;
 import file.Saver;
 import player.PlayerProfile;
@@ -80,6 +79,7 @@ public class EconoCraftLogic {
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
+        int actionCount = 0;
 
         while (!exitFlag) {
             ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
@@ -87,8 +87,13 @@ public class EconoCraftLogic {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
                 Saver.saveProfile(playerProfile);
+                actionCount++;
+                if (actionCount >= playerProfile.actionPerRound()) {
+                    playerProfile.nextRound();
+                    actionCount = 0;
+                }
                 exitFlag = command.isExit() || playerProfile.isFinished();
-            } catch (CommandInputException error) {
+            } catch (CommandInputException | GameException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }

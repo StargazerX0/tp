@@ -23,6 +23,9 @@ public class CommandFactory {
         case HELP:
             return new HelpCommand();
 
+        case UPGRADE:
+            return new UpgradeCommand();
+
         default:
             return new ExitCommand();
         }

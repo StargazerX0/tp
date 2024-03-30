@@ -40,8 +40,9 @@ public class Loader {
         int asset = Integer.parseInt(extractValue(json, "asset"));
         int health = Integer.parseInt(extractValue(json, "health"));
         int currentRound = Integer.parseInt(extractValue(json, "currentRound"));
+        boolean isAdvancedPlayer = Boolean.parseBoolean(extractValue(json, "isAdvancedPlayer"));
 
-        return new PlayerProfile(name, occupation, health, asset, currentRound);
+        return new PlayerProfile(name, occupation, health, asset, currentRound, isAdvancedPlayer);
     }
 
     private static String extractValue(String json, String key) {

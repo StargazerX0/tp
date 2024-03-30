@@ -57,4 +57,13 @@ public class ResponseManager {
     public static void printHelp() {
         indentPrint(HELP_MSG);
     }
+
+    public static void printCompanyProfit(int profit) {
+        if (profit > 0) {
+            indentPrint("Good job! You have earned " + profit + " assets from your company!\n");
+        } else {
+            indentPrint("You have lost " + profit + " assets from your company!" +
+                    "\nPlease manage your company better next time!\n");
+        }
+    }
 }

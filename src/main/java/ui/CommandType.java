@@ -8,8 +8,8 @@ public enum CommandType {
     EXIT("(?i)bye\\s*"),
     EXERCISE("(?i)exercise\\s*"),
     STATUS("(?i)status\\s*"),
+    UPGRADE("(?i)upgrade\\s*"),
     HELP("(?i)help\\s*");
-
 
     private final String command;
 

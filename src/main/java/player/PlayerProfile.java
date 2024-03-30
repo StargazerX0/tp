@@ -1,5 +1,7 @@
 package player;
 
+import company.Company;
+
 public class PlayerProfile {
     public static final int ROUND_LIMIT = 20;
     public final String occupation;
@@ -7,7 +9,8 @@ public class PlayerProfile {
     private final Health health;
     private final Asset asset;
     private int currentRound;
-
+    private boolean isAdvancedPlayer;
+    private final Company company;
 
     public PlayerProfile(String name, String occupation) {
         this.name = name;
@@ -15,14 +18,20 @@ public class PlayerProfile {
         this.asset = new Asset();
         this.occupation = occupation;
         this.currentRound = 0;
+        this.isAdvancedPlayer = false;
+        this.company = new Company();
     }
 
-    public PlayerProfile(String name, String occupation, int health, int asset, int currentRound) {
+    public PlayerProfile(
+            String name, String occupation, int health, int asset,
+            int currentRound, boolean isAdvancedPlayer, Company company) {
         this.name = name;
         this.health = new Health(health);
         this.asset = new Asset(asset);
         this.occupation = occupation;
         this.currentRound = currentRound;
+        this.isAdvancedPlayer = isAdvancedPlayer;
+        this.company = company;
     }
 
     public void addAsset(int amount) {
@@ -57,6 +66,43 @@ public class PlayerProfile {
         return currentRound;
     }
 
+    public void upgrade() {
+        this.asset.deductAsset(10000);
+        isAdvancedPlayer = true;
+    }
+
+    public boolean canUpgrade(int moneyNeeded) {
+        return asset.moreThan(moneyNeeded);
+    }
+
+    public void hireEmployee(int number) {
+        company.hireEmployee(number);
+    }
+
+    public void fireEmployee(int number) {
+        company.removeEmployee(number);
+    }
+
+    public void updatePlayer() {
+        company.updatePlayer(asset);
+    }
+
+    public void updateRevenue(int amount) {
+        company.updateRevenue(amount);
+    }
+
+    public void updateSalary(int amount) {
+        company.updateSalary(amount);
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public boolean isAdvancedPlayer() {
+        return isAdvancedPlayer;
+    }
+
     public Asset getAsset() {
         return asset;
     }
@@ -78,6 +124,10 @@ public class PlayerProfile {
         }
         // game not finished
         return 0;
+    }
+
+    public int actionPerRound() {
+        return isAdvancedPlayer() ? 3 : 1;
     }
 
     @Override

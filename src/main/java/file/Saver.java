@@ -39,6 +39,7 @@ public class Saver {
                 " \"asset\": \"" + playerProfile.getAsset() + "\", \n" +
                 " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
                 " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
+                " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\" \n" +
                 "}";
     }
 
