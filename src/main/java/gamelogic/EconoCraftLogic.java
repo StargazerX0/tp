@@ -5,7 +5,10 @@ import command.CommandFactory;
 import exception.CommandInputException;
 import exception.GameException;
 import exception.JobSelectException;
+import exception.LoadProfileException;
 import exception.NameInputException;
+import exception.SaveProfileException;
+
 import file.Loader;
 import file.Saver;
 import player.PlayerProfile;
@@ -24,21 +27,21 @@ public class EconoCraftLogic {
     }
 
     public static EconoCraftLogic initializeGame() {
-        PlayerProfile playerProfile;
-        playerProfile = Loader.loadProfile();
+        PlayerProfile playerProfile = null;
+
+        try {
+            playerProfile = Loader.loadProfile();
+        } catch (LoadProfileException e) {
+            ResponseManager.indentPrint("Error loading profile: " + e.getMessage());
+        }
+
         if (playerProfile == null) {
             ResponseManager.printGameInit();
             String playerName = "";
             String jobType = "";
+
             try {
                 playerName = getName();
-            } catch (NoSuchElementException e) {
-                ResponseManager.printGoodbye();
-                System.exit(0);
-            }
-
-            ResponseManager.printJobSelect();
-            try {
                 jobType = getJob();
             } catch (NoSuchElementException e) {
                 ResponseManager.printGoodbye();
@@ -48,10 +51,16 @@ public class EconoCraftLogic {
             playerProfile = new PlayerProfile(playerName, jobType);
         }
 
-        Saver.saveProfile(playerProfile);
+        try {
+            Saver.saveProfile(playerProfile);
+        } catch (SaveProfileException e) {
+            ResponseManager.indentPrint("Error saving profile: " + e.getMessage());
+        }
+
         ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
     }
+
 
     private static String getJob() {
         String jobType = "";
@@ -84,22 +93,30 @@ public class EconoCraftLogic {
 
         while (!exitFlag) {
             ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
-                    playerProfile.actionPerRound() - actionCount);
+                playerProfile.actionPerRound() - actionCount);
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
-                Saver.saveProfile(playerProfile);
+
+                try {
+                    Saver.saveProfile(playerProfile);
+                } catch (SaveProfileException e) {
+                    ResponseManager.indentPrint("Error saving profile: " + e.getMessage());
+                }
+
                 actionCount++;
                 if (actionCount >= playerProfile.actionPerRound()) {
                     playerProfile.nextRound();
                     actionCount = 0;
                 }
+
                 playerProfile.updatePlayer();
                 exitFlag = command.isExit() || playerProfile.isFinished();
             } catch (CommandInputException | GameException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }
+
         printEndMessage(playerProfile);
         userInput.close();
     }
