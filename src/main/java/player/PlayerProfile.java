@@ -17,21 +17,21 @@ public class PlayerProfile {
         this.health = new Health();
         this.asset = new Asset();
         this.occupation = occupation;
-        this.currentRound = 0;
+        this.currentRound = 1;
         this.isAdvancedPlayer = false;
         this.company = new Company();
     }
 
     public PlayerProfile(
             String name, String occupation, int health, int asset,
-            int currentRound, boolean isAdvancedPlayer, Company company) {
+            int currentRound, boolean isAdvancedPlayer) {
         this.name = name;
         this.health = new Health(health);
         this.asset = new Asset(asset);
         this.occupation = occupation;
         this.currentRound = currentRound;
         this.isAdvancedPlayer = isAdvancedPlayer;
-        this.company = company;
+        this.company = new Company();
     }
 
     public void addAsset(int amount) {
@@ -73,6 +73,14 @@ public class PlayerProfile {
 
     public boolean canUpgrade(int moneyNeeded) {
         return asset.moreThan(moneyNeeded);
+    }
+
+    public int getNumberOfEmployees() {
+        return company.getNumberOfEmployees();
+    }
+
+    public int getEmployeeSalary() {
+        return company.getEmployeeSalary();
     }
 
     public void hireEmployee(int number) {

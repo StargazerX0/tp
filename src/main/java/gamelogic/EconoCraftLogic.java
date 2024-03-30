@@ -2,8 +2,10 @@ package gamelogic;
 
 import command.Command;
 import command.CommandFactory;
-import company.Company;
-import exception.*;
+import exception.CommandInputException;
+import exception.GameException;
+import exception.JobSelectException;
+import exception.NameInputException;
 import file.Loader;
 import file.Saver;
 import player.PlayerProfile;
@@ -82,7 +84,8 @@ public class EconoCraftLogic {
         int actionCount = 0;
 
         while (!exitFlag) {
-            ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
+            ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
+                    playerProfile.actionPerRound() - actionCount);
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
@@ -92,6 +95,7 @@ public class EconoCraftLogic {
                     playerProfile.nextRound();
                     actionCount = 0;
                 }
+                playerProfile.updatePlayer();
                 exitFlag = command.isExit() || playerProfile.isFinished();
             } catch (CommandInputException | GameException error) {
                 ResponseManager.indentPrint(error.getMessage());
@@ -104,15 +108,15 @@ public class EconoCraftLogic {
     private void printEndMessage(PlayerProfile playerProfile) {
         switch (playerProfile.checkWin()) {
         case 1:
-            ResponseManager.indentPrint("Congratulations! You have won the game!");
+            ResponseManager.indentPrint("Congratulations! You have won the game!\n");
             break;
 
-        case 0:
-            ResponseManager.indentPrint("You have lost the game. Better luck next time!");
+        case -1:
+            ResponseManager.indentPrint("You have lost the game. Better luck next time!\n");
             break;
 
         default:
-            ResponseManager.indentPrint("Game has been saved.");
+            ResponseManager.indentPrint("Game has been saved.\n");
             break;
         }
 

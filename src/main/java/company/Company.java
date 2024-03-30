@@ -24,6 +24,14 @@ public class Company {
         numberOfEmployees -= number;
     }
 
+    public int getNumberOfEmployees() {
+        return numberOfEmployees;
+    }
+
+    public int getEmployeeSalary() {
+        return employeeSalary;
+    }
+
     private int paySalaries() {
         return numberOfEmployees * employeeSalary;
     }

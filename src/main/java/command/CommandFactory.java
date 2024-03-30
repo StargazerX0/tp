@@ -26,6 +26,20 @@ public class CommandFactory {
         case UPGRADE:
             return new UpgradeCommand();
 
+        case HIRE:
+            String hireNum = Parser.separateCommand(userInput)[1];
+            return new HireEmployeeCommand(Integer.parseInt(hireNum));
+
+        case FIRE:
+            String fireNum = Parser.separateCommand(userInput)[1];
+            return new FireEmployeeCommand(Integer.parseInt(fireNum));
+
+        case ADJUST_SALARY:
+            String[] commandParts = Parser.separateCommand(userInput);
+            String changeType = commandParts[0].toLowerCase();
+            String amount= commandParts[1];
+            return new AdjustSalaryCommand(changeType, Integer.parseInt(amount));
+
         default:
             return new ExitCommand();
         }

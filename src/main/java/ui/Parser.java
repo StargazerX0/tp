@@ -27,11 +27,11 @@ public class Parser {
 
         case "/s":
             ResponseManager.echoChosenIndustry("Semi-conductor");
-            return "semi-conductor";
+            return "Semi-conductor";
 
         case "/a":
             ResponseManager.echoChosenIndustry("Artificial Intelligence");
-            return "artificial intelligence";
+            return "Artificial intelligence";
 
         default:
             throw new JobSelectException("Please enter a valid job type, try again!\n");
@@ -41,4 +41,13 @@ public class Parser {
     public static CommandType parseCommand(String input) throws CommandInputException {
         return CommandType.analyseInput(input.trim().toLowerCase());
     }
+
+    public static String[] separateCommand(String input) {
+        return input.split("\\s", 2);
+    }
+
+    public static int decodeInfo(String input) {
+        return Integer.parseInt(input.trim());
+    }
+
 }

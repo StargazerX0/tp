@@ -18,6 +18,14 @@ public class ResponseManager {
             "rest - to rest\n" +
             "exercise - to exercise\n" +
             "status - to check status\n" +
+            "upgrade - to upgrade(!NOTE you need to have at least $100000)\n" +
+            "bye - to exit\n";
+    private static final String COMPANY_HELP_MSG =
+            "Here are the things you can do to manage your company:\n" +
+            "hire <number> - to hire employee\n" +
+            "fire <number> - to fire employee\n" +
+            "raise <number> - to raise salary\n" +
+            "lower <number> - to lower salary\n" +
             "bye - to exit\n";
 
     public static void printBoard(String boardInfo) {
@@ -48,10 +56,12 @@ public class ResponseManager {
         System.out.println(BYE_MSG);
     }
 
-    public static void printCurrentRound(int currentRound) {
+    public static void printCurrentRound(int currentRound, int actionsLeft) {
         System.out.println("Current round: " + currentRound + "\n" +
                 "you have " + (20 - currentRound) + " rounds left");
-        System.out.println("Input your action! If needed, type 'help' for more info");
+        System.out.println(INDENTATION);
+        System.out.println("You have " + actionsLeft + " actions left" +
+                "\nInput your action! If needed, type 'help' for more info");
     }
 
     public static void printHelp() {
