@@ -7,6 +7,7 @@ public class Company {
     private final String name;
     private int numberOfEmployees;
     private int employeeSalary;
+
     private int revenuePerEmployee;
 
     public Company() {
@@ -15,6 +16,13 @@ public class Company {
         this.employeeSalary = 800;
         this.revenuePerEmployee = 1000;
     }
+    public Company(String name, int numberOfEmployees, int employeeSalary, int revenuePerEmployee) {
+        this.name = name;
+        this.numberOfEmployees = numberOfEmployees;
+        this.employeeSalary = employeeSalary;
+        this.revenuePerEmployee = revenuePerEmployee;
+    }
+
 
     public void hireEmployee(int number) {
         numberOfEmployees += number;
@@ -31,6 +39,11 @@ public class Company {
     public int getEmployeeSalary() {
         return employeeSalary;
     }
+
+    public int getRevenuePerEmployee() {
+        return revenuePerEmployee;
+    }
+
 
     private int paySalaries() {
         return numberOfEmployees * employeeSalary;
@@ -56,5 +69,8 @@ public class Company {
         int profit = receiveRevenue() - paySalaries();
         asset.addAsset(profit);
         ResponseManager.printCompanyProfit(profit);
+    }
+
+    public void setName(String companyName) {
     }
 }
