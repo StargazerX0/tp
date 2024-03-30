@@ -34,13 +34,19 @@ public class Saver {
 
     private static String constructJson(PlayerProfile playerProfile) {
         return "{\n" +
-                " \"name\": \"" + playerProfile.getName() + "\", \n" +
-                " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-                " \"asset\": \"" + playerProfile.getAsset() + "\", \n" +
-                " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
-                " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
-                " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\" \n" +
-                "}";
+            " \"name\": \"" + playerProfile.getName() + "\", \n" +
+            " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
+            " \"asset\": \"" + playerProfile.getAsset() + "\", \n" +
+            " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
+            " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
+            " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
+            " \"company\": {\n" +
+            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+            " }\n" +
+            "}";
     }
 
 }

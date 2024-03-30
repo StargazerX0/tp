@@ -26,7 +26,6 @@ public class EconoCraftLogic {
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile;
         playerProfile = Loader.loadProfile();
-
         if (playerProfile == null) {
             ResponseManager.printGameInit();
             String playerName = "";
