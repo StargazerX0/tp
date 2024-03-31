@@ -9,9 +9,9 @@ public class StockFour implements Stock{
             "Demand for AI chip risen in multiple sectors. -CNN \n"
                     + "GROQ AI chips, at what cost? -Economists \n"
                     + "We are going to have a huge progress -Jack786 from X \n";;
-    public static final String STOCK_NAME = "Groq (Start up company)";
+    public static final String STOCK_NAME = "Groq (Start up company) \n";
     public static final String HIDDEN_INFO = "The progress of chip " +
-            "development currently is not too well";
+            "development currently is not too well \n";
 
     public static final int STOCK_PRICE = 23;
     private static final String STOCK_GRAPH =
@@ -43,6 +43,7 @@ public class StockFour implements Stock{
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        ResponseManager.indentPrint("Price per stock : " + STOCK_PRICE + '\n');
         if (playerProfile.occupation.equals("Semi-conductor")) {
             ResponseManager.indentPrint((HIDDEN_INFO));
         }
@@ -54,6 +55,10 @@ public class StockFour implements Stock{
 
     public int returnStockPrice() {
         return STOCK_PRICE;
+    }
+
+    public String returnStockName() {
+        return STOCK_NAME;
     }
 
     public int investmentGain(int stockAmount) {

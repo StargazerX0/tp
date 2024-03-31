@@ -19,6 +19,7 @@ public class ResponseManager {
             "exercise - to exercise\n" +
             "status - to check status\n" +
             "upgrade - to upgrade(!NOTE you need to have at least $100000)\n" +
+                    "stock - to purchase stocks from the stock market \n" +
             "bye - to exit\n";
     private static final String COMPANY_HELP_MSG =
             "Here are the things you can do to manage your company:\n" +

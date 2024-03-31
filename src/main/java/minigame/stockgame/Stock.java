@@ -8,5 +8,7 @@ public interface Stock {
 
     public int investmentGain(int stockAmount);
 
+    public String returnStockName();
+
     public int returnStockPrice();
 }

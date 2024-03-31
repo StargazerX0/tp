@@ -31,11 +31,12 @@ public class StockEight implements Stock{
             "│                                                        \n" +
             "│                                                        \n" +
             "└───────────────────────────────────────────────────────►\n";
+
+    public static final String STOCK_NAME = "Microsoft (Multi-national cooperation) \n";
     private static final String STOCK_INFORMATION =
             "Profit for microsoft in quarter one is similar to quarter two -CNN \n" +
                     "Where is the next step for Microsoft? -Economist \n" +
                     "Not much progress in our R&D department for microsoft so far -User5642 from Twitter \n";
-    private static final String STOCK_NAME = "Microsoft (Multi-national cooperation) \n";
 
     private static final String HIDDEN_INFO = "The operation inside Microsoft has been steady so far. \n";
 
@@ -45,6 +46,7 @@ public class StockEight implements Stock{
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        ResponseManager.indentPrint("Price per stock : " + STOCK_PRICE);
         if (playerProfile.occupation.equals("Artificial intelligence")) {
             ResponseManager.indentPrint((HIDDEN_INFO));
         }
@@ -52,6 +54,10 @@ public class StockEight implements Stock{
 
     public int returnStockPrice() {
         return STOCK_PRICE;
+    }
+
+    public String returnStockName() {
+        return STOCK_NAME;
     }
 
     public int returnProfit() {
@@ -62,7 +68,7 @@ public class StockEight implements Stock{
         int gainPerStock = returnProfit();
         int gain = gainPerStock * stockAmount;
         System.out.println("The stock price risen by: " + gainPerStock);
-        System.out.println("Your gain in stock for this round is: " + gain);
+        System.out.println("Your gain in stock for this round is: " + gain + '\n');
         return gain;
     }
 

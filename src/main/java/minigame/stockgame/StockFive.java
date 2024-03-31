@@ -42,6 +42,7 @@ public class StockFive implements Stock {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        ResponseManager.indentPrint("Price per stock : " + STOCK_PRICE + '\n');
         if (playerProfile.occupation.equals("Artificial intelligence")) {
             ResponseManager.indentPrint((HIDDEN_INFO));
         }
@@ -53,6 +54,10 @@ public class StockFive implements Stock {
 
     public int returnStockPrice() {
         return STOCK_PRICE;
+    }
+
+    public String returnStockName() {
+        return STOCK_NAME;
     }
 
     public int investmentGain(int stockAmount) {

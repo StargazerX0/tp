@@ -36,11 +36,11 @@ public class StockStorage {
         int index = getRandomNumber(0, stocksAvailable.size() - 1);
         Stock current = stocksAvailable.get(index);
         current.printInfo(playerProfile);
-        int totalGain = stockCalculation(index, current);
+        stockCalculation(index, current);
 
     }
 
-    private int stockCalculation(int index, Stock current) throws GameException{
+    private void stockCalculation(int index, Stock current) throws GameException{
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
             try {
@@ -54,14 +54,15 @@ public class StockStorage {
                 if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
                     completeTrade = false;
                     throw new GameException("Your current asset cannot afford this many stock.");
-                } 
-                return current.investmentGain(response);
+                } else {
+                    playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
+                }
+                playerProfile.getAsset().addStock(current, response);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 System.out.println("Please enter in the instructed format: positive integers only!");
             }
         }
-        return 0;
     }
 
     public int getRandomNumber(int min, int max) {
