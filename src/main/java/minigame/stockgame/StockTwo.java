@@ -24,7 +24,7 @@ public class StockTwo implements Stock{
                     "│      xxx                                                \n" +
                     "│ xxxxxx                                                  \n" +
                     "│                                                         \n" +
-                    "└────────────────────────────────────────────────────────►";
+                    "└────────────────────────────────────────────────────────►\n";
     private static final String STOCK_INFORMATION =
             "Demand for robots have risen in multiple sectors. -CNN \n"
                     + "Will Elon Musk expand Tesla's robotic industry? -Economists \n"
