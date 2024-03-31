@@ -39,7 +39,7 @@ public class NegativeEvent extends RandomEvent {
             break;
 
         default:
-                System.out.println("A peaceful round!");
+            System.out.println("A peaceful round!");
         }
     }
 

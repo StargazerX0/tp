@@ -1,8 +1,9 @@
 package player;
 
 public class Asset {
-    private static final int FINAL_GOAL = 1000000;
     public static double assetMultiplier = 1.0;
+    private static final int FINAL_GOAL = 1000000;
+
 
     private int totalAsset;
 

@@ -5,24 +5,25 @@ import java.util.List;
 import java.util.Random;
 
 public class EventGenerator {
-    private List<RandomEvent> events;
-    private Random random;
+    private static final RandomEvent[] eventArray = {
+        new PositiveEvent(0.15),
+        new NegativeEvent(0.2),
+        new LotteryEvent(0.25),
+        new DecisionEvent(0.4)
+    };
+    private static final List<RandomEvent> events = new ArrayList<>(List.of(eventArray));
 
-    public EventGenerator(List<RandomEvent> events) {
-        this.events = events;
-        this.random = new Random();
-    }
-
-    public RandomEvent getRandomEvent() {
-        double totalProbability = this.events.stream().mapToDouble(RandomEvent::getProbability).sum();
+    public static RandomEvent getRandomEvent() {
+        Random random = new Random();
+        double totalProbability = events.stream().mapToDouble(RandomEvent::getProbability).sum();
         double randomValue = totalProbability * random.nextDouble();
 
-        for (RandomEvent event : this.events) {
+        for (RandomEvent event : events) {
             randomValue -= event.getProbability();
             if (randomValue <= 0) {
                 return event;
             }
         }
-        throw new IllegalStateException("No event was generated.");
+        return events.get(events.size() - 1);
     }
 }
