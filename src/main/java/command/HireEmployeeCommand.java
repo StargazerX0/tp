@@ -29,4 +29,9 @@ public class HireEmployeeCommand implements Command {
     public boolean isExit() {
         return false;
     }
+
+    @Override
+    public boolean canGenerateEvent() {
+        return true;
+    }
 }

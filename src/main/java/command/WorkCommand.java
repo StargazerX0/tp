@@ -24,4 +24,8 @@ public class WorkCommand implements Command {
     public boolean isExit() {
         return false;
     }
+
+    public boolean canGenerateEvent() {
+        return true;
+    }
 }

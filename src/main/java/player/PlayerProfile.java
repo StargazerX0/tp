@@ -104,7 +104,9 @@ public class PlayerProfile {
     }
 
     public void updatePlayer() {
-        company.updatePlayer(asset);
+        if (isAdvancedPlayer()) {
+            company.updatePlayer(asset);
+        }
     }
 
     public void updateRevenue(int amount) {

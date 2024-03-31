@@ -99,24 +99,23 @@ public class EconoCraftLogic {
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
-
                 Saver.saveProfile(playerProfile);
 
-                actionCount++;
+                playerProfile.updatePlayer();
+                exitFlag = command.isExit() || playerProfile.isFinished();
+                if (command.canGenerateEvent()) {
+                    actionCount++;
+                    EventGenerator.getRandomEvent()
+                            .triggerEvent(playerProfile);
+                }
                 if (actionCount >= playerProfile.actionPerRound()) {
                     playerProfile.nextRound();
                     actionCount = 0;
                 }
-
-                playerProfile.updatePlayer();
-                EventGenerator.getRandomEvent()
-                        .triggerEvent(playerProfile);
-                exitFlag = command.isExit() || playerProfile.isFinished();
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }
-
         printEndMessage(playerProfile);
         userInput.close();
     }

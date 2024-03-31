@@ -22,4 +22,9 @@ public class UpgradeCommand implements Command {
     public boolean isExit() {
         return false;
     }
+
+    @Override
+    public boolean canGenerateEvent() {
+        return false;
+    }
 }
