@@ -23,8 +23,8 @@ public class Health {
         return healthBar <= 0;
     }
 
-    public String outputHealth() {
-        return "" + healthBar;
+    public int outputHealth() {
+        return healthBar;
     }
 
     public String toString() {

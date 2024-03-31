@@ -54,12 +54,12 @@ public class PlayerProfile {
         this.health.add(amount);
     }
 
-    public void loseHealth() {
+    public void loseHealth(int amount) {
         this.health.deduct(1);
     }
 
-    public void loseAsset() {
-        this.asset.deductAsset(1);
+    public void loseAsset(int amount) {
+        this.asset.deductAsset(amount);
     }
 
     public String getName() {
@@ -135,6 +135,14 @@ public class PlayerProfile {
         return currentRound >= ROUND_LIMIT || health.isDead() || asset.isBankrupt() || asset.isAchieved();
     }
 
+    public void adjustAssetMultiplier(double multiplier) {
+        Asset.assetMultiplier = multiplier;
+    }
+
+    public void resetAssetMultiplier() {
+        Asset.assetMultiplier = 1.0;
+    }
+
     public int checkWin() {
         if (asset.isAchieved()) {
             return 1;
@@ -154,7 +162,7 @@ public class PlayerProfile {
     public String toString() {
         return "Your name is :" + name + '\n'
                 + "occupation :" + occupation + '\n'
-                + "current health :" + health.outputHealth() + "\n"
-                + "current asset: " + asset.outputAsset();
+                + "current health :" + health + "\n"
+                + "current asset: " + asset + "\n";
     }
 }
