@@ -1,5 +1,6 @@
 package minigame.stockgame;
 
+import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class StockTwo implements Stock{
@@ -36,10 +37,13 @@ public class StockTwo implements Stock{
 
     private static final int STOCK_PRICE = 170;
 
-    public void printInfo() {
+    public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        if (playerProfile.occupation.equals("Robotics")) {
+            ResponseManager.indentPrint((HIDDEN_INFO));
+        }
     }
 
     public int returnProfit() {

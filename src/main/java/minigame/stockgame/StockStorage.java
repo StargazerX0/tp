@@ -1,6 +1,7 @@
 package minigame.stockgame;
 
 import exception.GameException;
+import player.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,11 @@ import java.util.Scanner;
 public class StockStorage {
     private final List<Stock> stocksAvailable = new ArrayList<>();
     private boolean completeTrade = false;
+    private final PlayerProfile playerProfile;
+
+    public StockStorage(PlayerProfile playerProfile) {
+        this.playerProfile = playerProfile;
+    }
 
     private void setUp() {
         stocksAvailable.add(new StockOne());
@@ -29,7 +35,7 @@ public class StockStorage {
         }
         int index = getRandomNumber(0, stocksAvailable.size() - 1);
         Stock current = stocksAvailable.get(index);
-        current.printInfo();
+        current.printInfo(playerProfile);
         int totalGain = stockCalculation(index, current);
 
     }

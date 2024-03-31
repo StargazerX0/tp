@@ -1,5 +1,6 @@
 package minigame.stockgame;
 
+import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class StockThree implements Stock{
@@ -40,10 +41,13 @@ public class StockThree implements Stock{
             "Nvidia is negotiating with ARM for acquisition. \n";
     private static final int STOCK_PRICE = 950;
 
-    public void printInfo() {
+    public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        if (playerProfile.occupation.equals("Semi-conductor")) {
+            ResponseManager.indentPrint((HIDDEN_INFO));
+        }
     }
 
     public int returnProfit() {

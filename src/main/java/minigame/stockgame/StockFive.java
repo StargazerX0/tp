@@ -1,5 +1,6 @@
 package minigame.stockgame;
 
+import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class StockFive implements Stock {
@@ -37,10 +38,13 @@ public class StockFive implements Stock {
     public static final String HIDDEN_INFO = "This is likely to be a set up -From a friend\n";
     public static final int STOCK_PRICE = 128;
 
-    public void printInfo() {
+    public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        if (playerProfile.occupation.equals("Artificial intelligence")) {
+            ResponseManager.indentPrint((HIDDEN_INFO));
+        }
     }
 
     public int returnProfit() {
