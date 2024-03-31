@@ -51,6 +51,10 @@ public class StockStorage {
                 } else {
                     completeTrade = true;
                 }
+                if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
+                    completeTrade = false;
+                    throw new GameException("Your current asset cannot afford this many stock.");
+                } 
                 return current.investmentGain(response);
             } catch (Exception e) {
                 System.out.println(e.getMessage());

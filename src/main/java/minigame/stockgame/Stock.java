@@ -7,4 +7,6 @@ public interface Stock {
     public void printInfo(PlayerProfile playerProfile);
 
     public int investmentGain(int stockAmount);
+
+    public int returnStockPrice();
 }

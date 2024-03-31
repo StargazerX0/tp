@@ -52,6 +52,10 @@ public class StockFour implements Stock{
         return getRandomNumber(-20, -3);
     }
 
+    public int returnStockPrice() {
+        return STOCK_PRICE;
+    }
+
     public int investmentGain(int stockAmount) {
         int gainPerStock = returnProfit();
         int gain = gainPerStock * stockAmount;

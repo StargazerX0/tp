@@ -50,6 +50,10 @@ public class StockEight implements Stock{
         }
     }
 
+    public int returnStockPrice() {
+        return STOCK_PRICE;
+    }
+
     public int returnProfit() {
         return getRandomNumber(-10, 10);
     }

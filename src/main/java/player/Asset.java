@@ -15,6 +15,10 @@ public class Asset {
         this.totalAsset = totalAsset;
     }
 
+    public int getAsset() {
+        return this.totalAsset;
+    }
+
     public void addAsset(int amount) {
         totalAsset += (int)(amount * assetMultiplier);
     }
