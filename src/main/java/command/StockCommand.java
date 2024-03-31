@@ -1,11 +1,10 @@
 package command;
 
 import player.PlayerProfile;
-import ui.ResponseManager;
 
-public class HelpCommand implements Command {
+public class StockCommand implements Command {
     public void execute(PlayerProfile playerProfile) {
-        ResponseManager.printHelp();
+        System.out.println("StockCommand executed");
     }
 
     public boolean isExit() {

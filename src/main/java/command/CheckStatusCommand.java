@@ -12,4 +12,8 @@ public class CheckStatusCommand implements Command {
     public boolean isExit() {
         return false;
     }
+
+    public boolean canGenerateEvent() {
+        return false;
+    }
 }

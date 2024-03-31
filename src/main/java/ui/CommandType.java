@@ -8,6 +8,7 @@ public enum CommandType {
     EXIT("(?i)bye\\s*"),
     EXERCISE("(?i)exercise\\s*"),
     STATUS("(?i)status\\s*"),
+    STOCK("(?i)stock\\s*"),
     UPGRADE("(?i)upgrade\\s*"),
     HIRE("(?i)hire\\s+\\d+\\s*"),
     FIRE("(?i)fire\\s+\\d+\\s*"),

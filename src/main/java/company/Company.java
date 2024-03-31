@@ -71,6 +71,4 @@ public class Company {
         ResponseManager.printCompanyProfit(profit);
     }
 
-    public void setName(String companyName) {
-    }
 }

@@ -23,9 +23,9 @@ public class ExerciseCommand implements Command {
         TicTacToe game = new TicTacToe(playerMark);
         game.startGame();
         if (game.getStatus() == 1) {
-            playerProfile.addHealth(1);
+            playerProfile.addHealth(10);
         } else if (game.getStatus() == -1) {
-            playerProfile.loseHealth();
+            playerProfile.loseHealth(5);
         }
     }
 
@@ -41,5 +41,9 @@ public class ExerciseCommand implements Command {
 
     public boolean isExit() {
         return false;
+    }
+
+    public boolean canGenerateEvent() {
+        return true;
     }
 }

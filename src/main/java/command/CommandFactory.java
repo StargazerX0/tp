@@ -26,6 +26,9 @@ public class CommandFactory {
         case UPGRADE:
             return new UpgradeCommand();
 
+        case STOCK:
+            return new StockCommand();
+
         case HIRE:
             String hireNum = Parser.separateCommand(userInput)[1];
             return new HireEmployeeCommand(Integer.parseInt(hireNum));

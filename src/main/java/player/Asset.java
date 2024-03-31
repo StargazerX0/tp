@@ -1,7 +1,9 @@
 package player;
 
 public class Asset {
+    public static double assetMultiplier = 1.0;
     private static final int FINAL_GOAL = 1000000;
+
 
     private int totalAsset;
 
@@ -14,7 +16,7 @@ public class Asset {
     }
 
     public void addAsset(int amount) {
-        totalAsset += amount;
+        totalAsset += (int)(amount * assetMultiplier);
     }
 
     public void deductAsset(int amount) {
@@ -29,8 +31,8 @@ public class Asset {
         return totalAsset <= 0;
     }
 
-    public String outputAsset() {
-        return "" + totalAsset;
+    public int outputAsset() {
+        return totalAsset;
     }
 
     public boolean moreThan(int amount) {

@@ -12,6 +12,7 @@ import exception.SaveProfileException;
 import file.Loader;
 import file.Saver;
 import player.PlayerProfile;
+import randomevent.EventGenerator;
 import ui.Parser;
 import ui.ResponseManager;
 
@@ -98,26 +99,23 @@ public class EconoCraftLogic {
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
+                Saver.saveProfile(playerProfile);
 
-                try {
-                    Saver.saveProfile(playerProfile);
-                } catch (SaveProfileException e) {
-                    ResponseManager.indentPrint("Error saving profile: " + e.getMessage());
+                playerProfile.updatePlayer();
+                exitFlag = command.isExit() || playerProfile.isFinished();
+                if (command.canGenerateEvent()) {
+                    actionCount++;
+                    EventGenerator.getRandomEvent()
+                            .triggerEvent(playerProfile);
                 }
-
-                actionCount++;
                 if (actionCount >= playerProfile.actionPerRound()) {
                     playerProfile.nextRound();
                     actionCount = 0;
                 }
-
-                playerProfile.updatePlayer();
-                exitFlag = command.isExit() || playerProfile.isFinished();
-            } catch (CommandInputException | GameException error) {
+            } catch (CommandInputException | GameException | SaveProfileException error) {
                 ResponseManager.indentPrint(error.getMessage());
             }
         }
-
         printEndMessage(playerProfile);
         userInput.close();
     }
