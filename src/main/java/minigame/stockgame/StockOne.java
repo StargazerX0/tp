@@ -1,5 +1,6 @@
 package minigame.stockgame;
 
+import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class StockOne implements Stock{
@@ -20,14 +21,26 @@ public class StockOne implements Stock{
     private static final String HIDDEN_INFO = "They are close to a technical break through\n";
     private static final int STOCK_PRICE = 10;
 
-    public void printInfo() {
+    public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
         ResponseManager.indentPrint(STOCK_NAME);
+        ResponseManager.indentPrint("Price per stock : " + STOCK_PRICE + '\n');
+        if (playerProfile.occupation.equals("Semi-conductor")) {
+            ResponseManager.indentPrint((HIDDEN_INFO));
+        }
     }
 
     public int returnProfit() {
         return getRandomNumber(-2, 10);
+    }
+
+    public int returnStockPrice() {
+        return STOCK_PRICE;
+    }
+
+    public String returnStockName() {
+        return STOCK_NAME;
     }
 
     public int investmentGain(int stockAmount) {

@@ -25,6 +25,8 @@ public class CommandFactory {
 
         case UPGRADE:
             return new UpgradeCommand();
+        case SELLSTOCK:
+            return new SellStockCommand();
 
         case STOCK:
             return new StockCommand();
