@@ -3,9 +3,8 @@ package minigame.bondgame;
 import exception.GameException;
 import player.PlayerProfile;
 
-public class BondGame {
+public class BondActivate {
     public static void start(PlayerProfile playerProfile) throws GameException {
-        BondMarket bondMarket = new BondMarket(playerProfile);
-        bondMarket.play();
+        new BondStorage(playerProfile).play();
     }
 }

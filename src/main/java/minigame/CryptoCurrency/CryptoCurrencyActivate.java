@@ -5,6 +5,6 @@ import player.PlayerProfile;
 
 public class CryptoCurrencyActivate {
     public static void start(PlayerProfile playerProfile) throws GameException {
-        new CryptoCurrencyMarket(playerProfile).play();
+        new CryptoCurrencyStorage(playerProfile).play();
     }
 }

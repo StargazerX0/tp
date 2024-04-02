@@ -17,12 +17,12 @@ public class CryptoCurrencyStorage {
     }
 
     private void setUp() {
-        cryptosAvailable.add(new BitcoinCryptoCurrency());
-        cryptosAvailable.add(new EthereumCryptoCurrency());
-        cryptosAvailable.add(new LitecoinCryptoCurrency());
-        cryptosAvailable.add(new CardanoCryptoCurrency());
-        cryptosAvailable.add(new PolkadotCryptoCurrency());
-        cryptosAvailable.add(new RippleCryptoCurrency());
+        cryptosAvailable.add(new Bitcoin());
+        cryptosAvailable.add(new Ethereum());
+        cryptosAvailable.add(new Litecoin());
+        cryptosAvailable.add(new Cardano());
+        cryptosAvailable.add(new Polkadot());
+        cryptosAvailable.add(new Ripple());
     }
 
     public void play() throws GameException {
