@@ -145,6 +145,19 @@ The implementation of the Tic Tac Toe Game is as follows:
 5. When the user finishes answering all the questions, `ResponseManager` will output how many questions the user answers correctly.
 6. Finally, the `RestCommand` would update the player profile with the reward or punishment earned according to the game.
 
+## Investment game - Stock
+
+1. The process of buying stock can be invoked by the `StockCommand` class when user inputs `stock`.
+2. It makes use of `ResponseManager` for instructions and output the stock graph and information relating to the stock.
+3. The user would be prompted to input the number of stocks they would like to purchase in integer.
+4. `ResponseManager` will indicate the completion of purchase after user's input.
+5. When the user finishes the purchase, stock they bought will be stored inside `Asset` class.
+6. Input `status` will output the stock the user currently possesses.
+7. The process of selling stock can be invoked by the `SellStockCommand` class when user input `sellstock`.
+8. The system will calculate user's profit gained at the current price of the stock and return the money back to the 
+user based on the stock's current price.
+9. User can keep the stock they purchased inside their asset for as long as they want.
+
 ## Product scope
 ### Target user playerProfile
 
