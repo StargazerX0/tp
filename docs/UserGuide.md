@@ -162,6 +162,97 @@ You answered 1 questions correctly.
 
 This would increase 10% of the player's health if player achieves more than 50% correct answers.
 
+### Feature - Buy Stock
+
+Allows player to buy stock from the virtual stock market.
+
+Format: `stock`
+
+Expected outcome:
+```
+============================================================
+▲                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│     x                                                  
+│   xxxxx                                                
+│xxxx   xx    xxxxxxxxxxx                                
+│         xxxx          xxxxxxx                 xxxxxxxx 
+│          x                   xxxxxxxxx     xxxx        
+│                                       xxxxxx           
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+│                                                        
+└───────────────────────────────────────────────────────►
+============================================================
+============================================================
+Profit for microsoft in quarter one is similar to quarter two -CNN 
+Where is the next step for Microsoft? -Economist 
+Not much progress in our R&D department for microsoft so far -User5642 from Twitter 
+============================================================
+============================================================
+Microsoft (Multi-national cooperation) 
+============================================================
+============================================================
+Price per stock : 420
+============================================================
+How many stock do you want to purchase? Input 0 if you want none
+```
+
+Player would enter an integer to indicate the number of stocks to purchase.
+
+```
+StockCommand executed
+============================================================
+```
+
+Player can also type `status` to check the stock that they are currently holding.
+
+```
+============================================================
+Current Status:
+Your name is :xia
+occupation :Semi-conductor
+current health :100
+current asset: 800
+Microsoft (Multi-national cooperation) 
+ currently share count : 10
+============================================================
+```
+
+### Feature -Sell Stock
+
+Allow player to sell the stocks they currently possess.
+
+Format: `sellstock`
+
+Expected outcome:
+
+```
+The stock price risen by: -2
+Your gain in stock for this round is: -20
+
+============================================================
+$4180 returned to your account. 
+============================================================
+```
+
+The system will output the profit earn from selling the stock and 
+return the money gained from selling the stock back to your asset account.
+
 ### Feature - Check Status
 
 Allows player to check their current status.
@@ -193,6 +284,9 @@ work - to work
 rest - to rest
 exercise - to exercise
 status - to check status
+upgrade - to upgrade(!NOTE you need to have at least $100000)
+stock - to purchase stocks from the stock market 
+sellstock - to sell all of your stocks 
 bye - to exit
 ==============================
 ```
@@ -206,10 +300,15 @@ If you are stuck, you can use the `help` command to see a list of commands that 
 
 ## Command Summary
 
-| Description  | Command    |
-|--------------|------------|
-| Work         | `work`     |
-| Exercise     | `exercise` |
-| Rest         | `rest`     |
-| Check Status | `status`   |
-| Help         | `help`     |
+| Description  | Command     |
+|--------------|-------------|
+| Work         | `work`      |
+| Exercise     | `exercise`  |
+| Rest         | `rest`      |
+| Check Status | `status`    |
+| Help         | `help`      |
+| Sell Stock   | `sellstock` |
+| Buy Stock    | `stock`     |
+| Upgrade      | `upgrade`   |
+
+

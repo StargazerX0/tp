@@ -8,7 +8,7 @@ public class RestCommand implements Command {
         MCQGame game = new MCQGame();
         game.startGame();
         game.outputResult();
-        if(game.getCorrectCount() >= 1) {
+        if (game.getCorrectCount() >= 1) {
             playerProfile.addHealth(1);
         }
     }
