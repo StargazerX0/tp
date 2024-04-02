@@ -134,6 +134,5 @@ public class EconoCraftLogic {
             ResponseManager.indentPrint("Game has been saved.\n");
             break;
         }
-
     }
 }

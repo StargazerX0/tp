@@ -2,6 +2,7 @@ package command;
 
 import exception.GameException;
 import player.PlayerProfile;
+import ui.ResponseManager;
 
 public class AdjustSalaryCommand implements Command {
     private final String updateType;
@@ -19,6 +20,9 @@ public class AdjustSalaryCommand implements Command {
         }
         if (updateType.equals("lower")) {
             amount = -amount;
+            ResponseManager.indentPrint("You have successfully lowered the salary by $" + amount + ".\n");
+        } else {
+            ResponseManager.indentPrint("You have successfully raised the salary by $" + amount + ".\n");
         }
         playerProfile.updateSalary(amount);
     }

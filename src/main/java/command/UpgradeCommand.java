@@ -3,6 +3,7 @@ package command;
 import exception.GameException;
 import exception.MoneyNotEnoughException;
 import player.PlayerProfile;
+import ui.ResponseManager;
 
 public class UpgradeCommand implements Command {
     private static final int UPGRADE_COST = 10000;
@@ -14,8 +15,8 @@ public class UpgradeCommand implements Command {
         if (!playerProfile.canUpgrade(UPGRADE_COST)) {
             throw new MoneyNotEnoughException("you need at least $10000 to upgrade your player.\n");
         }
-
         playerProfile.upgrade();
+        ResponseManager.indentPrint("You have successfully upgraded your player!\n");
     }
 
     @Override
