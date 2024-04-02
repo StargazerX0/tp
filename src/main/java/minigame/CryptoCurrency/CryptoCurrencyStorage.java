@@ -36,7 +36,8 @@ public class CryptoCurrencyStorage {
     
         while (!completeTrade) {
             try {
-                System.out.println("How much in USD do you want to invest in " + current.returnCryptoName() + "? Input 0 if you want none");
+                System.out.println("How much in USD do you want to invest in " + current.returnCryptoName() +
+                        "? Input 0 if you want none");
                 int response = Integer.parseInt(scanner.nextLine());
                 if (response < 0) {
                     throw new GameException("Invalid input: Please input a number greater than or equal to 0");
@@ -50,7 +51,8 @@ public class CryptoCurrencyStorage {
                         playerProfile.getAsset().deductAsset(response);
                         playerProfile.getAsset().addCrypto(current, quantity);
                         completeTrade = true;
-                        System.out.println("You've successfully invested " + response + " USD in " + current.returnCryptoName() + " and received " + quantity + " units.");
+                        System.out.println("You've successfully invested " + response + " USD in " +
+                                current.returnCryptoName() + " and received " + quantity + " units.");
                     } else {
                         throw new GameException("Insufficient funds: You cannot afford to invest this amount.");
                     }

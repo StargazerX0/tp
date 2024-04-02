@@ -36,7 +36,8 @@ public class BondStorage {
     
         while (!completeTrade) {
             try {
-                System.out.println("How many units of " + current.returnBondName() + " do you want to purchase? Input 0 if you want none");
+                System.out.println("How many units of " + current.returnBondName() +
+                        " do you want to purchase? Input 0 if you want none");
                 int response = Integer.parseInt(scanner.nextLine());
                 if (response < 0) {
                     throw new GameException("Invalid input: Please input a number greater than or equal to 0");
@@ -50,7 +51,8 @@ public class BondStorage {
                         playerProfile.getAsset().deductAsset(cost);
                         playerProfile.getAsset().addBond(current, response);
                         completeTrade = true;
-                        System.out.println("You've successfully purchased " + response + " units of " + current.returnBondName() + ".");
+                        System.out.println("You've successfully purchased "
+                                + response + " units of " + current.returnBondName() + ".");
                     } else {
                         throw new GameException("Insufficient funds: Your current assets cannot afford this many bonds.");
                     }
