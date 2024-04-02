@@ -1,14 +1,14 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import player.PlayerProfile;
 import java.util.Random;
 
-public class Ethereum implements CryptoCurrency {
-    private static final String NAME = "Ethereum";
+public class Litecoin implements CryptoCurrency {
+    private static final String NAME = "Litecoin";
     private int currentPrice;
 
-    public Ethereum() {
-        this.currentPrice = 2500;
+    public Litecoin() {
+        this.currentPrice = 150;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Ethereum implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(15) - 7;
+        int change = random.nextInt(10) - 5;
         this.currentPrice += change;
         return amountInvested * change / 100;
     }

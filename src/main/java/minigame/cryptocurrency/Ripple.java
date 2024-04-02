@@ -1,4 +1,4 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import player.PlayerProfile;
 import java.util.Random;

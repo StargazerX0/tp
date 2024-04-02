@@ -1,14 +1,14 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import player.PlayerProfile;
 import java.util.Random;
 
-public class Cardano implements CryptoCurrency {
-    private static final String NAME = "Cardano";
+public class Polkadot implements CryptoCurrency {
+    private static final String NAME = "Polkadot";
     private int currentPrice;
 
-    public Cardano() {
-        this.currentPrice = 2; 
+    public Polkadot() {
+        this.currentPrice = 30;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Cardano implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(4) - 2;
+        int change = random.nextInt(8) - 4;
         this.currentPrice += change;
         return amountInvested * change / 100;
     }

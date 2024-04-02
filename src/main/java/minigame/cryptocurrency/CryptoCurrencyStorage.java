@@ -1,4 +1,4 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import exception.GameException;
 import player.PlayerProfile;

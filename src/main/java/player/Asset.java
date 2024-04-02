@@ -1,6 +1,6 @@
 package player;
 
-import minigame.CryptoCurrency.CryptoCurrency;
+import minigame.cryptocurrency.CryptoCurrency;
 import minigame.bondgame.Bond;
 import minigame.stockgame.Stock;
 import ui.ResponseManager;

@@ -1,14 +1,14 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import player.PlayerProfile;
 import java.util.Random;
 
-public class Litecoin implements CryptoCurrency {
-    private static final String NAME = "Litecoin";
+public class Cardano implements CryptoCurrency {
+    private static final String NAME = "Cardano";
     private int currentPrice;
 
-    public Litecoin() {
-        this.currentPrice = 150;
+    public Cardano() {
+        this.currentPrice = 2; 
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Litecoin implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(10) - 5;
+        int change = random.nextInt(4) - 2;
         this.currentPrice += change;
         return amountInvested * change / 100;
     }

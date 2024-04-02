@@ -54,7 +54,8 @@ public class BondStorage {
                         System.out.println("You've successfully purchased "
                                 + response + " units of " + current.returnBondName() + ".");
                     } else {
-                        throw new GameException("Insufficient funds: Your current assets cannot afford this many bonds.");
+                        throw new GameException("Insufficient funds: Your current " +
+                                "assets cannot afford this many bonds.");
                     }
                 }
             } catch (NumberFormatException e) {

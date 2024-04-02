@@ -1,14 +1,14 @@
-package minigame.CryptoCurrency;
+package minigame.cryptocurrency;
 
 import player.PlayerProfile;
 import java.util.Random;
 
-public class Polkadot implements CryptoCurrency {
-    private static final String NAME = "Polkadot";
+public class Ethereum implements CryptoCurrency {
+    private static final String NAME = "Ethereum";
     private int currentPrice;
 
-    public Polkadot() {
-        this.currentPrice = 30;
+    public Ethereum() {
+        this.currentPrice = 2500;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Polkadot implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(8) - 4;
+        int change = random.nextInt(15) - 7;
         this.currentPrice += change;
         return amountInvested * change / 100;
     }
