@@ -1,0 +1,15 @@
+{
+ "name": "k", 
+ "occupation": "Robotics", 
+ "asset": "5000
+", 
+ "health": "100", 
+ "currentRound": "1", 
+ "isAdvancedPlayer": "false", 
+ "company": {
+   "name": "SIU", 
+   "numberOfEmployees": 0, 
+   "employeeSalary": 800, 
+   "revenuePerEmployee": 1000
+ }
+}
