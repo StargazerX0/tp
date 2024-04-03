@@ -45,6 +45,9 @@ public class CommandFactory {
             String amount= commandParts[1];
             return new AdjustSalaryCommand(changeType, Integer.parseInt(amount));
 
+        case COMPANY:
+            return new CompanyStatsCommand();
+
         default:
             return new ExitCommand();
         }

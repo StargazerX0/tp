@@ -14,6 +14,7 @@ public enum CommandType {
     HIRE("(?i)hire\\s+\\d+\\s*"),
     FIRE("(?i)fire\\s+\\d+\\s*"),
     ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
+    COMPANY("(?i)company\\s*"),
     HELP("(?i)help\\s*");
 
     private final String command;

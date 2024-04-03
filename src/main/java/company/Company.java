@@ -7,7 +7,6 @@ public class Company {
     private final String name;
     private int numberOfEmployees;
     private int employeeSalary;
-
     private int revenuePerEmployee;
 
     public Company() {
@@ -69,6 +68,14 @@ public class Company {
         int profit = receiveRevenue() - paySalaries();
         asset.addAsset(profit);
         ResponseManager.printCompanyProfit(profit);
+    }
+
+    public String toString() {
+        return "Company: " + name + "\n" +
+                "Number of Employees: " + numberOfEmployees + "\n" +
+                "Employee Salary: " + employeeSalary + "\n" +
+                "Revenue Per Employee: " + revenuePerEmployee + "\n" +
+                "Profit per Round: " + (revenuePerEmployee - employeeSalary) + "\n";
     }
 
 }
