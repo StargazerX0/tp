@@ -103,6 +103,26 @@ The `EconoCraftLogic` mechanism:
    * update the player profile accordingly.
    * use `ResponseManager` to generate the response to the user.
 
+Here is the sequence diagram of `stock` command:
+
+![Stock.jpeg](UML%20diagram%2FStock.jpeg)
+
+The mechanism:
+1. `stock` command invoke the `StockCommand` class.
+2. `StockCommand` invokes the `start` method for `StockActivate` class.
+3. `StockActivate` class calls a new `StockStorage` class.
+4. `StockStorage` class will new execute its play function and enable user to buy stocks.
+
+Here is the sequence diagram of `sellstock` command:
+
+![SellStock.jpeg](UML%20diagram%2FSellStock.jpeg)
+
+The mechanism:
+1. `sellstock` command invoke the `SellStockCommand` class.
+2. `SellStockCommand` invokes the `getAsset` method for `PlayerProfile` and fetch the `Asset` class.
+3. `Asset` class executes the `sellStock()` function and sell all of the stocks the player currently possess.
+4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
+
 ## MiniGame components
 
 Here is the partial class diagram of the `MiniGame` component:
