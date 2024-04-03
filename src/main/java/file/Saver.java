@@ -12,6 +12,8 @@ public class Saver {
     private static final String FILE_PATH = "data/PlayerProfile.json";
 
     public static void saveProfile(PlayerProfile playerProfile) throws SaveProfileException {
+        ensureDirectoryExists();
+
         try {
             File file = new File(FILE_PATH);
 
@@ -22,6 +24,13 @@ public class Saver {
             writeJsonToFile(file, constructJson(playerProfile));
         } catch (IOException e) {
             throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
+        }
+    }
+
+    private static void ensureDirectoryExists() {
+        File directory = new File(FILE_PATH).getParentFile();
+        if (!directory.exists() && !directory.mkdirs()) {
+            throw new RuntimeException("Failed to create data directory.\n");
         }
     }
 

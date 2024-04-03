@@ -13,6 +13,8 @@ public class Loader {
     private static final String FILE_PATH = "data/PlayerProfile.json";
 
     public static PlayerProfile loadProfile() throws LoadProfileException {
+        ensureDirectoryExists();
+
         File file = new File(FILE_PATH);
         if (!file.exists()) {
             throw new LoadProfileException("Profile file not found.\n");
@@ -20,6 +22,13 @@ public class Loader {
 
         String json = readJsonFromFile(file);
         return parseJson(json);
+    }
+
+    private static void ensureDirectoryExists() {
+        File directory = new File(FILE_PATH).getParentFile();
+        if (!directory.exists() && !directory.mkdirs()) {
+            throw new RuntimeException("Failed to create data directory.\n");
+        }
     }
 
     private static String readJsonFromFile(File file) throws LoadProfileException {
