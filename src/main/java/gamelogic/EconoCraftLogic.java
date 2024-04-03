@@ -105,12 +105,12 @@ public class EconoCraftLogic {
                 exitFlag = command.isExit() || playerProfile.isFinished();
                 if (command.canGenerateEvent()) {
                     actionCount++;
-                    EventGenerator.getRandomEvent()
-                            .triggerEvent(playerProfile);
                 }
                 if (actionCount >= playerProfile.actionPerRound()) {
                     playerProfile.nextRound();
                     actionCount = 0;
+                    EventGenerator.getRandomEvent()
+                            .triggerEvent(playerProfile);
                 }
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 ResponseManager.indentPrint(error.getMessage());
