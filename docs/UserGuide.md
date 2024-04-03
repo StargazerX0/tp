@@ -162,7 +162,74 @@ You answered 1 questions correctly.
 
 This would increase 10% of the player's health if player achieves more than 50% correct answers.
 
-### Feature - Buy Stock
+### Feature - Upgrade
+
+Allows player to upgrade their status to access advanced features of the game.
+This would require the player to have at least $10000 in their asset account.
+
+The features are:
+
+- Allow player to purchase stock from the stock market
+- Allow player to sell stock that they currently possess
+- Allow player to manage a company and gain more profit
+
+Format: `upgrade`
+
+Expected outcome:
+```
+============================================================
+You have successfully upgraded your player!
+============================================================
+```
+
+### Feature - Manage Company
+
+#### Hire Employee
+Allows player to hire an employee to help manage the company.
+With more employees, the player can earn more profit.
+
+Format: `hire <employee number>`
+
+Example of usage: `hire 2`
+
+Expected outcome:
+```
+============================================================
+2 of employees has been hired.:)
+============================================================
+```
+
+#### Fire Employee
+Allows player to fire employees to reduce the cost of the company.
+
+Format: `fire <employee number>`
+
+Example of usage: `fire 3`
+
+Expected outcome:
+```
+============================================================
+3 of employees has been fired.:(
+============================================================
+```
+
+#### Adjust Employee Salary
+Allows player to adjust the salary of the employees to increase or decrease the cost of the company.
+
+Format: `raise <amount>` or `lower <amount>`
+
+Example of usage: `raise 100`
+
+Expected outcome:
+```
+============================================================
+You have successfully raised the salary of the employees by $100.
+============================================================
+```
+
+### Feature - Stock
+
+#### Buy Stock
 
 Allows player to buy stock from the virtual stock market.
 
@@ -233,7 +300,7 @@ Microsoft (Multi-national cooperation)
 ============================================================
 ```
 
-### Feature -Sell Stock
+#### Sell Stock
 
 Allow player to sell the stocks they currently possess.
 

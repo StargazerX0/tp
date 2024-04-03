@@ -13,6 +13,5 @@ public abstract class RandomEvent {
         return this.probability;
     }
 
-    // Your event-specific logic here
     public abstract void triggerEvent(PlayerProfile playerProfile);
 }
