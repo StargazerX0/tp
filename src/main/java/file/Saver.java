@@ -38,7 +38,7 @@ public class Saver {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(json);
             fileWriter.flush();
-            //ResponseManager.indentPrint("Profile saved successfully.\n");
+
         } catch (IOException e) {
             throw new SaveProfileException("Error writing to file: " + FILE_PATH + "\n");
         }
@@ -49,7 +49,7 @@ public class Saver {
         return "{\n" +
             " \"name\": \"" + playerProfile.getName() + "\", \n" +
             " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-            " \"asset\": \"" + playerProfile.getAsset() + "\", \n" +
+            " \"asset\": \"" + playerProfile.getAsset().outputAsset() + "\", \n"  +
             " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
             " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
             " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
