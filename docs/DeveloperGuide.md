@@ -123,6 +123,22 @@ The mechanism:
 3. `Asset` class executes the `sellStock()` function and sell all of the stocks the player currently possess.
 4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
 
+![Save.png](UML%20diagram%2FSave.png)
+
+The mechanism:
+1. `Saver` will be called automatically after one command is executed.
+2. `Saver` creates a new `file` class and invokes the `constructJson` method for `PlayerProfile` class.
+3. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
+
+![Load.png](UML%20diagram%2FLoad.png)
+
+The mechanism:
+1. `Loader` will be called automatically once the program is initialized.
+2. `Loader` invokes the `readJsonFromFile` method to read data from the json file and creates a new `file` class.
+3. `Loader` invokes the `parseJson` method to retrieve relevant attributes and creates a new `PlayerProfile` class.
+4. `Loader` returns the `PlayerProfile` class to load the previous information.
+
+
 ## MiniGame components
 
 Here is the partial class diagram of the `MiniGame` component:
