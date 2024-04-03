@@ -160,6 +160,10 @@ public class PlayerProfile {
         return isAdvancedPlayer() ? 3 : 1;
     }
 
+    public String companyInfo() {
+        return company.toString();
+    }
+
     @Override
     public String toString() {
         return "Your name is :" + name + '\n'

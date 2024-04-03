@@ -100,6 +100,7 @@ public class Asset {
             output += stockList.get(i).returnStockName() + " currently share count : "
                     + stockCount.get(i) + "\n";
         }
-        return String.format("%d", totalAsset) + "\n" + output;
+        return String.format("%d, you need %d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
+                + "\n" + output;
     }
 }

@@ -75,7 +75,7 @@ public class TypingGame implements MiniGame {
             ResponseManager.indentPrint(START_MSG);
             ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
             ResponseManager.indentPrint(
-                    "Press" + RED_COLOR + "ENTER" + RESET + "to" + RED_COLOR + "start" + RESET + "\n");
+                    "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
             // Wait for user to press enter
             scanner.nextLine();
 

@@ -38,6 +38,7 @@ public class Saver {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(json);
             fileWriter.flush();
+
         } catch (IOException e) {
             throw new SaveProfileException("Error writing to file: " + FILE_PATH + "\n");
         }

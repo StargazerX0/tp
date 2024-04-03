@@ -11,8 +11,8 @@ public class TicTacToe implements MiniGame {
     private static final Logger logger = Logger.getLogger("TacLog");
     private char[][] board = new char[3][3];
     private char playerMark;
-    private  char aiMark;
-    private  char currentMark;
+    private char aiMark;
+    private char currentMark;
     private boolean isGameOver = false;
     private boolean isDraw = false;
 
