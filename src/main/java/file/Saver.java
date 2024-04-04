@@ -59,6 +59,12 @@ public class Saver {
             "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
             "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
             " }\n" +
+            " \"asset\": {\n" +
+            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+            " }\n" +
             "}";
     }
 }
