@@ -404,6 +404,20 @@ You have lost $100 TAT
 ```
 Feel free to explore the different random events in the game!
 
+## Coming soon features in v2.1
+
+### Feature - Shop System
+A shop system will be added to the game, where players can purchase items or power-ups to help them in the game.
+
+### Feature - Money flow track System
+This feature will allow players to track their money flow in the game, including the money they earned and spent.
+
+### Feature - Enhanced UI
+This feature will enhance the user interface of the game to make it more user-friendly. Such as a better display of player status with health bar.
+
+### Feature - Store two player progress
+This would allow players to store two progress so that they can choose which progress to continue when they start the game.
+
 ## FAQ
 
 **Q**: How do I know what action I should do at different stages of the game? 
