@@ -1,4 +1,4 @@
-# EconoCraft Pro v1.0 
+# EconoCraft Pro v2.0 
 # User Guide
 
 ## Introduction
@@ -11,11 +11,12 @@ help students prepare for the future challenges.
 ## Quick Start
 
 1. Ensure you have Java 11 installed on your computer.
-2. Download the latest `econoCraft.jar` from [here](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/download/v1.0/econoCraft.jar).
+2. Download the latest `econoCraft.jar` from [here](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/download/v2.0/econoCraft.jar).
 3. Copy the file to the folder you want to use as the home folder for EconoCraft.
 4. Open a terminal and navigate to the folder where `econoCraft.jar` is located.
 5. Run the command `java -jar econoCraft.jar` to start the game. The chatbot should start and display the welcome message.
 6. Follow the game instructions to start playing.
+7. Your game progress will be auto saved in the `data` folder as `PlayerProfile.json`.
 
 ## Features 
 
@@ -346,18 +347,62 @@ Format: `help`
 
 Expected outcome:
 ```
-==============================
+============================================================
 Enter ur action!
 work - to work
 rest - to rest
 exercise - to exercise
 status - to check status
 upgrade - to upgrade(!NOTE you need to have at least $100000)
+bye - to exit
+============================================================
+Commands below are only available for advanced players:
+============================================================
 stock - to purchase stocks from the stock market 
 sellstock - to sell all of your stocks 
-bye - to exit
-==============================
+company - to check company status
+hire <number> - to hire employee
+fire <number> - to fire employee
+raise <number> - to raise salary
+lower <number> - to lower salary
+============================================================
 ```
+
+### Feature - Random Events
+
+At the end of each round, there is a chance that a random event would occur. The
+random event could be positive, negative or a decision to make, and would affect the player's
+asset, health, or other attributes based on your choice.
+
+Example of a event:
+```
+============================================================
+There is a food challenge in town.
+You need to eat 1kg of A5 Wagyu in 15min
+If you win, U will receive $500
+Otherwise, you will need to pay $200
+Do you want to participate?
+(Yes/No)?
+```
+
+if you choose `yes`, the outcome could be:
+```
+You have failed to complete the food challenge!
+You have lost $200 as a penalty!
+```
+or
+```
+You have successfully completed the food challenge!
+You have received $500 as a reward!
+```
+or
+```
+You have completed the food challenge, but your body cannot handle!
+You have received $200 as a consolation prize!
+You have lost $300 to pay the medical bill!
+You have lost $100 TAT
+```
+Feel free to explore the different random events in the game!
 
 ## FAQ
 
@@ -374,15 +419,19 @@ record, you can copy your current json file into `data` folder at your new compu
 
 ## Command Summary
 
-| Description  | Command     |
-|--------------|-------------|
-| Work         | `work`      |
-| Exercise     | `exercise`  |
-| Rest         | `rest`      |
-| Check Status | `status`    |
-| Help         | `help`      |
-| Sell Stock   | `sellstock` |
-| Buy Stock    | `stock`     |
-| Upgrade      | `upgrade`   |
+| Description            | Command                              |
+|------------------------|--------------------------------------|
+| Work                   | `work`                               |
+| Exercise               | `exercise`                           |
+| Rest                   | `rest`                               |
+| Check Status           | `status`                             |
+| Help                   | `help`                               |
+| Sell Stock             | `sellstock`                          |
+| Buy Stock              | `stock`                              |
+| Upgrade                | `upgrade`                            |
+| Hire Employee          | `hire <employee number>`             |
+| Fire Employee          | `fire <employee number>`             |
+| Adjust Employee Salary | `raise <amount>` or `lower <amount>` |
+| Exit                   | `bye`                                |
 
 
