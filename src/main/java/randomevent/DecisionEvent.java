@@ -159,8 +159,7 @@ public class DecisionEvent extends RandomEvent {
                 break;
 
             case 1:
-                System.out.println("You have failed to complete the food challenge!\n" +
-                        "You have lost $200 as a penalty!");
+                System.out.println("You have failed to complete the food challenge!\n");
                 playerProfile.loseAsset(200);
                 System.out.println("You have lost $200 as a penalty!");
                 break;
