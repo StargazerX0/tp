@@ -12,3 +12,4 @@ for Robotics, enter '/r'
 for Semiconductor industry, enter '/s'
 for Artificial intelligence, enter '/a'
 ============================================================
+Bye bye adventurer!
