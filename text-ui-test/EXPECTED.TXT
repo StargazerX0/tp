@@ -5,7 +5,6 @@ No previous record, creating new profile:
 Initializing...
 Enter your name:
 ============================================================
-James Gosling
 ============================================================
 Choose your job type:
 for Robotics, enter '/r'
