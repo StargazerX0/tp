@@ -28,8 +28,20 @@ public class CommandFactory {
         case SELLSTOCK:
             return new SellStockCommand();
 
+        case SELLBOND:
+            return new SellBondCommand();
+
         case STOCK:
             return new StockCommand();
+
+        case SELLCRYPTOCURRENCY:
+            return new SellCryptoCommand();
+
+        case BOND:
+            return new BuyBondCommand();
+
+        case CRYPTOCURRENCY:
+            return new BuyCryptoCommand();
 
         case HIRE:
             String hireNum = Parser.separateCommand(userInput)[1];

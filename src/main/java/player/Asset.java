@@ -133,7 +133,8 @@ public class Asset {
             int quantity = cryptoCount.get(i);
             int investmentReturn = quantity * crypto.returnCurrentPrice();
             totalReturn += investmentReturn;
-            ResponseManager.indentPrint("Sold " + quantity + " units of " + crypto.returnCryptoName() + ", returning $" + investmentReturn + " to your account.\n");
+            ResponseManager.indentPrint("Sold " + quantity + " units of " + crypto.returnCryptoName() + "," +
+                    " returning $" + investmentReturn + " to your account.\n");
         }
         addAsset(totalReturn);
         cryptoList.clear();

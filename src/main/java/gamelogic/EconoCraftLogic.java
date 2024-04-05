@@ -27,6 +27,16 @@ public class EconoCraftLogic {
         this.playerProfile = playerProfile;
     }
 
+    private void handleInvestmentChoices() {
+        ResponseManager.indentPrint("Available investment operations:");
+        ResponseManager.indentPrint("1. Type 'stock' to buy or sell stocks.");
+        ResponseManager.indentPrint("2. Type 'bond' to buy bonds.");
+        ResponseManager.indentPrint("3. Type 'cryptocurrency' to buy cryptocurrencies.");
+        ResponseManager.indentPrint("Type the action (e.g., 'stock', 'bond', 'cryptocurrency') " +
+                "or type 'help' for more options.");
+    }
+
+
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile = null;
 
@@ -96,6 +106,7 @@ public class EconoCraftLogic {
         while (!exitFlag) {
             ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
                 playerProfile.actionPerRound() - actionCount);
+            handleInvestmentChoices();
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);

@@ -3,19 +3,23 @@ package ui;
 import exception.CommandInputException;
 
 public enum CommandType {
-    WORK("(?i)work\\s*"),
-    REST("(?i)rest\\s*"),
-    EXIT("(?i)bye\\s*"),
+    ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
+    BOND("(?i)bond\\s*"),
+    COMPANY("(?i)company\\s*"),
+    CRYPTOCURRENCY("(?i)cryptocurrency\\s*"),
     EXERCISE("(?i)exercise\\s*"),
+    EXIT("(?i)bye\\s*"),
+    FIRE("(?i)fire\\s+\\d+\\s*"),
+    HELP("(?i)help\\s*"),
+    HIRE("(?i)hire\\s+\\d+\\s*"),
+    REST("(?i)rest\\s*"),
+    SELLBOND("(?i)sellbond\\s*"),
+    SELLSTOCK("(?i)sellstock\\s*"),
     STATUS("(?i)status\\s*"),
     STOCK("(?i)stock\\s*"),
-    SELLSTOCK("(?i)sellstock\\s*"),
     UPGRADE("(?i)upgrade\\s*"),
-    HIRE("(?i)hire\\s+\\d+\\s*"),
-    FIRE("(?i)fire\\s+\\d+\\s*"),
-    ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
-    COMPANY("(?i)company\\s*"),
-    HELP("(?i)help\\s*");
+    WORK("(?i)work\\s*"),
+    SELLCRYPTOCURRENCY("(?i)sellcryptocurrency\\s*");
 
     private final String command;
 

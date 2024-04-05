@@ -1,15 +1,34 @@
 package minigame.bondgame;
 
 import player.PlayerProfile;
+import ui.ResponseManager;
 
 public class HighYieldBond implements Bond {
+    private static final String BOND_INFORMATION =
+            "As the name suggests, the High Yield Bond comes with a high-interest rate, " +
+                    "indicating a higher risk but offering substantial income potential. This type " +
+                    "of bond is suited for investors with a high-risk tolerance seeking significant " +
+                    "returns.";
     private static final String NAME = "High Yield Bond";
+    private static final String HIDDEN_INFO =
+            "Market volatility indicates that high yield bonds are gaining popularity due " +
+                    "to potential rate cuts in the near future, which could boost their value.";
     private static final int PRICE = 100;
     private static final int INTEREST_RATE = 10;
     private static final int MATURITY = 3;
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
+        ResponseManager.indentPrint(BOND_INFORMATION);
+        ResponseManager.indentPrint("Bond Name: " + NAME);
+        ResponseManager.indentPrint("Price per bond unit: " + PRICE);
+        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
+        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
+
+        // Display hidden information based on player's occupation
+        if (playerProfile.getOccupation().equals("Investment Banker")) {
+            ResponseManager.indentPrint(HIDDEN_INFO);
+        }
     }
 
     @Override
