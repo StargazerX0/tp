@@ -1,12 +1,12 @@
 ============================================================
-No previous record, creating new profile:
+No previous record, creating new profile: 
 ============================================================
 ============================================================
 Initializing...
-Enter your name:
+Enter your name: 
 ============================================================
 ============================================================
-Choose your job type:
+Choose your job type: 
 for Robotics, enter '/r'
 for Semiconductor industry, enter '/s'
 for Artificial intelligence, enter '/a'
