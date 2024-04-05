@@ -106,7 +106,7 @@ public class EconoCraftLogic {
         while (!exitFlag) {
             ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
                 playerProfile.actionPerRound() - actionCount);
-            handleInvestmentChoices();
+            //handleInvestmentChoices();
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
