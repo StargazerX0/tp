@@ -46,8 +46,12 @@ public class Parser {
         return input.split("\\s", 2);
     }
 
-    public static int decodeInfo(String input) {
-        return Integer.parseInt(input.trim());
+    public static int decodeInfo(String input) throws CommandInputException {
+        try {
+            return Integer.parseInt(input.trim());
+        } catch (IllegalArgumentException e) {
+            throw new CommandInputException("Invalid number, please try again\n");
+        }
     }
 
 }
