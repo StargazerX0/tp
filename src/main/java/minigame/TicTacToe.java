@@ -94,8 +94,7 @@ public class TicTacToe implements MiniGame {
         if (checkForWin()) {
             isGameOver = true;
             outputResult();
-        }
-        if (isBoardFull()) {
+        } else if (isBoardFull()) {
             isDraw = true;
             isGameOver = true;
             outputResult();
