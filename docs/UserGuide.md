@@ -368,6 +368,22 @@ lower <number> - to lower salary
 ============================================================
 ```
 
+#### Company Status
+If player what to find out their company status, e.g. number of employees, salary, and profit, they can type `company`.
+
+Format: `company`
+
+Expected outcome:
+```
+============================================================
+Company: SIU
+Number of Employees: 2
+Employee Salary: 800
+Revenue Per Employee: 1000
+Profit per Round: 400
+============================================================
+```
+
 ### Feature - Random Events
 
 At the end of each round, there is a chance that a random event would occur. The
