@@ -29,7 +29,7 @@ public class TypingGame implements MiniGame {
         "Cozy lummox gives smart squid who asks for job pen.",
         "The jay, pig, fox, zebra, and my wolves quack!",
         "Blowzy night-frumps vex'd Jack Q.",
-        "Lazy movers quit hard-packing of papier-mâché jewelry boxes.",
+        "Lazy movers quit hard-packing of paper jewelry boxes.",
         "Five or six big jet planes zoomed quickly by the tower.",
         "Expect skilled signwriters to use many jazzy, quaint old alphabets effectively.",
         "Heavy boxes perform quick waltzes and jigs.",
