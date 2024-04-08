@@ -40,10 +40,12 @@ public class TypingGame implements MiniGame {
         "Hark! Toxic jungle water vipers quietly drop on zebras for meals!"
     };
 
-    private static final String START_MSG = "Welcome to the Typing Game!\n"
-            + "Type the following text as fast as you can:\n";
+    private static final String START_MSG = "Welcome to the Typing Game!\n" +
+            "Try to finish typing the given text within 20 seconds.\n" +
+            "Type the following as fast as you can:\n";
     private static final String GREEN_COLOR = "\033[0;32m";
     private static final String RED_COLOR = "\033[0;31m";
+    private static final String YELLOW_COLOR = "\033[0;33m";
     private static final String RESET = "\033[0m";
     private static final Logger TG_LOGGER = Logger.getLogger(TypingGame.class.getName());
     private int accuracy;
@@ -68,36 +70,21 @@ public class TypingGame implements MiniGame {
 
     public void startGame() {
         setupLogger();
-        CompletableFuture<String> finalScore = CompletableFuture.supplyAsync(() -> {
-            Scanner scanner = new Scanner(System.in);
-            ResponseManager.indentPrint(START_MSG);
-            ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
-            ResponseManager.indentPrint(
-                    "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
-            // Wait for user to press enter
-            scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        ResponseManager.indentPrint(START_MSG);
+        ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
+        ResponseManager.indentPrint(
+                "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
+        // Wait for user to press enter
+        scanner.nextLine();
 
-            typingGameLogic(scanner);
-            TG_LOGGER.info("User has completed the game");
-            return "Good job! You finished within the time limit!\n";
-        });
-
-        try {
-            ResponseManager.indentPrint(finalScore.get(TIME_LIMIT, TimeUnit.SECONDS));
-        } catch (TimeoutException e) {
-            this.timeSpent = TIME_LIMIT;
-            finalScore.cancel(true);
-            System.out.println("\nTime's up!!!! Your input is not captured TAT\n");
-            TG_LOGGER.info("User did not complete the game in time");
-        } catch (InterruptedException | ExecutionException e) {
-            ResponseManager.indentPrint("An error occurred while calculating your score.\n");
-            TG_LOGGER.log(Level.SEVERE, "An error occurred while calculating the score", e);
-        }
+        typingGameLogic(scanner);
+        TG_LOGGER.info("User has completed the game");
     }
 
     private void typingGameLogic(Scanner scanner) {
         long startTime = System.currentTimeMillis();
-        System.out.print("Type here: ");
+        System.out.print(YELLOW_COLOR + "Type here: " + RESET);
         userInput[0] = scanner.nextLine();
         this.timeSpent = (System.currentTimeMillis() - startTime) / TIME_RATIO;
         this.accuracy = calculateAccuracy();
@@ -120,11 +107,21 @@ public class TypingGame implements MiniGame {
         return this.accuracy;
     }
 
+    public boolean isOverTime() {
+        return this.timeSpent > TIME_LIMIT;
+    }
+
     public void outputResult() {
         String response = (this.accuracy >= 75) ? "Great job!" :
                 (this.accuracy >= 50) ? "Good effort!" : "Keep practicing!";
         ResponseManager.indentPrint(
                 String.format("You typed at %d%% accuracy in %.2f seconds!\n" +
                         "%s\n", this.accuracy, this.timeSpent, response));
+        if (this.timeSpent > TIME_LIMIT) {
+            ResponseManager.indentPrint(
+                    String.format("You have exceeded the time limit by %.2f sec!\n", (timeSpent - TIME_LIMIT)) +
+                    "The money earned will be reduced by 50%.\n");
+        }
+        TG_LOGGER.info("User has completed the game");
     }
 }
