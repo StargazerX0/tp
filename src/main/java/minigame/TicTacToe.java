@@ -3,6 +3,7 @@ package minigame;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import exception.InvalidMoveException;
@@ -16,6 +17,11 @@ public class TicTacToe implements MiniGame {
     private char currentMark;
     private boolean isGameOver = false;
     private boolean isDraw = false;
+
+    static {
+        logger.setLevel(Level.OFF); // Disable logging
+    }
+
 
     public TicTacToe(char playerMark) {
         this.playerMark = playerMark;
