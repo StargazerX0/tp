@@ -48,9 +48,7 @@ public class TypingGame implements MiniGame {
     private static final Logger TG_LOGGER = Logger.getLogger(TypingGame.class.getName());
     private int accuracy;
     private double timeSpent;
-
-    private String textToType;
-
+    private final String textToType;
     private final String[] userInput;
 
     public TypingGame() {
