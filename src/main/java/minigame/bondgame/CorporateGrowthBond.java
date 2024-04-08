@@ -3,6 +3,11 @@ package minigame.bondgame;
 import player.PlayerProfile;
 import ui.ResponseManager;
 
+/**
+ * Represents a Corporate Growth Bond in the EconoCraft game. This type of bond is designed
+ * to offer a higher interest rate, reflecting the increased risk and potential for growth
+ * in the corporate sector.
+ */
 public class CorporateGrowthBond implements Bond {
     private static final String BOND_INFORMATION =
             "The Corporate Growth Bond offers a higher interest rate to compensate for the " +
@@ -16,6 +21,12 @@ public class CorporateGrowthBond implements Bond {
     private static final int INTEREST_RATE = 6;
     private static final int MATURITY = 10;
 
+    /**
+     * Prints detailed information about this Corporate Growth Bond, including any special
+     * hidden information based on the player's occupation.
+     *
+     * @param playerProfile The player's profile, used to determine if hidden information should be displayed.
+     */
     @Override
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(BOND_INFORMATION);

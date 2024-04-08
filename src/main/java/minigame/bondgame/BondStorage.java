@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Manages the available bonds and handles player interactions for buying bonds in the EconoCraft game.
+ * This class is responsible for displaying bond options to the player and processing their choices.
+ */
 public class BondStorage {
     private final List<Bond> bondsAvailable = new ArrayList<>();
     private boolean completeTrade = false;
@@ -16,15 +20,23 @@ public class BondStorage {
         setUp();
     }
 
+    /**
+     * Initializes the list of available bonds. This method is called upon the creation
+     * of the BondStorage instance and populates the list with various types of bonds.
+     */
     private void setUp() {
         bondsAvailable.add(new GovernmentStabilityBond());
         bondsAvailable.add(new CorporateGrowthBond());
         bondsAvailable.add(new HighYieldBond());
         bondsAvailable.add(new InflationLinkedBond());
-        bondsAvailable.add(new MunicipalBond());
-        bondsAvailable.add(new ZeroCouponBond());
     }
 
+    /**
+     * Executes the bond-buying process, allowing the player to select and purchase bonds.
+     * This method displays available bonds and handles the player's input to complete the purchase.
+     *
+     * @throws GameException if there is an issue during the bond-buying process.
+     */
     public void play() throws GameException {
         if (bondsAvailable.isEmpty()) {
             setUp();
@@ -54,30 +66,29 @@ public class BondStorage {
                         System.out.println("No bonds purchased.");
                     } else {
                         int cost = response * current.returnBondPrice();
+                        double totalInterest = current.calculateInterest(cost);
                         if (playerProfile.getAsset().getAsset() >= cost) {
                             playerProfile.getAsset().deductAsset(cost);
                             playerProfile.getAsset().addBond(current, response);
                             completeTrade = true;
-                            System.out.println("You've successfully purchased " +
-                                    response + " units of " + current.returnBondName() + ".");
+                            System.out.println("You've successfully purchased " + response + " units of " +
+                                    current.returnBondName() +
+                                    ". Expected total interest gain after " + current.returnBondMaturity() +
+                                    " years is $" + String.format("%.2f", totalInterest) + ".");
                         } else {
-                            throw new GameException("Insufficient funds: Your current " +
-                                    "assets cannot afford this many bonds.");
+                            throw new GameException("Insufficient funds: " +
+                                    "Your current assets cannot afford this many bonds.");
                         }
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input: Please enter a positive integer.");
-                } catch (GameException e) {
+                } catch (NumberFormatException | GameException e) {
                     System.out.println(e.getMessage());
                 }
             }
         } else if (bondChoice != -1) {
             System.out.println("Invalid selection. Please select a valid bond.");
-            play(); // Try again if the selection is invalid
+            play();
         }
     }
 
-    private int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
 }
+
