@@ -26,7 +26,7 @@ public class ResponseManager {
             "\nstock - to purchase stocks from the stock market \n" +
             "sellstock - to sell all of your stocks \n" +
             "company - to check company status\n" +
-            "hire <number> - to hire employee\n" +
+            "hire <number> - to hire employee (each employee cost $1000 to hire)\n" +
             "fire <number> - to fire employee\n" +
             "raise <number> - to raise salary\n" +
             "lower <number> - to lower salary\n";

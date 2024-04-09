@@ -8,7 +8,7 @@ public class LotteryEvent extends RandomEvent {
     private static final int TICKET_PRICE = 2000;
     private static final String yesRegex = "(?i)(y|yes)";
     private static final String noRegex = "(?i)(n|no)";
-    private static final int[] PRIZES = {0, 100, 1000, 2000, 5000, 10000};
+    private static final int[] PRIZES = {0, 100, 1000, 2000, 2500, 3000, 10000};
     public LotteryEvent(double probability) {
         super(probability);
     }
@@ -40,6 +40,7 @@ public class LotteryEvent extends RandomEvent {
         playerProfile.addAsset(prize);
         if (prize == 0) {
             System.out.println("You have won nothing. Better luck next time!");
+            return;
         }
         System.out.println("You have won $" + prize + "!");
     }

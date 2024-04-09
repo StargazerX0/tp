@@ -51,6 +51,14 @@ public class Asset {
         }
     }
 
+    public void addCrypto(CryptoCurrency crypto, int count) {
+
+    }
+
+    public void addBond(Bond bond, int count) {
+
+    }
+
     public void sellStock() {
         if (stockList.isEmpty()) {
             ResponseManager.indentPrint("You have nothing to sell! \n");

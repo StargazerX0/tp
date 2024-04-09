@@ -101,7 +101,7 @@ public class EconoCraftLogic {
                 command.execute(playerProfile);
                 Saver.saveProfile(playerProfile);
 
-                exitFlag = command.isExit() || playerProfile.isFinished();
+                exitFlag = command.isExit();
                 if (command.canGenerateEvent()) {
                     actionCount++;
                 }
@@ -110,6 +110,7 @@ public class EconoCraftLogic {
                     EventGenerator.getRandomEvent()
                             .triggerEvent(playerProfile);
                     playerProfile.nextRound();
+                    exitFlag = playerProfile.isFinished();
                 }
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 ResponseManager.indentPrint(error.getMessage());
