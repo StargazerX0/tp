@@ -63,8 +63,10 @@ public class ResponseManager {
         System.out.println("Current round: " + currentRound + "\n" +
                 "you have " + (20 - currentRound) + " rounds left");
         System.out.println(INDENTATION);
-        System.out.println("You have " + actionsLeft + " actions left" +
+        String actionLeftStr = actionsLeft == 1 ? " action left" : " actions left";
+        System.out.println("You have " + actionsLeft + actionLeftStr +
                 "\nInput your action! If needed, type 'help' for more info");
+        System.out.println(INDENTATION);
     }
 
     public static void printHelp() {
