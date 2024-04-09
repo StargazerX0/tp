@@ -43,7 +43,7 @@ public class EconoCraftLogic {
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            ResponseManager.indentPrint("No previous record, creating new profile: \n");
+            ResponseManager.indentPrint("No previous record, creating new profile:\n");
         }
 
         if (playerProfile == null) {
@@ -112,16 +112,16 @@ public class EconoCraftLogic {
                 command.execute(playerProfile);
                 Saver.saveProfile(playerProfile);
 
-                playerProfile.updatePlayer();
-                exitFlag = command.isExit() || playerProfile.isFinished();
+                exitFlag = command.isExit();
                 if (command.canGenerateEvent()) {
                     actionCount++;
                 }
                 if (actionCount >= playerProfile.actionPerRound()) {
-                    playerProfile.nextRound();
                     actionCount = 0;
                     EventGenerator.getRandomEvent()
                             .triggerEvent(playerProfile);
+                    playerProfile.nextRound();
+                    exitFlag = playerProfile.isFinished();
                 }
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 ResponseManager.indentPrint(error.getMessage());

@@ -1,5 +1,25 @@
-# EconoCraft Pro v1.0 
+# EconoCraft Pro v2.0 
 # User Guide
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Quick Start](#quick-start)
+- [Features](#features)
+  - [Work](#feature---work)
+  - [Exercise](#feature---exercise)
+  - [Rest](#feature---rest)
+  - [Upgrade](#feature---upgrade)
+  - [Manage Company](#feature---manage-company)
+    - [Hire Employee](#hire-employee)
+    - [Fire Employee](#fire-employee)
+    - [Adjust Employee Salary](#adjust-employee-salary)
+  - [Stock](#feature---stock)
+    - [Buy Stock](#buy-stock)
+    - [Sell Stock](#sell-stock)
+  - [Check Status](#feature---check-status)
+  - [Help](#feature---help)
+  - [Company Status](#company-status)
+  - [Random Events](#feature---random-events)
 
 ## Introduction
 
@@ -11,13 +31,15 @@ help students prepare for the future challenges.
 ## Quick Start
 
 1. Ensure you have Java 11 installed on your computer.
-2. Download the latest `econoCraft.jar` from [here](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/download/v1.0/econoCraft.jar).
+2. Download the latest `econoCraft.jar` from [here](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/download/v2.0/econoCraft.jar).
 3. Copy the file to the folder you want to use as the home folder for EconoCraft.
 4. Open a terminal and navigate to the folder where `econoCraft.jar` is located.
 5. Run the command `java -jar econoCraft.jar` to start the game. The chatbot should start and display the welcome message.
 6. Follow the game instructions to start playing.
+7. Your game progress will be auto saved in the `data` folder as `PlayerProfile.json`.
 
-## Features 
+
+## Features
 
 ### Feature - Work
 Allows player to work to earn money by playing a small typing game.
@@ -37,6 +59,7 @@ The quick brown fox jumps over the lazy dog.
 Press ENTER to start
 ==============================
 ```
+The bot would select one text in text array at random position.
 player will be prompted to type the given text as fast as they can. The faster they type, the more money they earn.
  
 Examples:
@@ -345,18 +368,92 @@ Format: `help`
 
 Expected outcome:
 ```
-==============================
+============================================================
 Enter ur action!
 work - to work
 rest - to rest
 exercise - to exercise
 status - to check status
 upgrade - to upgrade(!NOTE you need to have at least $100000)
+bye - to exit
+============================================================
+Commands below are only available for advanced players:
+============================================================
 stock - to purchase stocks from the stock market 
 sellstock - to sell all of your stocks 
-bye - to exit
-==============================
+company - to check company status
+hire <number> - to hire employee
+fire <number> - to fire employee
+raise <number> - to raise salary
+lower <number> - to lower salary
+============================================================
 ```
+
+#### Company Status
+If player what to find out their company status, e.g. number of employees, salary, and profit, they can type `company`.
+
+Format: `company`
+
+Expected outcome:
+```
+============================================================
+Company: SIU
+Number of Employees: 2
+Employee Salary: 800
+Revenue Per Employee: 1000
+Profit per Round: 400
+============================================================
+```
+
+### Feature - Random Events
+
+At the end of each round, there is a chance that a random event would occur. The
+random event could be positive, negative or a decision to make, and would affect the player's
+asset, health, or other attributes based on your choice.
+
+Example of a event:
+```
+============================================================
+There is a food challenge in town.
+You need to eat 1kg of A5 Wagyu in 15min
+If you win, U will receive $500
+Otherwise, you will need to pay $200
+Do you want to participate?
+(Yes/No)?
+```
+
+if you choose `yes`, the outcome could be:
+```
+You have failed to complete the food challenge!
+You have lost $200 as a penalty!
+```
+or
+```
+You have successfully completed the food challenge!
+You have received $500 as a reward!
+```
+or
+```
+You have completed the food challenge, but your body cannot handle!
+You have received $200 as a consolation prize!
+You have lost $300 to pay the medical bill!
+You have lost $100 TAT
+```
+Feel free to explore the different random events in the game!
+
+## Coming soon features in v2.1
+
+### Feature - Shop System
+A shop system will be added to the game, where players can purchase items or power-ups to help them in the game.
+
+### Feature - Money flow track System
+This feature will allow players to track their money flow in the game, including the money they earned and spent.
+
+### Feature - Enhanced UI
+This feature will enhance the user interface of the game to make it more user-friendly. Such as a better display of player status with health bar.
+
+### Feature - Store two player progress
+This would allow players to store two progress so that they can choose which progress to continue when they start the game.
 
 ## FAQ
 
@@ -365,17 +462,27 @@ bye - to exit
 **A**: No worries! The game would prompt you to enter your action during the game. 
 If you are stuck, you can use the `help` command to see a list of commands that you can use.
 
+**Q**: Can I transfer my game record to another computer?
+
+**A**: Yes you can! The record is stored as `PlayerProfile.json` in `data` folder. The data in json file will be restored
+by loader class during initialization, if the folder is empty, the program will open a new record. To transfer the
+record, you can copy your current json file into `data` folder at your new computer.
+
 ## Command Summary
 
-| Description  | Command     |
-|--------------|-------------|
-| Work         | `work`      |
-| Exercise     | `exercise`  |
-| Rest         | `rest`      |
-| Check Status | `status`    |
-| Help         | `help`      |
-| Sell Stock   | `sellstock` |
-| Buy Stock    | `stock`     |
-| Upgrade      | `upgrade`   |
+| Description            | Command                              |
+|------------------------|--------------------------------------|
+| Work                   | `work`                               |
+| Exercise               | `exercise`                           |
+| Rest                   | `rest`                               |
+| Check Status           | `status`                             |
+| Help                   | `help`                               |
+| Sell Stock             | `sellstock`                          |
+| Buy Stock              | `stock`                              |
+| Upgrade                | `upgrade`                            |
+| Hire Employee          | `hire <employee number>`             |
+| Fire Employee          | `fire <employee number>`             |
+| Adjust Employee Salary | `raise <amount>` or `lower <amount>` |
+| Exit                   | `bye`                                |
 
 

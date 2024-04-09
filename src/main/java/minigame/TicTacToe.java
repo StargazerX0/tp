@@ -1,7 +1,9 @@
 package minigame;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import exception.InvalidMoveException;
@@ -15,6 +17,11 @@ public class TicTacToe implements MiniGame {
     private char currentMark;
     private boolean isGameOver = false;
     private boolean isDraw = false;
+
+    static {
+        logger.setLevel(Level.OFF); // Disable logging
+    }
+
 
     public TicTacToe(char playerMark) {
         this.playerMark = playerMark;
@@ -87,8 +94,7 @@ public class TicTacToe implements MiniGame {
         if (checkForWin()) {
             isGameOver = true;
             outputResult();
-        }
-        if (isBoardFull()) {
+        } else if (isBoardFull()) {
             isDraw = true;
             isGameOver = true;
             outputResult();
@@ -167,16 +173,22 @@ public class TicTacToe implements MiniGame {
             ResponseManager.indentPrint("Player " + playerMark + ", " +
                 "enter your move (row [1-3] column [1-3]):\n");
 
-            int row = scanner.nextInt() - 1;
-            int column = scanner.nextInt() - 1;
+            int row = -1;
+            int column = -1;
 
             try {
+                row = scanner.nextInt() - 1;
+                column = scanner.nextInt() - 1;
                 placeMark(row, column);
+
                 if (!isGameOver) {
                     ResponseManager.indentPrint("AI's turn!\n");
                     placeAIMark();
                     currentMark = playerMark;
                 }
+            } catch (InputMismatchException e) {
+                ResponseManager.indentPrint("Invalid input! Please enter integer only.\n");
+                scanner.nextLine(); // Clear the buffer by consuming the invalid input
             } catch (InvalidMoveException e) {
                 ResponseManager.indentPrint(e.getMessage());
             }

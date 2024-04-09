@@ -45,17 +45,17 @@ public class CommandFactory {
 
         case HIRE:
             String hireNum = Parser.separateCommand(userInput)[1];
-            return new HireEmployeeCommand(Integer.parseInt(hireNum));
+            return new HireEmployeeCommand(Parser.decodeInfo(hireNum));
 
         case FIRE:
             String fireNum = Parser.separateCommand(userInput)[1];
-            return new FireEmployeeCommand(Integer.parseInt(fireNum));
+            return new FireEmployeeCommand(Parser.decodeInfo(fireNum));
 
         case ADJUST_SALARY:
             String[] commandParts = Parser.separateCommand(userInput);
             String changeType = commandParts[0].toLowerCase();
             String amount= commandParts[1];
-            return new AdjustSalaryCommand(changeType, Integer.parseInt(amount));
+            return new AdjustSalaryCommand(changeType, Parser.decodeInfo(amount));
 
         case COMPANY:
             return new CompanyStatsCommand();

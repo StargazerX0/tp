@@ -148,7 +148,6 @@ public class Asset {
     }
 
 
-
     public void deductAsset(int amount) {
         totalAsset -= amount;
     }
@@ -158,7 +157,11 @@ public class Asset {
     }
 
     public boolean isBankrupt() {
-        return totalAsset <= 0;
+        if (totalAsset <= 0) {
+            ResponseManager.indentPrint("You have gone bankrupt!\n");
+            return true;
+        }
+        return false;
     }
 
     public int outputAsset() {

@@ -62,7 +62,11 @@ public class PlayerProfile {
     }
 
     public void addHealth(int amount) {
-        this.health.add(amount);
+        this.health.addHealth(amount);
+    }
+
+    public void setHealth(int amount) {
+        this.health.setHealth(amount);
     }
 
     public void loseHealth(int amount) {
@@ -114,7 +118,7 @@ public class PlayerProfile {
         company.removeEmployee(number);
     }
 
-    public void updatePlayer() {
+    public void addCompanyProfit() {
         if (isAdvancedPlayer()) {
             company.updatePlayer(asset);
         }
@@ -141,6 +145,8 @@ public class PlayerProfile {
     }
 
     public void nextRound() {
+        resetAssetMultiplier();
+        addCompanyProfit();
         currentRound++;
     }
 
