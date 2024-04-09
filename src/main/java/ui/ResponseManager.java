@@ -18,7 +18,7 @@ public class ResponseManager {
             "rest - to rest\n" +
             "exercise - to exercise\n" +
             "status - to check status\n" +
-            "upgrade - to upgrade(!NOTE you need to have at least $100000)\n" +
+            "upgrade - to upgrade(!NOTE you need to have at least $10000)\n" +
             "bye - to exit\n" +
             INDENTATION +
             "\nCommands below are only available for advanced players:\n" +
