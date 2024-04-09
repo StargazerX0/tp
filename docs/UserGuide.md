@@ -1,6 +1,26 @@
 # EconoCraft Pro v2.0 
 # User Guide
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Quick Start](#quick-start)
+- [Features](#features)
+  - [Work](#feature---work)
+  - [Exercise](#feature---exercise)
+  - [Rest](#feature---rest)
+  - [Upgrade](#feature---upgrade)
+  - [Manage Company](#feature---manage-company)
+    - [Hire Employee](#hire-employee)
+    - [Fire Employee](#fire-employee)
+    - [Adjust Employee Salary](#adjust-employee-salary)
+  - [Stock](#feature---stock)
+    - [Buy Stock](#buy-stock)
+    - [Sell Stock](#sell-stock)
+  - [Check Status](#feature---check-status)
+  - [Help](#feature---help)
+  - [Company Status](#company-status)
+  - [Random Events](#feature---random-events)
+
 ## Introduction
 
 EconoCraft is a single player text adventure game where a player takes on the role of a business owner or manager,
@@ -18,7 +38,8 @@ help students prepare for the future challenges.
 6. Follow the game instructions to start playing.
 7. Your game progress will be auto saved in the `data` folder as `PlayerProfile.json`.
 
-## Features 
+
+## Features
 
 ### Feature - Work
 Allows player to work to earn money by playing a small typing game.
@@ -365,6 +386,22 @@ hire <number> - to hire employee
 fire <number> - to fire employee
 raise <number> - to raise salary
 lower <number> - to lower salary
+============================================================
+```
+
+#### Company Status
+If player what to find out their company status, e.g. number of employees, salary, and profit, they can type `company`.
+
+Format: `company`
+
+Expected outcome:
+```
+============================================================
+Company: SIU
+Number of Employees: 2
+Employee Salary: 800
+Revenue Per Employee: 1000
+Profit per Round: 400
 ============================================================
 ```
 
