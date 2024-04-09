@@ -106,7 +106,9 @@ public class DecisionEvent extends RandomEvent {
         if (isAccept(response)) {
             playerProfile.loseAsset(1000);
             System.out.println("You have successfully taken the course!\n" +
-                    "Your skills have been improved!");
+                    "Money -$1000\n" +
+                    "Your skills have been improved!\n" +
+                    "Your money received has been increased by 50% for the next round!");
             playerProfile.adjustAssetMultiplier(1.5);
         } else {
             System.out.println("You have rejected the offer.");
