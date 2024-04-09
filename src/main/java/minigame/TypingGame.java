@@ -2,6 +2,10 @@ package minigame;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -36,17 +40,17 @@ public class TypingGame implements MiniGame {
         "Hark! Toxic jungle water vipers quietly drop on zebras for meals!"
     };
 
-    private static final String START_MSG = "Welcome to the Typing Game!\n" +
-            "Try to finish typing the given text within 20 seconds.\n" +
-            "Type the following as fast as you can:\n";
-    private static final String GREEN_COLOR = "\u001B[32m";
-    private static final String RED_COLOR = "\u001B[31m";
-    private static final String YELLOW_COLOR = "\u001B[33m";
-    private static final String RESET = "\u001B[0m";
+    private static final String START_MSG = "Welcome to the Typing Game!\n"
+            + "Type the following text as fast as you can:\n";
+    private static final String GREEN_COLOR = "\033[0;32m";
+    private static final String RED_COLOR = "\033[0;31m";
+    private static final String RESET = "\033[0m";
     private static final Logger TG_LOGGER = Logger.getLogger(TypingGame.class.getName());
     private int accuracy;
     private double timeSpent;
-    private final String textToType;
+
+    private String textToType;
+
     private final String[] userInput;
 
     public TypingGame() {
@@ -66,75 +70,56 @@ public class TypingGame implements MiniGame {
 
     public void startGame() {
         setupLogger();
-        Scanner scanner = new Scanner(System.in);
-        ResponseManager.indentPrint(START_MSG);
-        ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
-        ResponseManager.indentPrint(
-                "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
-        // Wait for user to press enter
-        scanner.nextLine();
+        CompletableFuture<String> finalScore = CompletableFuture.supplyAsync(() -> {
+            Scanner scanner = new Scanner(System.in);
+            ResponseManager.indentPrint(START_MSG);
+            ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
+            ResponseManager.indentPrint(
+                    "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
+            // Wait for user to press enter
+            scanner.nextLine();
 
-        typingGameLogic(scanner);
-        TG_LOGGER.info("User has completed the game");
+            typingGameLogic(scanner);
+            TG_LOGGER.info("User has completed the game");
+            return "Good job! You finished within the time limit!\n";
+        });
+
+        try {
+            ResponseManager.indentPrint(finalScore.get(TIME_LIMIT, TimeUnit.SECONDS));
+        } catch (TimeoutException e) {
+            this.timeSpent = TIME_LIMIT;
+            finalScore.cancel(true);
+            System.out.println("\nTime's up!!!! Your input is not captured TAT\n");
+            TG_LOGGER.info("User did not complete the game in time");
+        } catch (InterruptedException | ExecutionException e) {
+            ResponseManager.indentPrint("An error occurred while calculating your score.\n");
+            TG_LOGGER.log(Level.SEVERE, "An error occurred while calculating the score", e);
+        }
     }
 
     private void typingGameLogic(Scanner scanner) {
         long startTime = System.currentTimeMillis();
-        ResponseManager.printIndentation();
-        System.out.print(YELLOW_COLOR + "Type here: " + RESET);
+        System.out.print("Type here: ");
         userInput[0] = scanner.nextLine();
         this.timeSpent = (System.currentTimeMillis() - startTime) / TIME_RATIO;
         this.accuracy = calculateAccuracy();
     }
 
     private int calculateAccuracy() {
-        String textToCheck = userInput[0].trim();
-        int userAgainstText = compareUserToActual(textToCheck);
-        int textAgainstUser = compareActualToUser(textToCheck);
-        int correctCharacters = Math.max(userAgainstText, textAgainstUser);
-
+        int correctCharacters = 0;
+        int typedLength = Math.min(textToType.length(), userInput[0].length());
+        for (int i = 0; i < typedLength; i++) {
+            if (textToType.charAt(i) == userInput[0].charAt(i)) {
+                correctCharacters++;
+            }
+        }
         assert correctCharacters <= textToType.length() :
                 "Correct characters should not exceed the length of the text";
-        correctCharacters = Math.max(correctCharacters, 0);
         return (correctCharacters * PERCENTAGE / textToType.length());
-    }
-
-    private int compareUserToActual(String textToCheck) {
-        int correctCharacters = 0;
-        int checkPos = 0;
-
-        for (int i = 0; checkPos < textToType.length() && i < textToCheck.length(); i++) {
-            if (textToType.charAt(checkPos) == textToCheck.charAt(i)) {
-                correctCharacters++;
-                checkPos++;
-            } else {
-                correctCharacters--;
-            }
-        }
-        return correctCharacters;
-    }
-
-    private int compareActualToUser(String textToCheck) {
-        int correctCharacters = 0;
-        int checkPos = 0;
-
-        for (int i = 0; i < textToType.length() && checkPos < textToCheck.length(); i++) {
-            if (textToType.charAt(i) == textToCheck.charAt(checkPos)) {
-                correctCharacters++;
-                checkPos++;
-            } else {
-                correctCharacters--;
-            }
-        }
-        return correctCharacters;
     }
 
     public int getAccuracy() {
         return this.accuracy;
-    }
-
-    public boolean isOverTime() {
-        return this.timeSpent > TIME_LIMIT;
     }
 
     public void outputResult() {
@@ -143,11 +128,5 @@ public class TypingGame implements MiniGame {
         ResponseManager.indentPrint(
                 String.format("You typed at %d%% accuracy in %.2f seconds!\n" +
                         "%s\n", this.accuracy, this.timeSpent, response));
-        if (this.timeSpent > TIME_LIMIT) {
-            ResponseManager.indentPrint(
-                    String.format("You have exceeded the time limit by %.2f sec!\n", (timeSpent - TIME_LIMIT)) +
-                    "The money earned will be reduced by 50%.\n");
-        }
-        TG_LOGGER.info("User has completed the game");
     }
 }

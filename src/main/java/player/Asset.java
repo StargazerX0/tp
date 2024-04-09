@@ -51,14 +51,6 @@ public class Asset {
         }
     }
 
-    public void addCrypto(CryptoCurrency crypto, int count) {
-
-    }
-
-    public void addBond(Bond bond, int count) {
-
-    }
-
     public void sellStock() {
         if (stockList.isEmpty()) {
             ResponseManager.indentPrint("You have nothing to sell! \n");
@@ -74,6 +66,14 @@ public class Asset {
         stockList.clear();
     }
 
+    public void addBond(Bond current, int response) {
+
+    }
+
+    public void addCrypto(CryptoCurrency current, int quantity) {
+
+    }
+
     public void deductAsset(int amount) {
         totalAsset -= amount;
     }
@@ -83,11 +83,7 @@ public class Asset {
     }
 
     public boolean isBankrupt() {
-        if (totalAsset <= 0) {
-            ResponseManager.indentPrint("You have gone bankrupt!\n");
-            return true;
-        }
-        return false;
+        return totalAsset <= 0;
     }
 
     public int outputAsset() {

@@ -18,7 +18,7 @@ public class ResponseManager {
             "rest - to rest\n" +
             "exercise - to exercise\n" +
             "status - to check status\n" +
-            "upgrade - to upgrade(!NOTE you need to have at least $10000)\n" +
+            "upgrade - to upgrade(!NOTE you need to have at least $100000)\n" +
             "bye - to exit\n" +
             INDENTATION +
             "\nCommands below are only available for advanced players:\n" +
@@ -26,7 +26,7 @@ public class ResponseManager {
             "\nstock - to purchase stocks from the stock market \n" +
             "sellstock - to sell all of your stocks \n" +
             "company - to check company status\n" +
-            "hire <number> - to hire employee (each employee cost $1000 to hire)\n" +
+            "hire <number> - to hire employee\n" +
             "fire <number> - to fire employee\n" +
             "raise <number> - to raise salary\n" +
             "lower <number> - to lower salary\n";
@@ -63,18 +63,12 @@ public class ResponseManager {
         System.out.println("Current round: " + currentRound + "\n" +
                 "you have " + (20 - currentRound) + " rounds left");
         System.out.println(INDENTATION);
-        String actionLeftStr = actionsLeft == 1 ? " action left" : " actions left";
-        System.out.println("You have " + actionsLeft + actionLeftStr +
+        System.out.println("You have " + actionsLeft + " actions left" +
                 "\nInput your action! If needed, type 'help' for more info");
-        System.out.println(INDENTATION);
     }
 
     public static void printHelp() {
         indentPrint(HELP_MSG);
-    }
-
-    public static void printIndentation() {
-        System.out.println(INDENTATION);
     }
 
     public static void printCompanyProfit(int profit) {

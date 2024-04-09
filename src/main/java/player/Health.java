@@ -1,7 +1,5 @@
 package player;
 
-import ui.ResponseManager;
-
 public class Health {
     private int healthBar;
 
@@ -13,16 +11,8 @@ public class Health {
         this.healthBar = healthBar;
     }
 
-    public void addHealth(int amount) {
+    public void add(int amount) {
         healthBar += amount;
-        if (healthBar > 100) {
-            healthBar = 100;
-            System.out.println("Health is full! Your health is now 100!");
-        }
-    }
-
-    public void setHealth(int amount) {
-        healthBar = amount;
     }
 
     public void deduct(int amount) {
@@ -30,11 +20,7 @@ public class Health {
     }
 
     public boolean isDead() {
-        if (healthBar <= 0) {
-            ResponseManager.indentPrint("You have lost all ur health!\n");
-            return true;
-        }
-        return false;
+        return healthBar <= 0;
     }
 
     public int outputHealth() {
