@@ -1,5 +1,7 @@
 package player;
 
+import ui.ResponseManager;
+
 public class Health {
     private int healthBar;
 
@@ -28,7 +30,11 @@ public class Health {
     }
 
     public boolean isDead() {
-        return healthBar <= 0;
+        if (healthBar <= 0) {
+            ResponseManager.indentPrint("You have lost all ur health!\n");
+            return true;
+        }
+        return false;
     }
 
     public int outputHealth() {
