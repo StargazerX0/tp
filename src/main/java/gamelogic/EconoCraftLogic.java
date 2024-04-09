@@ -33,7 +33,7 @@ public class EconoCraftLogic {
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            ResponseManager.indentPrint("No previous record, creating new profile: \n");
+            ResponseManager.indentPrint("No previous record, creating new profile:\n");
         }
 
         if (playerProfile == null) {

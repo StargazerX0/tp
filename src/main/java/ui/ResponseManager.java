@@ -4,10 +4,10 @@ import player.PlayerProfile;
 
 public class ResponseManager {
     private static final String INITIALIZATION_MESSAGE = "Initializing...\n"
-        + "Enter your name: \n";
+        + "Enter your name:\n";
     private static final String INDENTATION =
             "===".repeat(20);
-    private static final String JOB_SELECT_MSG = "Choose your job type: \n" +
+    private static final String JOB_SELECT_MSG = "Choose your job type:\n" +
             "for Robotics, enter '/r'\n" +
             "for Semiconductor industry, enter '/s'\n" +
             "for Artificial intelligence, enter '/a'\n";
