@@ -109,7 +109,6 @@ public class EconoCraftLogic {
                     actionCount = 0;
                     EventGenerator.getRandomEvent()
                             .triggerEvent(playerProfile);
-                    playerProfile.updatePlayer();
                     playerProfile.nextRound();
                 }
             } catch (CommandInputException | GameException | SaveProfileException error) {

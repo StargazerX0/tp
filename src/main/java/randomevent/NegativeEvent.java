@@ -45,8 +45,8 @@ public class NegativeEvent extends RandomEvent {
 
     private static void employeeRiot(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[3]);
-        playerProfile.updateRevenue(-100);
-        System.out.println("The revenue per employee has been decreased by $100!");
+        playerProfile.updateRevenue(-200);
+        System.out.println("The revenue per employee has been decreased by $200!");
     }
 
     private static void economyCrisis(PlayerProfile playerProfile) {
@@ -58,8 +58,9 @@ public class NegativeEvent extends RandomEvent {
     private static void gotSick(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[1]);
         playerProfile.loseAsset(5000);
-        playerProfile.addHealth(50);
+        playerProfile.setHealth(50);
         System.out.println("You have lost $5000 to pay for medical bills.\n" +
+                "Your health has been set to 50%.\n" +
                 "Take care of your health by EXERCISE or REST!");
     }
 

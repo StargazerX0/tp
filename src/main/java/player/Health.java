@@ -11,8 +11,16 @@ public class Health {
         this.healthBar = healthBar;
     }
 
-    public void add(int amount) {
+    public void addHealth(int amount) {
         healthBar += amount;
+        if (healthBar > 100) {
+            healthBar = 100;
+            System.out.println("Health is full! Your health is now 100!");
+        }
+    }
+
+    public void setHealth(int amount) {
+        healthBar = amount;
     }
 
     public void deduct(int amount) {

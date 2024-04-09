@@ -66,14 +66,6 @@ public class Asset {
         stockList.clear();
     }
 
-    public void addBond(Bond current, int response) {
-
-    }
-
-    public void addCrypto(CryptoCurrency current, int quantity) {
-
-    }
-
     public void deductAsset(int amount) {
         totalAsset -= amount;
     }
