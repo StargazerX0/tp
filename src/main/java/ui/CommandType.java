@@ -19,7 +19,9 @@ public enum CommandType {
     STOCK("(?i)stock\\s*"),
     UPGRADE("(?i)upgrade\\s*"),
     WORK("(?i)work\\s*"),
-    SELLCRYPTOCURRENCY("(?i)sellcryptocurrency\\s*");
+    SELLCRYPTOCURRENCY("(?i)sellcryptocurrency\\s*"),
+    INFLOW("(?i)inflow\\s+\\d+\\s*(.+)?"),
+    OUTFLOW("(?i)outflow\\s+\\d+\\s*(.+)?");
 
     private final String command;
 

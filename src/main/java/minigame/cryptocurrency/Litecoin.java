@@ -18,7 +18,7 @@ public class Litecoin implements CryptoCurrency {
     private int currentPrice;
 
     public Litecoin() {
-        this.currentPrice = 200;
+        this.currentPrice = 200; // Initial price, could be dynamically updated
     }
 
     @Override
@@ -27,7 +27,6 @@ public class Litecoin implements CryptoCurrency {
         ResponseManager.indentPrint("Crypto Name: " + NAME);
         ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
 
-        // Display hidden information based on certain player conditions or occupations
         if (playerProfile.getOccupation().equals("Crypto Enthusiast") ||
                 playerProfile.getOccupation().equals("Investor")) {
             ResponseManager.indentPrint(HIDDEN_INFO);
@@ -37,9 +36,21 @@ public class Litecoin implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(10) - 5;
-        this.currentPrice += change;
-        return amountInvested * change / 100;
+        int changePercentage = random.nextInt(11) - 5;
+        int changeAmount = amountInvested * changePercentage / 100;
+        this.currentPrice += this.currentPrice * changePercentage / 100;
+
+        // Provide feedback on market changes
+        if (changePercentage > 0) {
+            System.out.println("Litecoin's value has seen a positive trend, increasing by " + changePercentage + "%.");
+        } else if (changePercentage < 0) {
+            System.out.println("Litecoin's value has decreased by " + Math.abs(changePercentage) +
+                    "%, reflecting recent market volatility.");
+        } else {
+            System.out.println("The market for Litecoin has remained stable, with no significant price changes.");
+        }
+
+        return changeAmount;
     }
 
     @Override
@@ -52,4 +63,5 @@ public class Litecoin implements CryptoCurrency {
         return currentPrice;
     }
 }
+
 

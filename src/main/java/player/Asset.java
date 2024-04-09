@@ -97,17 +97,22 @@ public class Asset {
     public void sellBond() {
         if (bondList.isEmpty()) {
             ResponseManager.indentPrint("You have no bonds to sell! \n");
+            return;
         }
         for (Bond b : bondList) {
             int index = bondList.indexOf(b);
             int count = bondCount.get(index);
-            int profit = b.calculateInterest(b.returnBondPrice() * count);
-            addAsset(b.returnBondPrice() * count + profit);
-            ResponseManager.indentPrint("$" + (b.returnBondPrice() * count + profit) + " returned to your account. \n");
+            int bondPrice = b.returnBondPrice();
+            int totalPrincipal = bondPrice * count;
+            double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
+            int totalReturn = (int) (totalPrincipal + totalInterest);
+            addAsset(totalReturn);
+            ResponseManager.indentPrint("$" + totalReturn + " returned to your account from " + b.returnBondName() + ". \n");
         }
         bondList.clear();
         bondCount.clear();
     }
+
 
 
     public void addCrypto(CryptoCurrency crypto, int dollarsInvested) {

@@ -60,6 +60,19 @@ public class CommandFactory {
         case COMPANY:
             return new CompanyStatsCommand();
 
+        case INFLOW:
+            String[] inflowParams = Parser.separateCommand(userInput);
+            String inflowDescription = inflowParams[1];
+            int inflowAmount = Integer.parseInt(inflowParams[2]);
+            return new InFlowCommand(inflowDescription, inflowAmount);
+
+        case OUTFLOW:
+            String[] outflowParams = Parser.separateCommand(userInput);
+            String outflowDescription = outflowParams[1];
+            int outflowAmount = Integer.parseInt(outflowParams[2]);
+            return new OutFlowCommand(outflowDescription, outflowAmount);
+
+
         default:
             return new ExitCommand();
         }

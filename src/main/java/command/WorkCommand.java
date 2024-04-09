@@ -17,6 +17,10 @@ public class WorkCommand implements Command {
             int earned = (game.getAccuracy() * SALARY / 100);
             assert earned >= 0 : "Earned should not be negative";
             playerProfile.addAsset(earned);
+            String activityDescription = "Worked and earned $" + earned + " with an accuracy of "
+                    + game.getAccuracy() + "%.";
+            playerProfile.recordFinancialActivity("Work", activityDescription, earned);
+
             ResponseManager.indentPrint("You have earned $" + earned + "\n");
         }
     }

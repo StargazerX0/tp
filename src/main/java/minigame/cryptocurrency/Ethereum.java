@@ -26,7 +26,6 @@ public class Ethereum implements CryptoCurrency {
         ResponseManager.indentPrint("Crypto Name: " + NAME);
         ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
 
-        // Display hidden information based on certain player conditions or occupations
         if (playerProfile.getOccupation().equals("Blockchain Developer")
                 || playerProfile.getOccupation().equals("Crypto Investor")) {
             ResponseManager.indentPrint(HIDDEN_INFO);
@@ -36,9 +35,22 @@ public class Ethereum implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(15) - 7;
-        this.currentPrice += change;
-        return amountInvested * change / 100;
+        int changePercentage = random.nextInt(15) - 7;
+        int updatedPrice = currentPrice + (currentPrice * changePercentage / 100);
+        int changeAmount = amountInvested * changePercentage / 100;
+
+        this.currentPrice = updatedPrice;
+
+        if (changePercentage > 0) {
+            System.out.println("Ethereum has shown a positive movement, increasing by " + changePercentage + "%.");
+        } else if (changePercentage < 0) {
+            System.out.println("Ethereum's value has decreased by " + Math.abs(changePercentage) +
+                    "% due to market fluctuations.");
+        } else {
+            System.out.println("The market for Ethereum has remained stable with no significant price changes.");
+        }
+
+        return changeAmount;
     }
 
     @Override

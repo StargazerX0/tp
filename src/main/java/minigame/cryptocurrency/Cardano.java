@@ -35,9 +35,20 @@ public class Cardano implements CryptoCurrency {
     @Override
     public int calculateChange(int amountInvested) {
         Random random = new Random();
-        int change = random.nextInt(4) - 2;
-        this.currentPrice += change;
-        return amountInvested * change / 100;
+        int changePercentage = random.nextInt(5) - 2;
+        int changeAmount = amountInvested * changePercentage / 100;
+        this.currentPrice += this.currentPrice * changePercentage / 100;
+
+        if (changePercentage > 0) {
+            System.out.println("Cardano has seen a positive trend, increasing by " + changePercentage + "%.");
+        } else if (changePercentage < 0) {
+            System.out.println("Cardano has faced a slight downturn, decreasing by "
+                    + Math.abs(changePercentage) + "%.");
+        } else {
+            System.out.println("The market for Cardano has been stable, with no significant price changes.");
+        }
+
+        return changeAmount;
     }
 
     @Override
