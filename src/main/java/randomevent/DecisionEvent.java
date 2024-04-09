@@ -120,7 +120,7 @@ public class DecisionEvent extends RandomEvent {
             switch (new Random().nextInt(2)) {
             case 0:
                 System.out.println("The owner has found you and reported to the police!\n" +
-                        "You have been fined $200 for stealing!");
+                        "You have been fined $500 for stealing!");
                 playerProfile.loseAsset(500);
                 System.out.println("You have lost $500 as a penalty!");
                 break;

@@ -88,16 +88,45 @@ public class TypingGame implements MiniGame {
     }
 
     private int calculateAccuracy() {
-        int correctCharacters = 0;
-        int typedLength = Math.min(textToType.length(), userInput[0].length());
-        for (int i = 0; i < typedLength; i++) {
-            if (textToType.charAt(i) == userInput[0].charAt(i)) {
-                correctCharacters++;
-            }
-        }
+        String textToCheck = userInput[0].trim();
+        int userAgainstText = compareUserToActual(textToCheck);
+        int textAgainstUser = compareActualToUser(textToCheck);
+        int correctCharacters = Math.max(userAgainstText, textAgainstUser);
+
         assert correctCharacters <= textToType.length() :
                 "Correct characters should not exceed the length of the text";
+        correctCharacters = Math.max(correctCharacters, 0);
         return (correctCharacters * PERCENTAGE / textToType.length());
+    }
+
+    private int compareUserToActual(String textToCheck) {
+        int correctCharacters = 0;
+        int checkPos = 0;
+
+        for (int i = 0; checkPos < textToType.length() && i < textToCheck.length(); i++) {
+            if (textToType.charAt(checkPos) == textToCheck.charAt(i)) {
+                correctCharacters++;
+                checkPos++;
+            } else {
+                correctCharacters--;
+            }
+        }
+        return correctCharacters;
+    }
+
+    private int compareActualToUser(String textToCheck) {
+        int correctCharacters = 0;
+        int checkPos = 0;
+
+        for (int i = 0; i < textToType.length() && checkPos < textToCheck.length(); i++) {
+            if (textToType.charAt(i) == textToCheck.charAt(checkPos)) {
+                correctCharacters++;
+                checkPos++;
+            } else {
+                correctCharacters--;
+            }
+        }
+        return correctCharacters;
     }
 
     public int getAccuracy() {
