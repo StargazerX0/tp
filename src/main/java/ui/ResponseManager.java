@@ -71,6 +71,10 @@ public class ResponseManager {
         indentPrint(HELP_MSG);
     }
 
+    public static void printIndentation() {
+        System.out.println(INDENTATION);
+    }
+
     public static void printCompanyProfit(int profit) {
         if (profit > 0) {
             indentPrint("Good job! You have earned " + profit + " assets from your company!\n");

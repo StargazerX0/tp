@@ -80,6 +80,7 @@ public class TypingGame implements MiniGame {
 
     private void typingGameLogic(Scanner scanner) {
         long startTime = System.currentTimeMillis();
+        ResponseManager.printIndentation();
         System.out.print(YELLOW_COLOR + "Type here: " + RESET);
         userInput[0] = scanner.nextLine();
         this.timeSpent = (System.currentTimeMillis() - startTime) / TIME_RATIO;
