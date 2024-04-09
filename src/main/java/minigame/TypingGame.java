@@ -39,10 +39,10 @@ public class TypingGame implements MiniGame {
     private static final String START_MSG = "Welcome to the Typing Game!\n" +
             "Try to finish typing the given text within 20 seconds.\n" +
             "Type the following as fast as you can:\n";
-    private static final String GREEN_COLOR = "\033[0;32m";
-    private static final String RED_COLOR = "\033[0;31m";
-    private static final String YELLOW_COLOR = "\033[0;33m";
-    private static final String RESET = "\033[0m";
+    private static final String GREEN_COLOR = "\u001B[32m";
+    private static final String RED_COLOR = "\u001B[31m";
+    private static final String YELLOW_COLOR = "\u001B[33m";
+    private static final String RESET = "\u001B[0m";
     private static final Logger TG_LOGGER = Logger.getLogger(TypingGame.class.getName());
     private int accuracy;
     private double timeSpent;
