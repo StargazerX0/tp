@@ -43,6 +43,7 @@ public class Company {
         return revenuePerEmployee;
     }
 
+
     private int paySalaries() {
         return numberOfEmployees * employeeSalary;
     }
@@ -64,12 +65,9 @@ public class Company {
     }
 
     public void updatePlayer(Asset asset) {
-        asset.addAsset(profitPerRound());
-        ResponseManager.printCompanyProfit(profitPerRound());
-    }
-
-    private int profitPerRound() {
-        return receiveRevenue() - paySalaries();
+        int profit = receiveRevenue() - paySalaries();
+        asset.addAsset(profit);
+        ResponseManager.printCompanyProfit(profit);
     }
 
     public String toString() {
@@ -77,7 +75,7 @@ public class Company {
                 "Number of Employees: " + numberOfEmployees + "\n" +
                 "Employee Salary: " + employeeSalary + "\n" +
                 "Revenue Per Employee: " + revenuePerEmployee + "\n" +
-                "Profit per Round: " + profitPerRound() + "\n";
+                "Profit per Round: " + (revenuePerEmployee - employeeSalary) + "\n";
     }
 
 }

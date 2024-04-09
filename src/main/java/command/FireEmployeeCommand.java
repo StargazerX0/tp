@@ -17,7 +17,7 @@ public class FireEmployeeCommand implements Command {
         if (!playerProfile.isAdvancedPlayer()) {
             throw new LockedFeatureException();
         }
-        if (fireNumber < 0 || fireNumber > playerProfile.getNumberOfEmployees()) {
+        if (fireNumber < 0 || fireNumber >= playerProfile.getNumberOfEmployees()) {
             throw new GameException("Invalid employee number.\n");
         }
 

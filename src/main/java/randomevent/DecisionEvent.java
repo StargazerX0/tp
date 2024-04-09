@@ -1,12 +1,9 @@
 package randomevent;
 
-import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;
 import java.util.Scanner;
-
-import static ui.Parser.isAccept;
 
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
@@ -30,7 +27,7 @@ public class DecisionEvent extends RandomEvent {
     }
 
     @Override
-    public void triggerEvent(PlayerProfile playerProfile) throws CommandInputException {
+    public void triggerEvent(PlayerProfile playerProfile) throws IllegalArgumentException {
         int range = playerProfile.isAdvancedPlayer() ?
                 DECISIONS.length : DECISIONS.length - 3;
         int index = new Random().nextInt(range);
@@ -62,7 +59,19 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void presentProject(PlayerProfile playerProfile) throws CommandInputException {
+    private boolean isAccept(String response) throws IllegalArgumentException {
+        String yesRegex = "(?i)(y|yes)";
+        String noRegex = "(?i)(n|no)";
+        if (response.matches(yesRegex)) {
+            return true;
+        } else if (response.matches(noRegex)) {
+            return false;
+        } else {
+            throw new IllegalArgumentException("Invalid input. Please try again.");
+        }
+    }
+
+    private void presentProject(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[0]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -90,23 +99,21 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void takeCourse(PlayerProfile playerProfile) throws CommandInputException {
+    private void takeCourse(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[1]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
         if (isAccept(response)) {
             playerProfile.loseAsset(1000);
             System.out.println("You have successfully taken the course!\n" +
-                    "Money -$1000\n" +
-                    "Your skills have been improved!\n" +
-                    "Your money received has been increased by 50% for the next round!");
+                    "Your skills have been improved!");
             playerProfile.adjustAssetMultiplier(1.5);
         } else {
             System.out.println("You have rejected the offer.");
         }
     }
 
-    private void returnWallet(PlayerProfile playerProfile) throws CommandInputException {
+    private void returnWallet(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[2]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -120,7 +127,7 @@ public class DecisionEvent extends RandomEvent {
             switch (new Random().nextInt(2)) {
             case 0:
                 System.out.println("The owner has found you and reported to the police!\n" +
-                        "You have been fined $500 for stealing!");
+                        "You have been fined $200 for stealing!");
                 playerProfile.loseAsset(500);
                 System.out.println("You have lost $500 as a penalty!");
                 break;
@@ -139,7 +146,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void foodChallenge(PlayerProfile playerProfile) throws CommandInputException {
+    private void foodChallenge(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[3]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -173,7 +180,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void donateCharity(PlayerProfile playerProfile) throws CommandInputException {
+    private void donateCharity(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[4]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -202,7 +209,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void improveBenefits(PlayerProfile playerProfile) throws CommandInputException {
+    private void improveBenefits(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[5]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -217,7 +224,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void raiseSalary(PlayerProfile playerProfile) throws CommandInputException {
+    private void raiseSalary(PlayerProfile playerProfile) throws IllegalArgumentException {
         System.out.println(DECISIONS[6]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();

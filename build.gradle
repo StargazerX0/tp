@@ -29,11 +29,11 @@ test {
 }
 
 application {
-    mainClass.set("gamelogic.EconoCraft")
+    mainClass.set("seedu.duke.Duke")
 }
 
 shadowJar {
-    archiveBaseName.set("gamelogic")
+    archiveBaseName.set("duke")
     archiveClassifier.set("")
 }
 

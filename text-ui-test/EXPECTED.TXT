@@ -1,14 +1,9 @@
-============================================================
-No previous record, creating new profile:
-============================================================
-============================================================
-Initializing...
-Enter your name:
-============================================================
-============================================================
-Choose your job type:
-for Robotics, enter '/r'
-for Semiconductor industry, enter '/s'
-for Artificial intelligence, enter '/a'
-============================================================
-Bye bye adventurer!
+Hello from
+ ____        _        
+|  _ \ _   _| | _____ 
+| | | | | | | |/ / _ \
+| |_| | |_| |   <  __/
+|____/ \__,_|_|\_\___|
+
+What is your name?
+Hello James Gosling
