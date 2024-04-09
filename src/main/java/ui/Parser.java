@@ -46,8 +46,24 @@ public class Parser {
         return input.split("\\s", 2);
     }
 
-    public static int decodeInfo(String input) {
-        return Integer.parseInt(input.trim());
+    public static int decodeInfo(String input) throws CommandInputException {
+        try {
+            return Integer.parseInt(input.trim());
+        } catch (IllegalArgumentException e) {
+            throw new CommandInputException("Invalid number, please try again\n");
+        }
+    }
+
+    public static boolean isAccept(String response) throws CommandInputException {
+        String yesRegex = "(?i)(y|yes)";
+        String noRegex = "(?i)(n|no)";
+        if (response.matches(yesRegex)) {
+            return true;
+        } else if (response.matches(noRegex)) {
+            return false;
+        } else {
+            throw new CommandInputException("Invalid input. Please try again.");
+        }
     }
 
 }
