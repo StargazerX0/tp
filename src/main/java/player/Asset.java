@@ -14,6 +14,14 @@ public class Asset {
     private static final List<Stock> stockList = new ArrayList<>();
     private static final List<Integer> stockCount = new ArrayList<>();
 
+    private static final List<Bond> bondList = new ArrayList<>();
+
+    private static final List<Integer> bondCount = new ArrayList<>();
+
+    private List<CryptoCurrency> cryptoList = new ArrayList<>();
+
+    private List<Integer> cryptoCount = new ArrayList<>();
+
     private int totalAsset;
 
     public Asset() {
@@ -51,14 +59,6 @@ public class Asset {
         }
     }
 
-    public void addCrypto(CryptoCurrency crypto, int count) {
-
-    }
-
-    public void addBond(Bond bond, int count) {
-
-    }
-
     public void sellStock() {
         if (stockList.isEmpty()) {
             ResponseManager.indentPrint("You have nothing to sell! \n");
@@ -73,6 +73,80 @@ public class Asset {
         }
         stockList.clear();
     }
+
+    public void addBond(Bond bond, int count) {
+        boolean duplication = false;
+        int index = -1;
+        for (Bond b : bondList) {
+            if (b.returnBondName().equals(bond.returnBondName())) {
+                duplication = true;
+                index = bondList.indexOf(b);
+                break;
+            }
+        }
+        if (duplication) {
+            int oldCount = bondCount.get(index);
+            int newCount = count + oldCount;
+            bondCount.set(index, newCount);
+        } else {
+            bondList.add(bond);
+            bondCount.add(count);
+        }
+    }
+
+    public void sellBond() {
+        if (bondList.isEmpty()) {
+            ResponseManager.indentPrint("You have no bonds to sell! \n");
+            return;
+        }
+        for (Bond b : bondList) {
+            int index = bondList.indexOf(b);
+            int count = bondCount.get(index);
+            int bondPrice = b.returnBondPrice();
+            int totalPrincipal = bondPrice * count;
+            double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
+            int totalReturn = (int) (totalPrincipal + totalInterest);
+            addAsset(totalReturn);
+            ResponseManager.indentPrint("$" + totalReturn + " returned to your account from "
+                    + b.returnBondName() + ". \n");
+        }
+        bondList.clear();
+        bondCount.clear();
+    }
+
+
+
+    public void addCrypto(CryptoCurrency crypto, int dollarsInvested) {
+        int quantity = dollarsInvested / crypto.returnCurrentPrice();
+        int index = cryptoList.indexOf(crypto);
+        if (index != -1) {
+            cryptoCount.set(index, cryptoCount.get(index) + quantity);
+        } else {
+            cryptoList.add(crypto);
+            cryptoCount.add(quantity);
+        }
+    }
+
+    public void sellCrypto() {
+        if (cryptoList.isEmpty()) {
+            ResponseManager.indentPrint("You do not own any cryptocurrency to sell.\n");
+            return;
+        }
+        int totalReturn = 0;
+        for (int i = 0; i < cryptoList.size(); i++) {
+            CryptoCurrency crypto;
+            crypto = cryptoList.get(i);
+            int quantity = cryptoCount.get(i);
+            int investmentReturn = quantity * crypto.returnCurrentPrice();
+            totalReturn += investmentReturn;
+            ResponseManager.indentPrint("Sold " + quantity + " units of " + crypto.returnCryptoName() + "," +
+                    " returning $" + investmentReturn + " to your account.\n");
+        }
+        addAsset(totalReturn);
+        cryptoList.clear();
+        cryptoCount.clear();
+    }
+
 
     public void deductAsset(int amount) {
         totalAsset -= amount;

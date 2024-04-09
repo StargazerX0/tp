@@ -40,7 +40,7 @@ public class StockStorage {
 
     }
 
-    private void stockCalculation(int index, Stock current) throws GameException{
+    private void stockCalculation(int index, Stock current) throws GameException {
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
             try {
@@ -48,19 +48,29 @@ public class StockStorage {
                 int response = Integer.parseInt(scanner.nextLine());
                 if (response < 0) {
                     throw new GameException("Please input a number greater than 0 if you want to purchase stocks");
-                } else {
+                } else if (response == 0) {
                     completeTrade = true;
-                }
-                if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
-                    completeTrade = false;
-                    throw new GameException("Your current asset cannot afford this many stock.");
+                    System.out.println("No stocks purchased.");
                 } else {
-                    playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
+                    if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
+                        throw new GameException("Your current asset cannot afford this many stock.");
+                    } else {
+                        playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
+                        playerProfile.getAsset().addStock(current, response);
+                        completeTrade = true;
+                        System.out.println("You've successfully purchased " + response + " units of "
+                                + current.returnStockName() + ".");
+                        String activityDescription = "Purchased " + response + " units of " +
+                                current.returnStockName() + " for $" + (response * current.returnStockPrice());
+                        playerProfile.recordFinancialActivity("Stock Purchase", activityDescription,
+                                -(response * current.returnStockPrice()));
+                    }
                 }
-                playerProfile.getAsset().addStock(current, response);
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: Please enter a positive integer.");
+            } catch (GameException e) {
                 System.out.println(e.getMessage());
-                System.out.println("Please enter in the instructed format: positive integers only!");
+                completeTrade = false;
             }
         }
     }

@@ -28,8 +28,20 @@ public class CommandFactory {
         case SELLSTOCK:
             return new SellStockCommand();
 
+        case SELLBOND:
+            return new SellBondCommand();
+
         case STOCK:
             return new StockCommand();
+
+        case SELLCRYPTOCURRENCY:
+            return new SellCryptoCommand();
+
+        case BOND:
+            return new BuyBondCommand();
+
+        case CRYPTOCURRENCY:
+            return new BuyCryptoCommand();
 
         case HIRE:
             String hireNum = Parser.separateCommand(userInput)[1];
@@ -47,6 +59,19 @@ public class CommandFactory {
 
         case COMPANY:
             return new CompanyStatsCommand();
+
+        case INFLOW:
+            String[] inflowParams = Parser.separateCommand(userInput);
+            String inflowDescription = inflowParams[1];
+            int inflowAmount = Integer.parseInt(inflowParams[2]);
+            return new InFlowCommand(inflowDescription, inflowAmount);
+
+        case OUTFLOW:
+            String[] outflowParams = Parser.separateCommand(userInput);
+            String outflowDescription = outflowParams[1];
+            int outflowAmount = Integer.parseInt(outflowParams[2]);
+            return new OutFlowCommand(outflowDescription, outflowAmount);
+
 
         default:
             return new ExitCommand();

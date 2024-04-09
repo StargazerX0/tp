@@ -5,27 +5,27 @@ import ui.ResponseManager;
 
 public class StockTwo implements Stock{
     private static final String STOCK_GRAPH =
-                    "▲                                                         \n" +
-                    "│                                                  xxx    \n" +
-                    "│                                                xx       \n" +
-                    "│                                                x        \n" +
-                    "│                                               xx        \n" +
-                    "│                                               x         \n" +
-                    "│                                            xxxx         \n" +
-                    "│                                            x            \n" +
-                    "│                                            x            \n" +
-                    "│                                           xx            \n" +
-                    "│                                          xx             \n" +
-                    "│                      xxx               xxx              \n" +
-                    "│                     x  xx         x   xx                \n" +
-                    "│          xx        xx   xx     xxxxx xx                 \n" +
-                    "│         xxxx    xxx      xxxxxx    xxx                  \n" +
-                    "│         x  xxxxxx                                       \n" +
-                    "│        x                                                \n" +
-                    "│      xxx                                                \n" +
-                    "│ xxxxxx                                                  \n" +
-                    "│                                                         \n" +
-                    "└────────────────────────────────────────────────────────►\n";
+                    "                                                         \n" +
+                    "                                                  xxx    \n" +
+                    "                                                xx       \n" +
+                    "                                                x        \n" +
+                    "                                               xx        \n" +
+                    "                                               x         \n" +
+                    "                                            xxxx         \n" +
+                    "                                            x            \n" +
+                    "                                            x            \n" +
+                    "                                           xx            \n" +
+                    "                                          xx             \n" +
+                    "                      xxx               xxx              \n" +
+                    "                     x  xx         x   xx                \n" +
+                    "          xx        xx   xx     xxxxx xx                 \n" +
+                    "         xxxx    xxx      xxxxxx    xxx                  \n" +
+                    "         x  xxxxxx                                       \n" +
+                    "        x                                                \n" +
+                    "      xxx                                                \n" +
+                    " xxxxxx                                                  \n" +
+                    "                                                         \n" +
+                    "\n";
     private static final String STOCK_INFORMATION =
             "Demand for robots have risen in multiple sectors. -CNN \n"
                     + "Will Elon Musk expand Tesla's robotic industry? -Economists \n"

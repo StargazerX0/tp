@@ -1,6 +1,7 @@
 package player;
 
 import company.Company;
+import tracker.Tracker;
 
 public class PlayerProfile {
     public static final int ROUND_LIMIT = 20;
@@ -11,6 +12,7 @@ public class PlayerProfile {
     private int currentRound;
     private boolean isAdvancedPlayer;
     private final Company company;
+    private Tracker tracker;
 
     public PlayerProfile(String name, String occupation) {
         this.name = name;
@@ -20,6 +22,7 @@ public class PlayerProfile {
         this.currentRound = 1;
         this.isAdvancedPlayer = false;
         this.company = new Company();
+        this.tracker = new Tracker();
     }
 
     public PlayerProfile(
@@ -44,6 +47,14 @@ public class PlayerProfile {
         this.currentRound = currentRound;
         this.isAdvancedPlayer = isAdvancedPlayer;
         this.company = company;
+    }
+
+    public void recordFinancialActivity(String type, String description, double amount) {
+        this.tracker.recordActivity(type, description, amount);
+    }
+
+    public void showFinancialActivities() {
+        this.tracker.showActivities();
     }
 
     public void addAsset(int amount) {
