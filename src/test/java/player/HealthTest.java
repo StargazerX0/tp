@@ -11,11 +11,11 @@ class HealthTest {
         assertEquals(100, health.outputHealth());
         health.deduct(10);
         assertEquals(90, health.outputHealth());
-        health.add(10);
+        health.addHealth(10);
         assertEquals(100, health.outputHealth());
         health.deduct(100);
         assertEquals(0, health.outputHealth());
-        health.add(100);
+        health.addHealth(100);
         assertEquals(100, health.outputHealth());
     }
 }

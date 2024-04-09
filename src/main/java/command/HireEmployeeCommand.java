@@ -20,7 +20,11 @@ public class HireEmployeeCommand implements Command {
         if (hireNumber < 0) {
             throw new GameException("Invalid employee number.\n");
         }
-
+        if (hireNumber * 1000 > playerProfile.getAsset().getAsset()) {
+            throw new GameException("Insufficient funds to hire employees. " +
+                    "Each hiring cost 1000\n");
+        }
+        playerProfile.loseAsset(hireNumber * 1000);
         playerProfile.hireEmployee(hireNumber);
         ResponseManager.indentPrint(hireNumber + "of employees has been hired. :)\n");
     }
