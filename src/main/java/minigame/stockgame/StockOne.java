@@ -5,13 +5,13 @@ import ui.ResponseManager;
 
 public class StockOne implements Stock{
     private static final String STOCK_GRAPH =
-           "             xxxxx \n" +
-           "            xx     \n" +
-           "     xxx   xx      \n" +
-           "    xx  xxxx        \n" +
-           " xxxx               \n" +
-           "                    \n" +
-           " \n";
+            " ▲            xxxxx \n" +
+            " │           xx     \n" +
+            " │    xxx   xx      \n" +
+            " │   xx  xxxx        \n" +
+            " │xxxx               \n" +
+            " │                   \n" +
+            " └──────────────────► \n";
     private static final String STOCK_INFORMATION =
             "WaveScan is planning to invest 100M in Ai chip -CnA \n"
             + "WaveScan have the risk of overExpansion -Economists \n"
