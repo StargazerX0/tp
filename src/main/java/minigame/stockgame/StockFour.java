@@ -15,28 +15,28 @@ public class StockFour implements Stock{
 
     public static final int STOCK_PRICE = 23;
     private static final String STOCK_GRAPH =
-            "▲                                                           \n" +
-            "│                                                           \n" +
-            "│                                                           \n" +
-            "│                                                           \n" +
-            "│                   xx                                      \n" +
-            "│                  xxxx                                     \n" +
-            "│                 xx  x                                     \n" +
-            "│        xxx     xx    x                                    \n" +
-            "│       xx xx   xx     x                                    \n" +
-            "│       x    xxxx      xx                                 x \n" +
-            "│      x                xx             xx                xx \n" +
-            "│ xxxxx                  xx           xxxxx       xxxxxxxx  \n" +
-            "│                          xx         x   xx     xx         \n" +
-            "│                           xx        x    xxxxxx           \n" +
-            "│                            xx       x                     \n" +
-            "│                             xx     xx                     \n" +
-            "│                              xxxxxxx                      \n" +
-            "│                                                           \n" +
-            "│                                                           \n" +
-            "│                                                           \n" +
-            "│                                                           \n" +
-            "└──────────────────────────────────────────────────────────►\n";
+            "                                                           \n" +
+            "                                                           \n" +
+            "                                                           \n" +
+            "                                                           \n" +
+            "                   xx                                      \n" +
+            "                  xxxx                                     \n" +
+            "                 xx  x                                     \n" +
+            "        xxx     xx    x                                    \n" +
+            "       xx xx   xx     x                                    \n" +
+            "       x    xxxx      xx                                 x \n" +
+            "      x                xx             xx                xx \n" +
+            " xxxxx                  xx           xxxxx       xxxxxxxx  \n" +
+            "                          xx         x   xx     xx         \n" +
+            "                           xx        x    xxxxxx           \n" +
+            "                            xx       x                     \n" +
+            "                             xx     xx                     \n" +
+            "                              xxxxxxx                      \n" +
+            "                                                           \n" +
+            "                                                           \n" +
+            "                                                           \n" +
+            "                                                           \n" +
+            "\n";
 
 
     public void printInfo(PlayerProfile playerProfile) {

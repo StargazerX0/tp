@@ -5,31 +5,31 @@ import ui.ResponseManager;
 
 public class StockSeven implements Stock {
     public static final String STOCK_GRAPH =
-            "▲                                                      \n" +
-            "│                                                      \n" +
-            "│                                                 xxx  \n" +
-            "│                                                xx    \n" +
-            "│                                               xx     \n" +
-            "│                                               x      \n" +
-            "│                                              x       \n" +
-            "│                                             x        \n" +
-            "│                                            xx        \n" +
-            "│                                            x         \n" +
-            "│                                           xx         \n" +
-            "│               xx                 xxxxx    x          \n" +
-            "│              xxx                 x   xx  xx          \n" +
-            "│             x  xx               x     x xx           \n" +
-            "│     xxxxx   x   xxx             x     xxx            \n" +
-            "│     x   xx x      xx           x                     \n" +
-            "│    xx    xxx       x           x                     \n" +
-            "│    x     xx        xx    xx    x                     \n" +
-            "│   xx                xx  xxxx   x                     \n" +
-            "│   x                  xxxx  xxxxx                     \n" +
-            "│                       xx     xx                      \n" +
-            "│                        x                             \n" +
-            "│                                                      \n" +
-            "│                                                      \n" +
-            "└─────────────────────────────────────────────────────►\n";
+            "                                                      \n" +
+            "                                                      \n" +
+            "                                                 xxx  \n" +
+            "                                                xx    \n" +
+            "                                               xx     \n" +
+            "                                               x      \n" +
+            "                                              x       \n" +
+            "                                             x        \n" +
+            "                                            xx        \n" +
+            "                                            x         \n" +
+            "                                           xx         \n" +
+            "               xx                 xxxxx    x          \n" +
+            "              xxx                 x   xx  xx          \n" +
+            "             x  xx               x     x xx           \n" +
+            "     xxxxx   x   xxx             x     xxx            \n" +
+            "     x   xx x      xx           x                     \n" +
+            "    xx    xxx       x           x                     \n" +
+            "    x     xx        xx    xx    x                     \n" +
+            "   xx                xx  xxxx   x                     \n" +
+            "   x                  xxxx  xxxxx                     \n" +
+            "                       xx     xx                      \n" +
+            "                        x                             \n" +
+            "                                                      \n" +
+            "                                                      \n" +
+            "\n";
     private static final String STOCK_INFORMATION =
             "Profit for last year is 120 million dollars -NextGen official announcement \n" +
                     "The increase in NextGen stock is out of expectation -Economist \n" +

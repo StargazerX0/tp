@@ -107,7 +107,8 @@ public class Asset {
             double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
             int totalReturn = (int) (totalPrincipal + totalInterest);
             addAsset(totalReturn);
-            ResponseManager.indentPrint("$" + totalReturn + " returned to your account from " + b.returnBondName() + ". \n");
+            ResponseManager.indentPrint("$" + totalReturn + " returned to your account from "
+                    + b.returnBondName() + ". \n");
         }
         bondList.clear();
         bondCount.clear();

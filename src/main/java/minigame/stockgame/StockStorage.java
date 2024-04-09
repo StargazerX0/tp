@@ -58,7 +58,8 @@ public class StockStorage {
                         playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
                         playerProfile.getAsset().addStock(current, response);
                         completeTrade = true;
-                        System.out.println("You've successfully purchased " + response + " units of " + current.returnStockName() + ".");
+                        System.out.println("You've successfully purchased " + response + " units of "
+                                + current.returnStockName() + ".");
                         String activityDescription = "Purchased " + response + " units of " +
                                 current.returnStockName() + " for $" + (response * current.returnStockPrice());
                         playerProfile.recordFinancialActivity("Stock Purchase", activityDescription,
