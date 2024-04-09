@@ -33,11 +33,7 @@ application {
 }
 
 shadowJar {
-<<<<<<< HEAD
-    archiveBaseName.set("EconoCraft")
-=======
     archiveBaseName.set("gamelogic")
->>>>>>> master
     archiveClassifier.set("")
 }
 
