@@ -1,9 +1,12 @@
 package randomevent;
 
+import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;
 import java.util.Scanner;
+
+import static ui.Parser.isAccept;
 
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
@@ -27,7 +30,7 @@ public class DecisionEvent extends RandomEvent {
     }
 
     @Override
-    public void triggerEvent(PlayerProfile playerProfile) throws IllegalArgumentException {
+    public void triggerEvent(PlayerProfile playerProfile) throws CommandInputException {
         int range = playerProfile.isAdvancedPlayer() ?
                 DECISIONS.length : DECISIONS.length - 3;
         int index = new Random().nextInt(range);
@@ -59,19 +62,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private boolean isAccept(String response) throws IllegalArgumentException {
-        String yesRegex = "(?i)(y|yes)";
-        String noRegex = "(?i)(n|no)";
-        if (response.matches(yesRegex)) {
-            return true;
-        } else if (response.matches(noRegex)) {
-            return false;
-        } else {
-            throw new IllegalArgumentException("Invalid input. Please try again.");
-        }
-    }
-
-    private void presentProject(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void presentProject(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[0]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -99,7 +90,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void takeCourse(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void takeCourse(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[1]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -115,7 +106,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void returnWallet(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void returnWallet(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[2]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -148,7 +139,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void foodChallenge(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void foodChallenge(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[3]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -182,7 +173,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void donateCharity(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void donateCharity(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[4]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -211,7 +202,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void improveBenefits(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void improveBenefits(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[5]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();
@@ -226,7 +217,7 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void raiseSalary(PlayerProfile playerProfile) throws IllegalArgumentException {
+    private void raiseSalary(PlayerProfile playerProfile) throws CommandInputException {
         System.out.println(DECISIONS[6]);
         Scanner userInput = new Scanner(System.in);
         String response = userInput.nextLine();

@@ -1,5 +1,6 @@
 package randomevent;
 
+import exception.CommandInputException;
 import player.PlayerProfile;
 
 public abstract class RandomEvent {
@@ -13,5 +14,5 @@ public abstract class RandomEvent {
         return this.probability;
     }
 
-    public abstract void triggerEvent(PlayerProfile playerProfile);
+    public abstract void triggerEvent(PlayerProfile playerProfile) throws CommandInputException;
 }

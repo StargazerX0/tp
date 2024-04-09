@@ -54,4 +54,16 @@ public class Parser {
         }
     }
 
+    public static boolean isAccept(String response) throws CommandInputException {
+        String yesRegex = "(?i)(y|yes)";
+        String noRegex = "(?i)(n|no)";
+        if (response.matches(yesRegex)) {
+            return true;
+        } else if (response.matches(noRegex)) {
+            return false;
+        } else {
+            throw new CommandInputException("Invalid input. Please try again.");
+        }
+    }
+
 }
