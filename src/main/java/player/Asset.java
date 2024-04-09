@@ -25,7 +25,7 @@ public class Asset {
     private int totalAsset;
 
     public Asset() {
-        this.totalAsset = 5000;
+        this.totalAsset = 500000;
     }
 
     public Asset(int totalAsset) {

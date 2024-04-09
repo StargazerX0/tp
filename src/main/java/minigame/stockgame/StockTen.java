@@ -5,31 +5,31 @@ import ui.ResponseManager;
 
 public class StockTen implements Stock {
     public static final String STOCK_GRAPH =
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "     x                                                 \n" +
-            "    xxxx                                               \n" +
-            "   xx  x                                               \n" +
-            "  xx   x                                               \n" +
-            " xx    xx     xxx                                      \n" +
-            "xx      xx   x  xx    xxxx        xx         xx        \n" +
-            "         x xx    xxxxxx   xx    xxxxxxxxxxxxxx xxxx    \n" +
-            "         xxx               xx xxx          xx     x    \n" +
-            "                            xxx                   xxx  \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "                                                       \n" +
-            "\n";
+            "▲                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│     x                                                 \n" +
+            "│    xxxx                                               \n" +
+            "│   xx  x                                               \n" +
+            "│  xx   x                                               \n" +
+            "│ xx    xx     xxx                                      \n" +
+            "│xx      xx   x  xx    xxxx        xx         xx        \n" +
+            "│         x xx    xxxxxx   xx    xxxxxxxxxxxxxx xxxx    \n" +
+            "│         xxx               xx xxx          xx     x    \n" +
+            "│                            xxx                   xxx  \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "│                                                       \n" +
+            "└──────────────────────────────────────────────────────►\n";
     private static final String STOCK_INFORMATION =
             "Technology sector in this quarter shows large potential -CNN \n" +
                     "Focus on niche market or expand? The two roads for start ups -Economists \n" +

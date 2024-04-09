@@ -4,30 +4,31 @@ import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class StockSix implements Stock {
-    public static final String STOCK_GRAPH = "                                                                \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "                                                     xxxxxx      \n" +
-            "                                                 xxxxx    xx     \n" +
-            "                                               xx          xx    \n" +
-            "                                              xx            xx   \n" +
-            "                                            xxx              xx  \n" +
-            "                                           xx                    \n" +
-            "                                          xx                     \n" +
-            "        xxxx                             xx                      \n" +
-            "     xxxx  xxx                          xx                       \n" +
-            "   xxx       xx                       xxx                        \n" +
-            " xxx           x                    xxx                          \n" +
-            "               xx         xxxxx xxxxx                            \n" +
-            "                xx       xx   xxx                                \n" +
-            "                 xxxxxxxxx                                       \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "                                                                 \n" +
-            "\n";
+    public static final String STOCK_GRAPH =
+            "▲                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                     xxxxxx      \n" +
+            "│                                                 xxxxx    xx     \n" +
+            "│                                               xx          xx    \n" +
+            "│                                              xx            xx   \n" +
+            "│                                            xxx              xx  \n" +
+            "│                                           xx                    \n" +
+            "│                                          xx                     \n" +
+            "│        xxxx                             xx                      \n" +
+            "│     xxxx  xxx                          xx                       \n" +
+            "│   xxx       xx                       xxx                        \n" +
+            "│ xxx           x                    xxx                          \n" +
+            "│               xx         xxxxx xxxxx                            \n" +
+            "│                xx       xx   xxx                                \n" +
+            "│                 xxxxxxxxx                                       \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "│                                                                 \n" +
+            "└────────────────────────────────────────────────────────────────►\n";
     private static final String STOCK_INFORMATION =
             "The profit for BYD last year is 300 million -BYD financial report \n" +
                     "Is China entering the competition of electric vehicles? -Economist \n" +
