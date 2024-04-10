@@ -142,13 +142,11 @@ public class DecisionEvent extends RandomEvent {
             case 0:
                 System.out.println("You have successfully completed the food challenge!\n");
                 playerProfile.addAsset(500);
-                System.out.println("You have received $500 as a reward!");
                 break;
 
             case 1:
                 System.out.println("You have failed to complete the food challenge!\n");
                 playerProfile.loseAsset(200);
-                System.out.println("You have lost $200 as a penalty!");
                 break;
 
             case 2:
@@ -156,7 +154,6 @@ public class DecisionEvent extends RandomEvent {
                         "You have received $200 as a consolation prize!\n" +
                         "You have lost $300 to pay the medical bill!");
                 playerProfile.loseAsset(100);
-                System.out.println("You have lost $100 TAT");
                 break;
 
             default:
@@ -185,7 +182,6 @@ public class DecisionEvent extends RandomEvent {
             case 1:
                 System.out.println("You have received a thank you letter from the charity!");
                 playerProfile.addAsset(200);
-                System.out.println("You have received $200 as a reward!");
                 break;
 
             default:
