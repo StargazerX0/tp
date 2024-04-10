@@ -60,10 +60,6 @@ public class StockStorage {
                         completeTrade = true;
                         System.out.println("You've successfully purchased " + response + " units of "
                                 + current.returnStockName() + ".");
-                        String activityDescription = "Purchased " + response + " units of " +
-                                current.returnStockName() + " for $" + (response * current.returnStockPrice());
-                        playerProfile.recordFinancialActivity("Stock Purchase", activityDescription,
-                                -(response * current.returnStockPrice()));
                     }
                 }
             } catch (NumberFormatException e) {
