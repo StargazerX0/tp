@@ -1,12 +1,11 @@
 package command;
 
 import player.PlayerProfile;
-import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 public class CheckStatusCommand implements Command {
     public void execute(PlayerProfile profile) {
-        ResponseManager.indentPrint(
-                "Current Status:\n" + profile.toString() + "\n");
+        indentPrint("Current Status:\n" + profile.toString() + "\n");
     }
 
     public boolean isExit() {

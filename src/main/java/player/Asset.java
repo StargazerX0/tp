@@ -4,11 +4,17 @@ import minigame.cryptocurrency.CryptoCurrency;
 import minigame.bondgame.Bond;
 import minigame.stockgame.Stock;
 import ui.ResponseManager;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.RESET;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static ui.ResponseManager.indentPrint;
+
 public class Asset {
+    public static final int PERCENT_RATIO = 100;
     public static double assetMultiplier = 1.0;
     private static final int FINAL_GOAL = 1000000;
     private static final List<Stock> stockList = new ArrayList<>();
@@ -37,7 +43,14 @@ public class Asset {
     }
 
     public void addAsset(int amount) {
-        totalAsset += (int)(amount * assetMultiplier);
+        int actualAmount = (int) (amount * assetMultiplier);
+        int multiPercentage = (int) assetMultiplier * PERCENT_RATIO;
+        String color = assetMultiplier >= 1.0 ? GREEN : RED;
+
+        totalAsset += actualAmount;
+        indentPrint(String.format("$%s%d%s has been added to ur asset - Detail: %s(%d * %d%%)%s.\n" +
+                        "Your total asset is now $%d.\n",
+               GREEN, actualAmount, RESET, color, amount, multiPercentage, RESET, totalAsset));
     }
 
     public void addStock(Stock stock, int count) {
@@ -148,6 +161,8 @@ public class Asset {
 
     public void deductAsset(int amount) {
         totalAsset -= amount;
+        indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
+                RED, amount, RESET, totalAsset));
     }
 
     public boolean isAchieved() {

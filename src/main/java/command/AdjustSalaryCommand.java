@@ -2,7 +2,7 @@ package command;
 
 import exception.GameException;
 import player.PlayerProfile;
-import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 public class AdjustSalaryCommand implements Command {
     private static final int ADJUSTMENT_LIMIT = 800;
@@ -21,12 +21,12 @@ public class AdjustSalaryCommand implements Command {
                 throw new GameException("Extent of lowering salary cannot be more than the employee's salary.\n");
             }
             amount = -amount;
-            ResponseManager.indentPrint("You have successfully lowered the salary by -$" + amount + ".\n");
+            indentPrint("You have successfully lowered the salary by -$" + amount + ".\n");
         } else {
             if (amount > ADJUSTMENT_LIMIT) {
                 throw new GameException("Extent of rising salary cannot be more than $" + ADJUSTMENT_LIMIT + ".\n");
             }
-            ResponseManager.indentPrint("You have successfully raised the salary by $" + amount + ".\n");
+            indentPrint("You have successfully raised the salary by $" + amount + ".\n");
         }
         playerProfile.updateSalary(amount);
     }

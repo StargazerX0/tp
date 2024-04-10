@@ -37,7 +37,6 @@ class PositiveEvent extends RandomEvent {
         case 2:
             System.out.println(POSITIVE_EVENT[2]);
             playerProfile.addAsset(1000);
-            System.out.println("You have received $1000!");
             break;
 
         case 3:

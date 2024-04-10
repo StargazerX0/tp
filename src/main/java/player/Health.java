@@ -1,39 +1,40 @@
 package player;
 
 import static ui.ResponseManager.indentPrint;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.RESET;
+
 public class Health {
-    private static final String RED = "\u001B[31m";
-    private static final String GREEN = "\u001B[32m";
-    private static final String RESET = "\u001B[0m";
-    private int health;
+    private int healthAmount;
 
     public Health() {
-        this.health = 100;
+        this.healthAmount = 100;
     }
 
-    public Health(int health) {
-        this.health = health;
+    public Health(int healthAmount) {
+        this.healthAmount = healthAmount;
     }
 
     public void addHealth(int amount) {
-        health += amount;
-        if (health > 100) {
-            health = 100;
+        healthAmount += amount;
+        if (healthAmount > 100) {
+            healthAmount = 100;
             indentPrint(GREEN + "Health is full!\n" + RESET +
                     "Your health is now 100!\n");
         }
     }
 
     public void setHealth(int amount) {
-        health = amount;
+        healthAmount = amount;
     }
 
     public void deduct(int amount) {
-        if (health - amount < 0) {
-            health = 0;
+        if (healthAmount - amount < 0) {
+            healthAmount = 0;
             return;
         }
-        health -= amount;
+        healthAmount -= amount;
         if (!isHealthy()) {
             indentPrint(RED + "Your health is below 50!\n" + RESET +
                     "Please take care of yourself!\n");
@@ -41,19 +42,20 @@ public class Health {
     }
 
     public boolean isHealthy() {
-        return health >= 50;
+        return healthAmount >= 50;
     }
 
     public int outputHealth() {
-        return health;
+        return healthAmount;
     }
 
     public String toString() {
         int totalBar = 10;
-        int bar = totalBar * health / 100;
+        int bar = totalBar * healthAmount / 100;
         String healthBar = "#".repeat(bar) +
                 " ".repeat(totalBar - bar);
-        String color = health >= 30 ? GREEN : RED;
-        return "|" + color + healthBar + RESET +"|";
+        String color = healthAmount >= 30 ? GREEN : RED;
+
+        return "|" + color + healthBar + RESET +"|" + " " + healthAmount + "/100";
     }
 }

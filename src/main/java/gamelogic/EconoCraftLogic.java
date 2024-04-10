@@ -120,7 +120,6 @@ public class EconoCraftLogic {
 
     private void inGameReminder(int actionCount) {
         if (actionCount == 0) {
-            indentPrint("Current Status:\n" + playerProfile.toString() + "\n");
             ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
         }
         ResponseManager.printActionLeft(playerProfile.actionPerRound() - actionCount);

@@ -64,8 +64,8 @@ public class Company {
     }
 
     public void updatePlayer(Asset asset) {
-        asset.addAsset(profitPerRound());
         ResponseManager.printCompanyProfit(profitPerRound());
+        asset.addAsset(profitPerRound());
     }
 
     private int profitPerRound() {

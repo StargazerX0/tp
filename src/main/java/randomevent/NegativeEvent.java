@@ -51,22 +51,21 @@ public class NegativeEvent extends RandomEvent {
 
     private static void economyCrisis(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[0]);
-        playerProfile.adjustAssetMultiplier(0.9);
-        System.out.println("Your money received has been decreased by 10% for the next round!");
+        playerProfile.adjustAssetMultiplier(0.8);
+        System.out.println("Your money received has been decreased by 20% for the next round!");
     }
 
     private static void gotSick(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[1]);
-        playerProfile.loseAsset(5000);
         playerProfile.setHealth(50);
         System.out.println("You have lost $5000 to pay for medical bills.\n" +
                 "Your health has been set to 50%.\n" +
                 "Take care of your health by EXERCISE or REST!");
+        playerProfile.loseAsset(5000);
     }
 
     private static void loseWallet(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[2]);
         playerProfile.loseAsset(1000);
-        System.out.println("You have lost $1000!");
     }
 }

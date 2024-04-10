@@ -3,6 +3,10 @@ package ui;
 import player.PlayerProfile;
 
 public class ResponseManager {
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String RESET = "\u001B[0m";
     private static final String INITIALIZATION_MESSAGE = "Initializing...\n"
         + "Enter your name:\n";
     private static final String INDENTATION =

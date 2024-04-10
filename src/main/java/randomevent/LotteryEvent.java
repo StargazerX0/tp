@@ -36,11 +36,11 @@ public class LotteryEvent extends RandomEvent {
         System.out.println("You have bought a ticket for $2000.");
         int prizeIndex = (int)(Math.random() * PRIZES.length);
         int prize = PRIZES[prizeIndex];
-        playerProfile.addAsset(prize);
         if (prize == 0) {
             System.out.println("You have won nothing. Better luck next time!");
             return;
         }
         System.out.println("You have won $" + prize + "!");
+        playerProfile.addAsset(prize);
     }
 }
