@@ -25,6 +25,18 @@ public class MCQGame implements MiniGame {
             "not to validate them. True or False?\n";
     private static final String Q4_ANS = "T";
 
+    private static final String QUESTION_5 = "Manufacturing is the entrepreneurial business " +
+            "actually produce the products they sell \n";
+    private static final String Q5_ANS = "T";
+    private static final String QUESTION_6 = "Retailing business sells products to other " +
+            "businesses rather than the final customer? \n";
+    private static final String Q6_ANS = "F";
+    private static final String QUESTION_7 = "Total sales-expenses is a calculation of profits \n";
+    private static final String Q7_ANS = "T";
+    private static final String QUESTION_8 = "Command economy allows the government to determine what, " +
+            "how, and whom products and services are produced \n";
+    private static final String Q8_ANS = "T";
+
     private static final String START_MSG = "Welcome to the MCQ Game!\n"
             + "Answer the following questions:\n";
     private static final List<String> questionList = new ArrayList<>();
@@ -39,10 +51,18 @@ public class MCQGame implements MiniGame {
         questionList.add(QUESTION_2);
         questionList.add(QUESTION_3);
         questionList.add(QUESTION_4);
+        questionList.add(QUESTION_5);
+        questionList.add(QUESTION_6);
+        questionList.add(QUESTION_7);
+        questionList.add(QUESTION_8);
         answerList.add(Q1_ANS);
         answerList.add(Q2_ANS);
         answerList.add(Q3_ANS);
         answerList.add(Q4_ANS);
+        answerList.add(Q5_ANS);
+        answerList.add(Q6_ANS);
+        answerList.add(Q7_ANS);
+        answerList.add(Q8_ANS);
     }
 
     public void startGame() {
@@ -62,6 +82,10 @@ public class MCQGame implements MiniGame {
 
     public void correctnessCheck(int index, String input) {
         String answer = answerList.get(index);
+        if (!input.trim().matches("T") && !input.trim().matches("F")) {
+            System.out.println("You did not input T or F, which is what you should be inputting. \n" +
+                    "Should I give you another chance to input again? Hell nah, get used to it!!!");
+        }
         if (input.trim().matches(answer)) {
             ResponseManager.indentPrint(CORRECT_MESSAGE);
             correctCount += 1;
@@ -75,8 +99,9 @@ public class MCQGame implements MiniGame {
     }
 
     public void outputResult() {
+        String question = correctCount > 1 ? " questions" : " question";
         System.out.println("You answered " + correctCount
-                + " questions correctly.\n");
+                + question + " correctly.\n");
 
         logger.info("reached the end of rest action");
     }
