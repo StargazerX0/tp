@@ -114,8 +114,6 @@ public class Asset {
         bondCount.clear();
     }
 
-
-
     public void addCrypto(CryptoCurrency crypto, int dollarsInvested) {
         int quantity = dollarsInvested / crypto.returnCurrentPrice();
         int index = cryptoList.indexOf(crypto);
@@ -164,7 +162,7 @@ public class Asset {
         return false;
     }
 
-    public int outputAsset() {
+    public int outputMoney() {
         return totalAsset;
     }
 

@@ -19,7 +19,7 @@ public enum CommandType {
     SELLBOND("(?i)sellbond\\s*"),
     SELLCRYPTOCURRENCY("(?i)sellcryptocurrency\\s*"),
     CRYPTOCURRENCY("(?i)cryptocurrency\\s*"),
-    EXIT("(?i)exit\\s*");
+    EXIT("(?i)(bye|exit)\\s*");
 
 
     private final String command;

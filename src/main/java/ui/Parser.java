@@ -9,9 +9,9 @@ public class Parser {
     private static final int NAME_LENGTH_LIMIT = 15;
     private static final String YES_REGEX = "(?i)(y|yes)";
     private static final String NO_REGEX = "(?i)(n|no)";
-    private static final String ROBOTIC = "(?i)(/r|robotic)";
-    private static final String SEMI_CONDUCTOR = "(?i)(/s|semi-conductor)";
-    private static final String AI = "(?i)(/a|artificial intelligence)";
+    private static final String ROBOTIC = "/r";
+    private static final String SEMI_CONDUCTOR = "/s";
+    private static final String AI = "/a";
 
     public static String parseName(String input) throws NameInputException {
         if (input.matches(NAME)) {

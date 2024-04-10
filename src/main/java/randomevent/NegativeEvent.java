@@ -18,7 +18,7 @@ public class NegativeEvent extends RandomEvent {
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
                 NEGATIVE_EVENT.length : NEGATIVE_EVENT.length - 1;
-        int index = playerProfile.getHealth().outputHealth() <= 15 ? 1 :
+        int index = playerProfile.getHealth() <= 15 ? 1 :
                 playerProfile.getEmployeeSalary() <= 700 ? 3 :
                 (int)(Math.random() * range);
         switch (index) {
