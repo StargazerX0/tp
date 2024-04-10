@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 import exception.InvalidMoveException;
 import ui.ResponseManager;
 
+/**
+ * Implements a Tic Tac Toe mini-game against an AI opponent. Players take turns marking spaces in a 3x3 grid.
+ * The game supports checking for wins, draws, and invalid moves, with the player always making the first move.
+ */
 public class TicTacToe implements MiniGame {
     private static final Logger logger = Logger.getLogger("TacLog");
     private char[][] board = new char[3][3];

@@ -8,6 +8,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Handles saving of the player's profile to a file in JSON format.
+ * This class encapsulates all the functionality required to serialize the player profile into JSON
+ * and write it to a persistent storage medium.
+ */
 public class Saver {
     private static final String FILE_PATH = "data/PlayerProfile.json";
 

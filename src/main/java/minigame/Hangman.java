@@ -6,6 +6,10 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
 
+/**
+ * Implements a Hangman mini-game with technology and programming-related words.
+ * Players guess letters to reveal hidden words, with a limited number of incorrect guesses allowed.
+ */
 public class Hangman implements MiniGame {
     private static final String[] WORDS = {
         "java", "computer", "program", "keyboard", "mouse",
@@ -54,6 +58,11 @@ public class Hangman implements MiniGame {
         ResponseManager.indentPrint(display.toString() + "\n");
     }
 
+    /**
+     * Determines the game's status based on rounds played and wrong guesses.
+     *
+     * @return -1 for game over, 1 for game completion, 0 for ongoing.
+     */
     public int getStatus() {
         if (totalWrongGuesses >= 3) {
             return -1;
