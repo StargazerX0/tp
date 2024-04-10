@@ -20,6 +20,10 @@ import static ui.ResponseManager.indentPrint;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Manages the main game logic for EconoCraft, including game initialization,
+ * executing commands, and managing the game loop.
+ */
 public class EconoCraftLogic {
     private static final Scanner userInput = new Scanner(System.in);
     private final PlayerProfile playerProfile;
@@ -28,6 +32,12 @@ public class EconoCraftLogic {
         this.playerProfile = playerProfile;
     }
 
+    /**
+     * Initializes the game by attempting to load an existing player profile or creating a new one.
+     * This involves setting up the player's name, job, and starting conditions.
+     *
+     * @return An instance of EconoCraftLogic ready to start the game.
+     */
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile = null;
 
@@ -87,6 +97,10 @@ public class EconoCraftLogic {
         return playerName;
     }
 
+    /**
+     * Starts the main game loop, processing user commands and managing game state.
+     * This method keeps the game running until an exit command is received or the game ends.
+     */
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;

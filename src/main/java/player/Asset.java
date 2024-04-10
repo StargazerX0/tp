@@ -13,6 +13,10 @@ import java.util.List;
 
 import static ui.ResponseManager.indentPrint;
 
+/**
+ * Represents the financial assets of a player in the game. This includes various investments like stocks, bonds,
+ * and cryptocurrencies. Provides methods to manage these assets, including buying, selling, and tracking total value.
+ */
 public class Asset {
     public static final int PERCENT_RATIO = 100;
     public static double assetMultiplier = 1.0;
@@ -53,6 +57,12 @@ public class Asset {
                GREEN, actualAmount, RESET, color, amount, multiPercentage, RESET, totalAsset));
     }
 
+    /**
+     * Adds a specified number of stocks to the player's portfolio.
+     *
+     * @param stock The stock to add.
+     * @param count The number of shares to add.
+     */
     public void addStock(Stock stock, int count) {
         boolean duplication = false;
         int index = -1;
