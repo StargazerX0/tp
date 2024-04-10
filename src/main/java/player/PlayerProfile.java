@@ -1,7 +1,6 @@
 package player;
 
 import company.Company;
-import static ui.ResponseManager.indentPrint;
 
 public class PlayerProfile {
     public static final int ROUND_LIMIT = 20;
@@ -52,15 +51,11 @@ public class PlayerProfile {
     }
 
     public void loseHealth(int amount) {
-        this.health.deduct(amount);
-        indentPrint("Your have lost " + amount + " health.\n" +
-                "Your current health is: " + health + "\n");
+        this.health.deductHealth(amount);
     }
 
     public void addHealth(int amount) {
         this.health.addHealth(amount);
-        indentPrint("Your have gained " + amount + " health.\n" +
-                "Your current health is: " + health + "\n");
     }
 
     public void setHealth(int amount) {

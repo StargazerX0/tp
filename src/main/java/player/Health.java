@@ -23,13 +23,15 @@ public class Health {
             indentPrint(GREEN + "Health is full!\n" + RESET +
                     "Your health is now 100!\n");
         }
+        indentPrint("Your have gained " + amount + " health.\n" +
+                "Your current health is: " + healthAmount + "\n");
     }
 
     public void setHealth(int amount) {
         healthAmount = amount;
     }
 
-    public void deduct(int amount) {
+    public void deductHealth(int amount) {
         if (healthAmount - amount < 0) {
             healthAmount = 0;
             return;
@@ -39,6 +41,8 @@ public class Health {
             indentPrint(RED + "Your health is below 50!\n" + RESET +
                     "Please take care of yourself!\n");
         }
+        indentPrint("Your have lost " + amount + " health.\n" +
+                "Your current health is: " + healthAmount + "\n");
     }
 
     public boolean isHealthy() {

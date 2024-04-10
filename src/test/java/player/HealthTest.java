@@ -9,11 +9,11 @@ class HealthTest {
     void testHealth() {
         Health health = new Health();
         assertEquals(100, health.outputHealth());
-        health.deduct(10);
+        health.deductHealth(10);
         assertEquals(90, health.outputHealth());
         health.addHealth(10);
         assertEquals(100, health.outputHealth());
-        health.deduct(100);
+        health.deductHealth(100);
         assertEquals(0, health.outputHealth());
         health.addHealth(100);
         assertEquals(100, health.outputHealth());

@@ -89,9 +89,11 @@ public class TypingGame implements MiniGame {
 
     private int calculateAccuracy() {
         String textToCheck = userInput[0].trim();
+        int normalAccuracy = compareOneToOne(textToCheck);
         int userAgainstText = compareUserToActual(textToCheck);
         int textAgainstUser = compareActualToUser(textToCheck);
         int correctCharacters = Math.max(userAgainstText, textAgainstUser);
+        correctCharacters = Math.max(correctCharacters, normalAccuracy);
 
         assert correctCharacters <= textToType.length() :
                 "Correct characters should not exceed the length of the text";
@@ -124,6 +126,18 @@ public class TypingGame implements MiniGame {
                 checkPos++;
             } else {
                 correctCharacters--;
+            }
+        }
+        return correctCharacters;
+    }
+
+    private int compareOneToOne(String textToCheck) {
+        int correctCharacters = 0;
+        int checkLength = Math.min(textToType.length(), textToCheck.length());
+
+        for (int i = 0; i < checkLength; i++) {
+            if (textToType.charAt(i) == textToCheck.charAt(i)) {
+                correctCharacters++;
             }
         }
         return correctCharacters;
