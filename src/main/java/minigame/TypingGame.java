@@ -8,6 +8,10 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import ui.ResponseManager;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.YELLOW;
+import static ui.ResponseManager.RESET;
 
 public class TypingGame implements MiniGame {
     private static final double TIME_RATIO = 1000.0;
@@ -39,10 +43,6 @@ public class TypingGame implements MiniGame {
     private static final String START_MSG = "Welcome to the Typing Game!\n" +
             "Try to finish typing the given text within 20 seconds.\n" +
             "Type the following as fast as you can:\n";
-    private static final String GREEN_COLOR = "\u001B[32m";
-    private static final String RED_COLOR = "\u001B[31m";
-    private static final String YELLOW_COLOR = "\u001B[33m";
-    private static final String RESET = "\u001B[0m";
     private static final Logger TG_LOGGER = Logger.getLogger(TypingGame.class.getName());
     private int accuracy;
     private double timeSpent;
@@ -68,9 +68,9 @@ public class TypingGame implements MiniGame {
         setupLogger();
         Scanner scanner = new Scanner(System.in);
         ResponseManager.indentPrint(START_MSG);
-        ResponseManager.indentPrint(GREEN_COLOR + textToType + RESET + "\n");
+        ResponseManager.indentPrint(GREEN + textToType + RESET + "\n");
         ResponseManager.indentPrint(
-                "Press" + RED_COLOR + " ENTER " + RESET + "to" + RED_COLOR + " start " + RESET + "\n");
+                "Press" + RED + " ENTER " + RESET + "to" + RED + " start " + RESET + "\n");
         // Wait for user to press enter
         scanner.nextLine();
 
@@ -81,7 +81,7 @@ public class TypingGame implements MiniGame {
     private void typingGameLogic(Scanner scanner) {
         long startTime = System.currentTimeMillis();
         ResponseManager.printIndentation();
-        System.out.print(YELLOW_COLOR + "Type here: " + RESET);
+        System.out.print(YELLOW + "Type here: " + RESET);
         userInput[0] = scanner.nextLine();
         this.timeSpent = (System.currentTimeMillis() - startTime) / TIME_RATIO;
         this.accuracy = calculateAccuracy();
@@ -89,9 +89,11 @@ public class TypingGame implements MiniGame {
 
     private int calculateAccuracy() {
         String textToCheck = userInput[0].trim();
+        int normalAccuracy = compareOneToOne(textToCheck);
         int userAgainstText = compareUserToActual(textToCheck);
         int textAgainstUser = compareActualToUser(textToCheck);
         int correctCharacters = Math.max(userAgainstText, textAgainstUser);
+        correctCharacters = Math.max(correctCharacters, normalAccuracy);
 
         assert correctCharacters <= textToType.length() :
                 "Correct characters should not exceed the length of the text";
@@ -124,6 +126,18 @@ public class TypingGame implements MiniGame {
                 checkPos++;
             } else {
                 correctCharacters--;
+            }
+        }
+        return correctCharacters;
+    }
+
+    private int compareOneToOne(String textToCheck) {
+        int correctCharacters = 0;
+        int checkLength = Math.min(textToType.length(), textToCheck.length());
+
+        for (int i = 0; i < checkLength; i++) {
+            if (textToType.charAt(i) == textToCheck.charAt(i)) {
+                correctCharacters++;
             }
         }
         return correctCharacters;

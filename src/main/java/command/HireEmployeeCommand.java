@@ -3,7 +3,7 @@ package command;
 import exception.GameException;
 import exception.LockedFeatureException;
 import player.PlayerProfile;
-import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 public class HireEmployeeCommand implements Command {
     private final int hireNumber;
@@ -26,7 +26,7 @@ public class HireEmployeeCommand implements Command {
         }
         playerProfile.loseAsset(hireNumber * 1000);
         playerProfile.hireEmployee(hireNumber);
-        ResponseManager.indentPrint(hireNumber + "of employees has been hired. :)\n");
+        indentPrint(hireNumber + "of employees has been hired. :)\n");
     }
 
     @Override

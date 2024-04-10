@@ -1,7 +1,6 @@
 package player;
 
 import company.Company;
-import tracker.Tracker;
 
 public class PlayerProfile {
     public static final int ROUND_LIMIT = 20;
@@ -12,7 +11,6 @@ public class PlayerProfile {
     private int currentRound;
     private boolean isAdvancedPlayer;
     private final Company company;
-    private Tracker tracker;
 
     public PlayerProfile(String name, String occupation) {
         this.name = name;
@@ -22,7 +20,6 @@ public class PlayerProfile {
         this.currentRound = 1;
         this.isAdvancedPlayer = false;
         this.company = new Company();
-        this.tracker = new Tracker();
     }
 
     public PlayerProfile(
@@ -49,16 +46,12 @@ public class PlayerProfile {
         this.company = company;
     }
 
-    public void recordFinancialActivity(String type, String description, double amount) {
-        this.tracker.recordActivity(type, description, amount);
-    }
-
-    public void showFinancialActivities() {
-        this.tracker.showActivities();
-    }
-
     public void addAsset(int amount) {
         this.asset.addAsset(amount);
+    }
+
+    public void loseHealth(int amount) {
+        this.health.deductHealth(amount);
     }
 
     public void addHealth(int amount) {
@@ -67,10 +60,6 @@ public class PlayerProfile {
 
     public void setHealth(int amount) {
         this.health.setHealth(amount);
-    }
-
-    public void loseHealth(int amount) {
-        this.health.deduct(1);
     }
 
     public void loseAsset(int amount) {
@@ -85,8 +74,8 @@ public class PlayerProfile {
         return this.occupation;
     }
 
-    public Health getHealth() {
-        return health;
+    public int getHealth() {
+        return health.outputHealth();
     }
 
     public int getCurrentRound() {
@@ -151,7 +140,7 @@ public class PlayerProfile {
     }
 
     public boolean isFinished() {
-        return currentRound >= ROUND_LIMIT || health.isDead() || asset.isBankrupt() || asset.isAchieved();
+        return currentRound >= ROUND_LIMIT || asset.isBankrupt() || asset.isAchieved();
     }
 
     public void adjustAssetMultiplier(double multiplier) {
@@ -166,7 +155,7 @@ public class PlayerProfile {
         if (asset.isAchieved()) {
             return 1;
         }
-        if (asset.isBankrupt() || health.isDead() || currentRound >= ROUND_LIMIT) {
+        if (asset.isBankrupt() || currentRound >= ROUND_LIMIT) {
             return -1;
         }
         // game not finished
@@ -183,9 +172,9 @@ public class PlayerProfile {
 
     @Override
     public String toString() {
-        return "Your name is :" + name + '\n'
-                + "occupation :" + occupation + '\n'
-                + "current health :" + health + "\n"
-                + "current asset: " + asset + "\n";
+        return "Your name is: " + name + '\n'
+                + "occupation: " + occupation + '\n'
+                + "current health: " + health + "\n"
+                + "current money: " + asset + "\n";
     }
 }

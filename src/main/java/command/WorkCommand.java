@@ -2,29 +2,28 @@ package command;
 
 import minigame.TypingGame;
 import player.PlayerProfile;
-import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 public class WorkCommand implements Command {
-    public static final int SALARY = 1000;
+    private static final int SALARY = 1000;
 
-    public void execute(PlayerProfile playerProfile) {
+    public void execute(PlayerProfile player) {
         TypingGame game = new TypingGame();
         game.startGame();
         game.outputResult();
-        playerProfile.loseHealth(10);
+        player.loseHealth(10);
+        updatePlayer(player, game);
+    }
+
+    private static void updatePlayer(PlayerProfile player, TypingGame game) {
         if (game.getAccuracy() >= 50) {
             assert game.getAccuracy() <= 100 : "Accuracy should not exceed 100";
             int reward = game.getAccuracy() * SALARY / 100;
             int earned = game.isOverTime() ? reward / 2 : reward;
             assert earned >= 0 : "Earned should not be negative";
-            playerProfile.addAsset(earned);
-            String activityDescription = "Worked and earned $" + earned + " with an accuracy of "
-                    + game.getAccuracy() + "%.";
-            playerProfile.recordFinancialActivity("Work", activityDescription, earned);
-
-            ResponseManager.indentPrint("You have earned $" + earned + "\n");
+            player.addAsset(earned);
         } else {
-            ResponseManager.indentPrint("You have failed the typing game and earned nothing.\n");
+            indentPrint("You have failed the typing game and earned nothing.\n");
         }
     }
 

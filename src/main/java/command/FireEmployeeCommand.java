@@ -3,7 +3,7 @@ package command;
 import exception.GameException;
 import exception.LockedFeatureException;
 import player.PlayerProfile;
-import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 public class FireEmployeeCommand implements Command {
     private final int fireNumber;
@@ -22,7 +22,7 @@ public class FireEmployeeCommand implements Command {
         }
 
         playerProfile.fireEmployee(fireNumber);
-        ResponseManager.indentPrint(fireNumber + "of employees has been fired. :(\n");
+        indentPrint(fireNumber + "of employees has been fired. :(\n");
     }
 
     @Override

@@ -15,6 +15,7 @@ import player.PlayerProfile;
 import randomevent.EventGenerator;
 import ui.Parser;
 import ui.ResponseManager;
+import static ui.ResponseManager.indentPrint;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -27,23 +28,13 @@ public class EconoCraftLogic {
         this.playerProfile = playerProfile;
     }
 
-    private void handleInvestmentChoices() {
-        ResponseManager.indentPrint("Available investment operations:");
-        ResponseManager.indentPrint("1. Type 'stock' to buy or sell stocks.");
-        ResponseManager.indentPrint("2. Type 'bond' to buy bonds.");
-        ResponseManager.indentPrint("3. Type 'cryptocurrency' to buy cryptocurrencies.");
-        ResponseManager.indentPrint("Type the action (e.g., 'stock', 'bond', 'cryptocurrency') " +
-                "or type 'help' for more options.");
-    }
-
-
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile = null;
 
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            ResponseManager.indentPrint("No previous record, creating new profile:\n");
+            indentPrint("No previous record, creating new profile:\n");
         }
 
         if (playerProfile == null) {
@@ -59,20 +50,18 @@ public class EconoCraftLogic {
                 ResponseManager.printGoodbye();
                 System.exit(0);
             }
-
             playerProfile = new PlayerProfile(playerName, jobType);
         }
 
         try {
             Saver.saveProfile(playerProfile);
         } catch (SaveProfileException e) {
-            ResponseManager.indentPrint("Error saving profile: " + e.getMessage());
+            indentPrint("Error saving profile: " + e.getMessage());
         }
 
         ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
     }
-
 
     private static String getJob() {
         String jobType = "";
@@ -80,7 +69,7 @@ public class EconoCraftLogic {
             try {
                 jobType = Parser.parseCareer(userInput.nextLine());
             } catch (JobSelectException e) {
-                ResponseManager.indentPrint(e.getMessage());
+                indentPrint(e.getMessage());
             }
         }
         return jobType;
@@ -92,7 +81,7 @@ public class EconoCraftLogic {
             try {
                 playerName = Parser.parseName(userInput.nextLine());
             } catch (NameInputException e) {
-                ResponseManager.indentPrint(e.getMessage());
+                indentPrint(e.getMessage());
             }
         }
         return playerName;
@@ -104,9 +93,7 @@ public class EconoCraftLogic {
         int actionCount = 0;
 
         while (!exitFlag) {
-            ResponseManager.printCurrentRound(playerProfile.getCurrentRound(),
-                playerProfile.actionPerRound() - actionCount);
-            //handleInvestmentChoices();
+            inGameReminder(actionCount);
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
@@ -124,25 +111,32 @@ public class EconoCraftLogic {
                     exitFlag = playerProfile.isFinished();
                 }
             } catch (CommandInputException | GameException | SaveProfileException error) {
-                ResponseManager.indentPrint(error.getMessage());
+                indentPrint(error.getMessage());
             }
         }
         printEndMessage(playerProfile);
         userInput.close();
     }
 
+    private void inGameReminder(int actionCount) {
+        if (actionCount == 0) {
+            ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
+        }
+        ResponseManager.printActionLeft(playerProfile.actionPerRound() - actionCount);
+    }
+
     private void printEndMessage(PlayerProfile playerProfile) {
         switch (playerProfile.checkWin()) {
         case 1:
-            ResponseManager.indentPrint("Congratulations! You have won the game!\n");
+            indentPrint("Congratulations! You have won the game!\n");
             break;
 
         case -1:
-            ResponseManager.indentPrint("You have lost the game. Better luck next time!\n");
+            indentPrint("You have lost the game. Better luck next time!\n");
             break;
 
         default:
-            ResponseManager.indentPrint("Game has been saved.\n");
+            indentPrint("Game has been saved.\n");
             break;
         }
     }

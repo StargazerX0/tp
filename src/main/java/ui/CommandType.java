@@ -3,25 +3,24 @@ package ui;
 import exception.CommandInputException;
 
 public enum CommandType {
-    ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
-    BOND("(?i)bond\\s*"),
-    COMPANY("(?i)company\\s*"),
-    CRYPTOCURRENCY("(?i)cryptocurrency\\s*"),
-    EXERCISE("(?i)exercise\\s*"),
-    EXIT("(?i)bye\\s*"),
-    FIRE("(?i)fire\\s+\\d+\\s*"),
     HELP("(?i)help\\s*"),
-    HIRE("(?i)hire\\s+\\d+\\s*"),
-    REST("(?i)rest\\s*"),
-    SELLBOND("(?i)sellbond\\s*"),
-    SELLSTOCK("(?i)sellstock\\s*"),
-    STATUS("(?i)status\\s*"),
-    STOCK("(?i)stock\\s*"),
-    UPGRADE("(?i)upgrade\\s*"),
+    EXERCISE("(?i)exercise\\s*"),
     WORK("(?i)work\\s*"),
+    REST("(?i)rest\\s*"),
+    STATUS("(?i)status\\s*"),
+    UPGRADE("(?i)upgrade\\s*"),
+    STOCK("(?i)stock\\s*"),
+    ADJUST_SALARY("(?i)(raise|lower)\\s+\\d+\\s*"),
+    COMPANY("(?i)company\\s*"),
+    HIRE("(?i)hire\\s+\\d+\\s*"),
+    FIRE("(?i)fire\\s+\\d+\\s*"),
+    SELLSTOCK("(?i)sellstock\\s*"),
+    BOND("(?i)bond\\s*"),
+    SELLBOND("(?i)sellbond\\s*"),
     SELLCRYPTOCURRENCY("(?i)sellcryptocurrency\\s*"),
-    INFLOW("(?i)inflow\\s+\\d+\\s*(.+)?"),
-    OUTFLOW("(?i)outflow\\s+\\d+\\s*(.+)?");
+    CRYPTOCURRENCY("(?i)cryptocurrency\\s*"),
+    EXIT("(?i)(bye|exit)\\s*");
+
 
     private final String command;
 

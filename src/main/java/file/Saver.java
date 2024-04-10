@@ -49,7 +49,7 @@ public class Saver {
         return "{\n" +
             " \"name\": \"" + playerProfile.getName() + "\", \n" +
             " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-            " \"asset\": \"" + playerProfile.getAsset().outputAsset() + "\", \n"  +
+            " \"asset\": \"" + playerProfile.getAsset().outputMoney() + "\", \n"  +
             " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
             " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
             " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +

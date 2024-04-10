@@ -7,6 +7,11 @@ import exception.NameInputException;
 public class Parser {
     private static final String NAME = "^[a-zA-Z ]{1,15}$";
     private static final int NAME_LENGTH_LIMIT = 15;
+    private static final String YES_REGEX = "(?i)(y|yes)";
+    private static final String NO_REGEX = "(?i)(n|no)";
+    private static final String ROBOTIC = "/r";
+    private static final String SEMI_CONDUCTOR = "/s";
+    private static final String AI = "/a";
 
     public static String parseName(String input) throws NameInputException {
         if (input.matches(NAME)) {
@@ -21,15 +26,15 @@ public class Parser {
 
     public static String parseCareer(String input) throws JobSelectException {
         switch (input.toLowerCase().trim()) {
-        case "/r":
+        case ROBOTIC:
             ResponseManager.echoChosenIndustry("Robotics");
             return "Robotics";
 
-        case "/s":
+        case SEMI_CONDUCTOR:
             ResponseManager.echoChosenIndustry("Semi-conductor");
             return "Semi-conductor";
 
-        case "/a":
+        case AI:
             ResponseManager.echoChosenIndustry("Artificial Intelligence");
             return "Artificial intelligence";
 
@@ -55,11 +60,9 @@ public class Parser {
     }
 
     public static boolean isAccept(String response) throws CommandInputException {
-        String yesRegex = "(?i)(y|yes)";
-        String noRegex = "(?i)(n|no)";
-        if (response.matches(yesRegex)) {
+        if (response.matches(YES_REGEX)) {
             return true;
-        } else if (response.matches(noRegex)) {
+        } else if (response.matches(NO_REGEX)) {
             return false;
         } else {
             throw new CommandInputException("Invalid input. Please try again.");

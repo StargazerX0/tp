@@ -75,10 +75,6 @@ public class BondStorage {
                                     current.returnBondName() +
                                     ". Expected total interest gain after " + current.returnBondMaturity() +
                                     " years is $" + String.format("%.2f", totalInterest) + ".");
-                            String activityDescription = "Purchased " + response + " units of "
-                                    + current.returnBondName() + " for $" + cost + ". Expected interest: $"
-                                    + String.format("%.2f", totalInterest);
-                            playerProfile.recordFinancialActivity("Bond Purchase", activityDescription, -cost);
                         } else {
                             throw new GameException("Insufficient funds: " +
                                     "Your current assets cannot afford this many bonds.");

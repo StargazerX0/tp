@@ -65,10 +65,6 @@ public class CryptoCurrencyStorage {
                         " USD in " + current.returnCryptoName() + ".");
                 System.out.println("Market changes resulted in a " + (changeAmount >= 0 ? "gain" : "loss") +
                         " of $" + Math.abs(changeAmount) + ".");
-                String activityDescription = "Invested " + response + " USD in " + current.returnCryptoName() +
-                        ". Market changes resulted in a " + (changeAmount >= 0 ? "gain" : "loss") + " of $"
-                        + Math.abs(changeAmount) + ".";
-                playerProfile.recordFinancialActivity("Crypto Investment", activityDescription, -response);
             } else {
                 System.out.println("Invalid input or insufficient funds.");
             }
