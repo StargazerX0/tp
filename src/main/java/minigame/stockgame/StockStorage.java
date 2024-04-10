@@ -44,26 +44,31 @@ public class StockStorage {
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
             try {
-                System.out.println("How many stock do you want to purchase? Input 0 if you want none");
+                System.out.println("How many stock do you want to purchase? Input 0 if you want none. " +
+                        "Maximum purchase is 100000 stocks");
                 int response = Integer.parseInt(scanner.nextLine());
-                if (response < 0) {
-                    throw new GameException("Please input a number greater than 0 if you want to purchase stocks");
+                if (response < 0 || response > 100000) {
+                    throw new GameException("Please input a number greater than 0 or less " +
+                            "than 100000 if you want to purchase stocks");
                 } else if (response == 0) {
                     completeTrade = true;
                     System.out.println("No stocks purchased.");
                 } else {
-                    if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
-                        throw new GameException("Your current asset cannot afford this many stock.");
-                    } else {
-                        playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
-                        playerProfile.getAsset().addStock(current, response);
-                        completeTrade = true;
-                        System.out.println("You've successfully purchased " + response + " units of "
-                                + current.returnStockName() + ".");
-                    }
+                    completeTrade = true;
                 }
+
+                if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
+                    throw new GameException("Your current asset cannot afford this many stock.");
+                } else {
+                    playerProfile.getAsset().deductAsset(response * current.returnStockPrice());
+                    playerProfile.getAsset().addStock(current, response);
+                    completeTrade = true;
+                    System.out.println("You've successfully purchased " + response + " units of "
+                            + current.returnStockName() + ".");
+                }
+
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input: Please enter a positive integer.");
+                System.out.println("Invalid input: Please enter an integer between 0 and 100000.");
             } catch (GameException e) {
                 System.out.println(e.getMessage());
                 completeTrade = false;
