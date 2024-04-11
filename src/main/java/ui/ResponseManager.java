@@ -17,7 +17,7 @@ public class ResponseManager {
             "===".repeat(20);
     private static final String JOB_SELECT_MSG = "Choose your job type:\n" +
             "for Robotics, enter '/r'\n" +
-            "for Semiconductor industry, enter '/s'\n" +
+            "for Semi-conductor industry, enter '/s'\n" +
             "for Artificial intelligence, enter '/a'\n";
     private static final String BYE_MSG = "Bye bye adventurer!";
     private static final String HELP_MSG =
