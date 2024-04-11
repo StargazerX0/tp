@@ -6,14 +6,14 @@ import java.util.Random;
 
 public class Cardano implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
-            "Cardano is a blockchain platform for changemakers, innovators, and visionaries, " +
-                    "offering tools and technologies required to create possibility for the many, " +
-                    "as well as the few, and bring about positive global change.";
+            "Cardano is a blockchain platform for change makers, innovators, and visionaries, \n" +
+                    "offering tools and technologies required to create possibility for the many, \n" +
+                    "as well as the few, and bring about positive global change. \n";
     private static final String NAME = "Cardano";
     private static final String HIDDEN_INFO =
-            "With its unique dual-layer architecture and focus on sustainability, scalability, and transparency, " +
-                    "Cardano is positioned to overcome common blockchain challenges " +
-                    "and might see significant growth in utility and value.";
+            "With its unique dual-layer architecture and focus on sustainability, scalability, and transparency, \n" +
+                    "Cardano is positioned to overcome common blockchain challenges \n" +
+                    "and might see significant growth in utility and value. \n";
     private int currentPrice;
 
     public Cardano() {
@@ -22,9 +22,9 @@ public class Cardano implements CryptoCurrency {
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(CRYPTO_INFORMATION);
-        ResponseManager.indentPrint("Crypto Name: " + NAME);
-        ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
+        ResponseManager.indentPrint(CRYPTO_INFORMATION + "\n"
+        + "Crypto Name: " + NAME + "\n"
+        + "Current Price: " + currentPrice + " USD" + "\n");
 
         if (playerProfile.getOccupation().equals("Blockchain Developer") ||
                 playerProfile.getOccupation().equals("Crypto Analyst")) {

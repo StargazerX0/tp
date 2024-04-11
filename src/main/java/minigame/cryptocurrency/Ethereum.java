@@ -6,14 +6,14 @@ import java.util.Random;
 
 public class Ethereum implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
-            "Ethereum is a decentralized, open-source blockchain system that features its own " +
-                    "cryptocurrency, Ether. ETH works as a platform for numerous other cryptocurrencies, " +
-                    "as well as for the execution of decentralized smart contracts.";
+            "Ethereum is a decentralized, open-source blockchain system that features its own \n" +
+                    "cryptocurrency, Ether. ETH works as a platform for numerous other cryptocurrencies, \n" +
+                    "as well as for the execution of decentralized smart contracts. \n";
     private static final String NAME = "Ethereum";
     private static final String HIDDEN_INFO =
-            "With the upcoming transition to Ethereum 2.0 and the shift to proof-of-stake, " +
-                    "Ethereum aims to become more scalable, sustainable, and secure. This could potentially " +
-                    "increase its adoption and value significantly.";
+            "With the upcoming transition to Ethereum 2.0 and the shift to proof-of-stake, \n" +
+                    "Ethereum aims to become more scalable, sustainable, and secure. This could potentially \n" +
+                    "increase its adoption and value significantly. \n";
     private int currentPrice;
 
     public Ethereum() {
@@ -22,9 +22,9 @@ public class Ethereum implements CryptoCurrency {
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(CRYPTO_INFORMATION);
-        ResponseManager.indentPrint("Crypto Name: " + NAME);
-        ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
+        ResponseManager.indentPrint(CRYPTO_INFORMATION + "\n"
+        + "Crypto Name: " + NAME + "\n"
+        + "Current Price: " + currentPrice + " USD" + "\n");
 
         if (playerProfile.getOccupation().equals("Blockchain Developer")
                 || playerProfile.getOccupation().equals("Crypto Investor")) {

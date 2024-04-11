@@ -6,26 +6,26 @@ import java.util.Random;
 
 public class Litecoin implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
-            "Litecoin is a peer-to-peer cryptocurrency that enables instant, near-zero cost payments " +
-                    "to anyone in the world. It's an open-source, global payment network that is fully decentralized " +
-                    "without any central authorities. Litecoin features faster transaction confirmation times " +
-                    "and improved storage efficiency than the leading math-based currency.";
+            "Litecoin is a peer-to-peer cryptocurrency that enables instant, near-zero cost payments to \n" +
+                    "anyone in the world. It's an open-source, global payment network that is fully decentralized \n"+
+                    "without any central authorities. Litecoin features faster transaction confirmation times \n" +
+                    "and improved storage efficiency than the leading math-based currency. \n";
     private static final String NAME = "Litecoin";
     private static final String HIDDEN_INFO =
-            "As digital currencies gain acceptance, Litecoin is positioned to benefit as a lighter, " +
+            "As digital currencies gain acceptance, Litecoin is positioned to benefit as a lighter, \n" +
                     "more agile alternative to Bitcoin, " +
-                    "with its faster processing times making it attractive for everyday transactions.";
+                    "with its faster processing times making it attractive for everyday transactions. \n";
     private int currentPrice;
 
     public Litecoin() {
-        this.currentPrice = 200; // Initial price, could be dynamically updated
+        this.currentPrice = 200;
     }
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(CRYPTO_INFORMATION);
-        ResponseManager.indentPrint("Crypto Name: " + NAME);
-        ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
+        ResponseManager.indentPrint(CRYPTO_INFORMATION + "\n"
+        + "Crypto Name: " + NAME + "\n"
+        + "Current Price: " + currentPrice + " USD" + "\n");
 
         if (playerProfile.getOccupation().equals("Crypto Enthusiast") ||
                 playerProfile.getOccupation().equals("Investor")) {

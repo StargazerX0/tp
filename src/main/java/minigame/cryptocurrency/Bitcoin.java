@@ -10,13 +10,13 @@ import java.util.Random;
  */
 public class Bitcoin implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
-            "Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. " +
-                    "It offers a peer-to-peer system without a central authority, " +
-                    "making it a revolutionary approach to currency.";
+            "Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. \n" +
+                    "It offers a peer-to-peer system without a central authority, \n" +
+                    "making it a revolutionary approach to currency. \n";
     private static final String NAME = "Bitcoin";
     private static final String HIDDEN_INFO =
-            "Recent market trends and increasing adoption by " +
-                    "financial institutions may significantly boost Bitcoin's value.";
+            "Recent market trends and increasing adoption by \n" +
+                    "financial institutions may significantly boost Bitcoin's value. \n";
     private int currentPrice;
 
     /**
@@ -34,9 +34,9 @@ public class Bitcoin implements CryptoCurrency {
      */
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(CRYPTO_INFORMATION);
-        ResponseManager.indentPrint("Crypto Name: " + NAME);
-        ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
+        ResponseManager.indentPrint(CRYPTO_INFORMATION + "\n"
+        + "Crypto Name: " + NAME + "\n"
+        + "Current Price: " + currentPrice + " USD" + "\n");
 
         if (playerProfile.getOccupation().equals("Blockchain Developer") ||
                 playerProfile.getOccupation().equals("Crypto Trader")) {

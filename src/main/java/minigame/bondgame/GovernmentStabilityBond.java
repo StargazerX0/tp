@@ -5,9 +5,9 @@ import ui.ResponseManager;
 
 public class GovernmentStabilityBond implements Bond {
     private static final String BOND_INFORMATION =
-            "The Government Stability Bond is considered a secure investment, " +
-                    "with fixed interest payouts and a guaranteed return of principal at maturity. " +
-                    "This bond is favored by investors seeking stability and low risk.";
+            "The Government Stability Bond is considered a secure investment, \n" +
+                    "with fixed interest payouts and a guaranteed return of principal at maturity. \n" +
+                    "This bond is favored by investors seeking stability and low risk. \n";
     private static final String NAME = "Government Stability Bond";
     private static final String HIDDEN_INFO =
             "Recent economic trends suggest that the bond market may see a reduction in volatility.";
@@ -17,11 +17,11 @@ public class GovernmentStabilityBond implements Bond {
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(BOND_INFORMATION);
-        ResponseManager.indentPrint("Bond Name: " + NAME);
-        ResponseManager.indentPrint("Price per bond unit: " + PRICE);
-        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
-        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
+        ResponseManager.indentPrint(BOND_INFORMATION + "\n"
+        + "Bond Name: " + NAME + "\n"
+        + "Price per bond unit: " + PRICE + "\n"
+        + "Annual Interest Rate (%): " + INTEREST_RATE + "\n"
+        +"Maturity (years): " + MATURITY + "\n");
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Economist")) {
