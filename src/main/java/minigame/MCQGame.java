@@ -5,6 +5,9 @@ import ui.ResponseManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class MCQGame implements MiniGame {
@@ -63,6 +66,12 @@ public class MCQGame implements MiniGame {
         answerList.add(Q6_ANS);
         answerList.add(Q7_ANS);
         answerList.add(Q8_ANS);
+
+        LogManager.getLogManager().reset();
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        logger.setLevel(Level.ALL);
+        consoleHandler.setLevel(Level.SEVERE);
+        logger.addHandler(consoleHandler);
     }
 
     public void startGame() {

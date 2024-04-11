@@ -45,7 +45,7 @@ public class StockEight implements Stock{
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(STOCK_GRAPH);
         ResponseManager.indentPrint(STOCK_INFORMATION);
-        ResponseManager.indentPrint(STOCK_NAME);
+        ResponseManager.indentPrint(STOCK_NAME + "\n");
         ResponseManager.indentPrint("Price per stock : " + STOCK_PRICE + '\n');
         if (playerProfile.occupation.equals("Artificial intelligence")) {
             ResponseManager.indentPrint((HIDDEN_INFO));

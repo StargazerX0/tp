@@ -7,6 +7,9 @@ import ui.ResponseManager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import minigame.stockgame.Stock;
+import java.util.ArrayList;
+
 
 public class Saver {
     private static final String FILE_PATH = "data/PlayerProfile.json";
@@ -22,6 +25,7 @@ public class Saver {
             }
 
             writeJsonToFile(file, constructJson(playerProfile));
+
         } catch (IOException e) {
             throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
         }
@@ -67,4 +71,7 @@ public class Saver {
             " }\n" +
             "}";
     }
+
+
+
 }

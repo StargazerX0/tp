@@ -2,12 +2,15 @@ package file;
 
 import company.Company;
 import exception.LoadProfileException;
+import minigame.stockgame.Stock;
+import minigame.stockgame.StockThree;
 import player.PlayerProfile;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Loader {
     private static final String FILE_PATH = "data/PlayerProfile.json";
@@ -71,6 +74,9 @@ public class Loader {
             throw new LoadProfileException("Error parsing company data.\n");
         }
     }
+
+
+
 
     private static String extractJsonObject(String json, String key) throws LoadProfileException {
         int startIndex = json.indexOf("\"" + key + "\": {") + key.length() + 4;

@@ -11,4 +11,5 @@ public interface Stock {
     public String returnStockName();
 
     public int returnStockPrice();
+
 }
