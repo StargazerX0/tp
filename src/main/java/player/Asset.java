@@ -225,7 +225,6 @@ public class Asset {
         }
     }
 
-
     public void deductAsset(int amount) {
         totalAsset -= amount;
         indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
@@ -279,6 +278,6 @@ public class Asset {
                     + cryptoCount.get(i) + "\n";
         }
         return String.format("%d, you need %d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
-                + "\n" + output;
+                + (output.isEmpty() ? output : "\n" + output);
     }
 }
