@@ -20,8 +20,6 @@ public enum CommandType {
     FIRE("(?i)fire\\s+\\d+\\s*"),
     SELLSTOCK("(?i)sellstock\\s*"),
     BOND("(?i)bond\\s*"),
-    SELLBOND("(?i)sellbond\\s*"),
-    SELLCRYPTOCURRENCY("(?i)sellcrypto\\s*"),
     CRYPTOCURRENCY("(?i)crypto\\s*"),
     EXIT("(?i)(bye|exit)\\s*");
 

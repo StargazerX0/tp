@@ -8,25 +8,19 @@ public class HighYieldBond implements Bond {
             "As the name suggests, the High Yield Bond comes with a high-interest rate, \n" +
                     "indicating a higher risk but offering substantial income potential. This type \n" +
                     "of bond is suited for investors with a high-risk tolerance seeking significant \n" +
-                    "returns.";
+                    "returns. \n" +
+                    "It provides fixed return to you every round \n";;
     private static final String NAME = "High Yield Bond";
-    private static final String HIDDEN_INFO =
-            "Market volatility indicates that high yield bonds are gaining popularity due \n" +
-                    "to potential rate cuts in the near future, which could boost their value. \n";
     private static final int PRICE = 100;
     private static final int INTEREST_RATE = 10;
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(BOND_INFORMATION);
-        ResponseManager.indentPrint("Bond Name: " + NAME);
-        ResponseManager.indentPrint("Price per bond unit: " + PRICE);
-        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
+        ResponseManager.indentPrint(BOND_INFORMATION + "\n");
+        ResponseManager.indentPrint("Bond Name: " + NAME + "\n");
+        ResponseManager.indentPrint("Price per bond unit: " + PRICE + "\n");
+        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE + "\n");
 
-        // Display hidden information based on player's occupation
-        if (playerProfile.getOccupation().equals("Investment Banker")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
-        }
     }
 
     @Override

@@ -25,17 +25,12 @@ public class CommandFactory {
 
         case UPGRADE:
             return new UpgradeCommand();
+
         case SELLSTOCK:
             return new SellStockCommand();
 
-        case SELLBOND:
-            return new SellBondCommand();
-
         case STOCK:
             return new StockCommand();
-
-        case SELLCRYPTOCURRENCY:
-            return new SellCryptoCommand();
 
         case BOND:
             return new BuyBondCommand();

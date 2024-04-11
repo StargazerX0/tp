@@ -12,11 +12,9 @@ public class CorporateGrowthBond implements Bond {
     private static final String BOND_INFORMATION =
             "The Corporate Growth Bond offers a higher interest rate to compensate for the \n" +
                     "increased risk associated with corporate debt. This bond is attractive to \n" +
-                    "investors looking for growth potential in the corporate sector.\n";
+                    "investors looking for growth potential in the corporate sector.\n" +
+                    "It provides fixed return to you every round \n";
     private static final String NAME = "Corporate Growth Bond";
-    private static final String HIDDEN_INFO =
-            "Insider news suggests that the issuing corporation is on the brink of a \n" +
-                    "major breakthrough that could significantly increase its market value. \n";
     private static final int PRICE = 500;
     private static final int INTEREST_RATE = 6;
 
@@ -29,16 +27,11 @@ public class CorporateGrowthBond implements Bond {
      */
     @Override
     public void printInfo(PlayerProfile playerProfile) {
-        ResponseManager.indentPrint(BOND_INFORMATION);
-        ResponseManager.indentPrint("Bond Name: " + NAME);
-        ResponseManager.indentPrint("Price per bond unit: " + PRICE);
-        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
+        ResponseManager.indentPrint(BOND_INFORMATION + "\n");
+        ResponseManager.indentPrint("Bond Name: " + NAME + "\n");
+        ResponseManager.indentPrint("Price per bond unit: " + PRICE + "\n");
+        ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE + "\n");
 
-
-        // Display hidden information based on player's occupation
-        if (playerProfile.getOccupation().equals("Financial Analyst")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
-        }
     }
 
     @Override
