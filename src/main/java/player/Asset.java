@@ -21,6 +21,7 @@ import static ui.ResponseManager.RESET;
 public class Asset {
     public static final int PERCENT_RATIO = 100;
     public static double assetMultiplier = 1.0;
+    public static int riskFactor = 0;
     private static final int FINAL_GOAL = 1000000;
     private static List<Stock> stockList = new ArrayList<>();
     private static  List<Integer> stockCount = new ArrayList<>();
@@ -145,6 +146,7 @@ public class Asset {
                     + profit) + " returned to your account. \n");
         }
         stockList.clear();
+        stockCount.clear();
     }
 
     public void addBond(Bond bond, int count) {
@@ -167,7 +169,7 @@ public class Asset {
         }
     }
 
-    public void sellBond() {
+    public void bondReturn() {
         if (bondList.isEmpty()) {
             ResponseManager.indentPrint("You have no bonds to sell! \n");
             return;
@@ -178,13 +180,11 @@ public class Asset {
             int bondPrice = b.returnBondPrice();
             int totalPrincipal = bondPrice * count;
             double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
-            int totalReturn = (int) (totalPrincipal + totalInterest);
+            int totalReturn = (int) (totalInterest);
             addAsset(totalReturn);
             ResponseManager.indentPrint("$" + totalReturn + " returned to your account from "
-                    + b.returnBondName() + ". \n");
+                    + b.returnBondName() + " in this round. \n");
         }
-        bondList.clear();
-        bondCount.clear();
     }
 
     public void addCrypto(CryptoCurrency crypto, int dollarsInvested) {
@@ -193,29 +193,37 @@ public class Asset {
         if (index != -1) {
             cryptoCount.set(index, cryptoCount.get(index) + quantity);
         } else {
+            riskFactor = (riskFactor * cryptoList.size() + crypto.getRiskFactor())/(cryptoList.size() + 1);
             cryptoList.add(crypto);
             cryptoCount.add(quantity);
         }
     }
 
-    public void sellCrypto() {
+    public void cryptoReturn() {
         if (cryptoList.isEmpty()) {
             ResponseManager.indentPrint("You do not own any cryptocurrency to sell.\n");
             return;
         }
         int totalReturn = 0;
+
         for (int i = 0; i < cryptoList.size(); i++) {
+
             CryptoCurrency crypto;
             crypto = cryptoList.get(i);
             int quantity = cryptoCount.get(i);
             int investmentReturn = quantity * crypto.returnCurrentPrice();
-            totalReturn += investmentReturn;
-            ResponseManager.indentPrint("Sold " + quantity + " units of " + crypto.returnCryptoName() + "," +
-                    " returning $" + investmentReturn + " to your account.\n");
+            totalReturn = investmentReturn;
+            ResponseManager.indentPrint(crypto.returnCryptoName() + " provides " +
+                    "$" + investmentReturn + " to your account in this round.\n");
         }
         addAsset(totalReturn);
-        cryptoList.clear();
-        cryptoCount.clear();
+
+        if (getRandomNumber(0, 100) < riskFactor) {
+            ResponseManager.indentPrint("Unfortunately, Government intervention causes all of your " +
+                    "cryptos to be listed as illegal items");
+            cryptoList.clear();
+            cryptoCount.clear();
+        }
     }
 
 
@@ -241,15 +249,35 @@ public class Asset {
         return totalAsset;
     }
 
+    public boolean bondCheck() {
+        return bondList.isEmpty();
+    }
+
+    public boolean cryptoCheck() {
+        return cryptoList.isEmpty();
+    }
+
     public boolean moreThan(int amount) {
         return totalAsset > amount;
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
 
     public String toString() {
         String output = "";
         for (int i = 0; i < stockList.size(); i++) {
-            output += stockList.get(i).returnStockName() + " currently share count : "
+            output += stockList.get(i).returnStockName() + " current share count : "
                     + stockCount.get(i) + "\n";
+        }
+        for (int i = 0; i < bondList.size(); i++) {
+            output += bondList.get(i).returnBondName() + " current bond count : "
+                    + bondCount.get(i) + "\n";
+        }
+        for (int i = 0; i < cryptoList.size(); i++) {
+            output += cryptoList.get(i).returnCryptoName() + " current crypto count : "
+                    + cryptoCount.get(i) + "\n";
         }
         return String.format("%d, you need %d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
                 + "\n" + output;

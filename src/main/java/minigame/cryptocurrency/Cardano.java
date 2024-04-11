@@ -8,7 +8,9 @@ public class Cardano implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
             "Cardano is a blockchain platform for change makers, innovators, and visionaries, \n" +
                     "offering tools and technologies required to create possibility for the many, \n" +
-                    "as well as the few, and bring about positive global change. \n";
+                    "as well as the few, and bring about positive global change. \n" +
+                    "It provides return to you every round, but it might be listed as illegal items. \n";
+    private static final int RISK_FACTOR = 19;
     private static final String NAME = "Cardano";
     private static final String HIDDEN_INFO =
             "With its unique dual-layer architecture and focus on sustainability, scalability, and transparency, \n" +
@@ -26,9 +28,8 @@ public class Cardano implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Blockchain Developer") ||
-                playerProfile.getOccupation().equals("Crypto Analyst")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
+        if (playerProfile.getOccupation().equals("Artificial intelligence")) {
+            ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
 
@@ -59,5 +60,9 @@ public class Cardano implements CryptoCurrency {
     @Override
     public int returnCurrentPrice() {
         return currentPrice;
+    }
+    @Override
+    public int getRiskFactor() {
+        return RISK_FACTOR;
     }
 }

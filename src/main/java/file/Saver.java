@@ -48,25 +48,25 @@ public class Saver {
     private static String constructJson(PlayerProfile playerProfile) {
         // Construct JSON method remains the same
         return "{\n" +
-            " \"name\": \"" + playerProfile.getName() + "\", \n" +
-            " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-            " \"asset\": \"" + playerProfile.getAsset().outputMoney() + "\", \n"  +
-            " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
-            " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
-            " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
-            " \"company\": {\n" +
-            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
-            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
-            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
-            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
-            " }\n" +
-            " \"asset\": {\n" +
-            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
-            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
-            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
-            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
-            " }\n" +
-            "}";
+                " \"name\": \"" + playerProfile.getName() + "\", \n" +
+                " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
+                " \"asset\": \"" + playerProfile.getAsset().outputMoney() + "\", \n"  +
+                " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
+                " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
+                " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
+                " \"company\": {\n" +
+                "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+                "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+                "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+                "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+                " }\n" +
+                " \"asset\": {\n" +
+                "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+                "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+                "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+                "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+                " }\n" +
+                "}";
     }
 
     public static void deleteProfile() {

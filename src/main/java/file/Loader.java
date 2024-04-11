@@ -47,4 +47,3 @@ public class Loader {
         return content.toString();
     }
 }
-

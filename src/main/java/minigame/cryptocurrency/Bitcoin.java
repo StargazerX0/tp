@@ -12,7 +12,9 @@ public class Bitcoin implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
             "Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. \n" +
                     "It offers a peer-to-peer system without a central authority, \n" +
-                    "making it a revolutionary approach to currency. \n";
+                    "making it a revolutionary approach to currency. \n" +
+                    "It provides return to you every round, but it might be listed as illegal items.\n";
+    private static final int RISK_FACTOR = 15;
     private static final String NAME = "Bitcoin";
     private static final String HIDDEN_INFO =
             "Recent market trends and increasing adoption by \n" +
@@ -38,9 +40,8 @@ public class Bitcoin implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Blockchain Developer") ||
-                playerProfile.getOccupation().equals("Crypto Trader")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
+        if (playerProfile.getOccupation().equals("Artificial intelligence")) {
+            ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
 
@@ -88,6 +89,10 @@ public class Bitcoin implements CryptoCurrency {
     @Override
     public int returnCurrentPrice() {
         return currentPrice;
+    }
+    @Override
+    public int getRiskFactor() {
+        return RISK_FACTOR;
     }
 }
 
