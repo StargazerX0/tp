@@ -18,10 +18,10 @@ public class GovernmentStabilityBond implements Bond {
     @Override
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(BOND_INFORMATION + "\n"
-        + "Bond Name: " + NAME + "\n"
-        + "Price per bond unit: " + PRICE + "\n"
-        + "Annual Interest Rate (%): " + INTEREST_RATE + "\n"
-        +"Maturity (years): " + MATURITY + "\n");
+            + "Bond Name: " + NAME + "\n"
+            + "Price per bond unit: " + PRICE + "\n"
+            + "Annual Interest Rate (%): " + INTEREST_RATE + "\n"
+            +"Maturity (years): " + MATURITY + "\n");
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Economist")) {

@@ -35,8 +35,8 @@ public class Bitcoin implements CryptoCurrency {
     @Override
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(CRYPTO_INFORMATION + "\n"
-        + "Crypto Name: " + NAME + "\n"
-        + "Current Price: " + currentPrice + " USD" + "\n");
+            + "Crypto Name: " + NAME + "\n"
+            + "Current Price: " + currentPrice + " USD" + "\n");
 
         if (playerProfile.getOccupation().equals("Blockchain Developer") ||
                 playerProfile.getOccupation().equals("Crypto Trader")) {
