@@ -1,16 +1,11 @@
 package randomevent;
 
-import java.util.Scanner;
-
-import exception.CommandInputException;
 import player.PlayerProfile;
 import static ui.Parser.isAccept;
 
 
 public class LotteryEvent extends RandomEvent {
     private static final int TICKET_PRICE = 2000;
-    private static final String yesRegex = "(?i)(y|yes)";
-    private static final String noRegex = "(?i)(n|no)";
     private static final int[] PRIZES = {0, 100, 1000, 2000, 2500, 3000, 10000};
     public LotteryEvent(double probability) {
         super(probability);

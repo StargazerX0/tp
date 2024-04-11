@@ -4,7 +4,6 @@ import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import static ui.Parser.isAccept;
 
