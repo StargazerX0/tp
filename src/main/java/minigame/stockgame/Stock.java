@@ -33,4 +33,5 @@ public interface Stock {
      */
 
     public int returnStockPrice();
+
 }

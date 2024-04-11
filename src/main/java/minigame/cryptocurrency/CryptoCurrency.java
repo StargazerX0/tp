@@ -39,5 +39,7 @@ public interface CryptoCurrency {
      * @return The current price as an int.
      */
     public int returnCurrentPrice();
+
+    public int getRiskFactor();
 }
 

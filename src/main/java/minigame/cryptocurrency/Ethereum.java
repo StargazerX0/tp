@@ -9,11 +9,13 @@ public class Ethereum implements CryptoCurrency {
             "Ethereum is a decentralized, open-source blockchain system that features its own \n" +
                     "cryptocurrency, Ether. ETH works as a platform for numerous other cryptocurrencies, \n" +
                     "as well as for the execution of decentralized smart contracts. \n";
+    private static final int RISK_FACTOR = 11;
     private static final String NAME = "Ethereum";
     private static final String HIDDEN_INFO =
             "With the upcoming transition to Ethereum 2.0 and the shift to proof-of-stake, \n" +
                     "Ethereum aims to become more scalable, sustainable, and secure. This could potentially \n" +
-                    "increase its adoption and value significantly. \n";
+                    "increase its adoption and value significantly. \n" +
+                    "It provides return to you every round, but it might be listed as illegal items. \n";
     private int currentPrice;
 
     public Ethereum() {
@@ -26,9 +28,9 @@ public class Ethereum implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Blockchain Developer")
+        if (playerProfile.getOccupation().equals("Semi-conductor")
                 || playerProfile.getOccupation().equals("Crypto Investor")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
+            ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
 
@@ -61,6 +63,10 @@ public class Ethereum implements CryptoCurrency {
     @Override
     public int returnCurrentPrice() {
         return currentPrice;
+    }
+    @Override
+    public int getRiskFactor() {
+        return RISK_FACTOR;
     }
 }
 

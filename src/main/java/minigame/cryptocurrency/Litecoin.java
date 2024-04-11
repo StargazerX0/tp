@@ -9,8 +9,10 @@ public class Litecoin implements CryptoCurrency {
             "Litecoin is a peer-to-peer cryptocurrency that enables instant, near-zero cost payments to \n" +
                     "anyone in the world. It's an open-source, global payment network that is fully decentralized \n"+
                     "without any central authorities. Litecoin features faster transaction confirmation times \n" +
-                    "and improved storage efficiency than the leading math-based currency. \n";
+                    "and improved storage efficiency than the leading math-based currency. \n" +
+                    "It provides return to you every round, but it might be listed as illegal items. \n";
     private static final String NAME = "Litecoin";
+    private static final int RISK_FACTOR = 29;
     private static final String HIDDEN_INFO =
             "As digital currencies gain acceptance, Litecoin is positioned to benefit as a lighter, \n" +
                     "more agile alternative to Bitcoin, " +
@@ -27,9 +29,9 @@ public class Litecoin implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Crypto Enthusiast") ||
+        if (playerProfile.getOccupation().equals("Artificial intelligence") ||
                 playerProfile.getOccupation().equals("Investor")) {
-            ResponseManager.indentPrint(HIDDEN_INFO);
+            ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
 
@@ -61,6 +63,11 @@ public class Litecoin implements CryptoCurrency {
     @Override
     public int returnCurrentPrice() {
         return currentPrice;
+    }
+
+    @Override
+    public int getRiskFactor() {
+        return RISK_FACTOR;
     }
 }
 
