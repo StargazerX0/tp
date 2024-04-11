@@ -1,5 +1,4 @@
 package minigame.bondgame;
-
 import exception.GameException;
 import player.PlayerProfile;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class BondStorage {
             setUp();
         }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select a bond to purchase:");
+        System.out.println("Select a bond to purchase:\n");
         for (int i = 0; i < bondsAvailable.size(); i++) {
             System.out.println(i + 1 + ": " + bondsAvailable.get(i).returnBondName());
         }
