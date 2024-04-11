@@ -2,9 +2,31 @@ package file;
 
 import company.Company;
 import exception.LoadProfileException;
-import minigame.bondgame.*;
-import minigame.cryptocurrency.*;
-import minigame.stockgame.*;
+
+import minigame.stockgame.Stock;
+import minigame.stockgame.StockOne;
+import minigame.stockgame.StockTwo;
+import minigame.stockgame.StockThree;
+import minigame.stockgame.StockFour;
+import minigame.stockgame.StockFive;
+import minigame.stockgame.StockSix;
+import minigame.stockgame.StockSeven;
+import minigame.stockgame.StockEight;
+import minigame.stockgame.StockNine;
+import minigame.stockgame.StockTen;
+
+import minigame.bondgame.Bond;
+import minigame.bondgame.CorporateGrowthBond;
+import minigame.bondgame.GovernmentStabilityBond;
+import minigame.bondgame.HighYieldBond;
+import minigame.bondgame.InflationLinkedBond;
+
+import minigame.cryptocurrency.CryptoCurrency;
+import minigame.cryptocurrency.Bitcoin;
+import minigame.cryptocurrency.Cardano;
+import minigame.cryptocurrency.Ethereum;
+import minigame.cryptocurrency.Litecoin;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import player.Asset;
@@ -12,6 +34,8 @@ import player.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Decoder {
 
@@ -28,7 +52,8 @@ public class Decoder {
             Asset asset = decodeAsset(jsonObj.getJSONObject("asset").toString());
             Company company = decodeCompany(jsonObj.getJSONObject("company").toString());
 
-            return new PlayerProfile(name, occupation, health, asset, currentRound, isAdvancedPlayer, company);
+            return new PlayerProfile(name, occupation, health, asset,
+                currentRound, isAdvancedPlayer, company);
         } catch (Exception e) {
             throw new LoadProfileException("Error decoding player profile.\n");
         }
@@ -142,7 +167,8 @@ public class Decoder {
         }
     }
 
-    private static List<CryptoCurrency> decodeCryptos(String json, List<Integer> cryptoCount) throws LoadProfileException {
+    private static List<CryptoCurrency> decodeCryptos(String json, List<Integer> cryptoCount)
+            throws LoadProfileException {
         List<CryptoCurrency> cryptos = new ArrayList<>();
         try {
             JSONArray cryptoArray = new JSONArray(json);

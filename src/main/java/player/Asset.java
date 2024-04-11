@@ -8,7 +8,11 @@ import ui.ResponseManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ui.ResponseManager.*;
+import static ui.ResponseManager.indentPrint;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.RESET;
+
 
 /**
  * Represents the financial assets of a player in the game. This includes various investments like stocks, bonds,
@@ -32,7 +36,7 @@ public class Asset {
     private int totalAsset;
 
     public Asset() {
-        this.totalAsset = 500000;
+        this.totalAsset = 5000;
     }
 
     public Asset(int totalAsset) {
