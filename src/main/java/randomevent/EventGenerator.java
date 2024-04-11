@@ -11,6 +11,7 @@ public class EventGenerator {
         new LotteryEvent(0.25),
         new DecisionEvent(0.4)
     };
+
     private static final List<RandomEvent> events = new ArrayList<>(List.of(eventArray));
 
     public static RandomEvent getRandomEvent() {

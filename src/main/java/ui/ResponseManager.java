@@ -2,10 +2,6 @@ package ui;
 
 import player.PlayerProfile;
 
-/**
- * Manages the responses and messages displayed to the player throughout the game.
- * Includes utilities for printing various types of messages with optional color coding.
- */
 public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
@@ -43,11 +39,6 @@ public class ResponseManager {
         indentPrint(boardInfo + "\n");
     }
 
-    /**
-     * Prints a message with decorative indentation on both sides.
-     *
-     * @param message The message to print.
-     */
     public static void indentPrint(String message) {
         System.out.println(INDENTATION + "\n" + message + INDENTATION);
     }

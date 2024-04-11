@@ -86,7 +86,6 @@ public class Hangman implements MiniGame {
             } else {
                 ResponseManager.indentPrint("Please guess one letter at a time.\n");
             }
-
             round++;
         }
 

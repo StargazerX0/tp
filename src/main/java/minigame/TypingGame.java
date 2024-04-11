@@ -13,10 +13,6 @@ import static ui.ResponseManager.GREEN;
 import static ui.ResponseManager.YELLOW;
 import static ui.ResponseManager.RESET;
 
-/**
- * Implements a Typing Game where the player aims to accurately type a given text within a time limit.
- * The game evaluates typing speed and accuracy, offering immediate feedback on the player's performance.
- */
 public class TypingGame implements MiniGame {
     private static final double TIME_RATIO = 1000.0;
     private static final int PERCENTAGE = 100;

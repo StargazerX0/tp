@@ -7,10 +7,6 @@ import java.util.Random;
 
 import static ui.Parser.isAccept;
 
-/**
- * Represents decision-based random events in the game that offer players choices with consequences.
- * These events can affect the player's assets, health, or other aspects of the game based on their decisions.
- */
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
         "Boss want you to present a project to the board of directors.\n " +
@@ -32,13 +28,6 @@ public class DecisionEvent extends RandomEvent {
         super(probability);
     }
 
-    /**
-     * Triggers the event, presenting the player with a decision to make and applying the consequences
-     * of that decision to the player's profile.
-     *
-     * @param playerProfile The profile of the player experiencing the event.
-     * @throws CommandInputException If the player makes an invalid decision.
-     */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
