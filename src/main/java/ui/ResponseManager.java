@@ -101,4 +101,8 @@ public class ResponseManager {
                     "\nPlease manage your company better next time!\n");
         }
     }
+
+    public static void promptRestart() {
+        indentPrint("Do you want to restart the game? (yes/no)");
+    }
 }

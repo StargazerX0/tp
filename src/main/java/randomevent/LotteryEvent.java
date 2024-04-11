@@ -17,14 +17,12 @@ public class LotteryEvent extends RandomEvent {
     }
 
     @Override
-    public void triggerEvent(PlayerProfile playerProfile) throws CommandInputException {
-        Scanner userInput = new Scanner(System.in);
+    public void triggerEvent(PlayerProfile playerProfile) {
         System.out.println("You have entered a lottery event! \n" +
                 "You can choose to buy a ticket for $2000. \n" +
                 "If you win, you will receive a cash prize up to $10000! \n" +
                 "Do you want to buy a ticket? (Y/N)");
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             drawLottery(playerProfile);
         } else {
             System.out.println("You have chosen not to buy a ticket.");

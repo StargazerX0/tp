@@ -22,7 +22,7 @@ public class FireEmployeeCommand implements Command {
         }
 
         playerProfile.fireEmployee(fireNumber);
-        indentPrint(fireNumber + "of employees has been fired. :(\n");
+        indentPrint(fireNumber + " of employees has been fired. :(\n");
     }
 
     @Override

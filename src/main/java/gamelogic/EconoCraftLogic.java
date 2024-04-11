@@ -15,6 +15,8 @@ import player.PlayerProfile;
 import randomevent.EventGenerator;
 import ui.Parser;
 import ui.ResponseManager;
+
+import static ui.Parser.isAccept;
 import static ui.ResponseManager.indentPrint;
 
 import java.util.NoSuchElementException;
@@ -44,8 +46,9 @@ public class EconoCraftLogic {
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            indentPrint("No previous record, creating new profile:\n");
+            indentPrint("You will start a fresh new journey!\n");
         }
+
 
         if (playerProfile == null) {
             ResponseManager.printGameInit();
@@ -111,7 +114,6 @@ public class EconoCraftLogic {
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
-                Saver.saveProfile(playerProfile);
 
                 exitFlag = command.isExit();
                 if (command.canGenerateEvent()) {
@@ -124,6 +126,7 @@ public class EconoCraftLogic {
                     playerProfile.nextRound();
                     exitFlag = playerProfile.isFinished();
                 }
+                Saver.saveProfile(playerProfile);
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 indentPrint(error.getMessage());
             }
@@ -143,15 +146,29 @@ public class EconoCraftLogic {
         switch (playerProfile.checkWin()) {
         case 1:
             indentPrint("Congratulations! You have won the game!\n");
+            Saver.deleteProfile();
+            promptRestart();
             break;
 
         case -1:
             indentPrint("You have lost the game. Better luck next time!\n");
+            Saver.deleteProfile();
+            promptRestart();
             break;
 
         default:
             indentPrint("Game has been saved.\n");
             break;
+        }
+    }
+
+    private void promptRestart() {
+        indentPrint("Do you want to restart the game? (yes/no)\n");
+        if (isAccept()) {
+            EconoCraftLogic.initializeGame().startEcono();
+        } else {
+            ResponseManager.printGoodbye();
+            System.exit(0);
         }
     }
 }
