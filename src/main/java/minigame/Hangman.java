@@ -66,6 +66,10 @@ public class Hangman implements MiniGame {
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
 
+        ResponseManager.indentPrint("Welcome to the Hangman Game!\n");
+        ResponseManager.indentPrint("This game's words are related to concepts in Software Engineering.\n");
+        ResponseManager.indentPrint("Please enter only one character at a time as your guess.\n");
+
         while (round < 5 && totalWrongGuesses < 3) {
             initializeGame();
             ResponseManager.indentPrint("Round " + (round + 1) + ":\n");
@@ -73,18 +77,20 @@ public class Hangman implements MiniGame {
 
             ResponseManager.indentPrint("Guess the missing letter:\n");
             String input = scanner.nextLine().toLowerCase();
-            if (input.length() == 1) {
-                char guessedChar = input.charAt(0);
-                if (chosenWord.indexOf(guessedChar) >= 0 && !guessedLetters.contains(guessedChar)) {
-                    guessedLetters.add(guessedChar);
-                    printWordState();
-                    ResponseManager.indentPrint("Correct! Moving to next round.\n");
-                } else {
-                    totalWrongGuesses++;
-                    ResponseManager.indentPrint("Wrong guess!\n");
-                }
+
+            while (input.length() != 1) {
+                ResponseManager.indentPrint("Invalid input. Please guess exactly one letter at a time:\n");
+                input = scanner.nextLine().toLowerCase();
+            }
+
+            char guessedChar = input.charAt(0);
+            if (chosenWord.indexOf(guessedChar) >= 0 && !guessedLetters.contains(guessedChar)) {
+                guessedLetters.add(guessedChar);
+                printWordState();
+                ResponseManager.indentPrint("Correct! Moving to next round.\n");
             } else {
-                ResponseManager.indentPrint("Please guess one letter at a time.\n");
+                totalWrongGuesses++;
+                ResponseManager.indentPrint("Wrong guess!\n");
             }
 
             round++;
@@ -101,4 +107,3 @@ public class Hangman implements MiniGame {
         }
     }
 }
-
