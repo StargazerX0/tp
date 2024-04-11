@@ -2,6 +2,11 @@ package player;
 
 import company.Company;
 
+/**
+ * Represents a player profile in the game, including personal attributes, health, assets,
+ * and company ownership. This class facilitates managing player health, assets, round progression,
+ * and checking game win/loss conditions.
+ */
 public class PlayerProfile {
     public static final int ROUND_LIMIT = 20;
     public final String occupation;
@@ -22,6 +27,16 @@ public class PlayerProfile {
         this.company = new Company();
     }
 
+    /**
+     * Constructs a player profile with specified attributes and default company.
+     *
+     * @param name Player's name.
+     * @param occupation Player's occupation.
+     * @param health Initial health points.
+     * @param asset Initial asset value.
+     * @param currentRound The current round number.
+     * @param isAdvancedPlayer If the player is considered advanced.
+     */
     public PlayerProfile(
             String name, String occupation, int health, int asset,
             int currentRound, boolean isAdvancedPlayer) {
@@ -58,8 +73,6 @@ public class PlayerProfile {
         this.isAdvancedPlayer = isAdvancedPlayer;
         this.company = company;
     }
-
-
 
     public void addAsset(int amount) {
         this.asset.addAsset(amount);

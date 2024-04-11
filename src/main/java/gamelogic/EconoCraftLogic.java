@@ -15,11 +15,17 @@ import player.PlayerProfile;
 import randomevent.EventGenerator;
 import ui.Parser;
 import ui.ResponseManager;
+
+import static ui.Parser.isAccept;
 import static ui.ResponseManager.indentPrint;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Manages the main game logic for EconoCraft, including game initialization,
+ * executing commands, and managing the game loop.
+ */
 public class EconoCraftLogic {
     private static final Scanner userInput = new Scanner(System.in);
     private final PlayerProfile playerProfile;
@@ -28,14 +34,21 @@ public class EconoCraftLogic {
         this.playerProfile = playerProfile;
     }
 
+    /**
+     * Initializes the game by attempting to load an existing player profile or creating a new one.
+     * This involves setting up the player's name, job, and starting conditions.
+     *
+     * @return An instance of EconoCraftLogic ready to start the game.
+     */
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile = null;
 
         try {
             playerProfile = Loader.loadProfile();
         } catch (LoadProfileException e) {
-            indentPrint("No previous record, creating new profile:\n");
+            indentPrint("You will start a fresh new journey!\n");
         }
+
 
         if (playerProfile == null) {
             ResponseManager.printGameInit();
@@ -87,6 +100,10 @@ public class EconoCraftLogic {
         return playerName;
     }
 
+    /**
+     * Starts the main game loop, processing user commands and managing game state.
+     * This method keeps the game running until an exit command is received or the game ends.
+     */
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
@@ -97,7 +114,6 @@ public class EconoCraftLogic {
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
-                Saver.saveProfile(playerProfile);
 
                 exitFlag = command.isExit();
                 if (command.canGenerateEvent()) {
@@ -110,6 +126,7 @@ public class EconoCraftLogic {
                     playerProfile.nextRound();
                     exitFlag = playerProfile.isFinished();
                 }
+                Saver.saveProfile(playerProfile);
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 indentPrint(error.getMessage());
             }
@@ -129,15 +146,29 @@ public class EconoCraftLogic {
         switch (playerProfile.checkWin()) {
         case 1:
             indentPrint("Congratulations! You have won the game!\n");
+            Saver.deleteProfile();
+            promptRestart();
             break;
 
         case -1:
             indentPrint("You have lost the game. Better luck next time!\n");
+            Saver.deleteProfile();
+            promptRestart();
             break;
 
         default:
             indentPrint("Game has been saved.\n");
             break;
+        }
+    }
+
+    private void promptRestart() {
+        indentPrint("Do you want to restart the game? (yes/no)\n");
+        if (isAccept()) {
+            EconoCraftLogic.initializeGame().startEcono();
+        } else {
+            ResponseManager.printGoodbye();
+            System.exit(0);
         }
     }
 }

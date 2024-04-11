@@ -2,6 +2,10 @@ package ui;
 
 import player.PlayerProfile;
 
+/**
+ * Manages the responses and messages displayed to the player throughout the game.
+ * Includes utilities for printing various types of messages with optional color coding.
+ */
 public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
@@ -13,7 +17,7 @@ public class ResponseManager {
             "===".repeat(20);
     private static final String JOB_SELECT_MSG = "Choose your job type:\n" +
             "for Robotics, enter '/r'\n" +
-            "for Semiconductor industry, enter '/s'\n" +
+            "for Semi-conductor industry, enter '/s'\n" +
             "for Artificial intelligence, enter '/a'\n";
     private static final String BYE_MSG = "Bye bye adventurer!";
     private static final String HELP_MSG =
@@ -39,6 +43,11 @@ public class ResponseManager {
         indentPrint(boardInfo + "\n");
     }
 
+    /**
+     * Prints a message with decorative indentation on both sides.
+     *
+     * @param message The message to print.
+     */
     public static void indentPrint(String message) {
         System.out.println(INDENTATION + "\n" + message + INDENTATION);
     }
@@ -91,5 +100,9 @@ public class ResponseManager {
             indentPrint("You have lost " + profit + " assets from your company!" +
                     "\nPlease manage your company better next time!\n");
         }
+    }
+
+    public static void promptRestart() {
+        indentPrint("Do you want to restart the game? (yes/no)");
     }
 }

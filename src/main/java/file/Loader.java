@@ -8,6 +8,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Provides functionality to load a player's profile from a JSON file.
+ * This class handles reading and parsing the JSON file to reconstruct the player's game state.
+ */
 public class Loader {
     private static final String FILE_PATH = "data/PlayerProfile.json";
 
