@@ -35,7 +35,7 @@ public class CommandFactory {
         case BOND:
             return new BuyBondCommand();
 
-        case CRYPTOCURRENCY:
+        case CRYPTO:
             return new BuyCryptoCommand();
 
         case HIRE:

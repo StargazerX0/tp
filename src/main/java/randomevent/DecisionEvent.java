@@ -1,6 +1,5 @@
 package randomevent;
 
-import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;

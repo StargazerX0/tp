@@ -16,9 +16,8 @@ public enum CommandType {
     FIRE("(?i)fire\\s+\\d+\\s*"),
     SELLSTOCK("(?i)sellstock\\s*"),
     BOND("(?i)bond\\s*"),
-    CRYPTOCURRENCY("(?i)crypto\\s*"),
+    CRYPTO("(?i)crypto\\s*"),
     EXIT("(?i)(bye|exit)\\s*");
-
 
     private final String command;
 

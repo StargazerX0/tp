@@ -83,8 +83,7 @@ public class BondStorage {
                                     "Your current assets cannot afford this many bonds.");
                         }
                     }
-                }
-                else if (bondChoice == -1) {
+                } else if (bondChoice == -1) {
                     System.out.println("Exiting the bond purchase interface.");
                     completeTrade = true;
                 } else if (bondChoice >= bondsAvailable.size()) {
