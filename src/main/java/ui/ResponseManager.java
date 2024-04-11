@@ -2,10 +2,6 @@ package ui;
 
 import player.PlayerProfile;
 
-/**
- * Manages the responses and messages displayed to the player throughout the game.
- * Includes utilities for printing various types of messages with optional color coding.
- */
 public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
@@ -46,40 +42,66 @@ public class ResponseManager {
     }
 
     /**
-     * Prints a message with decorative indentation on both sides.
-     *
+     * Prints a message with indentation.
      * @param message The message to print.
      */
     public static void indentPrint(String message) {
         System.out.println(INDENTATION + "\n" + message + INDENTATION);
     }
 
+    /**
+     * Prints the game initialization message.
+     */
     public static void printGameInit() {
         indentPrint(INITIALIZATION_MESSAGE);
     }
 
+    /**
+     * Prints the job selection message.
+     */
     public static void printJobSelect() {
         indentPrint(JOB_SELECT_MSG);
     }
 
+    /**
+     * Prints the welcome message.
+     *
+     * @param playerProfile The player's profile.
+     */
     public static void printWelcome(PlayerProfile playerProfile) {
         System.out.println("Welcome, " + playerProfile.toString());
     }
 
-    public static void echoChosenIndustry(String input) {
-        System.out.println("You have chosen " + input);
+    /**
+     * Prints the player's status.
+     *
+     * @param industry The industry the player has chosen.
+     */
+    public static void echoChosenIndustry(String industry) {
+        System.out.println("You have chosen " + industry);
     }
 
+    /**
+     * Prints the goodbye message.
+     */
     public static void printGoodbye() {
         System.out.println(BYE_MSG);
     }
-
+    
+    /**
+     * Prints the which round the player is currently in.
+     * @param currentRound The current round the player is in.
+     */
     public static void printCurrentRound(int currentRound) {
         System.out.println("Current round: " + currentRound + "\n" +
                 "you have " + (20 - currentRound) + " rounds left");
         System.out.println(INDENTATION);
     }
 
+    /**
+     * Prints the number of actions of the player left.
+     * @param actionsLeft The number of actions left.
+     */
     public static void printActionLeft(int actionsLeft) {
         String actionLeftStr = actionsLeft == 1 ? " action left" : " actions left";
         System.out.println("You have " + actionsLeft + actionLeftStr +
@@ -87,14 +109,24 @@ public class ResponseManager {
         System.out.println(INDENTATION);
     }
 
+    /**
+     * Prints the help message for new players.
+     */
     public static void printHelp() {
         indentPrint(HELP_MSG);
     }
 
+    /**
+     * Prints the indentation line.
+     */
     public static void printIndentation() {
         System.out.println(INDENTATION);
     }
 
+    /**
+     * Prints the amount of money the company has earned or lost each round.
+     * @param profit
+     */
     public static void printCompanyProfit(int profit) {
         if (profit > 0) {
             indentPrint("Good job! You have earned " + profit + " assets from your company!\n");
@@ -104,6 +136,9 @@ public class ResponseManager {
         }
     }
 
+    /**
+     * Asks the player if they want to restart the game.
+     */
     public static void promptRestart() {
         indentPrint("Do you want to restart the game? (yes/no)");
     }

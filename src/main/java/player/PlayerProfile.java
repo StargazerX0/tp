@@ -135,9 +135,11 @@ public class PlayerProfile {
         company.removeEmployee(number);
     }
 
-    public void addCompanyProfit() {
+    private void calculateRoundProfit() {
         if (isAdvancedPlayer()) {
             company.updatePlayer(asset);
+            asset.bondReturn();
+            asset.cryptoReturn();
         }
     }
 
@@ -163,7 +165,7 @@ public class PlayerProfile {
 
     public void nextRound() {
         resetAssetMultiplier();
-        addCompanyProfit();
+        calculateRoundProfit();
         currentRound++;
     }
 

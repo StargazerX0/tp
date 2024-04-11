@@ -16,6 +16,6 @@ public class SellStockCommand implements Command{
     }
 
     public boolean canGenerateEvent() {
-        return false;
+        return true;
     }
 }

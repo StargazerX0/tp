@@ -1,6 +1,5 @@
 package randomevent;
 
-import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;
@@ -8,8 +7,8 @@ import java.util.Random;
 import static ui.Parser.isAccept;
 
 /**
- * Represents decision-based random events in the game that offer players choices with consequences.
- * These events can affect the player's assets, health, or other aspects of the game based on their decisions.
+ * Represents a decision event that can happen to the player.
+ * Players need to make a decision based on the event.
  */
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
@@ -33,11 +32,13 @@ public class DecisionEvent extends RandomEvent {
     }
 
     /**
-     * Triggers the event, presenting the player with a decision to make and applying the consequences
-     * of that decision to the player's profile.
+     * {@inheritDoc}
      *
-     * @param playerProfile The profile of the player experiencing the event.
-     * @throws CommandInputException If the player makes an invalid decision.
+     * Triggers a decision event to happen randomly to the player.
+     * Player can choose to accept or reject the offer.
+     * Different outcomes will happen based on the player's choice.
+     *
+     * @param playerProfile the player's profile that the event will affect
      */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
@@ -72,6 +73,11 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
+    /**
+     * Represents the process of presenting a project to the board of directors.
+     *
+     * @param playerProfile the player's profile that the event will affect.
+     */
     private void presentProject(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[0]);
         if (isAccept()) {

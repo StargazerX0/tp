@@ -92,7 +92,6 @@ public class Hangman implements MiniGame {
                 totalWrongGuesses++;
                 ResponseManager.indentPrint("Wrong guess!\n");
             }
-
             round++;
         }
 

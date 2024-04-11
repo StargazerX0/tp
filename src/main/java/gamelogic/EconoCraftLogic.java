@@ -8,14 +8,12 @@ import exception.JobSelectException;
 import exception.LoadProfileException;
 import exception.NameInputException;
 import exception.SaveProfileException;
-
 import file.Loader;
 import file.Saver;
 import player.PlayerProfile;
 import randomevent.EventGenerator;
 import ui.Parser;
 import ui.ResponseManager;
-import player.Asset;
 
 import static ui.Parser.isAccept;
 import static ui.ResponseManager.indentPrint;
@@ -124,13 +122,6 @@ public class EconoCraftLogic {
                     actionCount = 0;
                     EventGenerator.getRandomEvent()
                             .triggerEvent(playerProfile);
-                    Asset currAsset = playerProfile.getAsset();
-                    if (!currAsset.cryptoCheck()) {
-                        currAsset.cryptoReturn();
-                    }
-                    if (!currAsset.bondCheck()) {
-                        currAsset.bondReturn();
-                    }
                     playerProfile.nextRound();
                     exitFlag = playerProfile.isFinished();
                 }

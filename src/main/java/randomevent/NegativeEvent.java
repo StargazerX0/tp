@@ -2,6 +2,10 @@ package randomevent;
 
 import player.PlayerProfile;
 
+/**
+ * Represents a negative event that can happen in the game
+ * to harm the player in terms of their health or asset.
+ */
 public class NegativeEvent extends RandomEvent {
     private static final String[] NEGATIVE_EVENT = {
         "Economy crisis!",
@@ -14,6 +18,14 @@ public class NegativeEvent extends RandomEvent {
         super(probability);
     }
 
+
+    /**
+     * {@inheritDoc}
+     *
+     * Triggers a negative event to happen randomly to the player.
+     *
+     * @param playerProfile the player's profile that the event will affect
+     */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?

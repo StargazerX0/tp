@@ -19,6 +19,6 @@ public class BuyBondCommand implements Command {
     }
 
     public boolean canGenerateEvent() {
-        return false;
+        return true;
     }
 }

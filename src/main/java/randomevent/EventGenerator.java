@@ -11,8 +11,14 @@ public class EventGenerator {
         new LotteryEvent(0.25),
         new DecisionEvent(0.4)
     };
+
     private static final List<RandomEvent> events = new ArrayList<>(List.of(eventArray));
 
+    /**
+     * Returns a random event based on the probability of each event.
+     *
+     * @return a random event
+     */
     public static RandomEvent getRandomEvent() {
         Random random = new Random();
         double totalProbability = events.stream().mapToDouble(RandomEvent::getProbability).sum();

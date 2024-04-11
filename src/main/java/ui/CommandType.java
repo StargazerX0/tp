@@ -2,10 +2,6 @@ package ui;
 
 import exception.CommandInputException;
 
-/**
- * Defines the types of commands that can be input by the player in the game.
- * Each enum constant represents a specific command, along with a regex pattern to match user input.
- */
 public enum CommandType {
     HELP("(?i)help\\s*"),
     EXERCISE("(?i)exercise\\s*"),
@@ -20,9 +16,8 @@ public enum CommandType {
     FIRE("(?i)fire\\s+\\d+\\s*"),
     SELLSTOCK("(?i)sellstock\\s*"),
     BOND("(?i)bond\\s*"),
-    CRYPTOCURRENCY("(?i)crypto\\s*"),
+    CRYPTO("(?i)crypto\\s*"),
     EXIT("(?i)(bye|exit)\\s*");
-
 
     private final String command;
 
@@ -30,13 +25,6 @@ public enum CommandType {
         this.command = command;
     }
 
-    /**
-     * Analyses user input and determines the corresponding CommandType.
-     *
-     * @param userInput The raw input from the user.
-     * @return The matching CommandType.
-     * @throws CommandInputException If no matching command is found.
-     */
     public static CommandType analyseInput(String userInput) throws CommandInputException {
         for (CommandType commandType : CommandType.values()) {
             if (userInput.matches(commandType.command)) {
