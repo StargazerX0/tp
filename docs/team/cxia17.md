@@ -8,6 +8,7 @@ https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=cxia17&breakdown=true
 
 ## Contribution to UG
 ### Game feature description and command guide
+Described in detail about how the rest command and stock command is going to operate.
 
 ## Contribution to DG
 ### Sequence Diagram
