@@ -79,7 +79,8 @@ public class BondStorage {
                                     ". Expected total interest gain after " + current.returnBondMaturity() +
                                     " years is $" + String.format("%.2f", totalInterest) + ".");
                         } else {
-                            throw new GameException("Insufficient funds: Your current assets cannot afford this many bonds.");
+                            throw new GameException("Insufficient funds: " +
+                                    "Your current assets cannot afford this many bonds.");
                         }
                     }
                 }
