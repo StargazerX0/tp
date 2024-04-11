@@ -10,6 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+/**
+ * Implements a Multiple Choice Question (MCQ) game focusing on True or False questions.
+ * The game covers various topics, challenging players to answer correctly.
+ */
 public class MCQGame implements MiniGame {
     private static final Logger logger = Logger.getLogger("MCQLog");
     private static final String INSTRUCTION_MESSAGE = "Type T for true and F for false\n";

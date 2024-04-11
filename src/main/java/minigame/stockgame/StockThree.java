@@ -36,7 +36,7 @@ public class StockThree implements Stock{
             "Demand for AI chips increases drastically in the current market -CnA \n" +
                     "Nvidia chip is dominating the AI market -Economist \n" +
                     "The board have great trust in Jensen Huang -Ryan from X \n";
-    private static final String STOCK_NAME = "Nvidia (Multi-national company) \n";
+    private static final String STOCK_NAME = "Nvidia (Multi-national company) ";
     private static final String HIDDEN_INFO =
             "Nvidia is negotiating with ARM for acquisition. \n";
     private static final int STOCK_PRICE = 950;

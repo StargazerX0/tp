@@ -33,7 +33,7 @@ public class StockSix implements Stock {
             "The profit for BYD last year is 300 million -BYD financial report \n" +
                     "Is China entering the competition of electric vehicles? -Economist \n" +
                     "I have received by dividend for BYD this year -User3435 on X \n";
-    private static final String STOCK_NAME = "BYD (Vehicle cooperation) \n";
+    private static final String STOCK_NAME = "BYD (Vehicle cooperation) ";
 
     private static final String HIDDEN_INFO =
             "Minister of Finance in China is very interested in the market of electric vehicles. \n";

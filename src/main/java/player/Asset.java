@@ -1,28 +1,33 @@
 package player;
 
-import minigame.cryptocurrency.CryptoCurrency;
 import minigame.bondgame.Bond;
+import minigame.cryptocurrency.CryptoCurrency;
 import minigame.stockgame.Stock;
 import ui.ResponseManager;
-import static ui.ResponseManager.RED;
-import static ui.ResponseManager.GREEN;
-import static ui.ResponseManager.RESET;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static ui.ResponseManager.indentPrint;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.RESET;
 
+
+/**
+ * Represents the financial assets of a player in the game. This includes various investments like stocks, bonds,
+ * and cryptocurrencies. Provides methods to manage these assets, including buying, selling, and tracking total value.
+ */
 public class Asset {
     public static final int PERCENT_RATIO = 100;
     public static double assetMultiplier = 1.0;
     private static final int FINAL_GOAL = 1000000;
-    private static final List<Stock> stockList = new ArrayList<>();
-    private static final List<Integer> stockCount = new ArrayList<>();
+    private static List<Stock> stockList = new ArrayList<>();
+    private static  List<Integer> stockCount = new ArrayList<>();
 
-    private static final List<Bond> bondList = new ArrayList<>();
+    private static List<Bond> bondList = new ArrayList<>();
 
-    private static final List<Integer> bondCount = new ArrayList<>();
+    private static List<Integer> bondCount = new ArrayList<>();
 
     private List<CryptoCurrency> cryptoList = new ArrayList<>();
 
@@ -38,9 +43,58 @@ public class Asset {
         this.totalAsset = totalAsset;
     }
 
+    public static void setStockList(List<Stock> stockList) {
+        Asset.stockList = stockList;
+    }
+
+    public static void setStockCount(List<Integer> stockCount) {
+        Asset.stockCount = stockCount;
+    }
+
+    public static void setBondList(List<Bond> bondList) {
+        Asset.bondList = bondList;
+    }
+
+    public static void setBondCount(List<Integer> bondCount) {
+        Asset.bondCount = bondCount;
+    }
+
+    public void setCryptoList(List<CryptoCurrency> cryptoList) {
+        this.cryptoList = cryptoList;
+    }
+
+    public void setCryptoCount(List<Integer> cryptoCount) {
+        this.cryptoCount = cryptoCount;
+    }
+
     public int getAsset() {
         return this.totalAsset;
     }
+
+    public List<Bond> getBondList() {
+        return bondList;
+    }
+
+    public List<Integer> getBondCount() {
+        return bondCount;
+    }
+
+    public List<Stock> getStockList() {
+        return stockList;
+    }
+
+    public List<Integer> getStockCount() {
+        return stockCount;
+    }
+
+    public List<CryptoCurrency> getCryptoList() {
+        return cryptoList;
+    }
+
+    public List<Integer> getCryptoCount() {
+        return cryptoCount;
+    }
+
 
     public void addAsset(int amount) {
         int actualAmount = (int) (amount * assetMultiplier);
@@ -53,6 +107,12 @@ public class Asset {
                GREEN, actualAmount, RESET, color, amount, multiPercentage, RESET, totalAsset));
     }
 
+    /**
+     * Adds a specified number of stocks to the player's portfolio.
+     *
+     * @param stock The stock to add.
+     * @param count The number of shares to add.
+     */
     public void addStock(Stock stock, int count) {
         boolean duplication = false;
         int index = -1;

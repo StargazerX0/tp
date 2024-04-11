@@ -4,6 +4,14 @@ import exception.CommandInputException;
 import exception.JobSelectException;
 import exception.NameInputException;
 
+import java.util.Scanner;
+
+import static ui.ResponseManager.indentPrint;
+
+/**
+ * Provides utility methods for parsing user input in the game. This includes validating and interpreting
+ * names, career choices, commands, and other user inputs, ensuring they adhere to expected formats and values.
+ */
 public class Parser {
     private static final String NAME = "^[a-zA-Z ]{1,15}$";
     private static final int NAME_LENGTH_LIMIT = 15;
@@ -13,6 +21,13 @@ public class Parser {
     private static final String SEMI_CONDUCTOR = "/s";
     private static final String AI = "/a";
 
+    /**
+     * Validates and parses a user-provided name input according to predefined rules.
+     *
+     * @param input The user's name input.
+     * @return The validated name.
+     * @throws NameInputException If the name is invalid or exceeds the length limit.
+     */
     public static String parseName(String input) throws NameInputException {
         if (input.matches(NAME)) {
             return input;
@@ -59,13 +74,21 @@ public class Parser {
         }
     }
 
-    public static boolean isAccept(String response) throws CommandInputException {
-        if (response.matches(YES_REGEX)) {
-            return true;
-        } else if (response.matches(NO_REGEX)) {
-            return false;
-        } else {
-            throw new CommandInputException("Invalid input. Please try again.");
+    public static boolean isAccept() {
+        Scanner userInput = new Scanner(System.in);
+        while (true) {
+            String response = userInput.nextLine();
+            try {
+                if (response.matches(YES_REGEX)) {
+                    return true;
+                } else if (response.matches(NO_REGEX)) {
+                    return false;
+                } else {
+                    throw new CommandInputException("Invalid input. Please try again.\n");
+                }
+            } catch (CommandInputException e) {
+                indentPrint(e.getMessage());
+            }
         }
     }
 

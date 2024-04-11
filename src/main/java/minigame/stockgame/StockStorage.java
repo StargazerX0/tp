@@ -7,11 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Manages the storage and interaction with stocks in the stock market mini-game.
+ * This class initializes available stocks and handles player interactions for buying stocks.
+ */
 public class StockStorage {
     private final List<Stock> stocksAvailable = new ArrayList<>();
     private boolean completeTrade = false;
     private final PlayerProfile playerProfile;
 
+    /**
+     * Initializes a new stock storage with a given player profile.
+     *
+     * @param playerProfile The player profile associated with stock transactions.
+     */
     public StockStorage(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
     }
@@ -29,6 +38,11 @@ public class StockStorage {
         stocksAvailable.add(new StockTen());
     }
 
+    /**
+     * Sets up available stocks and starts the stock trading process.
+     *
+     * @throws GameException If an error occurs during the stock trading process.
+     */
     public void play() throws GameException {
         if (stocksAvailable.isEmpty()) {
             setUp();
@@ -40,6 +54,13 @@ public class StockStorage {
 
     }
 
+    /**
+     * Handles the logic for stock purchase calculations and updates the player's profile accordingly.
+     *
+     * @param index   Index of the current stock.
+     * @param current The current stock being traded.
+     * @throws GameException If invalid stock quantities are provided or player assets are insufficient.
+     */
     private void stockCalculation(int index, Stock current) throws GameException {
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
@@ -76,6 +97,13 @@ public class StockStorage {
         }
     }
 
+    /**
+     * Generates a random number within a given range, inclusive of the minimum and exclusive of the maximum.
+     *
+     * @param min The minimum value (inclusive).
+     * @param max The maximum value (exclusive).
+     * @return A random number within the specified range.
+     */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }

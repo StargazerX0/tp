@@ -1,17 +1,16 @@
 package file;
 
 import exception.SaveProfileException;
+
 import player.PlayerProfile;
 import ui.ResponseManager;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import minigame.stockgame.Stock;
-import java.util.ArrayList;
-
 
 public class Saver {
+
     private static final String FILE_PATH = "data/PlayerProfile.json";
 
     public static void saveProfile(PlayerProfile playerProfile) throws SaveProfileException {
@@ -24,8 +23,7 @@ public class Saver {
                 ResponseManager.indentPrint("File created: " + file.getName() + "\n");
             }
 
-            writeJsonToFile(file, constructJson(playerProfile));
-
+            writeJsonToFile(file, Serializer.constructJson(playerProfile));
         } catch (IOException e) {
             throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
         }
@@ -42,7 +40,6 @@ public class Saver {
         try (FileWriter fileWriter = new FileWriter(file)) {
             fileWriter.write(json);
             fileWriter.flush();
-
         } catch (IOException e) {
             throw new SaveProfileException("Error writing to file: " + FILE_PATH + "\n");
         }
@@ -51,27 +48,31 @@ public class Saver {
     private static String constructJson(PlayerProfile playerProfile) {
         // Construct JSON method remains the same
         return "{\n" +
-            " \"name\": \"" + playerProfile.getName() + "\", \n" +
-            " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
-            " \"asset\": \"" + playerProfile.getAsset().outputMoney() + "\", \n"  +
-            " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
-            " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
-            " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
-            " \"company\": {\n" +
-            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
-            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
-            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
-            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
-            " }\n" +
-            " \"asset\": {\n" +
-            "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
-            "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
-            "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
-            "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
-            " }\n" +
-            "}";
+                " \"name\": \"" + playerProfile.getName() + "\", \n" +
+                " \"occupation\": \"" + playerProfile.getOccupation() + "\", \n" +
+                " \"asset\": \"" + playerProfile.getAsset().outputMoney() + "\", \n"  +
+                " \"health\": \"" + playerProfile.getHealth() + "\", \n" +
+                " \"currentRound\": \"" + playerProfile.getCurrentRound() + "\", \n" +
+                " \"isAdvancedPlayer\": \"" + playerProfile.isAdvancedPlayer() + "\", \n" +
+                " \"company\": {\n" +
+                "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+                "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+                "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+                "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+                " }\n" +
+                " \"asset\": {\n" +
+                "   \"name\": \"" + playerProfile.getCompany().getName() + "\", \n" +
+                "   \"numberOfEmployees\": " + playerProfile.getCompany().getNumberOfEmployees() + ", \n" +
+                "   \"employeeSalary\": " + playerProfile.getCompany().getEmployeeSalary() + ", \n" +
+                "   \"revenuePerEmployee\": " + playerProfile.getCompany().getRevenuePerEmployee() + "\n" +
+                " }\n" +
+                "}";
     }
 
-
-
+    public static void deleteProfile() {
+        File file = new File(FILE_PATH);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
 }

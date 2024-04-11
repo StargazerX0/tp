@@ -30,7 +30,7 @@ public class StockTwo implements Stock{
             "Demand for robots have risen in multiple sectors. -CNN \n"
                     + "Will Elon Musk expand Tesla's robotic industry? -Economists \n"
                     + "I work at Tesla and I recently received a raise -User634786 from X \n";
-    private static final String STOCK_NAME = "Tesla (Large multi-national company) \n";
+    private static final String STOCK_NAME = "Tesla (Large multi-national company) ";
 
     private static final String HIDDEN_INFO = "Elon musk will soon announce " +
             "to increase Tesla's robotic industry\n";

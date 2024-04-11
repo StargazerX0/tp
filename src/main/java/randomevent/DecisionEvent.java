@@ -4,10 +4,13 @@ import exception.CommandInputException;
 import player.PlayerProfile;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import static ui.Parser.isAccept;
 
+/**
+ * Represents decision-based random events in the game that offer players choices with consequences.
+ * These events can affect the player's assets, health, or other aspects of the game based on their decisions.
+ */
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
         "Boss want you to present a project to the board of directors.\n " +
@@ -29,8 +32,15 @@ public class DecisionEvent extends RandomEvent {
         super(probability);
     }
 
+    /**
+     * Triggers the event, presenting the player with a decision to make and applying the consequences
+     * of that decision to the player's profile.
+     *
+     * @param playerProfile The profile of the player experiencing the event.
+     * @throws CommandInputException If the player makes an invalid decision.
+     */
     @Override
-    public void triggerEvent(PlayerProfile playerProfile) throws CommandInputException {
+    public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
                 DECISIONS.length : DECISIONS.length - 3;
         int index = new Random().nextInt(range);
@@ -62,11 +72,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void presentProject(PlayerProfile playerProfile) throws CommandInputException {
+    private void presentProject(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[0]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             switch (new Random().nextInt(2)) {
             case 0:
                 System.out.println("You have successfully presented the project to the board of directors!\n" +
@@ -88,11 +96,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void takeCourse(PlayerProfile playerProfile) throws CommandInputException {
+    private void takeCourse(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[1]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             playerProfile.loseAsset(1000);
             System.out.println("You have successfully taken the course!\n" +
                     "Your skills have been improved!\n" +
@@ -103,11 +109,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void returnWallet(PlayerProfile playerProfile) throws CommandInputException {
+    private void returnWallet(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[2]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             System.out.println("You have returned the wallet to the police.\n" +
                     "The owner of the wallet is very grateful to you!");
             playerProfile.addAsset(200);
@@ -133,11 +137,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void foodChallenge(PlayerProfile playerProfile) throws CommandInputException {
+    private void foodChallenge(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[3]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             switch (new Random().nextInt(3)) {
             case 0:
                 System.out.println("You have successfully completed the food challenge!\n");
@@ -164,11 +166,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void donateCharity(PlayerProfile playerProfile) throws CommandInputException {
+    private void donateCharity(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[4]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             playerProfile.loseAsset(500);
             System.out.println("You have donated $500 to the charity!\n" +
                     "The charity is very grateful to you!");
@@ -192,11 +192,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void improveBenefits(PlayerProfile playerProfile) throws CommandInputException {
+    private void improveBenefits(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[5]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             playerProfile.loseAsset(10000);
             System.out.println("You have successfully improved the company's employee benefits!\n" +
                     "The employees are very satisfied with the new benefits!");
@@ -207,11 +205,9 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
-    private void raiseSalary(PlayerProfile playerProfile) throws CommandInputException {
+    private void raiseSalary(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[6]);
-        Scanner userInput = new Scanner(System.in);
-        String response = userInput.nextLine();
-        if (isAccept(response)) {
+        if (isAccept()) {
             playerProfile.updateSalary(200);
             System.out.println("You have successfully raised $200 to the salary of your employees!\n" +
                     "The employees are very satisfied with the new salary!");
