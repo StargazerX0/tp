@@ -31,7 +31,6 @@ public class CryptoCurrencyStorage {
         cryptosAvailable.add(new Cardano());
     }
 
-
     /**
      * Executes the investment process, allowing the player to select a cryptocurrency
      * and invest a specified amount of USD. It simulates market changes and adjusts the player's assets.

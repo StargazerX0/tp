@@ -15,7 +15,6 @@ public class InflationLinkedBond implements Bond {
                     "rates, which could enhance the returns on these bonds in the upcoming years.";
     private static final int PRICE = 1000;
     private static final int BASE_INTEREST_RATE = 2;
-    private static final int MATURITY = 7;
     private static final double INFLATION_RATE = 1.5;
 
     @Override
@@ -25,7 +24,6 @@ public class InflationLinkedBond implements Bond {
         ResponseManager.indentPrint("Price per bond unit: " + PRICE);
         ResponseManager.indentPrint("Base Annual Interest Rate (%): " + BASE_INTEREST_RATE);
         ResponseManager.indentPrint("Inflation Rate Adjustment (%): " + INFLATION_RATE);
-        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Economist") ||
@@ -55,9 +53,5 @@ public class InflationLinkedBond implements Bond {
         return BASE_INTEREST_RATE;
     }
 
-    @Override
-    public int returnBondMaturity() {
-        return MATURITY;
-    }
 }
 

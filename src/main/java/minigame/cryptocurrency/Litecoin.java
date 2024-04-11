@@ -27,7 +27,7 @@ public class Litecoin implements CryptoCurrency {
         ResponseManager.indentPrint("Crypto Name: " + NAME);
         ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
 
-        if (playerProfile.getOccupation().equals("Crypto Enthusiast") ||
+        if (playerProfile.getOccupation().equals("Artificial intelligence") ||
                 playerProfile.getOccupation().equals("Investor")) {
             ResponseManager.indentPrint(HIDDEN_INFO);
         }

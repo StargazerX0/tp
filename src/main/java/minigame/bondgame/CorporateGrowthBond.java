@@ -19,7 +19,6 @@ public class CorporateGrowthBond implements Bond {
                     "major breakthrough that could significantly increase its market value.";
     private static final int PRICE = 500;
     private static final int INTEREST_RATE = 6;
-    private static final int MATURITY = 10;
 
 
     /**
@@ -34,7 +33,6 @@ public class CorporateGrowthBond implements Bond {
         ResponseManager.indentPrint("Bond Name: " + NAME);
         ResponseManager.indentPrint("Price per bond unit: " + PRICE);
         ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
-        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Financial Analyst")) {
@@ -62,8 +60,5 @@ public class CorporateGrowthBond implements Bond {
         return INTEREST_RATE;
     }
 
-    @Override
-    public int returnBondMaturity() {
-        return MATURITY;
-    }
+
 }

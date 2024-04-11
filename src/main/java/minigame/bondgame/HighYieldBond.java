@@ -15,7 +15,6 @@ public class HighYieldBond implements Bond {
                     "to potential rate cuts in the near future, which could boost their value.";
     private static final int PRICE = 100;
     private static final int INTEREST_RATE = 10;
-    private static final int MATURITY = 3;
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
@@ -23,7 +22,6 @@ public class HighYieldBond implements Bond {
         ResponseManager.indentPrint("Bond Name: " + NAME);
         ResponseManager.indentPrint("Price per bond unit: " + PRICE);
         ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
-        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Investment Banker")) {
@@ -51,8 +49,4 @@ public class HighYieldBond implements Bond {
         return INTEREST_RATE;
     }
 
-    @Override
-    public int returnBondMaturity() {
-        return MATURITY;
-    }
 }

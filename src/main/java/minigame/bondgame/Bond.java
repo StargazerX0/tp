@@ -47,11 +47,5 @@ public interface Bond {
      */
     public int returnBondInterestRate();
 
-    /**
-     * Returns the maturity period of the bond in years.
-     *
-     * @return The bond's maturity period.
-     */
-    public int returnBondMaturity(); 
 }
 

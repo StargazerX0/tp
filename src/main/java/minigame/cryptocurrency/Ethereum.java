@@ -26,7 +26,7 @@ public class Ethereum implements CryptoCurrency {
         ResponseManager.indentPrint("Crypto Name: " + NAME);
         ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
 
-        if (playerProfile.getOccupation().equals("Blockchain Developer")
+        if (playerProfile.getOccupation().equals("Semi-conductor")
                 || playerProfile.getOccupation().equals("Crypto Investor")) {
             ResponseManager.indentPrint(HIDDEN_INFO);
         }

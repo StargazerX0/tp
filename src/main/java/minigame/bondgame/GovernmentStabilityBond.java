@@ -13,7 +13,7 @@ public class GovernmentStabilityBond implements Bond {
             "Recent economic trends suggest that the bond market may see a reduction in volatility.";
     private static final int PRICE = 1000;
     private static final int INTEREST_RATE = 3;
-    private static final int MATURITY = 5;
+
 
     @Override
     public void printInfo(PlayerProfile playerProfile) {
@@ -21,7 +21,6 @@ public class GovernmentStabilityBond implements Bond {
         ResponseManager.indentPrint("Bond Name: " + NAME);
         ResponseManager.indentPrint("Price per bond unit: " + PRICE);
         ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
-        ResponseManager.indentPrint("Maturity (years): " + MATURITY);
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Economist")) {
@@ -49,8 +48,5 @@ public class GovernmentStabilityBond implements Bond {
         return INTEREST_RATE;
     }
 
-    @Override
-    public int returnBondMaturity() {
-        return MATURITY;
-    }
+
 }

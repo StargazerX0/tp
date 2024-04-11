@@ -73,8 +73,8 @@ public class BondStorage {
                             completeTrade = true;
                             System.out.println("You've successfully purchased " + response + " units of " +
                                     current.returnBondName() +
-                                    ". Expected total interest gain after " + current.returnBondMaturity() +
-                                    " years is $" + String.format("%.2f", totalInterest) + ".");
+                                    ". Expected total interest gain is $"
+                                    + String.format("%.2f", totalInterest) + ".");
                         } else {
                             throw new GameException("Insufficient funds: " +
                                     "Your current assets cannot afford this many bonds.");

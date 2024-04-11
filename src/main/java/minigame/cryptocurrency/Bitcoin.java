@@ -38,8 +38,7 @@ public class Bitcoin implements CryptoCurrency {
         ResponseManager.indentPrint("Crypto Name: " + NAME);
         ResponseManager.indentPrint("Current Price: " + currentPrice + " USD");
 
-        if (playerProfile.getOccupation().equals("Blockchain Developer") ||
-                playerProfile.getOccupation().equals("Crypto Trader")) {
+        if (playerProfile.getOccupation().equals("Artificial intelligence")) {
             ResponseManager.indentPrint(HIDDEN_INFO);
         }
     }
