@@ -9,6 +9,7 @@ import player.PlayerProfile;
 
 public interface Bond {
 
+
     /**
      * Prints detailed information about the bond to the player.
      *

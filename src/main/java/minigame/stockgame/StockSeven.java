@@ -34,7 +34,7 @@ public class StockSeven implements Stock {
             "Profit for last year is 120 million dollars -NextGen official announcement \n" +
                     "The increase in NextGen stock is out of expectation -Economist \n" +
                     "Buying NextGen stock gave me a new house -User8482 from X \n";
-    private static final String STOCK_NAME = "NextGen (Semiconductor start-up) \n";
+    private static final String STOCK_NAME = "NextGen (Semiconductor start-up) ";
 
     private static final String HIDDEN_INFO =
             "They are publishing false information \n";

@@ -29,7 +29,7 @@ public class StockNine implements Stock {
             "Huge competition inside the software industry -CnA \n" +
                     "Why some of the simulation company are not making any profit? -Economist \n" +
                     "This is a good company -user482 from X \n";
-    private static final String STOCK_NAME = "eSim (software start-up) \n";
+    private static final String STOCK_NAME = "eSim (software start-up) ";
 
     private static final String HIDDEN_INFO =
             "Some employers have not received their salary for 3 months \n";

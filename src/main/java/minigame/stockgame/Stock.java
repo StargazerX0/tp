@@ -9,11 +9,6 @@ import player.PlayerProfile;
  */
 public interface Stock {
 
-    /**
-     * Displays stock information.
-     *
-     * @param playerProfile Player's profile for contextual information.
-     */
     public void printInfo(PlayerProfile playerProfile);
 
     /**

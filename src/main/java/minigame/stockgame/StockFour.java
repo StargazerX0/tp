@@ -9,7 +9,7 @@ public class StockFour implements Stock{
             "Demand for AI chip risen in multiple sectors. -CNN \n"
                     + "GROQ AI chips, at what cost? -Economists \n"
                     + "We are going to have a huge progress -Jack786 from X \n";;
-    public static final String STOCK_NAME = "Groq (Start up company) \n";
+    public static final String STOCK_NAME = "Groq (Start up company) ";
     public static final String HIDDEN_INFO = "The progress of chip " +
             "development currently is not too well \n";
 

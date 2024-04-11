@@ -16,6 +16,6 @@ public class CryptoCurrencyActivate {
      * @throws GameException if there is an issue during the cryptocurrency investment process.
      */
     public static void start(PlayerProfile playerProfile) throws GameException {
-        //new CryptoCurrencyStorage(playerProfile).play();
+        new CryptoCurrencyStorage(playerProfile).play();
     }
 }

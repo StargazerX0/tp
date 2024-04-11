@@ -15,6 +15,6 @@ public class BondActivate {
      * @throws GameException if there is an issue starting the bond-buying process.
      */
     public static void start(PlayerProfile playerProfile) throws GameException {
-        //new BondStorage(playerProfile).play();
+        new BondStorage(playerProfile).play();
     }
 }

@@ -17,7 +17,7 @@ public class StockOne implements Stock{
             + "WaveScan have the risk of overExpansion -Economists \n"
             + "I have heard that WaveScan is not doing so well -User10086 from X \n";
 
-    private static final String STOCK_NAME = "WaveScan Technologies (Start ups) \n";
+    private static final String STOCK_NAME = "WaveScan Technologies (Start ups) ";
     private static final String HIDDEN_INFO = "They are close to a technical break through\n";
     private static final int STOCK_PRICE = 10;
 
