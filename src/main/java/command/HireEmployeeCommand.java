@@ -26,7 +26,7 @@ public class HireEmployeeCommand implements Command {
         }
         playerProfile.loseAsset(hireNumber * 1000);
         playerProfile.hireEmployee(hireNumber);
-        indentPrint(hireNumber + "of employees has been hired. :)\n");
+        indentPrint(hireNumber + " of employees has been hired. :)\n");
     }
 
     @Override

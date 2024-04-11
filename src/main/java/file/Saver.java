@@ -72,4 +72,11 @@ public class Saver {
             " }\n" +
             "}";
     }
+
+    public static void deleteProfile() {
+        File file = new File(FILE_PATH);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
 }
