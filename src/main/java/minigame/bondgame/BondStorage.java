@@ -1,6 +1,8 @@
 package minigame.bondgame;
 import exception.GameException;
 import player.PlayerProfile;
+import ui.ResponseManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,23 +39,25 @@ public class BondStorage {
      * @throws GameException if there is an issue during the bond-buying process.
      */
     public void play() throws GameException {
-        if (bondsAvailable.isEmpty()) {
-            setUp();
-        }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select a bond to purchase:\n");
-        for (int i = 0; i < bondsAvailable.size(); i++) {
-            System.out.println(i + 1 + ": " + bondsAvailable.get(i).returnBondName());
-        }
-        System.out.println("Enter the number of the bond you wish to purchase, or 0 to exit:");
+        while (!completeTrade) {
+            if (bondsAvailable.isEmpty()) {
+                setUp();
+            }
+            System.out.println("Select a bond to purchase:\n");
+            for (int i = 0; i < bondsAvailable.size(); i++) {
+                System.out.println(i + 1 + ": " + bondsAvailable.get(i).returnBondName());
+            }
+            System.out.println("Enter the number of the bond you wish to purchase, or 0 to exit:");
 
-        int bondChoice = Integer.parseInt(scanner.nextLine()) - 1;
-        if (bondChoice >= 0 && bondChoice < bondsAvailable.size()) {
-            Bond current = bondsAvailable.get(bondChoice);
-            current.printInfo(playerProfile);
+            int bondChoice = -1;
+            try {
+                bondChoice = Integer.parseInt(scanner.nextLine()) - 1;
 
-            while (!completeTrade) {
-                try {
+                if (bondChoice >= 0 && bondChoice < bondsAvailable.size()) {
+                    Bond current = bondsAvailable.get(bondChoice);
+                    current.printInfo(playerProfile);
+
                     System.out.println("How many units of " + current.returnBondName() +
                             " do you want to purchase? Input 0 if you want none");
                     int response = Integer.parseInt(scanner.nextLine());
@@ -75,19 +79,20 @@ public class BondStorage {
                                     ". Expected total interest gain after " + current.returnBondMaturity() +
                                     " years is $" + String.format("%.2f", totalInterest) + ".");
                         } else {
-                            throw new GameException("Insufficient funds: " +
-                                    "Your current assets cannot afford this many bonds.");
+                            throw new GameException("Insufficient funds: Your current assets cannot afford this many bonds.");
                         }
                     }
-                } catch (NumberFormatException | GameException e) {
-                    System.out.println(e.getMessage());
                 }
+                else if (bondChoice == -1) {
+                    System.out.println("Exiting the bond purchase interface.");
+                    completeTrade = true;
+                } else if (bondChoice >= bondsAvailable.size()) {
+                    ResponseManager.indentPrint("Invalid selection. Please select a valid bond. \n");
+                }
+            } catch (NumberFormatException | GameException e) {
+                ResponseManager.indentPrint("Please enter a valid input!\n");
             }
-        } else if (bondChoice != -1) {
-            System.out.println("Invalid selection. Please select a valid bond.");
-            play();
         }
     }
-
 }
 
