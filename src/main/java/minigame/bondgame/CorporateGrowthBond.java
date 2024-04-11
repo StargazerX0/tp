@@ -10,13 +10,13 @@ import ui.ResponseManager;
  */
 public class CorporateGrowthBond implements Bond {
     private static final String BOND_INFORMATION =
-            "The Corporate Growth Bond offers a higher interest rate to compensate for the " +
-                    "increased risk associated with corporate debt. This bond is attractive to " +
-                    "investors looking for growth potential in the corporate sector.";
+            "The Corporate Growth Bond offers a higher interest rate to compensate for the \n" +
+                    "increased risk associated with corporate debt. This bond is attractive to \n" +
+                    "investors looking for growth potential in the corporate sector.\n";
     private static final String NAME = "Corporate Growth Bond";
     private static final String HIDDEN_INFO =
-            "Insider news suggests that the issuing corporation is on the brink of a " +
-                    "major breakthrough that could significantly increase its market value.";
+            "Insider news suggests that the issuing corporation is on the brink of a \n" +
+                    "major breakthrough that could significantly increase its market value. \n";
     private static final int PRICE = 500;
     private static final int INTEREST_RATE = 6;
 
@@ -33,6 +33,7 @@ public class CorporateGrowthBond implements Bond {
         ResponseManager.indentPrint("Bond Name: " + NAME);
         ResponseManager.indentPrint("Price per bond unit: " + PRICE);
         ResponseManager.indentPrint("Annual Interest Rate (%): " + INTEREST_RATE);
+
 
         // Display hidden information based on player's occupation
         if (playerProfile.getOccupation().equals("Financial Analyst")) {

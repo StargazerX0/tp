@@ -5,14 +5,14 @@ import ui.ResponseManager;
 
 public class HighYieldBond implements Bond {
     private static final String BOND_INFORMATION =
-            "As the name suggests, the High Yield Bond comes with a high-interest rate, " +
-                    "indicating a higher risk but offering substantial income potential. This type " +
-                    "of bond is suited for investors with a high-risk tolerance seeking significant " +
+            "As the name suggests, the High Yield Bond comes with a high-interest rate, \n" +
+                    "indicating a higher risk but offering substantial income potential. This type \n" +
+                    "of bond is suited for investors with a high-risk tolerance seeking significant \n" +
                     "returns.";
     private static final String NAME = "High Yield Bond";
     private static final String HIDDEN_INFO =
-            "Market volatility indicates that high yield bonds are gaining popularity due " +
-                    "to potential rate cuts in the near future, which could boost their value.";
+            "Market volatility indicates that high yield bonds are gaining popularity due \n" +
+                    "to potential rate cuts in the near future, which could boost their value. \n";
     private static final int PRICE = 100;
     private static final int INTEREST_RATE = 10;
 

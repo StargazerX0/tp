@@ -33,6 +33,10 @@ public class ResponseManager {
             INDENTATION +
             "\nstock - to purchase stocks from the stock market \n" +
             "sellstock - to sell all of your stocks \n" +
+            "bond - to purchase bonds from the bond market \n" +
+            "sellbond - to sell all of your bonds \n" +
+            "crypto - to purchase cryptocurrency from the cryptocurrency market \n" +
+            "sellcrypto - to sell all of your cryptocurrency \n" +
             "company - to check company status\n" +
             "hire <number> - to hire employee (each employee cost $1000 to hire)\n" +
             "fire <number> - to fire employee\n" +
