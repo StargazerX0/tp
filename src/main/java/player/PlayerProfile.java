@@ -49,6 +49,7 @@ public class PlayerProfile {
         this.company = new Company();
     }
 
+
     public PlayerProfile(
         String name, String occupation, int health, int asset,
         int currentRound, boolean isAdvancedPlayer, Company company) {
@@ -61,11 +62,18 @@ public class PlayerProfile {
         this.company = company;
     }
 
-    /**
-     * Adds assets to the player's profile.
-     *
-     * @param amount Amount to add.
-     */
+    public PlayerProfile(
+        String name, String occupation, int health, Asset asset,
+        int currentRound, boolean isAdvancedPlayer, Company company) {
+        this.name = name;
+        this.health = new Health(health);
+        this.asset = asset;
+        this.occupation = occupation;
+        this.currentRound = currentRound;
+        this.isAdvancedPlayer = isAdvancedPlayer;
+        this.company = company;
+    }
+
     public void addAsset(int amount) {
         this.asset.addAsset(amount);
     }

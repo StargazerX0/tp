@@ -37,7 +37,7 @@ public class StockEight implements Stock{
             "│                                                        \n" +
             "└───────────────────────────────────────────────────────►\n";
 
-    public static final String STOCK_NAME = "Microsoft (Multi-national cooperation) \n";
+    public static final String STOCK_NAME = "Microsoft (Multi-national cooperation) ";
     private static final String STOCK_INFORMATION =
             "Profit for microsoft in quarter one is similar to quarter two -CNN \n" +
                     "Where is the next step for Microsoft? -Economist \n" +
