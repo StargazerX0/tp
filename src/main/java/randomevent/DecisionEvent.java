@@ -7,6 +7,10 @@ import java.util.Random;
 
 import static ui.Parser.isAccept;
 
+/**
+ * Represents a decision event that can happen to the player.
+ * Players need to make a decision based on the event.
+ */
 public class DecisionEvent extends RandomEvent {
     private static final String[] DECISIONS = {
         "Boss want you to present a project to the board of directors.\n " +
@@ -28,6 +32,15 @@ public class DecisionEvent extends RandomEvent {
         super(probability);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * Triggers a decision event to happen randomly to the player.
+     * Player can choose to accept or reject the offer.
+     * Different outcomes will happen based on the player's choice.
+     *
+     * @param playerProfile the player's profile that the event will affect
+     */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
@@ -61,6 +74,11 @@ public class DecisionEvent extends RandomEvent {
         }
     }
 
+    /**
+     * Represents the process of presenting a project to the board of directors.
+     *
+     * @param playerProfile the player's profile that the event will affect.
+     */
     private void presentProject(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[0]);
         if (isAccept()) {
