@@ -8,6 +8,7 @@ import player.PlayerProfile;
  */
 public interface CryptoCurrency {
 
+
     /**
      * Displays information about the cryptocurrency, including its current market status
      * and any special information relevant to the player's occupation.

@@ -21,6 +21,7 @@ public class CorporateGrowthBond implements Bond {
     private static final int INTEREST_RATE = 6;
     private static final int MATURITY = 10;
 
+
     /**
      * Prints detailed information about this Corporate Growth Bond, including any special
      * hidden information based on the player's occupation.

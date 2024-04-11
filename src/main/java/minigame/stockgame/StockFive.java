@@ -34,7 +34,7 @@ public class StockFive implements Stock {
             "Atlas tech have reached its highest point, a 100 times increase -CnA \n" +
                     "Atlas tech, great discover or great scam? -Economist \n" +
                     "I earned a house from buying this stock -Joe from X \n";
-    public static final String STOCK_NAME= "Atlas Tech \n";
+    public static final String STOCK_NAME= "Atlas Tech ";
     public static final String HIDDEN_INFO = "This is likely to be a set up -From a friend\n";
     public static final int STOCK_PRICE = 128;
 

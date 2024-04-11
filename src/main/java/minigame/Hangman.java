@@ -90,7 +90,7 @@ public class Hangman implements MiniGame {
             round++;
         }
 
-        outputResult(); 
+        outputResult();
     }
 
     public void outputResult() {
