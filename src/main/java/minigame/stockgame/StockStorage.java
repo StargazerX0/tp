@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Manages the storage and interaction with stocks in the stock market mini-game.
- * This class initializes available stocks and handles player interactions for buying stocks.
+ * Handles the initialization, storage, and trading of stocks within the stock market mini-game.
+ * This class provides the functionality for setting up available stocks, engaging players in the
+ * trading process, and performing the necessary calculations and updates based on player actions.
+ * It acts as the core component managing stock transactions in the game environment.
  */
 public class StockStorage {
     private final List<Stock> stocksAvailable = new ArrayList<>();
@@ -17,14 +19,19 @@ public class StockStorage {
     private final PlayerProfile playerProfile;
 
     /**
-     * Initializes a new stock storage with a given player profile.
+     * Constructs a new instance of StockStorage, associated with a specific player profile.
+     * This setup links stock transactions directly to the player's game state and financial assets.
      *
-     * @param playerProfile The player profile associated with stock transactions.
+     * @param playerProfile The profile of the player involved in stock transactions.
      */
     public StockStorage(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
     }
 
+    /**
+     * Initializes the list of available stocks for trading. This method populates the stock
+     * storage with a predefined set of stock entities, ready for player interaction.
+     */
     private void setUp() {
         stocksAvailable.add(new StockOne());
         stocksAvailable.add(new StockTwo());
@@ -39,9 +46,11 @@ public class StockStorage {
     }
 
     /**
-     * Sets up available stocks and starts the stock trading process.
+     * Begins the trading process, allowing the player to engage in stock market transactions.
+     * This method orchestrates the trading session, presenting stock options to the player and
+     * processing their buy or sell decisions.
      *
-     * @throws GameException If an error occurs during the stock trading process.
+     * @throws GameException if an error occurs that prevents the continuation of the trading process.
      */
     public void play() throws GameException {
         if (stocksAvailable.isEmpty()) {
@@ -55,11 +64,13 @@ public class StockStorage {
     }
 
     /**
-     * Handles the logic for stock purchase calculations and updates the player's profile accordingly.
+     * Manages the purchase calculations for a selected stock and updates the player's portfolio
+     * and financial status accordingly. It ensures that transactions are valid and that the player
+     * has sufficient assets for the purchase.
      *
-     * @param index   Index of the current stock.
-     * @param current The current stock being traded.
-     * @throws GameException If invalid stock quantities are provided or player assets are insufficient.
+     * @param index   The index of the currently selected stock in the available stocks list.
+     * @param current The stock entity being purchased.
+     * @throws GameException If the transaction is invalid due to insufficient assets or other constraints.
      */
     private void stockCalculation(int index, Stock current) throws GameException {
         Scanner scanner = new Scanner(System.in);
@@ -98,11 +109,12 @@ public class StockStorage {
     }
 
     /**
-     * Generates a random number within a given range, inclusive of the minimum and exclusive of the maximum.
+     * Utility method for generating a random integer within a specified range. This can be used
+     * for selecting random stocks or simulating market movements.
      *
      * @param min The minimum value (inclusive).
      * @param max The maximum value (exclusive).
-     * @return A random number within the specified range.
+     * @return A random integer between the specified min (inclusive) and max (exclusive).
      */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);

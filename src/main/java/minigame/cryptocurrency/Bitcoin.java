@@ -5,8 +5,11 @@ import ui.ResponseManager;
 import java.util.Random;
 
 /**
- * Represents the Bitcoin cryptocurrency in the game, including its market behavior
- * and interaction with the player.
+ * Represents Bitcoin, the pioneering cryptocurrency, within the game's financial ecosystem.
+ * This class embodies Bitcoin's core characteristics, including its market volatility and
+ * potential for high returns, reflecting the real-world complexities and opportunities
+ * presented by cryptocurrency investments. It also incorporates a unique risk factor and
+ * provides dynamic interaction based on the player's profile and game events.
  */
 public class Bitcoin implements CryptoCurrency {
     private static final String CRYPTO_INFORMATION =
@@ -22,17 +25,20 @@ public class Bitcoin implements CryptoCurrency {
     private int currentPrice;
 
     /**
-     * Constructs a Bitcoin instance with an initial market price.
+     * Initializes a new instance of Bitcoin with a default market price, setting the stage for
+     * in-game investment and trading.
      */
     public Bitcoin() {
         this.currentPrice = 10000;
     }
 
     /**
-     * Displays information about Bitcoin to the player, including its name, current market price,
-     * and any special information based on the player's profile.
+     * Provides a comprehensive overview of Bitcoin, including general information and current
+     * market status. If the player's profile meets certain criteria (e.g., specific occupations),
+     * additional insights may be revealed, simulating the access to privileged information in
+     * investment scenarios.
      *
-     * @param playerProfile The player's profile, used to determine if additional info should be shown.
+     * @param playerProfile The profile of the player interacting with Bitcoin, used to tailor the information provided.
      */
     @Override
     public void printInfo(PlayerProfile playerProfile) {
@@ -40,17 +46,18 @@ public class Bitcoin implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Artificial intelligence")) {
+        if (playerProfile.getOccupation().equals(" Artificial intelligence ")) {
             ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
 
     /**
-     * Simulates market changes affecting Bitcoin's value based on an amount invested by the player.
-     * This method randomly generates a market change and applies it to the current price.
+     * Simulates the impact of market fluctuations on Bitcoin's value based on a player's investment.
+     * The method calculates changes in investment value using a randomized model to reflect the
+     * unpredictability of real-world markets.
      *
-     * @param amountInvested The amount of USD invested by the player in Bitcoin.
-     * @return The net change in the player's investment as a result of market fluctuations.
+     * @param amountInvested The USD amount invested by the player in Bitcoin.
+     * @return The net change in investment value, positive or negative, as a result of market movement.
      */
     @Override
     public int calculateChange(int amountInvested) {
@@ -72,26 +79,41 @@ public class Bitcoin implements CryptoCurrency {
     }
 
     /**
-     * Returns the name of the cryptocurrency.
+     * Returns the name of this cryptocurrency, identifying it uniquely within the game's economy.
+     * This method provides a straightforward way to retrieve the cryptocurrency's name, which is
+     * essential for player interactions and in-game displays.
      *
      * @return The name of the cryptocurrency, "Bitcoin".
      */
     @Override
     public String returnCryptoName() {
+
         return NAME;
     }
 
     /**
-     * Returns the current market price of Bitcoin.
+     * Provides the current market price of Bitcoin, reflecting its value at the moment within the game.
+     * This price is crucial for calculations related to buying, selling, or investing in Bitcoin,
+     * and it may fluctuate based on simulated market conditions or player actions.
      *
-     * @return The current market price of Bitcoin.
+     * @return The current market price of Bitcoin in USD.
      */
     @Override
     public int returnCurrentPrice() {
+
         return currentPrice;
     }
+
+    /**
+     * Determines and returns the risk factor associated with investing in Bitcoin, as represented
+     * within the game. The risk factor is an indicator of the investment's volatility and potential
+     * for significant value changes, providing players with insight into the investment's stability.
+     *
+     * @return The risk factor of Bitcoin, reflecting its volatility and investment risk.
+     */
     @Override
     public int getRiskFactor() {
+
         return RISK_FACTOR;
     }
 }
