@@ -171,7 +171,6 @@ public class Asset {
 
     public void bondReturn() {
         if (bondList.isEmpty()) {
-            ResponseManager.indentPrint("You have no bonds to sell! \n");
             return;
         }
         for (Bond b : bondList) {
@@ -181,9 +180,9 @@ public class Asset {
             int totalPrincipal = bondPrice * count;
             double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
             int totalReturn = (int) (totalInterest);
-            addAsset(totalReturn);
             ResponseManager.indentPrint("$" + totalReturn + " returned to your account from "
                     + b.returnBondName() + " in this round. \n");
+            addAsset(totalReturn);
         }
     }
 
@@ -201,7 +200,6 @@ public class Asset {
 
     public void cryptoReturn() {
         if (cryptoList.isEmpty()) {
-            ResponseManager.indentPrint("You do not own any cryptocurrency to sell.\n");
             return;
         }
         int totalReturn = 0;
@@ -212,20 +210,20 @@ public class Asset {
             crypto = cryptoList.get(i);
             int quantity = cryptoCount.get(i);
             int investmentReturn = quantity * crypto.returnCurrentPrice();
-            totalReturn = investmentReturn;
             ResponseManager.indentPrint(crypto.returnCryptoName() + " provides " +
                     "$" + investmentReturn + " to your account in this round.\n");
+            totalReturn = investmentReturn;
         }
         addAsset(totalReturn);
 
         if (getRandomNumber(0, 100) < riskFactor) {
             ResponseManager.indentPrint("Unfortunately, Government intervention causes all of your " +
-                    "cryptos to be listed as illegal items");
+                    "cryptos to be listed as illegal items\n" +
+                    "All of your cryptos have been confiscated :(\n");
             cryptoList.clear();
             cryptoCount.clear();
         }
     }
-
 
     public void deductAsset(int amount) {
         totalAsset -= amount;
@@ -280,6 +278,6 @@ public class Asset {
                     + cryptoCount.get(i) + "\n";
         }
         return String.format("%d, you need %d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
-                + "\n" + output;
+                + (output.isEmpty() ? output : "\n" + output);
     }
 }

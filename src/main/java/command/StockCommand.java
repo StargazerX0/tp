@@ -19,6 +19,6 @@ public class StockCommand implements Command {
     }
 
     public boolean canGenerateEvent() {
-        return false;
+        return true;
     }
 }

@@ -5,11 +5,6 @@ import static ui.ResponseManager.RED;
 import static ui.ResponseManager.GREEN;
 import static ui.ResponseManager.RESET;
 
-/**
- * Manages the health status of a player in the game. Health can be modified through gameplay events,
- * such as taking damage or receiving health boosts. The health system ensures the player's health does
- * not exceed 100 points or drop below 0 points.
- */
 public class Health {
     private int healthAmount;
 
@@ -21,11 +16,6 @@ public class Health {
         this.healthAmount = healthAmount;
     }
 
-    /**
-     * Increases the player's health by a specified amount, without exceeding 100 points.
-     *
-     * @param amount The amount of health to add.
-     */
     public void addHealth(int amount) {
         healthAmount += amount;
         if (healthAmount > 100) {

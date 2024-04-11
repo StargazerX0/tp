@@ -4,6 +4,10 @@ import player.PlayerProfile;
 
 import java.util.Random;
 
+/**
+ * Represents a positive event that can happen in the game
+ * to benefit the player.
+ */
 class PositiveEvent extends RandomEvent {
     private static final String[] POSITIVE_EVENT = {
         "Your boss gave you a bonus!",
@@ -16,6 +20,13 @@ class PositiveEvent extends RandomEvent {
         super(probability);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * Triggers a positive event to happen randomly to the player.
+     *
+     * @param playerProfile the player's profile that the event will affect
+     */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
