@@ -37,4 +37,19 @@ class CommandTypeTest {
     void analyseInput_validCommandWithMixedCase_returnsCommandType() throws CommandInputException {
         assertEquals(CommandType.EXERCISE, CommandType.analyseInput("eXeRcIsE"));
     }
+
+
+    @Test
+    void analyseInput_validCommandComposite_returnsCommandType() throws CommandInputException {
+        assertEquals(CommandType.HIRE, CommandType.analyseInput("hire 5"));
+    }
+
+
+    @Test
+    void analyseInput_commandWithArguments_ignoresArguments() throws CommandInputException {
+        assertEquals(CommandType.HIRE, CommandType.analyseInput("hire 10"));
+        assertEquals(CommandType.FIRE, CommandType.analyseInput("fire 2000"));
+    }
+
 }
+
