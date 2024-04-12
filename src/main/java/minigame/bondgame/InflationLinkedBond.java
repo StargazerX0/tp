@@ -18,10 +18,10 @@ public class InflationLinkedBond implements Bond {
     @Override
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(BOND_INFORMATION
-        + "Bond Name: " + NAME + "\n"
-        + "Price per bond unit: " + PRICE + "\n"
-        + "Base Annual Interest Rate (%): " + BASE_INTEREST_RATE + "\n"
-        + "Inflation Rate Adjustment (%): " + INFLATION_RATE + "\n");
+            + "Bond Name: " + NAME + "\n"
+            + "Price per bond unit: " + PRICE + "\n"
+            + "Base Annual Interest Rate (%): " + BASE_INTEREST_RATE + "\n"
+            + "Inflation Rate Adjustment (%): " + INFLATION_RATE + "\n");
 
     }
 

@@ -17,9 +17,9 @@ public class GovernmentStabilityBond implements Bond {
     @Override
     public void printInfo(PlayerProfile playerProfile) {
         ResponseManager.indentPrint(BOND_INFORMATION + "\n"
-        + "Bond Name: " + NAME + "\n"
-        + "Price per bond unit: " + PRICE + "\n"
-        + "Annual Interest Rate (%): " + INTEREST_RATE + "\n");
+            + "Bond Name: " + NAME + "\n"
+            + "Price per bond unit: " + PRICE + "\n"
+            + "Annual Interest Rate (%): " + INTEREST_RATE + "\n");
 
     }
 

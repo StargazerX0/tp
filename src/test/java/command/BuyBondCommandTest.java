@@ -35,7 +35,7 @@ class BuyBondCommandTest {
      * bond purchasing is restricted to advanced players.
      */
     @Test
-    void execute_nonAdvancedPlayer_throwsLockedFeatureException() {
+    void executeWhenPlayerIsNonAdvancedThrowsLockedFeatureException() {
         when(mockProfile.isAdvancedPlayer()).thenReturn(false);
         assertThrows(LockedFeatureException.class, () -> buyBondCommand.execute(mockProfile),
                 "Executing BuyBondCommand as a non-advanced player should throw LockedFeatureException.");
@@ -46,7 +46,7 @@ class BuyBondCommandTest {
      * indicating that this command does not terminate the game session.
      */
     @Test
-    void isExit_always_returnsFalse() {
+    void isExitAlwaysReturnsFalse() {
         assertFalse(buyBondCommand.isExit(),
                 "isExit should always return false for BuyBondCommand.");
     }
@@ -56,8 +56,9 @@ class BuyBondCommandTest {
      * indicating that executing this command can potentially trigger an in-game event.
      */
     @Test
-    void canGenerateEvent_always_returnsTrue() {
+    void canGenerateEventAlwaysReturnsTrue() {
         assertTrue(buyBondCommand.canGenerateEvent(),
-                "canGenerateEvent should always return true for BuyBondCommand, indicating the possibility of triggering an event.");
+                "canGenerateEvent should always return true for BuyBondCommand, " +
+                        "indicating the possibility of triggering an event.");
     }
 }

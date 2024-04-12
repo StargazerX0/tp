@@ -17,7 +17,7 @@ class CommandFactoryTest {
      * @throws CommandInputException if the input command is invalid.
      */
     @Test
-    void create_WorkCommand_ReturnsWorkCommandInstance() throws CommandInputException {
+    void createWorkCommandReturnsWorkCommandInstance() throws CommandInputException {
         assertInstanceOf(WorkCommand.class, CommandFactory.create("work"), "Expected WorkCommand instance.");
     }
 
@@ -27,7 +27,7 @@ class CommandFactoryTest {
      * @throws CommandInputException if the input command is invalid.
      */
     @Test
-    void create_RestCommand_ReturnsRestCommandInstance() throws CommandInputException {
+    void createRestCommandReturnsRestCommandInstance() throws CommandInputException {
         assertInstanceOf(RestCommand.class, CommandFactory.create("rest"), "Expected RestCommand instance.");
     }
 
@@ -37,7 +37,7 @@ class CommandFactoryTest {
      * @throws CommandInputException if the input command is invalid.
      */
     @Test
-    void create_ExerciseCommand_ReturnsExerciseCommandInstance() throws CommandInputException {
+    void createExerciseCommandReturnsExerciseCommandInstance() throws CommandInputException {
         assertInstanceOf(ExerciseCommand.class, CommandFactory.create("exercise"),
                 "Expected ExerciseCommand instance.");
     }
@@ -47,7 +47,7 @@ class CommandFactoryTest {
      * @throws CommandInputException if the input command is invalid.
      */
     @Test
-    void create_StatusCommand_ReturnsCheckStatusCommandInstance() throws CommandInputException {
+    void createStatusCommandReturnsCheckStatusCommandInstance() throws CommandInputException {
         assertInstanceOf(CheckStatusCommand.class, CommandFactory.create("status"),
                 "Expected CheckStatusCommand instance.");
     }
@@ -60,7 +60,7 @@ class CommandFactoryTest {
      * @throws CommandInputException if the input command is invalid.
      */
     @Test
-    void create_HireCommandWithArguments_ReturnsHireEmployeeCommandInstance() throws CommandInputException {
+    void createHireCommandWithArgumentsReturnsHireEmployeeCommandInstance() throws CommandInputException {
         Command command = CommandFactory.create("hire 5");
         assertInstanceOf(HireEmployeeCommand.class, command,
                 "Expected HireEmployeeCommand instance with argument.");
@@ -71,7 +71,7 @@ class CommandFactoryTest {
      * This tests the factory's error handling for unrecognized commands.
      */
     @Test
-    void create_InvalidInput_ThrowsCommandInputException() {
+    void createInvalidInputThrowsCommandInputException() {
         assertThrows(CommandInputException.class, () -> CommandFactory.create("invalidCommand"),
                 "Expected CommandInputException for invalid command.");
     }
@@ -81,7 +81,7 @@ class CommandFactoryTest {
      * This tests the factory's error handling for empty command inputs.
      */
     @Test
-    void create_EmptyInput_ThrowsCommandInputException() {
+    void createEmptyInputThrowsCommandInputException() {
         assertThrows(CommandInputException.class, () -> CommandFactory.create(""),
                 "Expected CommandInputException for empty input.");
     }
