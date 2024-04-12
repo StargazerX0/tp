@@ -36,7 +36,7 @@ public class ResponseManager {
             "fire <number> - to fire employee\n" +
             "raise <number> - to raise salary\n" +
             "lower <number> - to lower salary\n";
-    public static final int TOTAL_ROUND = 20;
+    private static final int TOTAL_ROUND = 20;
 
     public static void printBoard(String boardInfo) {
         indentPrint(boardInfo + "\n");

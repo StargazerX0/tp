@@ -8,7 +8,12 @@ import ui.ResponseManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ui.ResponseManager.*;
+import static ui.ResponseManager.indentPrint;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.YELLOW;
+import static ui.ResponseManager.RESET;
+import static ui.ResponseManager.INDENTATION;
 
 
 /**

@@ -51,19 +51,6 @@ public class PlayerProfile {
         this.company = new Company();
     }
 
-
-//    public PlayerProfile(
-//        String name, String occupation, int health, int asset,
-//        int currentRound, boolean isAdvancedPlayer, Company company) {
-//        this.name = name;
-//        this.health = new Health(health);
-//        this.asset = new Asset(asset);
-//        this.occupation = occupation;
-//        this.currentRound = currentRound;
-//        this.isAdvancedPlayer = isAdvancedPlayer;
-//        this.company = company;
-//    }
-
     public PlayerProfile(
         String name, String occupation, int health, Asset asset,
         int currentRound, int actionCount, boolean isAdvancedPlayer, Company company) {
