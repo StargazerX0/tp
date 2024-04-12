@@ -18,6 +18,6 @@ public class RestCommand implements Command {
     }
 
     public boolean canGenerateEvent() {
-        return false;
+        return true;
     }
 }

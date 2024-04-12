@@ -1,6 +1,7 @@
 package player;
 
 import company.Company;
+import static ui.ResponseManager.indentPrint;
 
 /**
  * Represents a player profile in the game, including personal attributes, health, assets,
@@ -131,9 +132,16 @@ public class PlayerProfile {
 
     private void calculateRoundProfit() {
         if (isAdvancedPlayer()) {
-            company.updatePlayer(asset);
-            asset.bondReturn();
-            asset.cryptoReturn();
+            int companyProfit = company.profitPerRound();
+            int bondReturn = asset.bondReturn();
+            int cryptoReturn = asset.cryptoReturn();
+
+            String companyEarned = companyProfit == 0 ? "" : "Your company has earned $" + companyProfit + "\n";
+            String bondEarned = bondReturn == 0 ? "" : "Your bond returned you $" + bondReturn + "\n";
+            String crytoEarned = cryptoReturn == 0 ? "" : "Your crypto returned you $" + cryptoReturn + "\n";
+
+            indentPrint(companyEarned + bondEarned + crytoEarned);
+            this.asset.addAsset(companyProfit + bondReturn + cryptoReturn);
         }
     }
 

@@ -72,8 +72,6 @@ public class CryptoCurrencyStorage {
 
                         System.out.println("You've successfully invested " + response +
                                 " USD in " + current.returnCryptoName() + ".");
-                        System.out.println("Market changes resulted in a " + (changeAmount >= 0 ? "gain" : "loss") +
-                                " of $" + Math.abs(changeAmount) + ".");
                         completeTrade = true;
                     } else {
                         ResponseManager.indentPrint("Invalid input or insufficient funds.\n");

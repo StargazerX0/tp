@@ -144,8 +144,6 @@ public class Asset {
             int count = stockCount.get(index);
             int profit = s.investmentGain(count);
             addAsset(count * s.returnStockPrice() + profit);
-            ResponseManager.indentPrint("$" + (count * s.returnStockPrice()
-                    + profit) + " returned to your account. \n");
         }
         stockList.clear();
         stockCount.clear();
@@ -171,21 +169,20 @@ public class Asset {
         }
     }
 
-    public void bondReturn() {
+    public int bondReturn() {
         if (bondList.isEmpty()) {
-            return;
+            return 0;
         }
+        int totalReturn = 0;
         for (Bond b : bondList) {
             int index = bondList.indexOf(b);
             int count = bondCount.get(index);
             int bondPrice = b.returnBondPrice();
             int totalPrincipal = bondPrice * count;
             double totalInterest = totalPrincipal * b.returnBondInterestRate() / 100.0;
-            int totalReturn = (int) (totalInterest);
-            ResponseManager.indentPrint("$" + totalReturn + " returned to your account from "
-                    + b.returnBondName() + " in this round. \n");
-            addAsset(totalReturn);
+            totalReturn += (int) (totalInterest);
         }
+        return totalReturn;
     }
 
     public void addCrypto(CryptoCurrency crypto, int dollarsInvested) {
@@ -200,31 +197,27 @@ public class Asset {
         }
     }
 
-    public void cryptoReturn() {
+    public int cryptoReturn() {
         if (cryptoList.isEmpty()) {
-            return;
+            return 0;
         }
-        int totalReturn = 0;
-
-        for (int i = 0; i < cryptoList.size(); i++) {
-
-            CryptoCurrency crypto;
-            crypto = cryptoList.get(i);
-            int quantity = cryptoCount.get(i);
-            int investmentReturn = quantity * crypto.returnCurrentPrice();
-            ResponseManager.indentPrint(crypto.returnCryptoName() + " provides " +
-                    "$" + investmentReturn + " to your account in this round.\n");
-            totalReturn = investmentReturn;
-        }
-        addAsset(totalReturn);
-
         if (getRandomNumber(0, 100) < riskFactor) {
             ResponseManager.indentPrint("Unfortunately, Government intervention causes all of your " +
                     "cryptos to be listed as illegal items\n" +
                     "All of your cryptos have been confiscated :(\n");
             cryptoList.clear();
             cryptoCount.clear();
+            return 0;
         }
+        int totalReturn = 0;
+        for (int i = 0; i < cryptoList.size(); i++) {
+            CryptoCurrency crypto;
+            crypto = cryptoList.get(i);
+            int quantity = cryptoCount.get(i);
+            int investmentReturn = quantity * crypto.returnCurrentPrice();
+            totalReturn += investmentReturn;
+        }
+        return totalReturn;
     }
 
     public void deductAsset(int amount) {
