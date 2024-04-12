@@ -52,6 +52,7 @@ https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle
 # Other contributions:
  Spearheaded weekly team meetings, fostering collaboration and alignment on project milestones.
  Authored extensive JavaDoc documentation, elevating code clarity and easing contributor onboarding.
+ Add Mockito for effective code testing
 
 # UG contributions:
 
