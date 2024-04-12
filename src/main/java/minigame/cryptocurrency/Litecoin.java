@@ -12,7 +12,7 @@ public class Litecoin implements CryptoCurrency {
                     "and improved storage efficiency than the leading math-based currency. \n" +
                     "It provides return to you every round, but it might be listed as illegal items. \n";
     private static final String NAME = "Litecoin";
-    private static final int RISK_FACTOR = 29;
+    private static final int RISK_FACTOR = 49;
     private static final String HIDDEN_INFO =
             "As digital currencies gain acceptance, Litecoin is positioned to benefit as a lighter, \n" +
                     "more agile alternative to Bitcoin, " +

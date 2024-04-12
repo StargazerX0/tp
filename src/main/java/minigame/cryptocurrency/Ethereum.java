@@ -9,7 +9,7 @@ public class Ethereum implements CryptoCurrency {
             "Ethereum is a decentralized, open-source blockchain system that features its own \n" +
                     "cryptocurrency, Ether. ETH works as a platform for numerous other cryptocurrencies, \n" +
                     "as well as for the execution of decentralized smart contracts. \n";
-    private static final int RISK_FACTOR = 11;
+    private static final int RISK_FACTOR = 51;
     private static final String NAME = "Ethereum";
     private static final String HIDDEN_INFO =
             "With the upcoming transition to Ethereum 2.0 and the shift to proof-of-stake, \n" +

@@ -17,7 +17,7 @@ public class Bitcoin implements CryptoCurrency {
                     "It offers a peer-to-peer system without a central authority, \n" +
                     "making it a revolutionary approach to currency. \n" +
                     "It provides return to you every round, but it might be listed as illegal items.\n";
-    private static final int RISK_FACTOR = 15;
+    private static final int RISK_FACTOR = 55;
     private static final String NAME = "Bitcoin";
     private static final String HIDDEN_INFO =
             "Recent market trends and increasing adoption by \n" +

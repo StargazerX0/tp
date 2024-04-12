@@ -10,7 +10,7 @@ public class Cardano implements CryptoCurrency {
                     "offering tools and technologies required to create possibility for the many, \n" +
                     "as well as the few, and bring about positive global change. \n" +
                     "It provides return to you every round, but it might be listed as illegal items. \n";
-    private static final int RISK_FACTOR = 19;
+    private static final int RISK_FACTOR = 59;
     private static final String NAME = "Cardano";
     private static final String HIDDEN_INFO =
             "With its unique dual-layer architecture and focus on sustainability, scalability, and transparency, \n" +

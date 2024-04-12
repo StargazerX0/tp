@@ -1,8 +1,5 @@
 package company;
 
-import player.Asset;
-import ui.ResponseManager;
-
 /**
  * Represents a company within the EconoCraft game, handling operations such as hiring, firing employees,
  * and financial management including salaries and revenue.
@@ -99,17 +96,7 @@ public class Company {
         employeeSalary += amount;
     }
 
-    /**
-     * Updates the player's asset based on the company's profit per round.
-     *
-     * @param asset The player's asset to be updated.
-     */
-    public void updatePlayer(Asset asset) {
-        ResponseManager.printCompanyProfit(profitPerRound());
-        asset.addAsset(profitPerRound());
-    }
-
-    private int profitPerRound() {
+    public int profitPerRound() {
         return receiveRevenue() - paySalaries();
     }
 
