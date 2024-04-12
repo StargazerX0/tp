@@ -106,20 +106,18 @@ public class EconoCraftLogic {
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
-        int actionCount = 0;
 
         while (!exitFlag) {
-            inGameReminder(actionCount);
+            inGameReminder(playerProfile.getActionCount());
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
                 command.execute(playerProfile);
 
                 exitFlag = command.isExit();
                 if (command.canGenerateEvent()) {
-                    actionCount++;
+                    playerProfile.nextAction();
                 }
-                if (actionCount >= playerProfile.actionPerRound()) {
-                    actionCount = 0;
+                if (!playerProfile.canAct()) {
                     EventGenerator.getRandomEvent()
                             .triggerEvent(playerProfile);
                     playerProfile.nextRound();

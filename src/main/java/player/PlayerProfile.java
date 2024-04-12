@@ -14,6 +14,7 @@ public class PlayerProfile {
     private final Health health;
     private final Asset asset;
     private int currentRound;
+    private int actionCount;
     private boolean isAdvancedPlayer;
     private final Company company;
 
@@ -23,6 +24,7 @@ public class PlayerProfile {
         this.asset = new Asset();
         this.occupation = occupation;
         this.currentRound = 1;
+        this.actionCount = 0;
         this.isAdvancedPlayer = false;
         this.company = new Company();
     }
@@ -50,26 +52,27 @@ public class PlayerProfile {
     }
 
 
-    public PlayerProfile(
-        String name, String occupation, int health, int asset,
-        int currentRound, boolean isAdvancedPlayer, Company company) {
-        this.name = name;
-        this.health = new Health(health);
-        this.asset = new Asset(asset);
-        this.occupation = occupation;
-        this.currentRound = currentRound;
-        this.isAdvancedPlayer = isAdvancedPlayer;
-        this.company = company;
-    }
+//    public PlayerProfile(
+//        String name, String occupation, int health, int asset,
+//        int currentRound, boolean isAdvancedPlayer, Company company) {
+//        this.name = name;
+//        this.health = new Health(health);
+//        this.asset = new Asset(asset);
+//        this.occupation = occupation;
+//        this.currentRound = currentRound;
+//        this.isAdvancedPlayer = isAdvancedPlayer;
+//        this.company = company;
+//    }
 
     public PlayerProfile(
         String name, String occupation, int health, Asset asset,
-        int currentRound, boolean isAdvancedPlayer, Company company) {
+        int currentRound, int actionCount, boolean isAdvancedPlayer, Company company) {
         this.name = name;
         this.health = new Health(health);
         this.asset = asset;
         this.occupation = occupation;
         this.currentRound = currentRound;
+        this.actionCount = actionCount;
         this.isAdvancedPlayer = isAdvancedPlayer;
         this.company = company;
     }
@@ -108,6 +111,10 @@ public class PlayerProfile {
 
     public int getCurrentRound() {
         return currentRound;
+    }
+
+    public int getActionCount() {
+        return actionCount;
     }
 
     public void upgrade() {
@@ -169,6 +176,18 @@ public class PlayerProfile {
         currentRound++;
     }
 
+    public void nextAction() {
+        actionCount++;
+    }
+
+    public boolean canAct() {
+        if (actionCount < actionPerRound()) {
+            return true;
+        }
+        actionCount = 0;
+        return false;
+    }
+
     public boolean isFinished() {
         return currentRound >= ROUND_LIMIT || asset.isBankrupt() || asset.isAchieved();
     }
@@ -202,9 +221,9 @@ public class PlayerProfile {
 
     @Override
     public String toString() {
-        return "Your name is: " + name + '\n'
-                + "occupation: " + occupation + '\n'
+        return "Your name is: " + name + "\n"
+                + "occupation: " + occupation + "\n"
                 + "current health: " + health + "\n"
-                + "current money: " + asset + "\n";
+                + "current money: " + asset;
     }
 }

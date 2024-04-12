@@ -6,6 +6,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import ui.ResponseManager;
 import static ui.ResponseManager.RED;
@@ -92,8 +93,9 @@ public class TypingGame implements MiniGame {
         int normalAccuracy = compareOneToOne(textToCheck);
         int userAgainstText = compareUserToActual(textToCheck);
         int textAgainstUser = compareActualToUser(textToCheck);
-        int correctCharacters = Math.max(userAgainstText, textAgainstUser);
-        correctCharacters = Math.max(correctCharacters, normalAccuracy);
+        int correctCharacters =
+                Stream.of(normalAccuracy, userAgainstText, textAgainstUser)
+                        .reduce(0, (x, y) -> Math.max(x, y));
 
         assert correctCharacters <= textToType.length() :
                 "Correct characters should not exceed the length of the text";

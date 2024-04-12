@@ -18,6 +18,7 @@ public class Serializer {
             .append(" \"occupation\": \"").append(playerProfile.getOccupation()).append("\",\n")
             .append(" \"health\": ").append(playerProfile.getHealth()).append(",\n")
             .append(" \"currentRound\": ").append(playerProfile.getCurrentRound()).append(",\n")
+            .append(" \"actionCount\": ").append(playerProfile.getActionCount()).append(",\n")
             .append(" \"isAdvancedPlayer\": ").append(playerProfile.isAdvancedPlayer()).append(",\n")
             .append(" \"company\": ").append(serializeCompany(playerProfile.getCompany())).append(",\n")
             .append(" \"asset\": ").append(serializeAssets(playerProfile.getAsset())).append("\n")
