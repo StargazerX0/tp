@@ -57,16 +57,19 @@ public class Litecoin implements CryptoCurrency {
 
     @Override
     public String returnCryptoName() {
+
         return NAME;
     }
 
     @Override
     public int returnCurrentPrice() {
+
         return currentPrice;
     }
 
     @Override
     public int getRiskFactor() {
+
         return RISK_FACTOR;
     }
 }

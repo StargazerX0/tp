@@ -28,7 +28,7 @@ public class Cardano implements CryptoCurrency {
             + "Crypto Name: " + NAME + "\n"
             + "Current Price: " + currentPrice + " USD" + "\n");
 
-        if (playerProfile.getOccupation().equals("Artificial intelligence")) {
+        if (playerProfile.getOccupation().equals(" Artificial intelligence ")) {
             ResponseManager.indentPrint(HIDDEN_INFO + "\n");
         }
     }
@@ -54,15 +54,18 @@ public class Cardano implements CryptoCurrency {
 
     @Override
     public String returnCryptoName() {
+
         return NAME;
     }
 
     @Override
     public int returnCurrentPrice() {
+
         return currentPrice;
     }
     @Override
     public int getRiskFactor() {
+
         return RISK_FACTOR;
     }
 }
