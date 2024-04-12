@@ -6,7 +6,7 @@ EconCraft is a single player text adventure game where a player takes on the rol
 
 Given below are my contributions to the project.
 
-* **New Feature**: Implemented Save and Load functionality for player profiles, including detailed asset management of stock, bond and crypto packages.
+* **New Feature**: Implemented the Save and Load functionality for player profiles, including detailed asset management of stock, bond and crypto packages.
   * What it does: This feature allows the user to save their current game state, including detailed financial assets (stocks, bonds, and cryptocurrencies), and load it back at a later time. This functionality enhances the user experience by providing the ability to preserve game progress and resume from the exact state left off.
   * Justification: This feature is crucial for the product as it provides a mechanism for persisting user progress and enables long-term engagement with the game. Users can take breaks and return to their game without losing their progress, which is essential for user retention and satisfaction.
   * Highlights: Implementing this feature required a thorough understanding of object serialization and file management in Java. It involved designing the JSON structure for saving complex objects and ensuring backward compatibility for future extensions of the game model. The challenge was to efficiently serialize and deserialize game objects, including hierarchical relationships like assets containing stocks, bonds, and cryptocurrencies, while maintaining the integrity and security of the data.
