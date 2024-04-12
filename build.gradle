@@ -15,6 +15,9 @@ dependencies {
 
     // Add the org.json JSON library dependency
     implementation 'org.json:json:20210307'
+
+    // Add Mockito core library for unit test mocking
+    testImplementation 'org.mockito:mockito-core:3.9.0' // <-- Mockito dependency added here
 }
 
 test {

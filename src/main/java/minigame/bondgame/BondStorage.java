@@ -8,22 +8,29 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Manages the available bonds and handles player interactions for buying bonds in the EconoCraft game.
- * This class is responsible for displaying bond options to the player and processing their choices.
+ * Handles the storage and interaction of bond options in the EconoCraft game, providing functionalities for
+ * the player to view and purchase available bonds. It maintains a list of bonds that can be bought by players,
+ * processes player inputs for buying bonds, and updates player profiles based on the transactions.
  */
 public class BondStorage {
     private final List<Bond> bondsAvailable = new ArrayList<>();
     private boolean completeTrade = false;
     private final PlayerProfile playerProfile;
 
+    /**
+     * Constructs a BondStorage instance associated with a given player profile, initializing the list of
+     * available bonds for purchase.
+     *
+     * @param playerProfile The profile of the player engaging in bond transactions.
+     */
     public BondStorage(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
         setUp();
     }
 
     /**
-     * Initializes the list of available bonds. This method is called upon the creation
-     * of the BondStorage instance and populates the list with various types of bonds.
+     * Populates the list of available bonds. This setup method is called upon instance creation,
+     * filling the internal storage with predefined bond types.
      */
     private void setUp() {
         bondsAvailable.add(new GovernmentStabilityBond());
@@ -33,10 +40,11 @@ public class BondStorage {
     }
 
     /**
-     * Executes the bond-buying process, allowing the player to select and purchase bonds.
-     * This method displays available bonds and handles the player's input to complete the purchase.
+     * Manages the interactive bond-buying process. It displays the available bonds to the player,
+     * processes their selections, and updates their profile upon successful transactions. The method
+     * continues to run until the player decides to exit or completes a purchase.
      *
-     * @throws GameException if there is an issue during the bond-buying process.
+     * @throws GameException if an invalid input is provided or if there's an issue completing the purchase.
      */
     public void play() throws GameException {
         Scanner scanner = new Scanner(System.in);
