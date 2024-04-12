@@ -11,7 +11,9 @@ import java.util.List;
 import static ui.ResponseManager.indentPrint;
 import static ui.ResponseManager.RED;
 import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.YELLOW;
 import static ui.ResponseManager.RESET;
+import static ui.ResponseManager.INDENTATION;
 
 
 /**
@@ -247,14 +249,6 @@ public class Asset {
         return totalAsset;
     }
 
-    public boolean bondCheck() {
-        return bondList.isEmpty();
-    }
-
-    public boolean cryptoCheck() {
-        return cryptoList.isEmpty();
-    }
-
     public boolean moreThan(int amount) {
         return totalAsset > amount;
     }
@@ -277,7 +271,11 @@ public class Asset {
             output += cryptoList.get(i).returnCryptoName() + " current crypto count : "
                     + cryptoCount.get(i) + "\n";
         }
-        return String.format("%d, you need %d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
-                + (output.isEmpty() ? output : "\n" + output);
+        String investmentInfo = output.isEmpty() ? output :
+                "\n" + INDENTATION + "\n" +
+                YELLOW + "Your current investments are: \n" + RESET + output;
+
+        return String.format("$%d, you need $%d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
+                + investmentInfo;
     }
 }

@@ -47,13 +47,14 @@ public class Decoder {
             String occupation = jsonObj.getString("occupation");
             int health = jsonObj.getInt("health");
             int currentRound = jsonObj.getInt("currentRound");
+            int actionCount = jsonObj.getInt("actionCount");
             boolean isAdvancedPlayer = jsonObj.getBoolean("isAdvancedPlayer");
 
             Asset asset = decodeAsset(jsonObj.getJSONObject("asset").toString());
             Company company = decodeCompany(jsonObj.getJSONObject("company").toString());
 
             return new PlayerProfile(name, occupation, health, asset,
-                currentRound, isAdvancedPlayer, company);
+                currentRound, actionCount, isAdvancedPlayer, company);
         } catch (Exception e) {
             throw new LoadProfileException("Error decoding player profile.\n");
         }

@@ -37,12 +37,12 @@ public class Health {
             return;
         }
         healthAmount -= amount;
+        indentPrint("Your have lost " + amount + " health.\n" +
+                "Your current health is: " + healthAmount + "\n");
         if (!isHealthy()) {
             indentPrint(RED + "Your health is below 50!\n" + RESET +
                     "Please take care of yourself!\n");
         }
-        indentPrint("Your have lost " + amount + " health.\n" +
-                "Your current health is: " + healthAmount + "\n");
     }
 
     public boolean isHealthy() {
@@ -58,8 +58,8 @@ public class Health {
         int bar = totalBar * healthAmount / 100;
         String healthBar = "#".repeat(bar) +
                 " ".repeat(totalBar - bar);
-        String color = healthAmount >= 30 ? GREEN : RED;
+        String color = healthAmount > 30 ? GREEN : RED;
 
-        return "|" + color + healthBar + RESET +"|" + " " + healthAmount + "/100";
+        return "|" + color + healthBar + RESET +"|" + " " + healthAmount + "%";
     }
 }

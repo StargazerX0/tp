@@ -44,9 +44,9 @@ public class DecisionEvent extends RandomEvent {
     public void triggerEvent(PlayerProfile playerProfile) {
         int range = playerProfile.isAdvancedPlayer() ?
                 DECISIONS.length : DECISIONS.length - 3;
-        int index = new Random().nextInt(range);
+        int eventIndex = new Random().nextInt(range);
 
-        switch (index) {
+        switch (eventIndex) {
         case 0:
             presentProject(playerProfile);
             break;

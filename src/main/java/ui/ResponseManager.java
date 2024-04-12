@@ -7,10 +7,10 @@ public class ResponseManager {
     public static final String GREEN = "\u001B[32m";
     public static final String YELLOW = "\u001B[33m";
     public static final String RESET = "\u001B[0m";
+    public static final String INDENTATION =
+            "===".repeat(20);
     private static final String INITIALIZATION_MESSAGE = "Initializing...\n"
         + "Enter your name:\n";
-    private static final String INDENTATION =
-            "===".repeat(20);
     private static final String JOB_SELECT_MSG = "Choose your job type:\n" +
             "for Robotics, enter '/r'\n" +
             "for Semi-conductor industry, enter '/s'\n" +
@@ -36,6 +36,7 @@ public class ResponseManager {
             "fire <number> - to fire employee\n" +
             "raise <number> - to raise salary\n" +
             "lower <number> - to lower salary\n";
+    private static final int TOTAL_ROUND = 20;
 
     public static void printBoard(String boardInfo) {
         indentPrint(boardInfo + "\n");
@@ -93,8 +94,10 @@ public class ResponseManager {
      * @param currentRound The current round the player is in.
      */
     public static void printCurrentRound(int currentRound) {
+        int roundLeft = TOTAL_ROUND - currentRound;
+        String color = roundLeft > 5 ? GREEN : roundLeft > 3 ? YELLOW : RED;
         System.out.println("Current round: " + currentRound + "\n" +
-                "you have " + (20 - currentRound) + " rounds left");
+                "you have " + color + roundLeft + RESET + " rounds left before the game ends!\n");
         System.out.println(INDENTATION);
     }
 
