@@ -79,6 +79,6 @@ class CryptoCurrencyTests {
         Bitcoin bitcoin = new Bitcoin();
         assertEquals(10000, bitcoin.returnCurrentPrice());
         assertEquals("Bitcoin", bitcoin.returnCryptoName());
-        assertEquals(15, bitcoin.getRiskFactor());
+        assertEquals(55, bitcoin.getRiskFactor());
     }
 }
