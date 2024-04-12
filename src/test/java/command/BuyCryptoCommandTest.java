@@ -1,6 +1,5 @@
 package command;
 
-import exception.GameException;
 import exception.LockedFeatureException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,7 @@ class BuyCryptoCommandTest {
      * buy cryptocurrency.
      */
     @Test
-    void execute_NonAdvancedPlayer_ThrowsLockedFeatureException() {
+    void executeNonAdvancedPlayerThrowsLockedFeatureException() {
         // Simulate a non-advanced player scenario.
         when(mockProfile.isAdvancedPlayer()).thenReturn(false);
         // Verify that executing the command under these conditions throws the expected exception.
@@ -55,7 +54,7 @@ class BuyCryptoCommandTest {
      * indicating that this command does not signal the end of the game.
      */
     @Test
-    void isExit_Always_ReturnsFalse() {
+    void isExitAlwaysReturnsFalse() {
         // Verify that isExit always returns false for the BuyCryptoCommand.
         assertFalse(buyCryptoCommand.isExit(),
                 "The isExit method should always return false, " +
@@ -67,7 +66,7 @@ class BuyCryptoCommandTest {
      * suggesting that executing this command may trigger an in-game event.
      */
     @Test
-    void canGenerateEvent_Always_ReturnsTrue() {
+    void canGenerateEventAlwaysReturnsTrue() {
         // Verify that canGenerateEvent always returns true for the BuyCryptoCommand.
         assertTrue(buyCryptoCommand.canGenerateEvent(),
                 "The canGenerateEvent method should always return true, " +
