@@ -5,11 +5,17 @@ import exception.LockedFeatureException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import player.PlayerProfile;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Tests for the {@link BuyCryptoCommand} class.
+ * Unit tests for the {@link BuyCryptoCommand} class.
+ * This class tests the behavior of the BuyCryptoCommand, especially focusing on its
+ * restrictions, exit condition, and event generation capability.
  */
 class BuyCryptoCommandTest {
 
@@ -17,37 +23,54 @@ class BuyCryptoCommandTest {
     private BuyCryptoCommand buyCryptoCommand;
 
     /**
-     * Sets up the test environment before each test method.
+     * Prepares the testing environment by initializing mock objects and the test subject
+     * before each test execution.
      */
     @BeforeEach
     void setUp() {
+        // Create a mock PlayerProfile for use in tests to simulate different player conditions.
         mockProfile = mock(PlayerProfile.class);
+        // Instantiate the BuyCryptoCommand to be tested.
         buyCryptoCommand = new BuyCryptoCommand();
     }
 
-
     /**
-     * Tests that the execute method throws a LockedFeatureException when the player is not an advanced player.
+     * Verifies that attempting to execute the BuyCryptoCommand as a non-advanced player
+     * results in a LockedFeatureException, enforcing the rule that only advanced players can
+     * buy cryptocurrency.
      */
     @Test
     void execute_NonAdvancedPlayer_ThrowsLockedFeatureException() {
+        // Simulate a non-advanced player scenario.
         when(mockProfile.isAdvancedPlayer()).thenReturn(false);
-        assertThrows(LockedFeatureException.class, () -> buyCryptoCommand.execute(mockProfile));
+        // Verify that executing the command under these conditions throws the expected exception.
+        assertThrows(LockedFeatureException.class,
+                () -> buyCryptoCommand.execute(mockProfile),
+                "Attempting to buy cryptocurrency as " +
+                        "a non-advanced player should throw a LockedFeatureException.");
     }
 
     /**
-     * Tests that the isExit method of the BuyCryptoCommand always returns false.
+     * Ensures that the {@code isExit} method of BuyCryptoCommand consistently returns false,
+     * indicating that this command does not signal the end of the game.
      */
     @Test
     void isExit_Always_ReturnsFalse() {
-        assertFalse(buyCryptoCommand.isExit());
+        // Verify that isExit always returns false for the BuyCryptoCommand.
+        assertFalse(buyCryptoCommand.isExit(),
+                "The isExit method should always return false, " +
+                        "indicating that the BuyCryptoCommand does not terminate the game session.");
     }
 
     /**
-     * Tests that the canGenerateEvent method of the BuyCryptoCommand always returns true.
+     * Tests that the {@code canGenerateEvent} method of the BuyCryptoCommand always returns true,
+     * suggesting that executing this command may trigger an in-game event.
      */
     @Test
     void canGenerateEvent_Always_ReturnsTrue() {
-        assertTrue(buyCryptoCommand.canGenerateEvent());
+        // Verify that canGenerateEvent always returns true for the BuyCryptoCommand.
+        assertTrue(buyCryptoCommand.canGenerateEvent(),
+                "The canGenerateEvent method should always return true, " +
+                        "indicating the possibility of an event being generated upon execution.");
     }
 }

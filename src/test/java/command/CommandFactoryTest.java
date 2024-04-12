@@ -2,38 +2,63 @@ package command;
 
 import exception.CommandInputException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Tests for verifying the functionality of the CommandFactory.
+ * Unit tests for {@link CommandFactory} class to ensure it correctly creates instances
+ * of different {@link Command} implementations based on the provided string input.
  */
 class CommandFactoryTest {
 
+    /**
+     * Verifies that the CommandFactory creates an instance of WorkCommand when the "work" command is specified.
+     *
+     * @throws CommandInputException if the input command is invalid.
+     */
     @Test
     void create_WorkCommand_ReturnsWorkCommandInstance() throws CommandInputException {
         assertInstanceOf(WorkCommand.class, CommandFactory.create("work"), "Expected WorkCommand instance.");
     }
 
+    /**
+     * Verifies that the CommandFactory creates an instance of RestCommand when the "rest" command is specified.
+     *
+     * @throws CommandInputException if the input command is invalid.
+     */
     @Test
     void create_RestCommand_ReturnsRestCommandInstance() throws CommandInputException {
         assertInstanceOf(RestCommand.class, CommandFactory.create("rest"), "Expected RestCommand instance.");
     }
 
-    // Example test for ExerciseCommand
+    /**
+     * Verifies that the CommandFactory creates an instance of ExerciseCommand when the "exercise" command is specified.
+     *
+     * @throws CommandInputException if the input command is invalid.
+     */
     @Test
     void create_ExerciseCommand_ReturnsExerciseCommandInstance() throws CommandInputException {
         assertInstanceOf(ExerciseCommand.class, CommandFactory.create("exercise"),
                 "Expected ExerciseCommand instance.");
     }
 
-    // Example test for CheckStatusCommand
+    /**
+     * Verifies that the CommandFactory creates an instance of CheckStatusCommand when the "status" command is specified
+     * @throws CommandInputException if the input command is invalid.
+     */
     @Test
     void create_StatusCommand_ReturnsCheckStatusCommandInstance() throws CommandInputException {
         assertInstanceOf(CheckStatusCommand.class, CommandFactory.create("status"),
                 "Expected CheckStatusCommand instance.");
     }
 
-    // Test for HireEmployeeCommand with arguments
+    /**
+     * Verifies that the CommandFactory creates an instance of HireEmployeeCommand when the "hire" command
+     * with arguments is specified.
+     * This tests the factory's ability to handle commands that require additional arguments.
+     *
+     * @throws CommandInputException if the input command is invalid.
+     */
     @Test
     void create_HireCommandWithArguments_ReturnsHireEmployeeCommandInstance() throws CommandInputException {
         Command command = CommandFactory.create("hire 5");
@@ -41,19 +66,25 @@ class CommandFactoryTest {
                 "Expected HireEmployeeCommand instance with argument.");
     }
 
-    // Test for invalid input
+    /**
+     * Verifies that the CommandFactory throws a CommandInputException when an invalid command string is provided.
+     * This tests the factory's error handling for unrecognized commands.
+     */
     @Test
     void create_InvalidInput_ThrowsCommandInputException() {
         assertThrows(CommandInputException.class, () -> CommandFactory.create("invalidCommand"),
                 "Expected CommandInputException for invalid command.");
     }
 
-    // Test for empty input
+    /**
+     * Verifies that the CommandFactory throws a CommandInputException when an empty command string is provided.
+     * This tests the factory's error handling for empty command inputs.
+     */
     @Test
     void create_EmptyInput_ThrowsCommandInputException() {
         assertThrows(CommandInputException.class, () -> CommandFactory.create(""),
                 "Expected CommandInputException for empty input.");
     }
-
 }
+
 
