@@ -12,23 +12,7 @@ into future business hurdles.
 https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23
 
 # Enhancement implemented:
- New Feature 1:Command Interface for Dynamic Interactions
- What it does:
- Implemented a Command Interface, enabling players to execute diverse business strategies through commands like SellStockCommand. This feature dynamically impacts the game's economy and player decisions.
- Justification:
- Crucially enhances game depth and realism, simulating real-world business challenges and decision-making within a gaming framework.
- Highlights:
- The development involved complex object-oriented design, ensuring seamless integration and scalability for future commands. It was a sophisticated endeavor that significantly improved game interactivity.
-
- New Feature 2:Game Initialization and Dynamic State Management
- What it does:
- Developed a system for game initialization and state management, allowing for customized player profiles and responsive game progression based on player actions.
- Justification:
- This feature is vital for creating a personalized gaming experience that mirrors the unpredictability of managing a business, significantly enhancing player engagement.
- Highlights:
- Creating this system required overcoming technical challenges in game design and data management, establishing a robust framework for an evolving gameplay environment.
-
- New Feature 3:Bond Investment Mechanism
+ New Feature 1:Bond Investment Mechanism
  What it does:
  Introduced a comprehensive Bond Investment Mechanism, including a Bond Interface and a variety of bond types like the Corporate Growth Bond, enabling players to invest in bonds as part of their financial strategy in EconoCraft. Players can view bond details, calculate potential earnings, and make purchases based on their game progress and financial status.
  Justification:
@@ -38,7 +22,7 @@ https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle
  Credits:
  The concept of bond investment in gaming was inspired by real-world financial markets, adapted to fit the educational and entertainment objectives of EconoCraft. The design and development of the bond system are original contributions, tailored to enhance the game's economic realism and player engagement.
 
- New Feature 4:Cryptocurrency Trading
+ New Feature 2:Cryptocurrency Trading
  What it does:
  Implemented a Cryptocurrency Trading feature, including a dynamic interface for trading virtual currencies like Bitcoin. Players engage with market simulations, making investments based on in-game economic conditions.
  Justification:
@@ -48,11 +32,11 @@ https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle
  Credits:
  Inspired by actual cryptocurrency markets, this feature's unique implementation was devised to complement EconoCraft's economic model, offering an educational glimpse into crypto trading.
 
- New Feature 5:Asset Class Flexibility
+ New Feature 3:Asset Class Flexibility
  What it does:
  Enhanced the Asset class to dynamically manage financial assets, introducing real-time updates based on market simulations.
 
- New Feature 6:CommandType Enum Expansion
+ New Feature 4:CommandType Enum Expansion
  What it does:
  Updated the CommandType enum to include new player actions, refining user interaction with expanded game functionalities.
 
