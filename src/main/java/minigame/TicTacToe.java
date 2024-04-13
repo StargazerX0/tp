@@ -137,7 +137,7 @@ public class TicTacToe implements MiniGame {
             printBoard();
             checkGameOver();
         } else {
-            throw new InvalidMoveException("Move at (" + (row + 1) + ", " + (column + 1) + ") is invalid.");
+            throw new InvalidMoveException("Move at (" + (row + 1) + ", " + (column + 1) + ") is invalid.\n");
         }
     }
 
@@ -190,7 +190,8 @@ public class TicTacToe implements MiniGame {
      */
     private void placeAIMark() {
         Random rand = new Random();
-        int row, column;
+        int row;
+        int column;
         do {
             row = rand.nextInt(3);
             column = rand.nextInt(3);
