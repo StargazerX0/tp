@@ -55,5 +55,7 @@ https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle
  Add Mockito for effective code testing
 
 # UG contributions:
+contributed to the user guide by documenting the bond functionality and cryptocurrency functionality, as well as providing a summary of commands related to these features.
 
 # DG contributions:
+contributed to the developer guide by documenting the bond implementation and cryptocurrency implementation, as well as relevant formatting and diagrams.
