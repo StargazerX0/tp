@@ -15,7 +15,7 @@ import java.io.IOException;
  * Handles necessary file and directory operations, including error management.
  */
 public class Saver {
-    private static final String FILE_PATH = "data/PlayerProfile.json";
+    private static String FILE_PATH = "data/PlayerProfile.json";
 
     /**
      * Saves the specified player profile to a JSON file at a predefined location.
@@ -39,6 +39,16 @@ public class Saver {
         } catch (IOException e) {
             throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
         }
+    }
+
+    /**
+     * Sets the file path used for saving and deleting the player profile.
+     * This is primarily used for testing to redirect operations to a temporary directory.
+     *
+     * @param newPath The new file path to be used.
+     */
+    public static void setFilePath(String newPath) {
+        FILE_PATH = newPath;
     }
 
     /**

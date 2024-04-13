@@ -13,7 +13,7 @@ import java.io.IOException;
  * It handles file reading operations, including checks for file existence and directory validation.
  */
 public class Loader {
-    private static final String FILE_PATH = "data/PlayerProfile.json";
+    private static String FILE_PATH = "data/PlayerProfile.json";
 
     /**
      * Loads a player profile from a JSON file. Ensures that the directory and file exist
@@ -32,6 +32,16 @@ public class Loader {
 
         String json = readJsonFromFile(file);
         return Decoder.decodePlayerProfile(json);
+    }
+
+    /**
+     * Sets the file path used for saving and deleting the player profile.
+     * This is primarily used for testing to redirect operations to a temporary directory.
+     *
+     * @param newPath The new file path to be used.
+     */
+    public static void setFilePath(String newPath) {
+        FILE_PATH = newPath;
     }
 
     /**
