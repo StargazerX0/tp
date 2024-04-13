@@ -16,7 +16,7 @@ public class Hangman implements MiniGame {
      * A collection of words used in the Hangman game. These words are related to software engineering concepts in
      * CS2113.
      */
-    private static final String[] WORDS = {
+    protected static final String[] WORDS = {
         "java", "computer", "program", "keyboard", "mouse",
         "algorithm", "software", "hardware", "network", "database",
         "security", "coding", "development", "design", "architecture",
@@ -148,5 +148,9 @@ public class Hangman implements MiniGame {
         } else if (round == 5) {
             ResponseManager.indentPrint("Game completed! You finished all rounds.\n");
         }
+    }
+
+    public String getChosenWord() {
+        return chosenWord;
     }
 }
