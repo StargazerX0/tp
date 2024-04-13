@@ -22,20 +22,15 @@ import static ui.ResponseManager.INDENTATION;
  */
 public class Asset {
     public static final int PERCENT_RATIO = 100;
-    public static double assetMultiplier = 1.0;
-    public static int riskFactor = 0;
-    private static final int FINAL_GOAL = 1000000;
+    public static double ASSET_MULTIPLIER = 1.0;
+    public static int RISK_FACTOR = 0;
+    private static final int FINAL_GOAL = 900000;
     private static List<Stock> stockList = new ArrayList<>();
     private static  List<Integer> stockCount = new ArrayList<>();
-
     private static List<Bond> bondList = new ArrayList<>();
-
     private static List<Integer> bondCount = new ArrayList<>();
-
     private List<CryptoCurrency> cryptoList = new ArrayList<>();
-
     private List<Integer> cryptoCount = new ArrayList<>();
-
     private int totalAsset;
 
     public Asset() {
@@ -69,11 +64,6 @@ public class Asset {
     public void setCryptoCount(List<Integer> cryptoCount) {
         this.cryptoCount = cryptoCount;
     }
-
-    public int getAsset() {
-        return this.totalAsset;
-    }
-
     public List<Bond> getBondList() {
         return bondList;
     }
@@ -100,14 +90,26 @@ public class Asset {
 
 
     public void addAsset(int amount) {
-        int actualAmount = (int) (amount * assetMultiplier);
-        int multiPercentage = (int) assetMultiplier * PERCENT_RATIO;
-        String color = assetMultiplier >= 1.0 ? GREEN : RED;
+        if (amount <= 0) {
+            return;
+        }
+        int actualAmount = (int) (amount * ASSET_MULTIPLIER);
+        int multiPercentage = (int) (ASSET_MULTIPLIER * PERCENT_RATIO);
+        String color = ASSET_MULTIPLIER >= 1.0 ? GREEN : RED;
 
         totalAsset += actualAmount;
         indentPrint(String.format("$%s%d%s has been added to ur asset - Detail: %s(%d * %d%%)%s.\n" +
                         "Your total asset is now $%d.\n",
                GREEN, actualAmount, RESET, color, amount, multiPercentage, RESET, totalAsset));
+    }
+
+    public void deductAsset(int amount) {
+        if (amount <= 0) {
+            return;
+        }
+        totalAsset -= amount;
+        indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
+                RED, amount, RESET, totalAsset));
     }
 
     /**
@@ -191,7 +193,7 @@ public class Asset {
         if (index != -1) {
             cryptoCount.set(index, cryptoCount.get(index) + quantity);
         } else {
-            riskFactor = (riskFactor * cryptoList.size() + crypto.getRiskFactor())/(cryptoList.size() + 1);
+            RISK_FACTOR = (RISK_FACTOR * cryptoList.size() + crypto.getRiskFactor())/(cryptoList.size() + 1);
             cryptoList.add(crypto);
             cryptoCount.add(quantity);
         }
@@ -201,7 +203,7 @@ public class Asset {
         if (cryptoList.isEmpty()) {
             return 0;
         }
-        if (getRandomNumber(0, 100) < riskFactor) {
+        if (getRandomNumber(0, 100) < RISK_FACTOR) {
             ResponseManager.indentPrint("Unfortunately, Government intervention causes all of your " +
                     "cryptos to be listed as illegal items\n" +
                     "All of your cryptos have been confiscated :(\n");
@@ -220,25 +222,15 @@ public class Asset {
         return totalReturn;
     }
 
-    public void deductAsset(int amount) {
-        totalAsset -= amount;
-        indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
-                RED, amount, RESET, totalAsset));
-    }
-
     public boolean isAchieved() {
         return totalAsset >= FINAL_GOAL;
     }
 
     public boolean isBankrupt() {
-        if (totalAsset <= 0) {
-            ResponseManager.indentPrint("You have gone bankrupt!\n");
-            return true;
-        }
-        return false;
+        return totalAsset <= 0;
     }
 
-    public int outputMoney() {
+    public int getAsset() {
         return totalAsset;
     }
 
@@ -253,22 +245,31 @@ public class Asset {
     public String toString() {
         String output = "";
         for (int i = 0; i < stockList.size(); i++) {
-            output += stockList.get(i).returnStockName() + " current share count : "
-                    + stockCount.get(i) + "\n";
+            int stockNum = stockCount.get(i);
+            output += stockNum == 0 ? "" :
+                    stockList.get(i).returnStockName() + " current share count : "
+                    + stockNum + "\n";
         }
         for (int i = 0; i < bondList.size(); i++) {
-            output += bondList.get(i).returnBondName() + " current bond count : "
-                    + bondCount.get(i) + "\n";
+            int bondNum = bondCount.get(i);
+            output += bondNum == 0 ? "" :
+                    bondList.get(i).returnBondName() + " current bond count : "
+                    + bondNum + "\n";
         }
         for (int i = 0; i < cryptoList.size(); i++) {
-            output += cryptoList.get(i).returnCryptoName() + " current crypto count : "
-                    + cryptoCount.get(i) + "\n";
+            int cryptoNum = cryptoCount.get(i);
+            output += cryptoNum == 0 ? "" :
+                    cryptoList.get(i).returnCryptoName() + " current crypto count : "
+                    + cryptoNum + "\n";
         }
-        String investmentInfo = output.isEmpty() ? output :
-                "\n" + INDENTATION + "\n" +
-                YELLOW + "Your current investments are: \n" + RESET + output;
 
-        return String.format("$%d, you need $%d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
-                + investmentInfo;
+        String investmentInfo = output.isEmpty() ? output :
+                INDENTATION + "\n" +
+                YELLOW + "Your current investments are: \n" + RESET + output;
+        String reminder = totalAsset <= 1000 ? RED + " You are running low on cash!\n" + RESET : "";
+
+        return totalAsset + reminder + "\n" +
+                String.format("you need $%s%d%s more to win the game\n", YELLOW, FINAL_GOAL - totalAsset, RESET) +
+                investmentInfo;
     }
 }

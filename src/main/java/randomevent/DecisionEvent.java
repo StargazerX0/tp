@@ -83,15 +83,16 @@ public class DecisionEvent extends RandomEvent {
         if (isAccept()) {
             switch (new Random().nextInt(2)) {
             case 0:
-                System.out.println("You have successfully presented the project to the board of directors!\n" +
-                        "The boss is very satisfied with your work!");
+                System.out.println("You have successfully presented the project\n" +
+                        "Boss is very satisfied with your work!");
                 playerProfile.addAsset(500);
                 break;
 
             case 1:
-                System.out.println("You did a terrible job to present the project to the board of directors!\n" +
-                        "The boss is very disappointed with your work!");
-                playerProfile.loseAsset(200);
+                System.out.println("You did a terrible job, " +
+                        "boss is very disappointed with your work!");
+                System.out.println("Your money received has been decreased by 10% for this round!");
+                playerProfile.adjustAssetMultiplier(0.9);
                 break;
 
             default:
@@ -173,6 +174,10 @@ public class DecisionEvent extends RandomEvent {
     }
 
     private void donateCharity(PlayerProfile playerProfile) {
+        if (!hasEnoughMoney(playerProfile, 500)) {
+            System.out.println("A peaceful round.");
+            return;
+        }
         System.out.println(DECISIONS[4]);
         if (isAccept()) {
             playerProfile.loseAsset(500);
@@ -181,7 +186,7 @@ public class DecisionEvent extends RandomEvent {
             switch (new Random().nextInt(2)) {
             case 0:
                 System.out.println("You become famous for your donation!\n" +
-                        "Now you can earn 20% faster for the next round!");
+                        "Now you can earn 20% faster for this round!");
                 playerProfile.adjustAssetMultiplier(1.2);
                 break;
 
@@ -199,13 +204,17 @@ public class DecisionEvent extends RandomEvent {
     }
 
     private void improveBenefits(PlayerProfile playerProfile) {
+        if (!hasEnoughMoney(playerProfile, 8000)) {
+            System.out.println("A peaceful round.");
+            return;
+        }
         System.out.println(DECISIONS[5]);
         if (isAccept()) {
-            playerProfile.loseAsset(10000);
             System.out.println("You have successfully improved the company's employee benefits!\n" +
                     "The employees are very satisfied with the new benefits!");
+            playerProfile.loseAsset(8000);
             playerProfile.adjustAssetMultiplier(1.2);
-            System.out.println("Your money received has been increased by 20% for the next round!");
+            System.out.println("Your money received has been increased by 20% for this round!");
         } else {
             System.out.println("You have rejected the offer.");
         }
@@ -223,5 +232,9 @@ public class DecisionEvent extends RandomEvent {
         } else {
             System.out.println("You have rejected the offer.");
         }
+    }
+
+    private boolean hasEnoughMoney(PlayerProfile playerProfile, int requiredAsset) {
+        return playerProfile.getAsset().getAsset() >= requiredAsset;
     }
 }

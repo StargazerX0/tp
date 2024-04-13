@@ -1,7 +1,7 @@
 package player;
 
 import company.Company;
-import static ui.ResponseManager.indentPrint;
+import ui.ResponseManager;
 
 /**
  * Represents a player profile in the game, including personal attributes, health, assets,
@@ -14,10 +14,10 @@ public class PlayerProfile {
     private final String name;
     private final Health health;
     private final Asset asset;
+    private final Company company;
     private int currentRound;
     private int actionCount;
     private boolean isAdvancedPlayer;
-    private final Company company;
 
     public PlayerProfile(String name, String occupation) {
         this.name = name;
@@ -135,13 +135,9 @@ public class PlayerProfile {
             int companyProfit = company.profitPerRound();
             int bondReturn = asset.bondReturn();
             int cryptoReturn = asset.cryptoReturn();
-
-            String companyEarned = companyProfit == 0 ? "" : "Your company has earned $" + companyProfit + "\n";
-            String bondEarned = bondReturn == 0 ? "" : "Your bond returned you $" + bondReturn + "\n";
-            String crytoEarned = cryptoReturn == 0 ? "" : "Your crypto returned you $" + cryptoReturn + "\n";
-
-            indentPrint(companyEarned + bondEarned + crytoEarned);
+            ResponseManager.printRoundEarned(companyProfit, bondReturn, cryptoReturn);
             this.asset.addAsset(companyProfit + bondReturn + cryptoReturn);
+            ResponseManager.endOfRoundMessage(currentRound);
         }
     }
 
@@ -166,8 +162,8 @@ public class PlayerProfile {
     }
 
     public void nextRound() {
-        resetAssetMultiplier();
         calculateRoundProfit();
+        resetAssetMultiplier();
         currentRound++;
     }
 
@@ -184,15 +180,19 @@ public class PlayerProfile {
     }
 
     public boolean isFinished() {
-        return currentRound >= ROUND_LIMIT || asset.isBankrupt() || asset.isAchieved();
+        if (asset.isBankrupt()) {
+            ResponseManager.indentPrint("You have gone bankrupt!\n");
+            return true;
+        }
+        return currentRound >= ROUND_LIMIT || asset.isAchieved();
     }
 
     public void adjustAssetMultiplier(double multiplier) {
-        Asset.assetMultiplier = multiplier;
+        Asset.ASSET_MULTIPLIER = multiplier;
     }
 
     public void resetAssetMultiplier() {
-        Asset.assetMultiplier = 1.0;
+        Asset.ASSET_MULTIPLIER = 1.0;
     }
 
     public int checkWin() {

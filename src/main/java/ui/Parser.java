@@ -87,10 +87,13 @@ public class Parser {
      * 
      * @param input The information about the command. 
      * @return The decoded information.
-     * @throws CommandInputException
+     * @throws CommandInputException If the input is invalid or the parsed integer is less than or equal to 0.
      */
     public static int decodeInfo(String input) throws CommandInputException {
         try {
+            if (Integer.parseInt(input.trim()) <= 0) {
+                throw new CommandInputException("pls enter a positive number\n");
+            }
             return Integer.parseInt(input.trim());
         } catch (IllegalArgumentException e) {
             throw new CommandInputException("Invalid number, please try again\n");

@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class EventGenerator {
     private static final RandomEvent[] eventArray = {
-        new PositiveEvent(0.15),
-        new NegativeEvent(0.2),
+        new PositiveEvent(0.2),
+        new NegativeEvent(0.15),
         new LotteryEvent(0.25),
         new DecisionEvent(0.4)
     };
@@ -21,7 +21,9 @@ public class EventGenerator {
      */
     public static RandomEvent getRandomEvent() {
         Random random = new Random();
-        double totalProbability = events.stream().mapToDouble(RandomEvent::getProbability).sum();
+        double totalProbability = events.stream()
+                .mapToDouble(RandomEvent::getProbability)
+                .sum();
         double randomValue = totalProbability * random.nextDouble();
 
         for (RandomEvent event : events) {

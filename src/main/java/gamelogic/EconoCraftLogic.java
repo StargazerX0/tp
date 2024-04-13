@@ -21,10 +21,6 @@ import static ui.ResponseManager.indentPrint;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-/**
- * Manages the main game logic for EconoCraft, including game initialization,
- * executing commands, and managing the game loop.
- */
 public class EconoCraftLogic {
     private static final Scanner userInput = new Scanner(System.in);
     private final PlayerProfile playerProfile;
@@ -33,17 +29,12 @@ public class EconoCraftLogic {
         this.playerProfile = playerProfile;
     }
 
-    /**
-     * Initializes the game by attempting to load an existing player profile or creating a new one.
-     * This involves setting up the player's name, job, and starting conditions.
-     *
-     * @return An instance of EconoCraftLogic ready to start the game.
-     */
     public static EconoCraftLogic initializeGame() {
         PlayerProfile playerProfile = null;
 
         try {
             playerProfile = Loader.loadProfile();
+            indentPrint("Welcome back!\n");
         } catch (LoadProfileException e) {
             indentPrint("You will start a fresh new journey!\n");
         }
@@ -63,6 +54,7 @@ public class EconoCraftLogic {
                 System.exit(0);
             }
             playerProfile = new PlayerProfile(playerName, jobType);
+            ResponseManager.printWelcome(playerProfile);
         }
 
         try {
@@ -71,7 +63,6 @@ public class EconoCraftLogic {
             indentPrint("Error saving profile: " + e.getMessage());
         }
 
-        ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
     }
 
@@ -99,10 +90,6 @@ public class EconoCraftLogic {
         return playerName;
     }
 
-    /**
-     * Starts the main game loop, processing user commands and managing game state.
-     * This method keeps the game running until an exit command is received or the game ends.
-     */
     public void startEcono() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
@@ -160,7 +147,7 @@ public class EconoCraftLogic {
     }
 
     private void promptRestart() {
-        indentPrint("Do you want to restart the game? (yes/no)\n");
+        ResponseManager.promptRestart();
         if (isAccept()) {
             EconoCraftLogic.initializeGame().startEcono();
         } else {

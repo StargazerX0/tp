@@ -12,7 +12,7 @@ class PositiveEvent extends RandomEvent {
     private static final String[] POSITIVE_EVENT = {
         "Your boss gave you a bonus!",
         "Your had a great dinner with your family!",
-        "Due to pandemic, the government gave you subsidy of $1000!",
+        "Due to pandemic, the government gave you subsidy of $2000!",
         "Your company products sold very well this month!"
     };
 
@@ -36,18 +36,18 @@ class PositiveEvent extends RandomEvent {
         case 0:
             System.out.println(POSITIVE_EVENT[0]);
             playerProfile.adjustAssetMultiplier(1.1);
-            System.out.println("Your money received has been increased by 10% for the next round!");
+            System.out.println("Your money received has been increased by 10% for this round!");
             break;
 
         case 1:
             System.out.println(POSITIVE_EVENT[1]);
-            playerProfile.addHealth(5);
-            System.out.println("Your health has been increased by 5!");
+            playerProfile.addHealth(10);
+            System.out.println("Your health has been increased by 10!");
             break;
 
         case 2:
             System.out.println(POSITIVE_EVENT[2]);
-            playerProfile.addAsset(1000);
+            playerProfile.addAsset(2000);
             break;
 
         case 3:
