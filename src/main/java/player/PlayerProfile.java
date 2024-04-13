@@ -135,8 +135,14 @@ public class PlayerProfile {
             int companyProfit = company.profitPerRound();
             int bondReturn = asset.bondReturn();
             int cryptoReturn = asset.cryptoReturn();
+            int totalProfit = companyProfit + bondReturn + cryptoReturn;
+
             ResponseManager.printRoundEarned(companyProfit, bondReturn, cryptoReturn);
-            this.asset.addAsset(companyProfit + bondReturn + cryptoReturn);
+            if (totalProfit >= 0) {
+                asset.addAsset(totalProfit);
+            } else {
+                asset.deductAsset(Math.abs(totalProfit));
+            }
             ResponseManager.endOfRoundMessage(currentRound);
         }
     }
@@ -184,7 +190,7 @@ public class PlayerProfile {
             ResponseManager.indentPrint("You have gone bankrupt!\n");
             return true;
         }
-        return currentRound >= ROUND_LIMIT || asset.isAchieved();
+        return currentRound > ROUND_LIMIT || asset.isAchieved();
     }
 
     public void adjustAssetMultiplier(double multiplier) {
@@ -199,7 +205,7 @@ public class PlayerProfile {
         if (asset.isAchieved()) {
             return 1;
         }
-        if (asset.isBankrupt() || currentRound >= ROUND_LIMIT) {
+        if (asset.isBankrupt() || currentRound > ROUND_LIMIT) {
             return -1;
         }
         // game not finished
