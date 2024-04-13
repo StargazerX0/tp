@@ -14,10 +14,10 @@ public class PlayerProfile {
     private final String name;
     private final Health health;
     private final Asset asset;
+    private final Company company;
     private int currentRound;
     private int actionCount;
     private boolean isAdvancedPlayer;
-    private final Company company;
 
     public PlayerProfile(String name, String occupation) {
         this.name = name;
