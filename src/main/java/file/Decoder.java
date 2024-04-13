@@ -111,7 +111,7 @@ public class Decoder {
      *
      * @param json The JSON string representing the array of stocks.
      * @param stockCount A list to store the counts of each stock.
-     * @return List<Stock> A list of decoded stock objects.
+     * @return {@code List<Stock>} A list of decoded stock objects.
      * @throws LoadProfileException If decoding fails.
      */
     private static List<Stock> decodeStocks(String json, List<Integer> stockCount) throws LoadProfileException {
@@ -171,7 +171,7 @@ public class Decoder {
      *
      * @param json The JSON string representing the array of bonds.
      * @param bondCount A list to store the counts of each bond.
-     * @return List<Bond> A list of decoded bond objects.
+     * @return {@code List<Bond>} A list of decoded bond objects.
      * @throws LoadProfileException If decoding fails.
      */
     private static List<Bond> decodeBonds(String json, List<Integer> bondCount) throws LoadProfileException {
@@ -219,7 +219,7 @@ public class Decoder {
      *
      * @param json The JSON string representing the array of cryptocurrencies.
      * @param cryptoCount A list to store the counts of each cryptocurrency.
-     * @return List<CryptoCurrency> A list of decoded cryptocurrency objects.
+     * @return {@code List<CryptoCurrency>} A list of decoded cryptocurrency objects.
      * @throws LoadProfileException If decoding fails.
      */
     private static List<CryptoCurrency> decodeCryptos(String json, List<Integer> cryptoCount)
