@@ -15,11 +15,11 @@ import java.util.logging.Logger;
  */
 public class TicTacToe implements MiniGame {
     private static final Logger logger = Logger.getLogger("TacLog");
-    private char[][] board = new char[3][3];
+    protected char[][] board = new char[3][3];
+    protected boolean isGameOver = false;
     private char playerMark;
     private char aiMark;
     private char currentMark;
-    private boolean isGameOver = false;
     private boolean isDraw = false;
 
     static {
@@ -69,7 +69,7 @@ public class TicTacToe implements MiniGame {
      *
      * @return true if a win condition is met, false otherwise.
      */
-    private boolean checkForWin() {
+    protected boolean checkForWin() {
         return checkRowForWin() || checkColumnForWin() || checkDiagonalForWin();
     }
 
@@ -78,7 +78,7 @@ public class TicTacToe implements MiniGame {
      *
      * @return true if any row is a win condition, false otherwise.
      */
-    private boolean checkRowForWin() {
+    protected boolean checkRowForWin() {
         for (int i = 0; i < 3; i++) {
             if (checkCellForWin(board[i][0], board[i][1], board[i][2])) {
                 return true;
@@ -92,7 +92,7 @@ public class TicTacToe implements MiniGame {
      *
      * @return true if any column is a win condition, false otherwise.
      */
-    private boolean checkColumnForWin() {
+    protected boolean checkColumnForWin() {
         for (int i = 0; i < 3; i++) {
             if (checkCellForWin(board[0][i], board[1][i], board[2][i])) {
                 return true;
@@ -106,7 +106,7 @@ public class TicTacToe implements MiniGame {
      *
      * @return true if any diagonal is a win condition, false otherwise.
      */
-    private boolean checkDiagonalForWin() {
+    protected boolean checkDiagonalForWin() {
         return checkCellForWin(board[0][0], board[1][1], board[2][2]) ||
             checkCellForWin(board[0][2], board[1][1], board[2][0]);
     }
@@ -160,7 +160,7 @@ public class TicTacToe implements MiniGame {
      *
      * @return true if the board is completely filled, false otherwise.
      */
-    private boolean isBoardFull() {
+    protected boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == '-') {

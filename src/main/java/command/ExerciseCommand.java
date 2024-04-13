@@ -41,7 +41,7 @@ public class ExerciseCommand implements Command {
      *
      * @return The user's game choice as an integer (1 or 2).
      */
-    private int getGameChoice() {
+    protected int getGameChoice() {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
