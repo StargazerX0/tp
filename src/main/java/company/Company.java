@@ -7,7 +7,7 @@ public class Company {
     private int revenuePerEmployee;
 
     public Company() {
-        this.name = "SIU";
+        this.name = "ECONO CROP";
         this.numberOfEmployees = 0;
         this.employeeSalary = 800;
         this.revenuePerEmployee = 1000;

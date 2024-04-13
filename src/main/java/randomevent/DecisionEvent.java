@@ -181,7 +181,7 @@ public class DecisionEvent extends RandomEvent {
             switch (new Random().nextInt(2)) {
             case 0:
                 System.out.println("You become famous for your donation!\n" +
-                        "Now you can earn 20% faster for the next round!");
+                        "Now you can earn 20% faster for this round!");
                 playerProfile.adjustAssetMultiplier(1.2);
                 break;
 
@@ -201,11 +201,11 @@ public class DecisionEvent extends RandomEvent {
     private void improveBenefits(PlayerProfile playerProfile) {
         System.out.println(DECISIONS[5]);
         if (isAccept()) {
-            playerProfile.loseAsset(10000);
             System.out.println("You have successfully improved the company's employee benefits!\n" +
                     "The employees are very satisfied with the new benefits!");
+            playerProfile.loseAsset(8000);
             playerProfile.adjustAssetMultiplier(1.2);
-            System.out.println("Your money received has been increased by 20% for the next round!");
+            System.out.println("Your money received has been increased by 20% for this round!");
         } else {
             System.out.println("You have rejected the offer.");
         }

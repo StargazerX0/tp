@@ -24,7 +24,7 @@ public class Asset {
     public static final int PERCENT_RATIO = 100;
     public static double ASSET_MULTIPLIER = 1.0;
     public static int RISK_FACTOR = 0;
-    private static final int FINAL_GOAL = 1000000;
+    private static final int FINAL_GOAL = 900000;
     private static List<Stock> stockList = new ArrayList<>();
     private static  List<Integer> stockCount = new ArrayList<>();
     private static List<Bond> bondList = new ArrayList<>();
@@ -96,7 +96,7 @@ public class Asset {
 
     public void addAsset(int amount) {
         int actualAmount = (int) (amount * ASSET_MULTIPLIER);
-        int multiPercentage = (int) ASSET_MULTIPLIER * PERCENT_RATIO;
+        int multiPercentage = (int) (ASSET_MULTIPLIER * PERCENT_RATIO);
         String color = ASSET_MULTIPLIER >= 1.0 ? GREEN : RED;
 
         totalAsset += actualAmount;

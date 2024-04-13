@@ -3,10 +3,10 @@ package ui;
 import exception.CommandInputException;
 
 public enum CommandType {
-    Help("(?i)help\\s*"),
+    HELP("(?i)help\\s*"),
     EXERCISE("(?i)exercise\\s*"),
     WORK("(?i)work\\s*"),
-    Rest("(?i)rest\\s*"),
+    REST("(?i)rest\\s*"),
     STATUS("(?i)status\\s*"),
     UPGRADE("(?i)upgrade\\s*"),
     STOCK("(?i)stock\\s*"),
