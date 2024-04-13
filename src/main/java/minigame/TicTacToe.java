@@ -1,59 +1,166 @@
 package minigame;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import exception.InvalidMoveException;
 import ui.ResponseManager;
 
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * A Tic Tac Toe game class that supports single player against an AI.
+ * It includes functionality for playing the game, checking win conditions, and managing the game state.
+ */
 public class TicTacToe implements MiniGame {
     private static final Logger logger = Logger.getLogger("TacLog");
-    private char[][] board = new char[3][3];
+    protected char[][] board = new char[3][3];
+    protected boolean isGameOver = false;
     private char playerMark;
     private char aiMark;
     private char currentMark;
-    private boolean isGameOver = false;
     private boolean isDraw = false;
 
     static {
-        logger.setLevel(Level.OFF); // Disable logging
+        logger.setLevel(Level.OFF); // Disable logging for production
     }
 
-
+    /**
+     * Constructs a new Tic Tac Toe game with the specified player mark.
+     * Initializes the game board and sets up player and AI marks.
+     *
+     * @param playerMark the mark ('X' or 'O') that the player chooses to play with.
+     */
     public TicTacToe(char playerMark) {
         this.playerMark = playerMark;
         this.aiMark = (playerMark == 'X') ? 'O' : 'X';
         this.currentMark = playerMark;
         initializeBoard();
-        logger.info("Game initialized with player mark: " + playerMark);
     }
 
-    private boolean checkForWin() {
+    /**
+     * Initializes the game board by filling it with dashes ('-') to signify empty spaces.
+     */
+    private void initializeBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = '-';
+            }
+        }
+    }
+
+    /**
+     * Prints the current state of the board to the console.
+     */
+    private void printBoard() {
+        StringBuilder boardInfo = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                boardInfo.append(board[i][j]).append(" ");
+            }
+            boardInfo.append("\n");
+        }
+        ResponseManager.printBoard(boardInfo.toString());
+    }
+
+    /**
+     * Checks all possible win conditions on the board (rows, columns, diagonals).
+     *
+     * @return true if a win condition is met, false otherwise.
+     */
+    protected boolean checkForWin() {
         return checkRowForWin() || checkColumnForWin() || checkDiagonalForWin();
     }
 
-    private boolean checkCellForWin(char c1, char c2, char c3) {
-        if (c1 == currentMark && c2 == currentMark && c3 == currentMark) {
-            return true;
+    /**
+     * Checks for a win condition in any row.
+     *
+     * @return true if any row is a win condition, false otherwise.
+     */
+    protected boolean checkRowForWin() {
+        for (int i = 0; i < 3; i++) {
+            if (checkCellForWin(board[i][0], board[i][1], board[i][2])) {
+                return true;
+            }
         }
         return false;
     }
 
-    public int getStatus() {
-        if (checkForWin()) {
-            if (currentMark == playerMark) {
-                return 1;
-            } else {
-                return -1;
+    /**
+     * Checks for a win condition in any column.
+     *
+     * @return true if any column is a win condition, false otherwise.
+     */
+    protected boolean checkColumnForWin() {
+        for (int i = 0; i < 3; i++) {
+            if (checkCellForWin(board[0][i], board[1][i], board[2][i])) {
+                return true;
             }
+        }
+        return false;
+    }
+
+    /**
+     * Checks for a win condition in both diagonals.
+     *
+     * @return true if any diagonal is a win condition, false otherwise.
+     */
+    protected boolean checkDiagonalForWin() {
+        return checkCellForWin(board[0][0], board[1][1], board[2][2]) ||
+            checkCellForWin(board[0][2], board[1][1], board[2][0]);
+    }
+
+    /**
+     * Helper method to check if three cells (possibly making a row, column, or diagonal) are the same as the
+     * current mark.
+     *
+     * @param c1 Character in cell 1
+     * @param c2 Character in cell 2
+     * @param c3 Character in cell 3
+     * @return true if all cells match the current mark, false otherwise.
+     */
+    private boolean checkCellForWin(char c1, char c2, char c3) {
+        return (c1 == currentMark && c2 == currentMark && c3 == currentMark);
+    }
+
+    /**
+     * Places a mark at the specified position on the board and checks if the game is over.
+     *
+     * @param row the row to place the mark in
+     * @param column the column to place the mark in
+     * @throws InvalidMoveException if the move is invalid (e.g., outside the board or spot already taken)
+     */
+    private void placeMark(int row, int column) throws InvalidMoveException {
+        if (row >= 0 && row < 3 && column >= 0 && column < 3 && board[row][column] == '-') {
+            board[row][column] = playerMark;
+            printBoard();
+            checkGameOver();
+        } else {
+            throw new InvalidMoveException("Move at (" + (row + 1) + ", " + (column + 1) + ") is invalid.\n");
+        }
+    }
+
+    /**
+     * Determines the current game status based on the board state.
+     *
+     * @return 1 if player wins, -1 if AI wins, 0 otherwise.
+     */
+    public int getStatus() {
+        if (isGameOver) {
+            return (isDraw ? 0 : (currentMark == playerMark ? 1 : -1));
         }
         return 0;
     }
 
-    private boolean isBoardFull() {
+    /**
+     * Checks if all cells on the board are filled, indicating that no more moves can be made.
+     * This is used to determine if the game has ended in a draw when there are no empty cells left
+     * and no player has won yet.
+     *
+     * @return true if the board is completely filled, false otherwise.
+     */
+    protected boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == '-') {
@@ -64,32 +171,9 @@ public class TicTacToe implements MiniGame {
         return true;
     }
 
-    private boolean checkRowForWin() {
-        for (int i = 0; i < 3; i++) {
-            if (checkCellForWin(board[i][0], board[i][1], board[i][2])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkColumnForWin() {
-        for (int i = 0; i < 3; i++) {
-            if (checkCellForWin(board[0][i], board[1][i], board[2][i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDiagonalForWin() {
-        if (checkCellForWin(board[0][0], board[1][1], board[2][2]) ||
-            checkCellForWin(board[0][2], board[1][1], board[2][0])) {
-            return true;
-        }
-        return false;
-    }
-
+    /**
+     * Checks if the game is over either by win condition or draw.
+     */
     private void checkGameOver() {
         if (checkForWin()) {
             isGameOver = true;
@@ -101,49 +185,13 @@ public class TicTacToe implements MiniGame {
         }
     }
 
-    private void initializeBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = '-';
-                assert board[i][j] == '-': "Board should be initialized with '-'";
-            }
-        }
-        logger.info("Board initialized");
-    }
-
-    private void printBoard() {
-        String boardInfor = "";
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                boardInfor += board[i][j] + " ";
-            }
-            if (i <= 1) {
-                boardInfor += "\n";
-            }
-        }
-        logger.info("Board state:\n" + boardInfor);
-        ResponseManager.printBoard(boardInfor);
-    }
-
-    private void placeMark(int row, int column)  throws InvalidMoveException {
-        if (row >= 0 && row < 3 && column >= 0 && column < 3 &&
-            board[row][column] == '-') {
-            board[row][column] = playerMark;
-            logger.info("Mark placed by player at [" + row + "," + column + "]");
-            printBoard();
-            checkGameOver();
-        } else {
-            logger.warning("Invalid move attempted at [" + row + "," + column + "]");
-            throw new InvalidMoveException("Move at (" + (row + 1) + ", " + (column + 1) + ") is invalid.\n");
-        }
-    }
-
+    /**
+     * Handles the AI's turn, placing a mark in a random empty spot.
+     */
     private void placeAIMark() {
-        currentMark = aiMark;
         Random rand = new Random();
         int row;
         int column;
-
         do {
             row = rand.nextInt(3);
             column = rand.nextInt(3);
@@ -154,41 +202,52 @@ public class TicTacToe implements MiniGame {
         checkGameOver();
     }
 
+    /**
+     * Outputs the result of the game based on whether it ended in a draw or a win.
+     */
     public void outputResult() {
         if (isDraw) {
-            ResponseManager.indentPrint("Wow, it's a draw!\n");
+            ResponseManager.indentPrint("It's a draw!\n");
         } else {
-            if (currentMark == playerMark) {
-                ResponseManager.indentPrint("Siuuuuu, player " + playerMark + " wins!\n");
-            } else {
-                ResponseManager.indentPrint("Noooooo, player " + playerMark + " lose the game\n");
-            }
+            ResponseManager.indentPrint("Congratulations, " + (currentMark == playerMark ? "you win!" :
+                "AI wins!") + "\n");
         }
     }
 
+    /**
+     * Initiates and manages the Tic Tac Toe gameplay loop, controlling the sequence of player and AI turns.
+     * This method handles game initialization, turn management, input validation, and game termination checks.
+     *
+     * Steps in the gameplay loop:
+     * 1. Display the current game board.
+     * 2. Prompt the player for a move, validating the input to ensure it is within the allowed range and
+     * targeting an empty cell.
+     * 3. Update the board with the player's move, check for a win or draw, and display the updated board.
+     * 4. If the game continues, allow the AI to make a move, update the board, and check for game termination
+     * conditions.
+     * 5. Repeat steps 2-4 until the game ends due to a win or a draw.
+     *
+     * Inputs are checked for validity (must be integers within 1-3). Incorrect inputs prompt a re-entry without
+     * penalty.
+     * The game alternates turns between the player and AI until a win condition or a draw is achieved.
+     */
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
         printBoard();
         while (!isGameOver) {
-            ResponseManager.indentPrint("Player " + playerMark + ", " +
-                "enter your move (row [1-3] column [1-3]):\n");
-
-            int row = -1;
-            int column = -1;
-
             try {
-                row = scanner.nextInt() - 1;
-                column = scanner.nextInt() - 1;
+                ResponseManager.indentPrint("Player " + playerMark + ", enter your move (row [1-3] column [1-3]):\n");
+                int row = scanner.nextInt() - 1;
+                int column = scanner.nextInt() - 1;
                 placeMark(row, column);
 
                 if (!isGameOver) {
                     ResponseManager.indentPrint("AI's turn!\n");
                     placeAIMark();
-                    currentMark = playerMark;
                 }
             } catch (InputMismatchException e) {
-                ResponseManager.indentPrint("Invalid input! Please enter integer only.\n");
-                scanner.nextLine(); // Clear the buffer by consuming the invalid input
+                ResponseManager.indentPrint("Invalid input! Please enter numbers only.\n");
+                scanner.nextLine(); // clear the buffer
             } catch (InvalidMoveException e) {
                 ResponseManager.indentPrint(e.getMessage());
             }

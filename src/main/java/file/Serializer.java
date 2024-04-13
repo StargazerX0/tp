@@ -9,8 +9,20 @@ import player.PlayerProfile;
 
 import java.util.List;
 
+/**
+ * Provides serialization of player profile data into JSON format.
+ * This class handles the conversion of complex data structures, including nested objects like company and assets,
+ * into a well-structured JSON string.
+ */
 public class Serializer {
 
+    /**
+     * Constructs a JSON string that represents the complete state of a player profile.
+     * This includes personal details, game state, and associated financial entities like company and assets.
+     *
+     * @param playerProfile The player profile to serialize.
+     * @return A string in JSON format representing the player profile.
+     */
     public static String constructJson(PlayerProfile playerProfile) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\n")
@@ -27,6 +39,12 @@ public class Serializer {
         return jsonBuilder.toString();
     }
 
+    /**
+     * Serializes company information into a JSON formatted string.
+     *
+     * @param company The company object to serialize.
+     * @return A JSON string representing the company.
+     */
     private static String serializeCompany(Company company) {
         return String.format("{\n" +
                 "   \"name\": \"%s\",\n" +
@@ -41,6 +59,12 @@ public class Serializer {
         );
     }
 
+    /**
+     * Serializes asset details including stocks, bonds, and cryptocurrencies into a JSON formatted string.
+     *
+     * @param asset The asset object containing financial data to serialize.
+     * @return A JSON string representing the asset details.
+     */
     private static String serializeAssets(Asset asset) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\n")
@@ -56,6 +80,13 @@ public class Serializer {
         return jsonBuilder.toString();
     }
 
+    /**
+     * Serializes a list of stocks and their counts into a JSON formatted array.
+     *
+     * @param stocks The list of stock objects.
+     * @param counts The corresponding list of stock quantities.
+     * @return A JSON string representing an array of stocks.
+     */
     private static String serializeStocks(List<Stock> stocks, List<Integer> counts) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
@@ -74,6 +105,13 @@ public class Serializer {
         return jsonBuilder.toString();
     }
 
+    /**
+     * Serializes a list of bonds and their counts into a JSON formatted array.
+     *
+     * @param bonds The list of bond objects.
+     * @param counts The corresponding list of bond quantities.
+     * @return A JSON string representing an array of bonds.
+     */
     private static String serializeBonds(List<Bond> bonds, List<Integer> counts) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
@@ -92,6 +130,13 @@ public class Serializer {
         return jsonBuilder.toString();
     }
 
+    /**
+     * Serializes a list of cryptocurrencies and their counts into a JSON formatted array.
+     *
+     * @param cryptos The list of cryptocurrency objects.
+     * @param counts The corresponding list of cryptocurrency quantities.
+     * @return A JSON string representing an array of cryptocurrencies.
+     */
     private static String serializeCryptos(List<CryptoCurrency> cryptos, List<Integer> counts) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
