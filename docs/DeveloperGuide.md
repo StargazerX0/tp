@@ -127,15 +127,18 @@ The mechanism:
 
 The mechanism:
 1. `Saver` will be called within `startEcono` method after one command is executed.
-2. `Saver` creates a new `file` class and invokes the `constructJson` method for `PlayerProfile` class.
-3. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
+2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
+3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
+into Json format.
+4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
 
 ![Load.png](UML%20diagram%2FLoad.png)
 
 The mechanism:
 1. `Loader` will be called within `initializeGame` method once the program is initialized.
-2. `Loader` invokes the `readJsonFromFile` method to read data from the json file and creates a new `file` class.
-3. `Loader` invokes the `parseJson` method to retrieve relevant attributes and creates a new `PlayerProfile` class.
+2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
+3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex 
+data structures.
 4. `Loader` returns the `PlayerProfile` class to load the previous information.
 
 
@@ -167,13 +170,23 @@ The implementation of the Typing Game is as follows:
 
 The implementation of the Tic Tac Toe Game is as follows:
 
-1. The game can be invoked by the `ExerciseCommand` class when the user inputs the `exercise` command.
+1. The game can be invoked by the `ExerciseCommand` class when the user inputs the `exercise` command and select option `1`.
 2. It makes use of the `ResponseManager` for instructions and display the board status.
 3. The user would be prompted to choose player mark and place it when entering the game.
 4. AI player will randomly choose available to place mark once user places the mark.
 5. After each placement, the game would check the status to determine whether continue the game or not.
 6. If the board is full or there are three consecutive marks, the game will announce the winner or say "it's a draw".
 7. Finally, the `ExerciseCommand` would update the player profile with the reward or punishment for health.
+
+## MiniGame - Hangman
+
+The implementation of Hangman is as follows:
+
+1. The game can be invoked by the `ExerciseCommand` class when the user inputs the `exercise` command select option `2`.
+2. It makes use of the `ResponseManager` for instructions and display the word with one missing character.
+3. The user would be prompted to guess the missing character.
+4. After `5` rounds, the game will show congratulation message if total wrong guesses are fewer than 3 and failure message vice versa.  
+5. Finally, the `ExerciseCommand` would update the player profile with the reward or punishment for health.
 
 ## MiniGame - True or False
 
