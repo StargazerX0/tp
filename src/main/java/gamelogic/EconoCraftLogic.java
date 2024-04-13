@@ -160,7 +160,7 @@ public class EconoCraftLogic {
     }
 
     private void promptRestart() {
-        indentPrint("Do you want to restart the game? (yes/no)\n");
+        ResponseManager.promptRestart();
         if (isAccept()) {
             EconoCraftLogic.initializeGame().startEcono();
         } else {

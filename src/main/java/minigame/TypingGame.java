@@ -57,6 +57,13 @@ public class TypingGame implements MiniGame {
         this.userInput = new String[] {""};
     }
 
+    public TypingGame(String textToType) {
+        this.accuracy = 0;
+        this.timeSpent = 0;
+        this.textToType = textToType;
+        this.userInput = new String[] {""};
+    }
+
     private static void setupLogger() {
         LogManager.getLogManager().reset();
         TG_LOGGER.setLevel(Level.ALL);

@@ -1,18 +1,11 @@
 package company;
 
-/**
- * Represents a company within the EconoCraft game, handling operations such as hiring, firing employees,
- * and financial management including salaries and revenue.
- */
 public class Company {
     private final String name;
     private int numberOfEmployees;
     private int employeeSalary;
     private int revenuePerEmployee;
 
-    /**
-     * Default constructor initializing a new Company with default values.
-     */
     public Company() {
         this.name = "SIU";
         this.numberOfEmployees = 0;
@@ -20,14 +13,6 @@ public class Company {
         this.revenuePerEmployee = 1000;
     }
 
-    /**
-     * Constructs a new Company with specified attributes.
-     *
-     * @param name The name of the company.
-     * @param numberOfEmployees Initial number of employees.
-     * @param employeeSalary Initial salary per employee.
-     * @param revenuePerEmployee Initial revenue per employee.
-     */
     public Company(String name, int numberOfEmployees, int employeeSalary, int revenuePerEmployee) {
         this.name = name;
         this.numberOfEmployees = numberOfEmployees;
@@ -35,20 +20,10 @@ public class Company {
         this.revenuePerEmployee = revenuePerEmployee;
     }
 
-    /**
-     * Hires a specified number of employees.
-     *
-     * @param number The number of employees to hire.
-     */
     public void hireEmployee(int number) {
         numberOfEmployees += number;
     }
 
-    /**
-     * Removes a specified number of employees.
-     *
-     * @param number The number of employees to remove.
-     */
     public void removeEmployee(int number) {
         numberOfEmployees -= number;
     }
@@ -77,21 +52,10 @@ public class Company {
         return name;
     }
 
-
-    /**
-     * Updates the company's revenue per employee by a specified amount.
-     *
-     * @param amount The amount to add to the revenue per employee.
-     */
     public void updateRevenue(int amount) {
         revenuePerEmployee += amount;
     }
 
-    /**
-     * Updates the salary for employees by a specified amount.
-     *
-     * @param amount The amount to add to the employee salary.
-     */
     public void updateSalary(int amount) {
         employeeSalary += amount;
     }
@@ -100,11 +64,6 @@ public class Company {
         return receiveRevenue() - paySalaries();
     }
 
-    /**
-     * Returns a string representation of the company including various statistics.
-     *
-     * @return A string summary of the company.
-     */
     public String toString() {
         return "Company: " + name + "\n" +
                 "Number of Employees: " + numberOfEmployees + "\n" +
@@ -112,5 +71,4 @@ public class Company {
                 "Revenue Per Employee: " + revenuePerEmployee + "\n" +
                 "Profit per Round: " + profitPerRound() + "\n";
     }
-
 }

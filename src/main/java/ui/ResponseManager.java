@@ -6,6 +6,7 @@ public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
     public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
     public static final String RESET = "\u001B[0m";
     public static final String INDENTATION =
             "===".repeat(20);
@@ -130,12 +131,13 @@ public class ResponseManager {
      * Prints the amount of money the company has earned or lost each round.
      * @param profit
      */
-    public static void printCompanyProfit(int profit) {
+    private static String earningDetailString(int profit, String source) {
         if (profit > 0) {
-            indentPrint("Good job! You have earned " + profit + " assets from your company!\n");
+            return source + " Earned: $" + GREEN + profit + RESET + "\n";
+        } else if (profit < 0) {
+            return source + " Lost: -$" + RED + profit + RESET + "\n";
         } else {
-            indentPrint("You have lost " + profit + " assets from your company!" +
-                    "\nPlease manage your company better next time!\n");
+            return "";
         }
     }
 
@@ -144,5 +146,15 @@ public class ResponseManager {
      */
     public static void promptRestart() {
         indentPrint("Do you want to restart the game? (yes/no)");
+    }
+
+    public static void printRoundEarned(int companyProfit, int bondProfit, int cryptoProfit) {
+        int totalProfit = companyProfit + bondProfit + cryptoProfit;
+        String companyEarning = earningDetailString(companyProfit, "Company");
+        String bondEarning = earningDetailString(bondProfit, "Bond");
+        String cryptoEarning = earningDetailString(cryptoProfit, "Crypto");
+        String sumEarning = earningDetailString(totalProfit, "Total");
+        indentPrint(BLUE + "ROUND SUMMARY:\n" + RESET +
+                companyEarning + bondEarning + cryptoEarning + "\n" + sumEarning);
     }
 }
