@@ -343,6 +343,195 @@ $4180 returned to your account.
 The system will output the profit earn from selling the stock and 
 return the money gained from selling the stock back to your asset account.
 
+### Feature - Bond
+
+#### Buy Bond
+
+Allows player to buy bond from the virtual stock market.
+
+Format: 'bond'
+
+Expected outcome:
+
+```
+Select a bond to purchase:
+
+1: Government Stability Bond
+2: Corporate Growth Bond
+3: High Yield Bond
+4: Inflation Linked Bond
+Enter the number of the bond you wish to purchase, or 0 to exit:
+
+```
+
+Player would enter an integer to indicate which type of bond to purchase.
+
+Expected outcome（choose number 1）:
+```
+============================================================
+The Government Stability Bond is considered a secure investment,
+with fixed interest payouts and a guaranteed return of principal at maturity.
+This bond is favored by investors seeking stability and low risk.
+It provides fixed return to you every round
+
+Bond Name: Government Stability Bond
+Price per bond unit: 1000
+Annual Interest Rate (%): 3
+============================================================
+How many units of Government Stability Bond do you want to purchase? Input 0 if you want none
+```
+
+Player would enter an integer to indicate the number of bonds to purchase.
+
+Expected outcome (choose integer 1 )
+```
+============================================================
+$1000 has been deducted from ur asset.
+Your total asset is now $0.
+============================================================
+You've successfully purchased 1 units of Government Stability Bond. Expected total interest gain is $30.00.
+BuyBondCommand executed
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+
+Player can also type `status` to check the bond that they are currently holding.
+```
+============================================================
+Current Status:
+Your name is: MA
+occupation: Robotics
+current health: |####      | 40%
+current money: $0, you need $1000000 more to win the game
+============================================================
+Your current investments are:
+Government Stability Bond current bond count : 1
+
+============================================================
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+Player would enter an integer to indicate which type of crypto to purchase.
+
+Expected outcome（choose number 1）:
+```
+============================================================
+Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. 
+It offers a peer-to-peer system without a central authority, 
+making it a revolutionary approach to currency. 
+It provides return to you every round, but it might be listed as illegal items.
+
+Crypto Name: Bitcoin
+Current Price: 10000 USD
+============================================================
+How much in USD do you want to invest in Bitcoin? Input 0 if you want none
+```
+
+Player would enter an integer to indicate the number of cryptos to purchase.
+
+Expected outcome (choose integer 10000 )
+```
+Positive news has increased the value of Bitcoin by 3%.
+============================================================
+$10000 has been deducted from ur asset.
+ Your total asset is now $974630.
+============================================================
+You've successfully invested 10000 USD in Bitcoin.
+BuyCryptoCommand executed
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+
+Player can also type `status` to check the crypto that they are currently holding.
+```
+============================================================
+Current Status:
+Your name is: MA
+occupation: Robotics
+current health: |#####     | 50%
+current money: $974630, you need $25370 more to win the game
+============================================================
+Your current investments are: 
+Bitcoin current crypto count : 1
+
+============================================================
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+
+### Feature - Crypto
+
+#### Buy Crypto
+
+Allows player to buy crypto from the virtual crypto market.
+
+Format: 'crypto'
+
+Expected outcome:
+
+```
+Select a cryptocurrency to invest in:
+1: Bitcoin
+2: Ethereum
+3: Litecoin
+4: Cardano
+```
+
+Player would enter an integer to indicate which type of crypto to purchase.
+
+Expected outcome（choose number 1）:
+```
+============================================================
+Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. 
+It offers a peer-to-peer system without a central authority, 
+making it a revolutionary approach to currency. 
+It provides return to you every round, but it might be listed as illegal items.
+
+Crypto Name: Bitcoin
+Current Price: 10000 USD
+============================================================
+How much in USD do you want to invest in Bitcoin? Input 0 if you want none
+```
+
+Player would enter an integer to indicate the number of cryptos to purchase.
+
+Expected outcome (choose integer 10000 )
+
+```
+Positive news has increased the value of Bitcoin by 3%.
+============================================================
+$10000 has been deducted from ur asset.
+ Your total asset is now $974630.
+============================================================
+You've successfully invested 10000 USD in Bitcoin.
+BuyCryptoCommand executed
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+
+Player can also type `status` to check the crypto that they are currently holding.
+```
+============================================================
+Current Status:
+Your name is: MA
+occupation: Robotics
+current health: |#####     | 50%
+current money: $974630, you need $25370 more to win the game
+============================================================
+Your current investments are: 
+Bitcoin current crypto count : 1
+
+============================================================
+You have 2 actions left
+Input your action! If needed, type 'help' for more info
+============================================================
+```
+
 ### Feature - Check Status
 
 Allows player to check their current status.
