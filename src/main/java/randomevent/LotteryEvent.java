@@ -22,6 +22,10 @@ public class LotteryEvent extends RandomEvent {
      */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
+        if (playerProfile.getAsset().getAsset() < TICKET_PRICE) {
+            System.out.println("A peaceful round.");
+            return;
+        }
         System.out.println("You have entered a lottery event! \n" +
                 "You can choose to buy a ticket for $2000. \n" +
                 "If you win, you will receive a cash prize up to $10000! \n" +

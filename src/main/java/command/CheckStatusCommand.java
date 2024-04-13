@@ -5,7 +5,7 @@ import static ui.ResponseManager.indentPrint;
 
 public class CheckStatusCommand implements Command {
     public void execute(PlayerProfile profile) {
-        indentPrint("Current Status:\n" + profile.toString() + "\n");
+        indentPrint("Current Status:\n" + profile.toString());
     }
 
     public boolean isExit() {

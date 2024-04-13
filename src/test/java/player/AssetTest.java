@@ -27,7 +27,7 @@ class AssetTest {
      */
     @Test
     void outputAsset() {
-        assertEquals(5000, asset.outputMoney(),
+        assertEquals(5000, asset.getAsset(),
                 "The outputMoney method should return the current total asset.");
     }
 

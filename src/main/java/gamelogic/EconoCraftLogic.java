@@ -34,6 +34,7 @@ public class EconoCraftLogic {
 
         try {
             playerProfile = Loader.loadProfile();
+            indentPrint("Welcome back!\n");
         } catch (LoadProfileException e) {
             indentPrint("You will start a fresh new journey!\n");
         }
@@ -53,6 +54,7 @@ public class EconoCraftLogic {
                 System.exit(0);
             }
             playerProfile = new PlayerProfile(playerName, jobType);
+            ResponseManager.printWelcome(playerProfile);
         }
 
         try {
@@ -61,7 +63,6 @@ public class EconoCraftLogic {
             indentPrint("Error saving profile: " + e.getMessage());
         }
 
-        ResponseManager.printWelcome(playerProfile);
         return new EconoCraftLogic(playerProfile);
     }
 

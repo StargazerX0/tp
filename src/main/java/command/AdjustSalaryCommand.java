@@ -3,6 +3,9 @@ package command;
 import exception.GameException;
 import player.PlayerProfile;
 import static ui.ResponseManager.indentPrint;
+import static ui.ResponseManager.RED;
+import static ui.ResponseManager.GREEN;
+import static ui.ResponseManager.RESET;
 
 /**
  * Executes salary adjustment commands for an employee, either increasing or decreasing their salary.
@@ -36,13 +39,13 @@ public class AdjustSalaryCommand implements Command {
             if (amount > playerProfile.getEmployeeSalary()) {
                 throw new GameException("Extent of lowering salary cannot be more than the employee's salary.\n");
             }
+            indentPrint("You have successfully lowered the salary by $" + RED + amount + RESET + ".\n");
             amount = -amount;
-            indentPrint("You have successfully lowered the salary by -$" + amount + ".\n");
         } else {
             if (amount > ADJUSTMENT_LIMIT) {
                 throw new GameException("Extent of rising salary cannot be more than $" + ADJUSTMENT_LIMIT + ".\n");
             }
-            indentPrint("You have successfully raised the salary by $" + amount + ".\n");
+            indentPrint("You have successfully raised the salary by $" + GREEN + amount + RESET + ".\n");
         }
         playerProfile.updateSalary(amount);
     }

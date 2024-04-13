@@ -64,11 +64,6 @@ public class Asset {
     public void setCryptoCount(List<Integer> cryptoCount) {
         this.cryptoCount = cryptoCount;
     }
-
-    public int getAsset() {
-        return this.totalAsset;
-    }
-
     public List<Bond> getBondList() {
         return bondList;
     }
@@ -95,6 +90,9 @@ public class Asset {
 
 
     public void addAsset(int amount) {
+        if (amount <= 0) {
+            return;
+        }
         int actualAmount = (int) (amount * ASSET_MULTIPLIER);
         int multiPercentage = (int) (ASSET_MULTIPLIER * PERCENT_RATIO);
         String color = ASSET_MULTIPLIER >= 1.0 ? GREEN : RED;
@@ -103,6 +101,15 @@ public class Asset {
         indentPrint(String.format("$%s%d%s has been added to ur asset - Detail: %s(%d * %d%%)%s.\n" +
                         "Your total asset is now $%d.\n",
                GREEN, actualAmount, RESET, color, amount, multiPercentage, RESET, totalAsset));
+    }
+
+    public void deductAsset(int amount) {
+        if (amount <= 0) {
+            return;
+        }
+        totalAsset -= amount;
+        indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
+                RED, amount, RESET, totalAsset));
     }
 
     /**
@@ -215,25 +222,15 @@ public class Asset {
         return totalReturn;
     }
 
-    public void deductAsset(int amount) {
-        totalAsset -= amount;
-        indentPrint(String.format("$%s%d%s has been deducted from ur asset.\n Your total asset is now $%d.\n",
-                RED, amount, RESET, totalAsset));
-    }
-
     public boolean isAchieved() {
         return totalAsset >= FINAL_GOAL;
     }
 
     public boolean isBankrupt() {
-        if (totalAsset <= 0) {
-            ResponseManager.indentPrint("You have gone bankrupt!\n");
-            return true;
-        }
-        return false;
+        return totalAsset <= 0;
     }
 
-    public int outputMoney() {
+    public int getAsset() {
         return totalAsset;
     }
 
@@ -265,11 +262,14 @@ public class Asset {
                     cryptoList.get(i).returnCryptoName() + " current crypto count : "
                     + cryptoNum + "\n";
         }
-        String investmentInfo = output.isEmpty() ? output :
-                "\n" + INDENTATION + "\n" +
-                YELLOW + "Your current investments are: \n" + RESET + output;
 
-        return String.format("$%d, you need $%d more to win the game", totalAsset, FINAL_GOAL - totalAsset)
-                + investmentInfo;
+        String investmentInfo = output.isEmpty() ? output :
+                INDENTATION + "\n" +
+                YELLOW + "Your current investments are: \n" + RESET + output;
+        String reminder = totalAsset <= 1000 ? RED + " You are running low on cash!\n" + RESET : "";
+
+        return totalAsset + reminder + "\n" +
+                String.format("you need $%s%d%s more to win the game\n", YELLOW, FINAL_GOAL - totalAsset, RESET) +
+                investmentInfo;
     }
 }

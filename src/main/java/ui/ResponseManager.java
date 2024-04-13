@@ -6,10 +6,11 @@ public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
     public static final String YELLOW = "\u001B[33m";
+    public static final String ORANGE = "\u001B[38;5;208m";
     public static final String BLUE = "\u001B[34m";
     public static final String RESET = "\u001B[0m";
     public static final String INDENTATION =
-            "===".repeat(20);
+            "===".repeat(25);
     private static final String INITIALIZATION_MESSAGE = "Initializing...\n"
         + "Enter your name:\n";
     private static final String JOB_SELECT_MSG = "Choose your job type:\n" +
@@ -18,15 +19,16 @@ public class ResponseManager {
             "for Artificial intelligence, enter '/a'\n";
     private static final String BYE_MSG = "Bye bye adventurer!";
     private static final String HELP_MSG =
+            INDENTATION + "\n" +
             "Enter ur action!\n" +
             "work - to work\n" +
             "rest - to rest\n" +
             "exercise - to exercise\n" +
             "status - to check status\n" +
-            "upgrade - to upgrade(!NOTE you need to have at least $10000)\n" +
+            "upgrade - to upgrade(!NOTE your money needs to more than $10000)\n" +
             "bye - to exit\n" +
             INDENTATION +
-            "\nCommands below are only available for advanced players:\n" +
+            "\nCommands below are only available after UPGRADE!\n" +
             INDENTATION +
             "\nstock - to purchase stocks from the stock market \n" +
             "sellstock - to sell all of your stocks \n" +
@@ -71,7 +73,7 @@ public class ResponseManager {
      * @param playerProfile The player's profile.
      */
     public static void printWelcome(PlayerProfile playerProfile) {
-        System.out.println("Welcome, " + playerProfile.toString());
+        indentPrint("Welcome, " + playerProfile.toString());
     }
 
     /**
@@ -135,7 +137,7 @@ public class ResponseManager {
         if (profit > 0) {
             return source + " Earned: $" + GREEN + profit + RESET + "\n";
         } else if (profit < 0) {
-            return source + " Lost: -$" + RED + profit + RESET + "\n";
+            return source + " Lost: $" + RED + profit + RESET + "\n";
         } else {
             return "";
         }
@@ -154,7 +156,13 @@ public class ResponseManager {
         String bondEarning = earningDetailString(bondProfit, "Bond");
         String cryptoEarning = earningDetailString(cryptoProfit, "Crypto");
         String sumEarning = earningDetailString(totalProfit, "Total");
-        indentPrint(BLUE + "ROUND SUMMARY:\n" + RESET +
+        String title = totalProfit == 0 ? "" : BLUE + "ROUND SUMMARY:\n" + RESET;
+
+        indentPrint(title +
                 companyEarning + bondEarning + cryptoEarning + "\n" + sumEarning);
+    }
+
+    public static void endOfRoundMessage(int round) {
+        System.out.println(ORANGE + "End of round " + round + "!\n" + INDENTATION + RESET);
     }
 }

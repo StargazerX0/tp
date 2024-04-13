@@ -13,7 +13,8 @@ public class UpgradeCommand implements Command {
             throw new GameException("You have already upgraded your player.\n");
         }
         if (!playerProfile.canUpgrade(UPGRADE_COST)) {
-            throw new MoneyNotEnoughException("you need at least $10000 to upgrade your player.\n");
+            throw new MoneyNotEnoughException("you need at least $10000 to upgrade your player.\n" +
+                    "You currently have $" + playerProfile.getAsset().getAsset() + ".\n");
         }
         playerProfile.upgrade();
         indentPrint("You have successfully upgraded your player!\n");
