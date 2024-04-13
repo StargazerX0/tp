@@ -197,6 +197,29 @@ The implementation of the Tic Tac Toe Game is as follows:
 user based on the stock's current price.
 9. User can keep the stock they purchased inside their asset for as long as they want.
 
+## Investment game - Bond
+
+1. The process to purchase bonds can be invoked by the 'BondCommand' when the user enters 'bond'.
+2. The system uses 'ResponseManager' to display a list of available bonds and guide the user through the selection process.
+3. Users are prompted to select which bond they wish to buy by entering a number corresponding to the bond displayed on the screen.
+4. After selecting a bond, users are asked to specify the number of units they want to purchase by entering an integer.
+5. The transaction is confirmed by 'ResponseManager', which provides details of the total investment and expected returns based on the bond's performance.
+6. The purchased bonds are then recorded in the 'Asset' class under the user’s profile, updating their financial portfolio.
+7. Users can type 'status' to view details about the bonds they own, including the number of units and the accumulated interest.
+8. The user's total assets are updated to reflect their current bond holdings and the impact of these investments on their overall financial status.
+
+## Investment game - Crypto
+
+1. The process to purchase cryptos can be invoked by the 'CryptoCommand' when the user enters 'Crypto'.
+2. The system uses 'ResponseManager' to display a list of available cryptos and guide the user through the selection process.
+3. Users are prompted to select which crypto they wish to buy by entering a number corresponding to the crypto displayed on the screen.
+4. They are then prompted to enter the amount of USD they wish to invest in their selected cryptocurrency.
+5. After the investment amount is entered, the system calculates potential returns based on current market trends and adjusts the user's assets accordingly.
+6. A confirmation message is displayed to the user detailing the investment amount and the expected changes due to market conditions.
+7. The cryptocurrencies bought are added to the user’s 'Asset' class, displaying both the amount invested and the type of cryptocurrency.
+8. By typing 'status', users can check their cryptocurrency holdings and the current market value of these investments.
+9. The game dynamically simulates market changes, which can affect the value of the cryptocurrencies held by the user, and these changes are reflected in the updated asset information. Reflected in the user's asset status.
+
 ## Company Management
 1. Players are able to invoke different commands to manage their company.
 2. The corresponding commands will be produced from parsing the user input by using `CommandFactory`.
