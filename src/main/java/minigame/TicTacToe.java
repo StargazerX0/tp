@@ -16,10 +16,10 @@ import java.util.logging.Logger;
 public class TicTacToe implements MiniGame {
     private static final Logger logger = Logger.getLogger("TacLog");
     protected char[][] board = new char[3][3];
+    protected boolean isGameOver = false;
     private char playerMark;
     private char aiMark;
     private char currentMark;
-    protected boolean isGameOver = false;
     private boolean isDraw = false;
 
     static {

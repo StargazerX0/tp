@@ -7,7 +7,10 @@ import org.mockito.InjectMocks;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test class for {@link TicTacToe}.
@@ -22,7 +25,8 @@ class TicTacToeTest {
 
     /**
      * Sets up the environment before each test.
-     * Initializes a new Tic TacToe game with 'X' as the player's mark and redirects system output to capture it for assertions.
+     * Initializes a new Tic TacToe game with 'X' as the player's mark and redirects system output to capture it
+     * for assertions.
      */
     @BeforeEach
     void setup() {
@@ -40,7 +44,8 @@ class TicTacToeTest {
     }
 
     /**
-     * Verifies that a win can be correctly identified across any of the rows when all cells in a row contain the same mark.
+     * Verifies that a win can be correctly identified across any of the rows when all cells in a row contain t
+     * he same mark.
      */
     @Test
     void testRowWin() {
@@ -51,7 +56,8 @@ class TicTacToeTest {
     }
 
     /**
-     * Verifies that a win can be correctly identified across any of the columns when all cells in a column contain the same mark.
+     * Verifies that a win can be correctly identified across any of the columns when all cells in a column contain
+     * the same mark.
      */
     @Test
     void testColumnWin() {
@@ -62,7 +68,8 @@ class TicTacToeTest {
     }
 
     /**
-     * Verifies that a win can be correctly identified across either of the diagonals when all cells in a diagonal contain the same mark.
+     * Verifies that a win can be correctly identified across either of the diagonals when all cells in a diagonal
+     * contain the same mark.
      */
     @Test
     void testDiagonalWin() {
@@ -84,7 +91,8 @@ class TicTacToeTest {
     }
 
     /**
-     * Checks if the method can accurately detect when the board is completely filled, indicating a full board without any empty spaces.
+     * Checks if the method can accurately detect when the board is completely filled, indicating a full board
+     * without any empty spaces.
      */
     @Test
     void testBoardFullness() {

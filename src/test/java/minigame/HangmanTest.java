@@ -33,7 +33,7 @@ class HangmanTest {
      * Ensures that the game prompts for correct input format and correctly parses valid letter guesses.
      */
     @Test
-    void testStartGame_InvalidInputs() {
+    void testStartGame_invalidInputs() {
         String data = "123\na\nb\nc\nd\n";  // Assuming the game may prompt for input up to 5 times
         System.setIn(new ByteArrayInputStream(data.getBytes()));
 
