@@ -39,7 +39,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName.set("gamelogic")
+    archiveBaseName.set("econocraft")
     archiveClassifier.set("")
 }
 
