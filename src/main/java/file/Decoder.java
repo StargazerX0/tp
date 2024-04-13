@@ -36,9 +36,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * Decodes JSON data into player profiles and associated objects.
+ * This class translates JSON strings into Java objects like PlayerProfile, Asset, Stock, Bond, and CryptoCurrency.
+ */
 public class Decoder {
 
+    /**
+     * Decodes a JSON string into a PlayerProfile object, including related entities like assets and company.
+     *
+     * @param json The JSON string representing the player profile.
+     * @return PlayerProfile The fully constructed player profile.
+     * @throws LoadProfileException If any error occurs during decoding.
+     */
     public static PlayerProfile decodePlayerProfile(String json) throws LoadProfileException {
         try {
             JSONObject jsonObj = new JSONObject(json);
@@ -60,6 +70,13 @@ public class Decoder {
         }
     }
 
+    /**
+     * Decodes JSON string to an Asset object including stocks, bonds, and cryptocurrencies.
+     *
+     * @param json The JSON string of the asset details.
+     * @return Asset The decoded asset object.
+     * @throws LoadProfileException If decoding fails.
+     */
     private static Asset decodeAsset(String json) throws LoadProfileException {
         try {
             JSONObject jsonObj = new JSONObject(json);
@@ -89,6 +106,14 @@ public class Decoder {
         }
     }
 
+    /**
+     * Decodes a JSON array of stocks into a list of Stock objects and their counts.
+     *
+     * @param json The JSON string representing the array of stocks.
+     * @param stockCount A list to store the counts of each stock.
+     * @return List<Stock> A list of decoded stock objects.
+     * @throws LoadProfileException If decoding fails.
+     */
     private static List<Stock> decodeStocks(String json, List<Integer> stockCount) throws LoadProfileException {
         List<Stock> stocks = new ArrayList<>();
         try {
@@ -108,6 +133,12 @@ public class Decoder {
         }
     }
 
+    /**
+     * Creates a Stock object based on the stock name.
+     *
+     * @param name The name of the stock.
+     * @return Stock The stock object.
+     */
     private static Stock createStockFromName(String name) {
         switch (name) {
         case "WaveScan Technologies (Start ups) ":
@@ -135,6 +166,14 @@ public class Decoder {
         }
     }
 
+    /**
+     * Decodes a JSON array of bonds into a list of Bond objects and their counts.
+     *
+     * @param json The JSON string representing the array of bonds.
+     * @param bondCount A list to store the counts of each bond.
+     * @return List<Bond> A list of decoded bond objects.
+     * @throws LoadProfileException If decoding fails.
+     */
     private static List<Bond> decodeBonds(String json, List<Integer> bondCount) throws LoadProfileException {
         List<Bond> bonds = new ArrayList<>();
         try {
@@ -153,6 +192,13 @@ public class Decoder {
             throw new LoadProfileException("Error decoding bonds.\n");
         }
     }
+
+    /**
+     * Creates a Bond object based on the bond name.
+     *
+     * @param name The name of the bond.
+     * @return Bond The bond object.
+     */
     private static Bond createBondFromName(String name) {
         switch (name) {
         case "Corporate Growth Bond":
@@ -168,6 +214,14 @@ public class Decoder {
         }
     }
 
+    /**
+     * Decodes a JSON array of cryptocurrencies into a list of CryptoCurrency objects and their counts.
+     *
+     * @param json The JSON string representing the array of cryptocurrencies.
+     * @param cryptoCount A list to store the counts of each cryptocurrency.
+     * @return List<CryptoCurrency> A list of decoded cryptocurrency objects.
+     * @throws LoadProfileException If decoding fails.
+     */
     private static List<CryptoCurrency> decodeCryptos(String json, List<Integer> cryptoCount)
             throws LoadProfileException {
         List<CryptoCurrency> cryptos = new ArrayList<>();
@@ -188,6 +242,12 @@ public class Decoder {
         }
     }
 
+    /**
+     * Creates a CryptoCurrency object based on the cryptocurrency name.
+     *
+     * @param name The name of the cryptocurrency.
+     * @return CryptoCurrency The cryptocurrency object.
+     */
     private static CryptoCurrency createCryptoFromName(String name) {
         switch (name) {
         case "Bitcoin":
@@ -203,6 +263,13 @@ public class Decoder {
         }
     }
 
+    /**
+     * Decodes the company data from the JSON string into a Company object.
+     *
+     * @param json The JSON string containing the company data.
+     * @return Company The decoded company object.
+     * @throws LoadProfileException If an error occurs during decoding.
+     */
     private static Company decodeCompany(String json) throws LoadProfileException {
         try {
             JSONObject jsonObj = new JSONObject(json);
