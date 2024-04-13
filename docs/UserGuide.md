@@ -84,9 +84,25 @@ Format: `exercise`
 
 Expected outcome:
 ```
-==============================
+============================================================
+exercise
+============================================================
+Choose your game:
+1. Tic Tac Toe
+2. Hangman
+============================================================
+============================================================
+Enter your choice (1 for Tic Tac Toe, 2 for Hangman):
+============================================================
+```
+There are two game options, `1` for Tic Tac Toe game, `2` for Hangman game.
+
+Format `1`
+
+```
+============================================================
 Please choose your mark: X or O
-==============================
+============================================================
 ```
 Player would then select which mark they would like to use, the game would start after the selection.
 
@@ -141,6 +157,91 @@ O O O
 ==============================
 Siuuuuu, player O wins!
 ==============================
+```
+This would increase 10% of the player's health if player wins the game.
+
+If player type 2 when selecting the game, the Hangman game will be initialized.
+
+Format `2`
+
+Expected outcome:
+```
+============================================================
+Welcome to the Hangman Game!
+============================================================
+============================================================
+This game's words are related to concepts in Software Engineering.
+============================================================
+============================================================
+Please enter only one character at a time as your guess.
+============================================================
+```
+
+In each round, player will be given a letter related to CS2113 concepts with one character missing and is required to 
+guess the missing character.
+Example:
+```
+============================================================
+Round 1:
+============================================================
+============================================================
+d e v e l o p m e _ t 
+============================================================
+============================================================
+Guess the missing letter:
+============================================================
+```
+
+If the guess is correct, the game will show correct message and enter next round.
+Example:
+```
+============================================================
+Guess the missing letter:
+============================================================
+n
+============================================================
+d e v e l o p m e n t
+============================================================
+============================================================
+Correct! Moving to next round.
+============================================================
+```
+If the guess is incorrect, the game will show error message and enter next round.
+Example:
+```
+============================================================
+c _ o u d 
+============================================================
+============================================================
+Guess the missing letter:
+============================================================
+a
+============================================================
+Wrong guess!
+============================================================
+```
+
+If the input format is incorrect, player will be asked to make another guess.
+Example:
+```
+============================================================
+l _ _ p 
+============================================================
+============================================================
+Guess the missing letter:
+============================================================
+dd
+============================================================
+Invalid input. Please guess exactly one letter at a time:
+============================================================
+```
+
+If the total wrong guesses are fewer than 3, player will win the game.
+Example:
+```
+============================================================
+Game completed! You finished all rounds.
+============================================================
 ```
 This would increase 10% of the player's health if player wins the game.
 

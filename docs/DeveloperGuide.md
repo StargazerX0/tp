@@ -127,15 +127,18 @@ The mechanism:
 
 The mechanism:
 1. `Saver` will be called within `startEcono` method after one command is executed.
-2. `Saver` creates a new `file` class and invokes the `constructJson` method for `PlayerProfile` class.
-3. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
+2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
+3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
+into Json format.
+4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
 
 ![Load.png](UML%20diagram%2FLoad.png)
 
 The mechanism:
 1. `Loader` will be called within `initializeGame` method once the program is initialized.
-2. `Loader` invokes the `readJsonFromFile` method to read data from the json file and creates a new `file` class.
-3. `Loader` invokes the `parseJson` method to retrieve relevant attributes and creates a new `PlayerProfile` class.
+2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
+3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex 
+data structures.
 4. `Loader` returns the `PlayerProfile` class to load the previous information.
 
 
