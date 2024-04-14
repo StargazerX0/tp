@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents a generator that generates random events based on the probability of each event.
+ */
 public class EventGenerator {
     private static final RandomEvent[] eventArray = {
         new PositiveEvent(0.2),

@@ -2,6 +2,9 @@ package ui;
 
 import player.PlayerProfile;
 
+/**
+ * Represents the response manager that manages the responses to the player.
+ */
 public class ResponseManager {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";

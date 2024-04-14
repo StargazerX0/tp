@@ -19,6 +19,12 @@ public class PlayerProfile {
     private int actionCount;
     private boolean isAdvancedPlayer;
 
+    /**
+     * Constructs a player profile with default attributes.
+     *
+     * @param name Player's name.
+     * @param occupation Player's occupation.
+     */
     public PlayerProfile(String name, String occupation) {
         this.name = name;
         this.health = new Health();
@@ -32,6 +38,7 @@ public class PlayerProfile {
 
     /**
      * Constructs a player profile with specified attributes and default company.
+     * Facilitates testing with custom attributes.
      *
      * @param name Player's name.
      * @param occupation Player's occupation.
@@ -65,9 +72,8 @@ public class PlayerProfile {
         this.company = company;
     }
 
-    public void addAsset(int amount) {
-        this.asset.addAsset(amount);
-    }
+    public void increaseAsset(int amount) {
+        asset.addAsset(amount);
 
     public void loseHealth(int amount) {
         this.health.deductHealth(amount);

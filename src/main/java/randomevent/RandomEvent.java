@@ -3,6 +3,9 @@ package randomevent;
 import exception.CommandInputException;
 import player.PlayerProfile;
 
+/**
+ * Represents a random event that can happen in the end of a game round.
+ */
 public abstract class RandomEvent {
     private final double probability;
 

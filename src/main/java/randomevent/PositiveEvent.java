@@ -62,7 +62,7 @@ class PositiveEvent extends RandomEvent {
 
     private static void subsidyEvent(PlayerProfile playerProfile) {
         System.out.println(POSITIVE_EVENT[2]);
-        playerProfile.addAsset(3000);
+        playerProfile.increaseAsset(3000);
     }
 
     private static void familyDinnerEvent(PlayerProfile playerProfile) {

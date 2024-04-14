@@ -24,7 +24,7 @@ public class WorkCommand implements Command {
             int reward = game.getAccuracy() * SALARY / PERCENT_RATIO;
             int earned = game.isOverTime() ? reward / 2 : reward;
             assert earned >= 0 : "Earned should not be negative";
-            player.addAsset(earned);
+            player.increaseAsset(earned);
         } else {
             indentPrint("You have failed the typing game and earned nothing.\n");
         }
