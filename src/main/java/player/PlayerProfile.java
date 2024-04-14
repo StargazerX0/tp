@@ -246,9 +246,7 @@ public class PlayerProfile {
     /**
      * Checks if the game has finished.
      *
-     * @return true if current round exceeds the round limit or
-     * the player has gone bankrupt or
-     * the player has achieved the winning condition, false otherwise.
+     * @return true if round exceeds the round limit, player has achieved the goal or bankrupted, false otherwise.
      */
     public boolean isFinished() {
         if (asset.isBankrupt()) {

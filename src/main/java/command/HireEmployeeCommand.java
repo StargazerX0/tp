@@ -19,8 +19,9 @@ public class HireEmployeeCommand implements Command {
      * Hires employees for the player if the player is an advanced player and has enough money.
      *
      * @param playerProfile the player profile to be updated.
-     * @throws GameException if the player is not an advanced player,
-     * the employee number is invalid, or the player does not have enough money.
+     * @throws GameException if the player has not upgraded to an advanced player.
+     * @throws GameException if the hire number is negative.
+     * @throws GameException if the player does not have enough money to hire the employees.
      */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {

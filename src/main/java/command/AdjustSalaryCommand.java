@@ -28,8 +28,8 @@ public class AdjustSalaryCommand implements Command {
      * If the update type is "raise", the salary will be raised by the amount.
      *
      * @param playerProfile the player profile to be updated.
-     * @throws GameException if the extent of lowering salary is more than the
-     * employee's salary or the extent of raising
+     * @throws GameException if the extent of lowering salary is more than the employee's salary.
+     * @throws GameException if the extent of raising salary is more than the adjustment limit.
      */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
