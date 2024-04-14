@@ -1,7 +1,6 @@
 package file;
 
 import company.Company;
-import exception.JobSelectException;
 import exception.LoadProfileException;
 
 import exception.NameInputException;

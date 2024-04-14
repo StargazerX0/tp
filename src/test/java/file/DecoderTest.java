@@ -40,12 +40,12 @@ class DecoderTest {
         asset.setCryptoList(Arrays.asList(new Bitcoin()));
         asset.setCryptoCount(Arrays.asList(2));
 
-        expectedProfile = new PlayerProfile("Jane Doe", "Engineer", 95, asset, 1,
+        expectedProfile = new PlayerProfile("Jane Doe", "Robotics", 95, asset, 1,
             1, true, company);
 
         jsonInput = "{\n" +
             " \"name\": \"Jane Doe\",\n" +
-            " \"occupation\": \"Engineer\",\n" +
+            " \"occupation\": \"Robotics\",\n" +
             " \"health\": 95,\n" +
             " \"currentRound\": 1,\n" +
             " \"actionCount\": 1,\n" +
