@@ -55,7 +55,6 @@ public class CommandFactory {
         case COMPANY:
             return new CompanyStatsCommand();
 
-
         default:
             return new ExitCommand();
         }

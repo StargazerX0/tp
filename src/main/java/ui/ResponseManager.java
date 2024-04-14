@@ -19,8 +19,9 @@ public class ResponseManager {
             "for Artificial intelligence, enter '/a'\n";
     private static final String BYE_MSG = "Bye bye adventurer!";
     private static final String HELP_MSG =
+            "Here are the list of commands:\n" +
             INDENTATION + "\n" +
-            "Enter ur action!\n" +
+            "help - Show the list of commands\n" +
             "work - to work\n" +
             "rest - to rest\n" +
             "exercise - to exercise\n" +
