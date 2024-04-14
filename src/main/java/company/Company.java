@@ -12,7 +12,6 @@ public class Company {
         this.employeeSalary = 800;
         this.revenuePerEmployee = 1000;
     }
-
     public Company(String name, int numberOfEmployees, int employeeSalary, int revenuePerEmployee) {
         this.name = name;
         this.numberOfEmployees = numberOfEmployees;
