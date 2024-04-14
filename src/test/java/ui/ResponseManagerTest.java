@@ -50,8 +50,8 @@ class ResponseManagerTest {
     void printCurrentRound_nearEndingRoundInput_printsRoundMsg() {
         int testRound = 16;
         ResponseManager.printCurrentRound(testRound);
-           assertTrue(outputStreamCaptor.toString().contains("Current round: 16") &&
-                    outputStreamCaptor.toString().contains(YELLOW));
+        assertTrue(outputStreamCaptor.toString().contains("Current round: 16") &&
+                outputStreamCaptor.toString().contains(YELLOW));
     }
 
     @Test
