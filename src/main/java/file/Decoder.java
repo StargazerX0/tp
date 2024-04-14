@@ -335,7 +335,7 @@ public class Decoder {
             throw new LoadProfileException("Error decoding company data.\n");
         }
     }
-    
+
     private static void checkCompanyDataValidity(
             int numberOfEmployees, int employeeSalary, int revenuePerEmployee) throws LoadProfileException {
         if (numberOfEmployees < 0 || employeeSalary < 0 || revenuePerEmployee < 0) {

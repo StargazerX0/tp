@@ -13,11 +13,16 @@
     - [Hire Employee](#hire-employee)
     - [Fire Employee](#fire-employee)
     - [Adjust Employee Salary](#adjust-employee-salary)
+  - [Check Status](#feature---check-status)
+    - [Player Status](#player-status)
+    - [Company Status](#company-status)
   - [Stock](#feature---stock)
     - [Buy Stock](#buy-stock)
     - [Sell Stock](#sell-stock)
-  - [Check Status](#feature---check-status)
+  - [Bond](#feature---bond)
+  - [Crypto](#feature---crypto)
   - [Help](#feature---help)
+  - [Random Events](#feature---random-events)
   - [Company Status](#company-status)
   - [Random Events](#feature---random-events)
 
@@ -38,6 +43,10 @@ help students prepare for the future challenges.
 6. Follow the game instructions to start playing.
 7. Your game progress will be auto saved in the `data` folder as `PlayerProfile.json`.
 
+>[!Note]
+> * The game would prompt you to enter your action during the game.
+> * If you are stuck, you can use the `help` command to see a list of commands that you can use.
+> * For advanced user, only normal modification is allowed. Extreme data modification may result in game progress reset.
 
 ## Features
 
@@ -321,6 +330,20 @@ You have successfully upgraded your player!
 
 ### Feature - Manage Company
 
+After upgrading, player can manage a company to earn more profit.
+The name of the company is `ECONO CROP`. 
+
+The default company status is as follows
+* 0 employees
+* Employee salary of $800
+* Revenue per employee of $1200
+
+>[!Note]
+> * The profit per round is calculated as <br>`profit = numOfEmployees * (revenue per employee - employee salary)`
+> * The player can hire employees to increase the profit per round.
+> * The player can fire employees to reduce the cost of the company.
+> * The player can adjust the salary of the employees.
+
 #### Hire Employee
 Allows player to hire an employee to help manage the company.
 With more employees, the player can earn more profit.
@@ -377,6 +400,46 @@ The new salary is $800.
 ===========================================================================
 You have successfully lowered the salary by $100.
 The new salary is $900.
+===========================================================================
+```
+
+### Feature - Check Status
+
+#### Player Status
+Allows player to check their current status.
+
+Format: `status`
+
+Expected outcome:
+```
+===========================================================================
+Current Status:Your name is: jj
+occupation: Artificial intelligence
+current health: |##########| 100%
+current money: 5000
+you need $95000 more to win the game
+===========================================================================
+Current round: 1
+you have 19 rounds left before the game ends!
+===========================================================================
+You have 1 action left
+Input your action! If needed, type 'help' for more info
+===========================================================================
+```
+
+#### Company Status
+If player what to find out their company status, e.g. number of employees, salary, and profit, they can type `company`.
+
+Format: `company`
+
+Expected outcome:
+```
+===========================================================================
+Company: ECONO CROP
+Number of Employees: 0
+Employee Salary: 800
+Revenue Per Employee: 1200
+Profit per Round: 0
 ===========================================================================
 ```
 
@@ -662,40 +725,6 @@ Input your action! If needed, type 'help' for more info
 ============================================================
 ```
 
-### Feature - Check Status
-
-#### Player Status
-Allows player to check their current status.
-
-Format: `status`
-
-Expected outcome:
-```
-==============================
-Current Status:
-Asset: Your name is :zhu
-occupation :artificial intelligence
-current health :99
-current asset: 5770
-==============================
-```
-
-#### Company Status
-If player what to find out their company status, e.g. number of employees, salary, and profit, they can type `company`.
-
-Format: `company`
-
-Expected outcome:
-```
-===========================================================================
-Company: ECONO CROP
-Number of Employees: 0
-Employee Salary: 800
-Revenue Per Employee: 1200
-Profit per Round: 0
-===========================================================================
-```
-
 ### Feature - Help
 
 Shows a list of commands that the player can use when player is stuck.
@@ -732,12 +761,15 @@ lower <number> - to lower salary
 ### Feature - Random Events
 
 At the end of each round, there is a chance that a random event would occur. The
-random event could be positive, negative or a decision to make, and would affect the player's
-asset, health, or other attributes based on your choice.
+random event could be:
+* **Positive event**: Player would receive a reward, such as money or health.
+* **Negative event**: Player would receive a penalty, such as losing money or health.
+* **Lottery event**: Player would have a chance to win a large amount of money.
+* **Decision event**: Player would need to make a decision that would affect their status.
 
 Example of an event:
 ```
-============================================================
+===========================================================================
 There is a food challenge in town.
 You need to eat 1kg of A5 Wagyu in 15min
 If you win, U will receive $500
@@ -764,20 +796,6 @@ You have lost $300 to pay the medical bill!
 You have lost $100 TAT
 ```
 Feel free to explore the different random events in the game!
-
-## Coming soon features in v2.1
-
-### Feature - Shop System
-A shop system will be added to the game, where players can purchase items or power-ups to help them in the game.
-
-### Feature - Money flow track System
-This feature will allow players to track their money flow in the game, including the money they earned and spent.
-
-### Feature - Enhanced UI
-This feature will enhance the user interface of the game to make it more user-friendly. Such as a better display of player status with health bar.
-
-### Feature - Store two player progress
-This would allow players to store two progress so that they can choose which progress to continue when they start the game.
 
 ## FAQ
 
