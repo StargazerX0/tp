@@ -170,6 +170,6 @@ public class ResponseManager {
     }
 
     public static void endOfRoundMessage(int round) {
-        System.out.println(ORANGE + "End of round " + round + "!\n" + INDENTATION + RESET);
+        System.out.println(ORANGE + "End of Round " + round + "!\n" + INDENTATION + RESET);
     }
 }
