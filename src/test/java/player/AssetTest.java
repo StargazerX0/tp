@@ -1,10 +1,15 @@
 package player;
 
 
+import minigame.bondgame.HighYieldBond;
+import minigame.cryptocurrency.Litecoin;
+import minigame.stockgame.StockOne;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * Tests for the {@link Asset} class.
@@ -60,6 +65,45 @@ class AssetTest {
         Asset highAsset = new Asset(1000000);
         assertTrue(highAsset.isAchieved(),
                 "Asset should be marked as achieved when reaching the final goal.");
+    }
+
+    @Test
+    void testAsset_checkBuyStock() {
+        Asset testAsset = new Asset(5000);
+        StockOne testStock = new StockOne();
+        testAsset.addStock(testStock, 10);
+        assertFalse(testAsset.getStockList().isEmpty());
+    }
+
+    @Test
+    void testAsset_buyDuplicateStock() {
+        Asset testAssetDup = new Asset(5000);
+        StockOne testStock = new StockOne();
+        testAssetDup.addStock(testStock, 10);
+        testAssetDup.addStock(testStock, 20);
+        assertEquals(testAssetDup.getStockCount().size(), 1);
+    }
+
+    @Test
+    void testAsset_checkBondStorage() {
+        Asset testAsset = new Asset(5000);
+        HighYieldBond testBond = new HighYieldBond();
+        testAsset.addBond(testBond, 10);
+        assertFalse(testAsset.getBondList().isEmpty());
+    }
+
+    @Test
+    void testAsset_checkBondReturn() {
+        HighYieldBond testBond = new HighYieldBond();
+        asset.addBond(testBond, 10);
+        assertTrue(asset.bondReturn() > 100);
+    }
+
+    @Test
+    void testAsset_checkCryptoReturn() {
+        Litecoin testCrypto = new Litecoin();
+        asset.addCrypto(testCrypto, 1000);
+        assertTrue((asset.bondReturn() == 0 ) || (asset.bondReturn() > 100));
     }
 
     /**
