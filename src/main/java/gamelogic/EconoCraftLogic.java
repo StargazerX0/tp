@@ -23,24 +23,22 @@ import java.util.Scanner;
 
 public class EconoCraftLogic {
     private static final Scanner userInput = new Scanner(System.in);
-    private final PlayerProfile playerProfile;
+    private final PlayerProfile player;
 
-    private EconoCraftLogic(PlayerProfile playerProfile) {
-        this.playerProfile = playerProfile;
+    private EconoCraftLogic(PlayerProfile player) {
+        this.player = player;
     }
 
     public static EconoCraftLogic initializeGame() {
-        PlayerProfile playerProfile = null;
-
+        PlayerProfile player = null;
         try {
-            playerProfile = Loader.loadProfile();
+            player = Loader.loadProfile();
             indentPrint("Welcome back!\n");
         } catch (LoadProfileException e) {
             indentPrint("You will start a fresh new journey!\n");
         }
 
-
-        if (playerProfile == null) {
+        if (player == null) {
             ResponseManager.printGameInit();
             String playerName = "";
             String jobType = "";
@@ -53,17 +51,17 @@ public class EconoCraftLogic {
                 ResponseManager.printGoodbye();
                 System.exit(0);
             }
-            playerProfile = new PlayerProfile(playerName, jobType);
-            ResponseManager.printWelcome(playerProfile);
+            player = new PlayerProfile(playerName, jobType);
+            ResponseManager.printWelcome(player);
         }
 
         try {
-            Saver.saveProfile(playerProfile);
+            Saver.saveProfile(player);
         } catch (SaveProfileException e) {
             indentPrint("Error saving profile: " + e.getMessage());
         }
 
-        return new EconoCraftLogic(playerProfile);
+        return new EconoCraftLogic(player);
     }
 
     private static String getJob() {
@@ -95,35 +93,35 @@ public class EconoCraftLogic {
         boolean exitFlag = false;
 
         while (!exitFlag) {
-            inGameReminder(playerProfile.getActionCount());
+            inGameReminder(player.getActionCount());
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
-                command.execute(playerProfile);
-
+                command.execute(player);
                 exitFlag = command.isExit();
+
                 if (command.canGenerateEvent()) {
-                    playerProfile.nextAction();
+                    player.nextAction();
                 }
-                if (!playerProfile.canAct()) {
+                if (!player.canAct()) {
                     EventGenerator.getRandomEvent()
-                            .triggerEvent(playerProfile);
-                    playerProfile.nextRound();
-                    exitFlag = playerProfile.isFinished();
+                            .triggerEvent(player);
+                    player.nextRound();
+                    exitFlag = player.isFinished();
                 }
-                Saver.saveProfile(playerProfile);
+                Saver.saveProfile(player);
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 indentPrint(error.getMessage());
             }
         }
-        printEndMessage(playerProfile);
+        printEndMessage(player);
         userInput.close();
     }
 
     private void inGameReminder(int actionCount) {
         if (actionCount == 0) {
-            ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
+            ResponseManager.printCurrentRound(player.getCurrentRound());
         }
-        ResponseManager.printActionLeft(playerProfile.actionPerRound() - actionCount);
+        ResponseManager.printActionLeft(player.actionPerRound() - actionCount);
     }
 
     private void printEndMessage(PlayerProfile playerProfile) {

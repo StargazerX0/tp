@@ -79,7 +79,7 @@ public class Parser {
      * @return The command and the information of the command as a string array.
      */
     public static String[] separateCommand(String input) {
-        return input.split("\\s", 2);
+        return input.split("\\s+", 2);
     }
 
     /**

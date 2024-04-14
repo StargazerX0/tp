@@ -19,8 +19,9 @@ public class ResponseManager {
             "for Artificial intelligence, enter '/a'\n";
     private static final String BYE_MSG = "Bye bye adventurer!";
     private static final String HELP_MSG =
+            "Here are the list of commands:\n" +
             INDENTATION + "\n" +
-            "Enter ur action!\n" +
+            "help - Show the list of commands\n" +
             "work - to work\n" +
             "rest - to rest\n" +
             "exercise - to exercise\n" +
@@ -99,8 +100,12 @@ public class ResponseManager {
     public static void printCurrentRound(int currentRound) {
         int roundLeft = TOTAL_ROUND - currentRound;
         String color = roundLeft > 5 ? GREEN : roundLeft > 3 ? YELLOW : RED;
-        System.out.println("Current round: " + currentRound + "\n" +
-                "you have " + color + roundLeft + RESET + " rounds left before the game ends!\n");
+        if (roundLeft == 0) {
+            System.out.println("THIS IS THE " + color + "LAST" + RESET + " ROUND!");
+        } else {
+            System.out.println("Current round: " + currentRound + "\n" +
+                    "you have " + color + roundLeft + RESET + " rounds left before the game ends!");
+        }
         System.out.println(INDENTATION);
     }
 
@@ -131,13 +136,13 @@ public class ResponseManager {
 
     /**
      * Prints the amount of money the company has earned or lost each round.
-     * @param profit
+     * @param profit The profit the company has earned or lost.
      */
     private static String earningDetailString(int profit, String source) {
         if (profit > 0) {
             return source + " Earned: $" + GREEN + profit + RESET + "\n";
         } else if (profit < 0) {
-            return source + " Lost: $" + RED + profit + RESET + "\n";
+            return source + " Lost: -$" + RED + Math.abs(profit) + RESET + "\n";
         } else {
             return "";
         }
@@ -156,13 +161,15 @@ public class ResponseManager {
         String bondEarning = earningDetailString(bondProfit, "Bond");
         String cryptoEarning = earningDetailString(cryptoProfit, "Crypto");
         String sumEarning = earningDetailString(totalProfit, "Total");
-        String title = totalProfit == 0 ? "" : BLUE + "ROUND SUMMARY:\n" + RESET;
 
-        indentPrint(title +
-                companyEarning + bondEarning + cryptoEarning + "\n" + sumEarning);
+        String title = BLUE + "ROUND SUMMARY:\n" + RESET;
+        String info = totalProfit == 0 ? "No earnings or losses this round!\n" :
+                companyEarning + bondEarning + cryptoEarning + "\n" + sumEarning;
+
+        indentPrint(title + info);
     }
 
     public static void endOfRoundMessage(int round) {
-        System.out.println(ORANGE + "End of round " + round + "!\n" + INDENTATION + RESET);
+        System.out.println(ORANGE + "End of Round " + round + "!\n" + INDENTATION + RESET);
     }
 }
