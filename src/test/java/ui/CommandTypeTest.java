@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CommandTypeTest {
 
     @Test
-    void analyseInput_validInput_returnCommandType() throws CommandInputException {
+    void analyseInput_validInput_returnsCommandType() throws CommandInputException {
         assertEquals(CommandType.HELP, CommandType.analyseInput("help"));
         assertEquals(CommandType.EXERCISE, CommandType.analyseInput("exercise"));
         assertEquals(CommandType.WORK, CommandType.analyseInput("work"));
@@ -30,12 +30,12 @@ class CommandTypeTest {
     }
 
     @Test
-    void analyseInput_invalidInput_throwCommandInputException() {
+    void analyseInput_invalidInput_throwsCommandInputException() {
         assertThrows(CommandInputException.class, () -> CommandType.analyseInput("invalid"));
     }
 
     @Test
-    void analyseInput_validInputMixedCase_returnCommandType() throws CommandInputException {
+    void analyseInput_validInputMixedCase_returnsCommandType() throws CommandInputException {
         assertEquals(CommandType.HELP, CommandType.analyseInput("HELP"));
         assertEquals(CommandType.EXERCISE, CommandType.analyseInput("ExERCiSE"));
         assertEquals(CommandType.WORK, CommandType.analyseInput("WOrK"));
@@ -56,7 +56,7 @@ class CommandTypeTest {
     }
 
     @Test
-    void analyseInput_validInputWithSpace_returnCommandType() throws CommandInputException {
+    void analyseInput_validInputWithSpace_returnsCommandType() throws CommandInputException {
         assertEquals(CommandType.HELP, CommandType.analyseInput("help "));
         assertEquals(CommandType.EXERCISE, CommandType.analyseInput(" exercise "));
         assertEquals(CommandType.WORK, CommandType.analyseInput("   work "));

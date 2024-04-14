@@ -45,31 +45,34 @@ public class DecisionEvent extends RandomEvent {
         int range = playerProfile.isAdvancedPlayer() ?
                 DECISIONS.length : DECISIONS.length - 3;
         int eventIndex = new Random().nextInt(range);
-
         switch (eventIndex) {
         case 0:
             presentProject(playerProfile);
             break;
+
         case 1:
             takeCourse(playerProfile);
             break;
+
         case 2:
             returnWallet(playerProfile);
             break;
+
         case 3:
             foodChallenge(playerProfile);
             break;
+
         case 4:
             donateCharity(playerProfile);
             break;
+
         case 5:
             improveBenefits(playerProfile);
             break;
-        case 6:
+
+        default:
             raiseSalary(playerProfile);
             break;
-        default:
-            System.out.println("A peaceful round!");
         }
     }
 

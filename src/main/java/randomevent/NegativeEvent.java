@@ -31,8 +31,7 @@ public class NegativeEvent extends RandomEvent {
         int range = playerProfile.isAdvancedPlayer() ?
                 NEGATIVE_EVENT.length : NEGATIVE_EVENT.length - 1;
         int index = playerProfile.getHealth() <= 20 ? 1 :
-                playerProfile.getEmployeeSalary() <= 700 ? 3 :
-                (int)(Math.random() * range);
+                playerProfile.getEmployeeSalary() <= 600 ? 3 : (int)(Math.random() * range);
         switch (index) {
         case 0:
             economyCrisis(playerProfile);
@@ -70,10 +69,10 @@ public class NegativeEvent extends RandomEvent {
     private static void gotSick(PlayerProfile playerProfile) {
         System.out.println(NEGATIVE_EVENT[1]);
         playerProfile.setHealth(50);
-        System.out.println("You have lost $4000 to pay for medical bills.\n" +
+        System.out.println("You have lost $3000 to pay for medical bills.\n" +
                 "Your health has been set to 50%.\n" +
                 "Take care of your health by EXERCISE or REST!");
-        playerProfile.loseAsset(4000);
+        playerProfile.loseAsset(3000);
     }
 
     private static void loseWallet(PlayerProfile playerProfile) {
