@@ -43,7 +43,7 @@ markets and invoked uncertain events inside each of the markets.
 
 ## Review/mentoring contributions
 Reviewed dozens fo pull requests and leaved multiple comments and suggestions to every pull request.
-- [Linked to PR reviewd]()
+- [Linked to PR reviewed]()
 
 ## Contributions beyond project team
 

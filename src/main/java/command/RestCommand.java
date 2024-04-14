@@ -1,11 +1,11 @@
 package command;
 
-import minigame.MCQGame;
+import minigame.TrueFalseGame;
 import player.PlayerProfile;
 
 public class RestCommand implements Command {
     public void execute(PlayerProfile playerProfile) {
-        MCQGame game = new MCQGame();
+        TrueFalseGame game = new TrueFalseGame();
         game.startGame();
         game.outputResult();
         if (game.getCorrectCount() >= 1) {

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * number of correct responses. It's designed to be engaging and informative, providing a fun
  * way to test knowledge on different subjects.
  */
-public class MCQGame implements MiniGame {
+public class TrueFalseGame implements MiniGame {
     private static final Logger logger = Logger.getLogger("MCQLog");
     private static final String INSTRUCTION_MESSAGE = "Type T for true and F for false\n";
     private static final String QUESTION_1 =
