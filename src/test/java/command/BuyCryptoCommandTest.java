@@ -68,7 +68,7 @@ class BuyCryptoCommandTest {
     @Test
     void canGenerateEventAlwaysReturnsTrue() {
         // Verify that canGenerateEvent always returns true for the BuyCryptoCommand.
-        assertTrue(buyCryptoCommand.canGenerateEvent(),
+        assertTrue(buyCryptoCommand.isAnAction(),
                 "The canGenerateEvent method should always return true, " +
                         "indicating the possibility of an event being generated upon execution.");
     }

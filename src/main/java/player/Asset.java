@@ -22,9 +22,9 @@ import static ui.ResponseManager.INDENTATION;
  */
 public class Asset {
     public static final int PERCENT_RATIO = 100;
-    public static double ASSET_MULTIPLIER = 1.0;
-    public static int RISK_FACTOR = 0;
-    private static final int FINAL_GOAL = 900000;
+    public static double assetMultiplier = 1.0;
+    public static int riskFactor = 0;
+    private static final int FINAL_GOAL = 100000;
     private static List<Stock> stockList = new ArrayList<>();
     private static  List<Integer> stockCount = new ArrayList<>();
     private static List<Bond> bondList = new ArrayList<>();
@@ -93,9 +93,9 @@ public class Asset {
         if (amount <= 0) {
             return;
         }
-        int actualAmount = (int) (amount * ASSET_MULTIPLIER);
-        int multiPercentage = (int) (ASSET_MULTIPLIER * PERCENT_RATIO);
-        String color = ASSET_MULTIPLIER >= 1.0 ? GREEN : RED;
+        int actualAmount = (int) (amount * assetMultiplier);
+        int multiPercentage = (int) (assetMultiplier * PERCENT_RATIO);
+        String color = assetMultiplier >= 1.0 ? GREEN : RED;
 
         totalAsset += actualAmount;
         indentPrint(String.format("$%s%d%s has been added to ur asset - Detail: %s(%d * %d%%)%s.\n" +
@@ -193,7 +193,7 @@ public class Asset {
         if (index != -1) {
             cryptoCount.set(index, cryptoCount.get(index) + quantity);
         } else {
-            RISK_FACTOR = (RISK_FACTOR * cryptoList.size() + crypto.getRiskFactor())/(cryptoList.size() + 1);
+            riskFactor = (riskFactor * cryptoList.size() + crypto.getRiskFactor())/(cryptoList.size() + 1);
             cryptoList.add(crypto);
             cryptoCount.add(quantity);
         }
@@ -203,7 +203,7 @@ public class Asset {
         if (cryptoList.isEmpty()) {
             return 0;
         }
-        if (getRandomNumber(0, 100) < RISK_FACTOR) {
+        if (getRandomNumber(0, 100) < riskFactor) {
             ResponseManager.indentPrint("Unfortunately, Government intervention causes all of your " +
                     "cryptos to be listed as illegal items\n" +
                     "All of your cryptos have been confiscated :(\n");

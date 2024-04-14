@@ -1,32 +1,25 @@
 package command;
 
-import exception.GameException;
 import player.PlayerProfile;
+import exception.GameException;
 
 /**
- * Defines the contract for game commands. Commands affect the game state or player's status.
+ * Represents a command that can be executed based on the user's input.
  */
 public interface Command {
-
-    /**
-     * Executes the command for the given player profile.
-     *
-     * @param playerProfile The player profile affected by the command.
-     * @throws GameException If execution fails due to game logic errors.
-     */
     void execute(PlayerProfile playerProfile) throws GameException;
 
     /**
-     * Determines if this command can trigger a random event.
+     * Outputs if the command is counted as an action.
      *
-     * @return true if a random event can be triggered, false otherwise.
+     * @return true if the command is counted as an action, false otherwise.
      */
-    boolean canGenerateEvent();
+    boolean isAnAction();
 
     /**
-     * Checks if this command signifies game exit.
+     * Outputs if the command is an exit command.
      *
-     * @return true if this command exits the game, false otherwise.
+     * @return true if the command is an exit command, false otherwise.
      */
     boolean isExit();
 }

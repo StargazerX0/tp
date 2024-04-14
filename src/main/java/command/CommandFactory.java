@@ -4,6 +4,9 @@ import exception.CommandInputException;
 import ui.CommandType;
 import ui.Parser;
 
+/**
+ * Represents a factory that creates a command based on the user input.
+ */
 public class CommandFactory {
     public static Command create(String userInput) throws CommandInputException {
         CommandType commandType = Parser.parseCommand(userInput);
@@ -54,7 +57,6 @@ public class CommandFactory {
 
         case COMPANY:
             return new CompanyStatsCommand();
-
 
         default:
             return new ExitCommand();

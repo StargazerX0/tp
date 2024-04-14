@@ -132,7 +132,7 @@ public class ExerciseCommand implements Command {
      *
      * @return true, indicating that this command can generate events.
      */
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }

@@ -57,7 +57,7 @@ class BuyBondCommandTest {
      */
     @Test
     void canGenerateEventAlwaysReturnsTrue() {
-        assertTrue(buyBondCommand.canGenerateEvent(),
+        assertTrue(buyBondCommand.isAnAction(),
                 "canGenerateEvent should always return true for BuyBondCommand, " +
                         "indicating the possibility of triggering an event.");
     }

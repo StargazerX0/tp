@@ -8,30 +8,28 @@ import static ui.ResponseManager.GREEN;
 import static ui.ResponseManager.RESET;
 
 /**
- * Executes salary adjustment commands for an employee, either increasing or decreasing their salary.
- * This command validates the adjustment against predefined limits before applying the change.
+ * Represents the command to either raise or lower the player's employee's salary.
  */
 public class AdjustSalaryCommand implements Command {
     private static final int ADJUSTMENT_LIMIT = 800;
     private final String updateType;
     private int amount;
 
-    /**
-     * Constructs a new AdjustSalaryCommand.
-     *
-     * @param updateType Type of salary adjustment ("lower" or otherwise considered as "raise").
-     * @param amount The amount to adjust the salary by.
-     */
     public AdjustSalaryCommand(String updateType, int amount) {
         this.updateType = updateType;
         this.amount = amount;
     }
 
     /**
-     * Executes the salary adjustment command on the specified player profile.
+     * {@inheritDoc}
      *
-     * @param playerProfile The player profile whose employee's salary is to be adjusted.
-     * @throws GameException If the adjustment exceeds limits or is invalid.
+     * Adjusts the player's employee's salary based on the update type and amount.
+     * If the update type is "lower", the salary will be lowered by the amount.
+     * If the update type is "raise", the salary will be raised by the amount.
+     *
+     * @param playerProfile the player profile to be updated.
+     * @throws GameException if the extent of lowering salary is more than the employee's salary.
+     * @throws GameException if the extent of raising salary is more than the adjustment limit.
      */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
@@ -50,24 +48,13 @@ public class AdjustSalaryCommand implements Command {
         playerProfile.updateSalary(amount);
     }
 
-
-    /**
-     * Indicates that this command does not exit the game.
-     *
-     * @return false always.
-     */
     @Override
     public boolean isExit() {
         return false;
     }
 
-    /**
-     * Indicates that this command can potentially trigger a random event.
-     *
-     * @return true always.
-     */
     @Override
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }
