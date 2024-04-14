@@ -10,7 +10,7 @@ public class Company {
         this.name = "ECONO CROP";
         this.numberOfEmployees = 0;
         this.employeeSalary = 800;
-        this.revenuePerEmployee = 1000;
+        this.revenuePerEmployee = 1200;
     }
     public Company(String name, int numberOfEmployees, int employeeSalary, int revenuePerEmployee) {
         this.name = name;

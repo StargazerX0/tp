@@ -59,7 +59,8 @@ public class Decoder {
             int currentRound = jsonObj.getInt("currentRound");
             int actionCount = jsonObj.getInt("actionCount");
             boolean isAdvancedPlayer = jsonObj.getBoolean("isAdvancedPlayer");
-
+            checkPlayerDataValidity(health, currentRound, actionCount);
+            
             Asset asset = decodeAsset(jsonObj.getJSONObject("asset").toString());
             Company company = decodeCompany(jsonObj.getJSONObject("company").toString());
 
@@ -67,6 +68,15 @@ public class Decoder {
                 currentRound, actionCount, isAdvancedPlayer, company);
         } catch (Exception e) {
             throw new LoadProfileException("Error decoding player profile.\n");
+        }
+    }
+
+    private static void checkPlayerDataValidity(
+            int health, int currentRound, int actionCount) throws LoadProfileException {
+        if (health < 0 || health > 100 ||
+                currentRound <= 0 || currentRound > 20 ||
+                actionCount < 0 || actionCount > 2) {
+            throw new LoadProfileException("Invalid player data.\n");
         }
     }
 
@@ -81,6 +91,7 @@ public class Decoder {
         try {
             JSONObject jsonObj = new JSONObject(json);
             int totalAsset = jsonObj.getInt("money");
+            checkAssetValidity(totalAsset);
 
             Asset asset = new Asset(totalAsset);
 
@@ -122,6 +133,7 @@ public class Decoder {
                 JSONObject stockObject = stockArray.getJSONObject(i);
                 String name = stockObject.getString("name");
                 int count = stockObject.getInt("count");
+                checkAssetValidity(count);
 
                 Stock stock = createStockFromName(name);
                 stocks.add(stock);
@@ -182,6 +194,7 @@ public class Decoder {
                 JSONObject bondObject = bondArray.getJSONObject(i);
                 String name = bondObject.getString("name");
                 int count = bondObject.getInt("count");
+                checkAssetValidity(count);
 
                 Bond bond = createBondFromName(name);
                 bonds.add(bond);
@@ -231,6 +244,7 @@ public class Decoder {
                 JSONObject cryptoObject = cryptoArray.getJSONObject(i);
                 String name = cryptoObject.getString("name");
                 int count = cryptoObject.getInt("count");
+                checkAssetValidity(count);
 
                 CryptoCurrency crypto = createCryptoFromName(name);
                 cryptos.add(crypto);
@@ -239,6 +253,12 @@ public class Decoder {
             return cryptos;
         } catch (Exception e) {
             throw new LoadProfileException("Error decoding cryptocurrencies.\n");
+        }
+    }
+
+    private static void checkAssetValidity(int number) throws LoadProfileException {
+        if (number < 0) {
+            throw new LoadProfileException("Invalid number.\n");
         }
     }
 
@@ -278,10 +298,18 @@ public class Decoder {
             int numberOfEmployees = jsonObj.getInt("numberOfEmployees");
             int employeeSalary = jsonObj.getInt("employeeSalary");
             int revenuePerEmployee = jsonObj.getInt("revenuePerEmployee");
-
+            checkCompanyDataValidity(numberOfEmployees, employeeSalary, revenuePerEmployee);
+            
             return new Company(name, numberOfEmployees, employeeSalary, revenuePerEmployee);
         } catch (Exception e) {
             throw new LoadProfileException("Error decoding company data.\n");
+        }
+    }
+    
+    private static void checkCompanyDataValidity(
+            int numberOfEmployees, int employeeSalary, int revenuePerEmployee) throws LoadProfileException {
+        if (numberOfEmployees < 0 || employeeSalary < 0 || revenuePerEmployee < 0) {
+            throw new LoadProfileException("Invalid company data.\n");
         }
     }
 }
