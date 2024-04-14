@@ -88,7 +88,7 @@ public class DecisionEvent extends RandomEvent {
             case 0:
                 System.out.println("You have successfully presented the project\n" +
                         "Boss is very satisfied with your work!");
-                playerProfile.increaseAsset(500);
+                playerProfile.addAsset(500);
                 break;
 
             case 1:
@@ -124,7 +124,7 @@ public class DecisionEvent extends RandomEvent {
         if (isAccept()) {
             System.out.println("You have returned the wallet to the police.\n" +
                     "The owner of the wallet is very grateful to you!");
-            playerProfile.increaseAsset(200);
+            playerProfile.addAsset(200);
         } else {
             System.out.println("You have kept the wallet for yourself.");
             switch (new Random().nextInt(2)) {
@@ -137,7 +137,7 @@ public class DecisionEvent extends RandomEvent {
             case 1:
                 System.out.println("The owner has given up on finding the wallet.\n" +
                         "You have gained $200 from the wallet!");
-                playerProfile.increaseAsset(200);
+                playerProfile.addAsset(200);
                 break;
 
             default:
@@ -153,7 +153,7 @@ public class DecisionEvent extends RandomEvent {
             switch (new Random().nextInt(3)) {
             case 0:
                 System.out.println("You have successfully completed the food challenge!\n");
-                playerProfile.increaseAsset(500);
+                playerProfile.addAsset(500);
                 break;
 
             case 1:
@@ -195,7 +195,7 @@ public class DecisionEvent extends RandomEvent {
 
             case 1:
                 System.out.println("You have received a thank you letter from the charity!");
-                playerProfile.increaseAsset(200);
+                playerProfile.addAsset(200);
                 break;
 
             default:

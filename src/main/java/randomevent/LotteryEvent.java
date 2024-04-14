@@ -53,6 +53,6 @@ public class LotteryEvent extends RandomEvent {
             return;
         }
         System.out.println("You have won $" + prize + "!");
-        playerProfile.increaseAsset(prize);
+        playerProfile.addAsset(prize);
     }
 }

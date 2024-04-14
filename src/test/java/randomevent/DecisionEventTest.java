@@ -27,7 +27,7 @@ class DecisionEventTest {
             event.triggerEvent(playerProfile);
         }
         // at least once if return wallet event is triggered
-        verify(playerProfile, atLeastOnce()).increaseAsset(anyInt());
+        verify(playerProfile, atLeastOnce()).addAsset(anyInt());
         verify(playerProfile, atLeastOnce()).loseAsset(anyInt());
 
         verify(playerProfile, never()).adjustAssetMultiplier(anyDouble());
@@ -43,7 +43,7 @@ class DecisionEventTest {
 
             event.triggerEvent(playerProfile);
         }
-        verify(playerProfile, atLeastOnce()).increaseAsset(anyInt());
+        verify(playerProfile, atLeastOnce()).addAsset(anyInt());
         verify(playerProfile, atLeastOnce()).loseAsset(anyInt());
         verify(playerProfile, atLeastOnce()).adjustAssetMultiplier(anyDouble());
     }

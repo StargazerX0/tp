@@ -72,14 +72,15 @@ public class PlayerProfile {
         this.company = company;
     }
 
-    public void increaseAsset(int amount) {
+    public void addAsset(int amount) {
         asset.addAsset(amount);
+    }
 
     public void loseHealth(int amount) {
         this.health.deductHealth(amount);
     }
 
-    public void addHealth(int amount) {
+    public void increaseHealth(int amount) {
         this.health.addHealth(amount);
     }
 
@@ -111,31 +112,57 @@ public class PlayerProfile {
         return actionCount;
     }
 
+    /**
+     * Upgrades the player to an advanced player.
+     */
     public void upgrade() {
         this.asset.deductAsset(10000);
         isAdvancedPlayer = true;
     }
 
-    public boolean canUpgrade(int moneyNeeded) {
-        return asset.moreThan(moneyNeeded);
+    /**
+     * Checks if the player can upgrade to an advanced player.
+     */
+    public boolean canUpgrade() {
+        int upgradeCost = 10000;
+        return asset.moreThan(upgradeCost);
     }
 
     public int getNumberOfEmployees() {
         return company.getNumberOfEmployees();
     }
 
+    /**
+     * Outputs the salary of each employee in the company.
+     *
+     * @return the salary of each employee in the company
+     */
     public int getEmployeeSalary() {
         return company.getEmployeeSalary();
     }
 
+    /**
+     * Hires employees to the company based on the number of employees specified.
+     *
+     * @param number the number of employees to hire
+     */
     public void hireEmployee(int number) {
         company.hireEmployee(number);
     }
 
+    /**
+     * Fires employees from the company based on the number of employees specified.
+     *
+     * @param number the number of employees to fire
+     */
     public void fireEmployee(int number) {
         company.removeEmployee(number);
     }
 
+    /**
+     * Calculates the passive profit earned by the player in the current round
+     * based on the company, bond, and cryptocurrency profits.
+     */
     private void calculateRoundProfit() {
         if (isAdvancedPlayer()) {
             int companyProfit = company.profitPerRound();
@@ -153,10 +180,20 @@ public class PlayerProfile {
         }
     }
 
+    /**
+     * Updates the revenue of the company based on the amount specified.
+     *
+     * @param amount the amount to update the revenue by.
+     */
     public void updateRevenue(int amount) {
         company.updateRevenue(amount);
     }
 
+    /**
+     * Updates the salary of the employees in the company based on the amount specified.
+     *
+     * @param amount the amount to update the salary by.
+     */
     public void updateSalary(int amount) {
         company.updateSalary(amount);
     }
@@ -165,6 +202,11 @@ public class PlayerProfile {
         return company;
     }
 
+    /**
+     * Checks if the player has upgraded to an advanced player.
+     *
+     * @return true if the player is an advanced player, false otherwise.
+     */
     public boolean isAdvancedPlayer() {
         return isAdvancedPlayer;
     }
@@ -173,6 +215,11 @@ public class PlayerProfile {
         return asset;
     }
 
+    /**
+     * Proceeds to the next round of the game,
+     * calculates the profit earned in the current round and
+     * resets the asset multiplier.
+     */
     public void nextRound() {
         calculateRoundProfit();
         resetAssetMultiplier();
@@ -183,6 +230,11 @@ public class PlayerProfile {
         actionCount++;
     }
 
+    /**
+     * Checks if the player can perform an action in the current round.
+     *
+     * @return true if the player can perform an action, false otherwise.
+     */
     public boolean canAct() {
         if (actionCount < actionPerRound()) {
             return true;
@@ -191,6 +243,13 @@ public class PlayerProfile {
         return false;
     }
 
+    /**
+     * Checks if the game has finished.
+     *
+     * @return true if current round exceeds the round limit or
+     * the player has gone bankrupt or
+     * the player has achieved the winning condition, false otherwise.
+     */
     public boolean isFinished() {
         if (asset.isBankrupt()) {
             ResponseManager.indentPrint("You have gone bankrupt!\n");
@@ -199,6 +258,11 @@ public class PlayerProfile {
         return currentRound > ROUND_LIMIT || asset.isAchieved();
     }
 
+    /**
+     * Adjusts the asset multiplier by the multiplier specified.
+     *
+     * @param multiplier the multiplier to adjust the asset by.
+     */
     public void adjustAssetMultiplier(double multiplier) {
         Asset.assetMultiplier = multiplier;
     }
@@ -207,6 +271,12 @@ public class PlayerProfile {
         Asset.assetMultiplier = 1.0;
     }
 
+    /**
+     * Checks the player's current condition in the game.
+     * The conditions are: player wins, player loses and game not finished.
+     *
+     * @return 1 if the player wins, -1 if the player loses, 0 if the game is not finished.
+     */
     public int checkWin() {
         if (asset.isAchieved()) {
             return 1;
@@ -218,14 +288,31 @@ public class PlayerProfile {
         return 0;
     }
 
+    /**
+     * Returns the number of actions the player can perform in a round.
+     *
+     * @return 3 if the player is an upgraded player, 1 otherwise.
+     */
     public int actionPerRound() {
-        return isAdvancedPlayer() ? 3 : 1;
+        int advancedPlayerAction = 3;
+        int normalPlayerAction = 1;
+        return isAdvancedPlayer() ? advancedPlayerAction : normalPlayerAction;
     }
 
+    /**
+     * Outputs the information of the player's company.
+     *
+     * @return the information of the player's company in a formatted string.
+     */
     public String companyInfo() {
         return company.toString();
     }
 
+    /**
+     * Outputs the information of the player's profile.
+     *
+     * @return the information of the player's profile in a formatted string.
+     */
     @Override
     public String toString() {
         return "Your name is: " + name + "\n"
