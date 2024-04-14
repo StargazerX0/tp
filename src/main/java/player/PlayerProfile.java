@@ -194,11 +194,11 @@ public class PlayerProfile {
     }
 
     public void adjustAssetMultiplier(double multiplier) {
-        Asset.ASSET_MULTIPLIER = multiplier;
+        Asset.assetMultiplier = multiplier;
     }
 
     public void resetAssetMultiplier() {
-        Asset.ASSET_MULTIPLIER = 1.0;
+        Asset.assetMultiplier = 1.0;
     }
 
     public int checkWin() {

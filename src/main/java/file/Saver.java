@@ -15,7 +15,7 @@ import java.io.IOException;
  * Handles necessary file and directory operations, including error management.
  */
 public class Saver {
-    private static String FILE_PATH = "data/PlayerProfile.json";
+    private static String filePath = "data/PlayerProfile.json";
 
     /**
      * Saves the specified player profile to a JSON file at a predefined location.
@@ -29,7 +29,7 @@ public class Saver {
         ensureDirectoryExists();
 
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(filePath);
 
             if (file.createNewFile()) {
                 ResponseManager.indentPrint("File created: " + file.getName() + "\n");
@@ -37,7 +37,7 @@ public class Saver {
 
             writeJsonToFile(file, Serializer.constructJson(playerProfile));
         } catch (IOException e) {
-            throw new SaveProfileException("Error accessing the file: " + FILE_PATH + "\n");
+            throw new SaveProfileException("Error accessing the file: " + filePath + "\n");
         }
     }
 
@@ -48,14 +48,14 @@ public class Saver {
      * @param newPath The new file path to be used.
      */
     public static void setFilePath(String newPath) {
-        FILE_PATH = newPath;
+        filePath = newPath;
     }
 
     /**
      * Ensures the directory for storing the profile exists. If it does not, attempts to create it.
      */
     private static void ensureDirectoryExists() {
-        File directory = new File(FILE_PATH).getParentFile();
+        File directory = new File(filePath).getParentFile();
         if (!directory.exists() && !directory.mkdirs()) {
             throw new RuntimeException("Failed to create data directory.\n");
         }
@@ -74,7 +74,7 @@ public class Saver {
             fileWriter.write(json);
             fileWriter.flush();
         } catch (IOException e) {
-            throw new SaveProfileException("Error writing to file: " + FILE_PATH + "\n");
+            throw new SaveProfileException("Error writing to file: " + filePath + "\n");
         }
     }
 
@@ -82,7 +82,7 @@ public class Saver {
      * Deletes the player profile file if it exists.
      */
     public static void deleteProfile() {
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
         if (file.exists()) {
             file.delete();
         }

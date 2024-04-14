@@ -13,7 +13,7 @@ import java.io.IOException;
  * It handles file reading operations, including checks for file existence and directory validation.
  */
 public class Loader {
-    private static String FILE_PATH = "data/PlayerProfile.json";
+    private static String filePath = "data/PlayerProfile.json";
 
     /**
      * Loads a player profile from a JSON file. Ensures that the directory and file exist
@@ -25,7 +25,7 @@ public class Loader {
     public static PlayerProfile loadProfile() throws LoadProfileException {
         ensureDirectoryExists();
 
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
         if (!file.exists()) {
             throw new LoadProfileException("Profile file not found.\n");
         }
@@ -41,7 +41,7 @@ public class Loader {
      * @param newPath The new file path to be used.
      */
     public static void setFilePath(String newPath) {
-        FILE_PATH = newPath;
+        filePath = newPath;
     }
 
     /**
@@ -51,7 +51,7 @@ public class Loader {
      * @throws RuntimeException if creating the directory fails.
      */
     private static void ensureDirectoryExists() {
-        File directory = new File(FILE_PATH).getParentFile();
+        File directory = new File(filePath).getParentFile();
         if (!directory.exists() && !directory.mkdirs()) {
             throw new RuntimeException("Failed to create data directory.\n");
         }
