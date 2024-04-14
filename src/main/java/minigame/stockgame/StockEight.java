@@ -12,32 +12,32 @@ import ui.ResponseManager;
  */
 public class StockEight implements Stock{
     public static final String STOCK_GRAPH =
-            "▲                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│     x                                                  \n" +
-            "│   xxxxx                                                \n" +
-            "│xxxx   xx    xxxxxxxxxxx                                \n" +
-            "│         xxxx          xxxxxxx                 xxxxxxxx \n" +
-            "│          x                   xxxxxxxxx     xxxx        \n" +
-            "│                                       xxxxxx           \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "│                                                        \n" +
-            "└───────────────────────────────────────────────────────►\n";
+            "^                                                       \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|     x                                                  \n" +
+            "|   xxxxx                                                \n" +
+            "|xxxx   xx    xxxxxxxxxxx                                \n" +
+            "|         xxxx          xxxxxxx                 xxxxxxxx \n" +
+            "|          x                   xxxxxxxxx     xxxx        \n" +
+            "|                                       xxxxxx           \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|                                                        \n" +
+            "|________________________________________________________>\n";
 
     public static final String STOCK_NAME = "Microsoft (Multi-national cooperation) ";
     private static final String STOCK_INFORMATION =

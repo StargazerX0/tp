@@ -6,31 +6,31 @@ import ui.ResponseManager;
 public class StockThree implements Stock{
 
     private static final String STOCK_GRAPH =
-            "▲                                                                \n" +
-            "│                                                                \n" +
-            "│                                                                \n" +
-            "│                                                                \n" +
-            "│                                                                \n" +
-            "│                                        xxxx                 x  \n" +
-            "│                                      xxx  xxx               x  \n" +
-            "│                                    xx       xx        xxxxxxx  \n" +
-            "│                                   xx         xxx xxxxxx        \n" +
-            "│                                  x             xx              \n" +
-            "│                       xxx       x                              \n" +
-            "│                    xxxx xx    xx                               \n" +
-            "│                  xxx     x xxxx                                \n" +
-            "│                 x        xxx                                   \n" +
-            "│          xxx   x                                               \n" +
-            "│        xxx xx x                                                \n" +
-            "│       xx    xxx                                                \n" +
-            "│      xx                                                        \n" +
-            "│     xx                                                         \n" +
-            "│     x                                                          \n" +
-            "│    xx                                                          \n" +
-            "│   x                                                            \n" +
-            "│                                                                \n" +
-            "│                                                                \n" +
-            "└───────────────────────────────────────────────────────────────► \n";
+            "^                                                                \n" +
+            "|                                                                \n" +
+            "|                                                                \n" +
+            "|                                                                \n" +
+            "|                                                                \n" +
+            "|                                        xxxx                 x  \n" +
+            "|                                      xxx  xxx               x  \n" +
+            "|                                    xx       xx        xxxxxxx  \n" +
+            "|                                   xx         xxx xxxxxx        \n" +
+            "|                                  x             xx              \n" +
+            "|                       xxx       x                              \n" +
+            "|                    xxxx xx    xx                               \n" +
+            "|                  xxx     x xxxx                                \n" +
+            "|                 x        xxx                                   \n" +
+            "|          xxx   x                                               \n" +
+            "|        xxx xx x                                                \n" +
+            "|       xx    xxx                                                \n" +
+            "|      xx                                                        \n" +
+            "|     xx                                                         \n" +
+            "|     x                                                          \n" +
+            "|    xx                                                          \n" +
+            "|   x                                                            \n" +
+            "|                                                                \n" +
+            "|                                                                \n" +
+            "|_________________________________________________________________> \n";
 
     private static final String STOCK_INFORMATION =
             "Demand for AI chips increases drastically in the current market -CnA \n" +

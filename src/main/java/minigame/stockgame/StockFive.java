@@ -5,31 +5,31 @@ import ui.ResponseManager;
 
 public class StockFive implements Stock {
     public static final String STOCK_GRAPH =
-            "                                              xxxx      \n" +
-            "▲                                    xx     xxx x       \n" +
-            "│                                    xxx  xxx   x       \n" +
-            "│                                   xx xxxx     x    x  \n" +
-            "│                                  xx           xx  xx  \n" +
-            "│                                xxx             xxxx   \n" +
-            "│                              xxx                xx    \n" +
-            "│                           xxx                         \n" +
-            "│                         xxx                           \n" +
-            "│                        xx                             \n" +
-            "│                        x                              \n" +
-            "│                        x                              \n" +
-            "│                        xx                             \n" +
-            "│                xx       x                             \n" +
-            "│              xxxx       x                             \n" +
-            "│              x   xx     x                             \n" +
-            "│             x     x    x                              \n" +
-            "│       xxxxxxx     x   x                               \n" +
-            "│       xxx         xxxx                                \n" +
-            "│      xx            xx                                 \n" +
-            "│      xx                                               \n" +
-            "│    xxxx                                               \n" +
-            "│  xxxxx                                                \n" +
-            "│                                                       \n" +
-            "└──────────────────────────────────────────────────────► \n";
+            "^                                              xxxx      \n" +
+            "|                                   xx     xxx x       \n" +
+            "|                                    xxx  xxx   x       \n" +
+            "|                                   xx xxxx     x    x  \n" +
+            "|                                  xx           xx  xx  \n" +
+            "|                                xxx             xxxx   \n" +
+            "|                              xxx                xx    \n" +
+            "|                           xxx                         \n" +
+            "|                         xxx                           \n" +
+            "|                        xx                             \n" +
+            "|                        x                              \n" +
+            "|                        x                              \n" +
+            "|                       xx                             \n" +
+            "|                xx       x                             \n" +
+            "|              xxxx       x                             \n" +
+            "|              x   xx     x                             \n" +
+            "|             x     x    x                              \n" +
+            "|       xxxxxxx     x   x                               \n" +
+            "|       xxx         xxxx                                \n" +
+            "|      xx            xx                                 \n" +
+            "|      xx                                               \n" +
+            "|    xxxx                                               \n" +
+            "|  xxxxx                                                \n" +
+            "|                                                       \n" +
+            "|_______________________________________________________> \n";
     public static final String STOCK_INFORMATION =
             "Atlas tech have reached its highest point, a 100 times increase -CnA \n" +
                     "Atlas tech, great discover or great scam? -Economist \n" +

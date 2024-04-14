@@ -5,26 +5,26 @@ import ui.ResponseManager;
 
 public class StockNine implements Stock {
     public static final String STOCK_GRAPH =
-            "▲                                                  \n" +
-            "│                                                  \n" +
-            "│           xx                                     \n" +
-            "│           xx                                     \n" +
-            "│          xxx                                     \n" +
-            "│         xx  x                        xxx         \n" +
-            "│        xx   x                       xx x         \n" +
-            "│ x     xx    x                      xx  x         \n" +
-            "│ xx    x     x          xx        xx    xx        \n" +
-            "│   xx x       x        xxxxx     xx      x        \n" +
-            "│    xx        xx      xx   xx  xx        xx   x   \n" +
-            "│     x         xx     x     xxx           xx xx   \n" +
-            "│                xx   xx                    xx x   \n" +
-            "│                 xx  x                            \n" +
-            "│                  xxx                             \n" +
-            "│                   x                              \n" +
-            "│                                                  \n" +
-            "│                                                  \n" +
-            "│                                                  \n" +
-            "└─────────────────────────────────────────────────►\n";
+            "^                                                  \n" +
+            "|                                                  \n" +
+            "|           xx                                     \n" +
+            "|           xx                                     \n" +
+            "|          xxx                                     \n" +
+            "|         xx  x                        xxx         \n" +
+            "|        xx   x                       xx x         \n" +
+            "| x     xx    x                      xx  x         \n" +
+            "| xx    x     x          xx        xx    xx        \n" +
+            "|   xx x       x        xxxxx     xx      x        \n" +
+            "|    xx        xx      xx   xx  xx        xx   x   \n" +
+            "|     x         xx     x     xxx           xx xx   \n" +
+            "|                xx   xx                    xx x   \n" +
+            "|                 xx  x                            \n" +
+            "|                  xxx                             \n" +
+            "|                   x                              \n" +
+            "|                                                  \n" +
+            "|                                                  \n" +
+            "|                                                  \n" +
+            "|__________________________________________________>\n";
     private static final String STOCK_INFORMATION =
             "Huge competition inside the software industry -CnA \n" +
                     "Why some of the simulation company are not making any profit? -Economist \n" +

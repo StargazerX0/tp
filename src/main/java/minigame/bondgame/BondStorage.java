@@ -15,6 +15,8 @@ import java.util.Scanner;
 public class BondStorage {
     private final List<Bond> bondsAvailable = new ArrayList<>();
     private boolean completeTrade = false;
+    private boolean completeSelection = false;
+    private int bondChoice = -1;
     private final PlayerProfile playerProfile;
 
     /**
@@ -49,22 +51,27 @@ public class BondStorage {
     public void play() throws GameException {
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
-            if (bondsAvailable.isEmpty()) {
-                setUp();
+            if (!completeSelection) {
+                if (bondsAvailable.isEmpty()) {
+                    setUp();
+                }
+                System.out.println("Select a bond to purchase:\n");
+                for (int i = 0; i < bondsAvailable.size(); i++) {
+                    System.out.println(i + 1 + ": " + bondsAvailable.get(i).returnBondName());
+                }
+                System.out.println("Enter the number of the bond you wish to purchase, or 0 to exit:");
             }
-            System.out.println("Select a bond to purchase:\n");
-            for (int i = 0; i < bondsAvailable.size(); i++) {
-                System.out.println(i + 1 + ": " + bondsAvailable.get(i).returnBondName());
-            }
-            System.out.println("Enter the number of the bond you wish to purchase, or 0 to exit:");
-
-            int bondChoice = -1;
             try {
-                bondChoice = Integer.parseInt(scanner.nextLine()) - 1;
+                if (!completeSelection) {
+                    bondChoice = Integer.parseInt(scanner.nextLine()) - 1;
+                }
 
                 if (bondChoice >= 0 && bondChoice < bondsAvailable.size()) {
                     Bond current = bondsAvailable.get(bondChoice);
-                    current.printInfo(playerProfile);
+                    if (!completeSelection) {
+                        current.printInfo(playerProfile);
+                    }
+                    completeSelection = true;
 
                     System.out.println("How many units of " + current.returnBondName() +
                             " do you want to purchase? Input 0 if you want none");
@@ -97,6 +104,7 @@ public class BondStorage {
                 } else if (bondChoice >= bondsAvailable.size()) {
                     ResponseManager.indentPrint("Invalid selection. Please select a valid bond. \n");
                 }
+
             } catch (NumberFormatException | GameException e) {
                 ResponseManager.indentPrint("Please enter a valid input!\n");
             }
