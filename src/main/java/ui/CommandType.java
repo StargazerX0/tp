@@ -2,6 +2,9 @@ package ui;
 
 import exception.CommandInputException;
 
+/**
+ * Represents the enumeration of all possible commands that the player can input.
+ */
 public enum CommandType {
     HELP("\\s*(?i)help\\s*"),
     EXERCISE("\\s*(?i)exercise\\s*"),
@@ -25,6 +28,13 @@ public enum CommandType {
         this.command = command;
     }
 
+    /**
+     * Analyses the user input and return the corresponding CommandType.
+     *
+     * @param userInput the user input
+     * @return the corresponding CommandType
+     * @throws CommandInputException if the user input is invalid
+     */
     public static CommandType analyseInput(String userInput) throws CommandInputException {
         for (CommandType commandType : CommandType.values()) {
             if (userInput.matches(commandType.command)) {

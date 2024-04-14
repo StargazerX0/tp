@@ -40,6 +40,6 @@ class ExitCommandTest {
 
     @Test
     void canGenerateEvent_emptyInput_returnsFalse() {
-        assertFalse(exitCommand.canGenerateEvent());
+        assertFalse(exitCommand.isAnAction());
     }
 }

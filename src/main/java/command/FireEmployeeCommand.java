@@ -12,6 +12,14 @@ public class FireEmployeeCommand implements Command {
         this.fireNumber = fireNumber;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * Fires employees for the player if the player is an advanced player.
+     *
+     * @param playerProfile the player profile to be updated.
+     * @throws GameException if the player is not an advanced player or the employee number is invalid.
+     */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
         if (!playerProfile.isAdvancedPlayer()) {
@@ -31,7 +39,7 @@ public class FireEmployeeCommand implements Command {
     }
 
     @Override
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }

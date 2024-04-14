@@ -44,6 +44,6 @@ class WorkCommandTest {
 
     @Test
     void canGenerateEvent_emptyInput_returnsTrue() {
-        assertTrue(workCommand.canGenerateEvent());
+        assertTrue(workCommand.isAnAction());
     }
 }

@@ -8,6 +8,7 @@ import player.PlayerProfile;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ui.ResponseManager.RED;
@@ -49,5 +50,15 @@ class AdjustSalaryCommandTest {
     @Test
     void execute_raiseSalaryCommandExceedLimit_throwsGameException() {
         assertThrows(GameException.class, () -> raiseSalaryCommandExceedLimit.execute(playerProfile));
+    }
+
+    @Test
+    void isExit_emptyInput_returnsFalse() {
+        assertFalse(lowerSalaryCommand.isExit());
+    }
+
+    @Test
+    void isAnAction_emptyInput_returnsTrue() {
+        assertTrue(lowerSalaryCommand.isAnAction());
     }
 }

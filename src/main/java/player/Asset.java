@@ -24,7 +24,7 @@ public class Asset {
     public static final int PERCENT_RATIO = 100;
     public static double assetMultiplier = 1.0;
     public static int riskFactor = 0;
-    private static final int FINAL_GOAL = 900000;
+    private static final int FINAL_GOAL = 100000;
     private static List<Stock> stockList = new ArrayList<>();
     private static  List<Integer> stockCount = new ArrayList<>();
     private static List<Bond> bondList = new ArrayList<>();

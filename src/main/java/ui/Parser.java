@@ -7,6 +7,9 @@ import exception.JobSelectException;
 import exception.NameInputException;
 import static ui.ResponseManager.indentPrint;
 
+/**
+ * Represents the parser that parses the user input.
+ */
 public class Parser {
     private static final String NAME = "^[a-zA-Z ]{1,15}$";
     private static final int NAME_LENGTH_LIMIT = 15;

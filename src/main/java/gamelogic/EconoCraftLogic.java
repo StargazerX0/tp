@@ -21,24 +21,28 @@ import static ui.ResponseManager.indentPrint;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Represents the game logic of EconoCraft.
+ */
 public class EconoCraftLogic {
     private static final Scanner userInput = new Scanner(System.in);
-    private final PlayerProfile player;
+    private final PlayerProfile playerProfile;
 
-    private EconoCraftLogic(PlayerProfile player) {
-        this.player = player;
+    private EconoCraftLogic(PlayerProfile playerProfile) {
+        this.playerProfile = playerProfile;
     }
 
+    /**
+     * Initializes the game by loading the player's profile if it exists,
+     * or creating a new profile if it does not exist or is corrupted.
+     *
+     * @return the game logic object to start the game.
+     */
     public static EconoCraftLogic initializeGame() {
-        PlayerProfile player = null;
-        try {
-            player = Loader.loadProfile();
-            indentPrint("Welcome back!\n");
-        } catch (LoadProfileException e) {
-            indentPrint("You will start a fresh new journey!\n");
-        }
+        PlayerProfile playerProfile = null;
+        playerProfile = loadProgress(playerProfile);
 
-        if (player == null) {
+        if (playerProfile == null) {
             ResponseManager.printGameInit();
             String playerName = "";
             String jobType = "";
@@ -51,19 +55,49 @@ public class EconoCraftLogic {
                 ResponseManager.printGoodbye();
                 System.exit(0);
             }
-            player = new PlayerProfile(playerName, jobType);
-            ResponseManager.printWelcome(player);
+            playerProfile = new PlayerProfile(playerName, jobType);
+            ResponseManager.printWelcome(playerProfile);
         }
+        saveProgress(playerProfile);
 
+        return new EconoCraftLogic(playerProfile);
+    }
+
+    /**
+     * Saves the player's progress.
+     *
+     * @param playerProfile the player's profile to save.
+     */
+    private static void saveProgress(PlayerProfile playerProfile) {
         try {
-            Saver.saveProfile(player);
+            Saver.saveProfile(playerProfile);
         } catch (SaveProfileException e) {
             indentPrint("Error saving profile: " + e.getMessage());
         }
-
-        return new EconoCraftLogic(player);
     }
 
+    /**
+     * Loads the player's progress.
+     *
+     * @param playerProfile the player's profile to load.
+     * @return the player's profile.
+     */
+    private static PlayerProfile loadProgress(PlayerProfile playerProfile) {
+        try {
+            playerProfile = Loader.loadProfile();
+            indentPrint("Welcome back!\n");
+        } catch (LoadProfileException e) {
+            indentPrint("Seems like there is no saved profile or profile corrupted.\n" +
+                    "You will start a fresh new journey!\n");
+        }
+        return playerProfile;
+    }
+
+    /**
+     * Gets the job type from the user.
+     *
+     * @return the job type selected by the user.
+     */
     private static String getJob() {
         String jobType = "";
         while (jobType.isEmpty()) {
@@ -76,6 +110,11 @@ public class EconoCraftLogic {
         return jobType;
     }
 
+    /**
+     * Gets the player's name from the user.
+     *
+     * @return the player's name.
+     */
     private static String getName() {
         String playerName = "";
         while (playerName.isEmpty()) {
@@ -88,43 +127,58 @@ public class EconoCraftLogic {
         return playerName;
     }
 
-    public void startEcono() {
+    /**
+     * Starts the game loop.
+     */
+    public void startGame() {
         ResponseManager.printHelp();
         boolean exitFlag = false;
 
         while (!exitFlag) {
-            inGameReminder(player.getActionCount());
+            inGameReminder(playerProfile.getActionCount());
             try {
                 Command command = CommandFactory.create(userInput.nextLine());
-                command.execute(player);
+                command.execute(playerProfile);
                 exitFlag = command.isExit();
 
-                if (command.canGenerateEvent()) {
-                    player.nextAction();
+                if (command.isAnAction()) {
+                    playerProfile.nextAction();
                 }
-                if (!player.canAct()) {
+                if (!playerProfile.canAct()) {
                     EventGenerator.getRandomEvent()
-                            .triggerEvent(player);
-                    player.nextRound();
-                    exitFlag = player.isFinished();
+                            .triggerEvent(playerProfile);
+                    playerProfile.nextRound();
+                    exitFlag = playerProfile.isFinished();
                 }
-                Saver.saveProfile(player);
+                Saver.saveProfile(playerProfile);
             } catch (CommandInputException | GameException | SaveProfileException error) {
                 indentPrint(error.getMessage());
             }
         }
-        printEndMessage(player);
+        showEndMessage(playerProfile);
         userInput.close();
     }
 
+    /**
+     * Prints the action left for the player to perform and
+     * prints the current round the player is in at the start of the round.
+     *
+     * @param actionCount the number of actions performed.
+     */
     private void inGameReminder(int actionCount) {
         if (actionCount == 0) {
-            ResponseManager.printCurrentRound(player.getCurrentRound());
+            ResponseManager.printCurrentRound(playerProfile.getCurrentRound());
         }
-        ResponseManager.printActionLeft(player.actionPerRound() - actionCount);
+        ResponseManager.printActionLeft(playerProfile.actionPerRound() - actionCount);
     }
 
-    private void printEndMessage(PlayerProfile playerProfile) {
+    /**
+     * Shows the end message of the game based on the player's condition.
+     * If the player wins or loses, the game will be restarted.
+     *
+     * @param playerProfile the player's profile.
+     */
+    private void showEndMessage(PlayerProfile playerProfile) {
         switch (playerProfile.checkWin()) {
         case 1:
             indentPrint("Congratulations! You have won the game!\n");
@@ -144,10 +198,15 @@ public class EconoCraftLogic {
         }
     }
 
+    /**
+     * Prompts the player to restart the game.
+     * If the player accepts, the game will be restarted.
+     * If the player declines, the game will exit.
+     */
     private void promptRestart() {
         ResponseManager.promptRestart();
         if (isAccept()) {
-            EconoCraftLogic.initializeGame().startEcono();
+            EconoCraftLogic.initializeGame().startGame();
         } else {
             ResponseManager.printGoodbye();
             System.exit(0);

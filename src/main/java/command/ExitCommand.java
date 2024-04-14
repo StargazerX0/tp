@@ -12,7 +12,7 @@ public class ExitCommand implements Command {
         return true;
     }
 
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return false;
     }
 }

@@ -13,6 +13,16 @@ public class HireEmployeeCommand implements Command {
         this.hireNumber = hireNumber;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * Hires employees for the player if the player is an advanced player and has enough money.
+     *
+     * @param playerProfile the player profile to be updated.
+     * @throws GameException if the player has not upgraded to an advanced player.
+     * @throws GameException if the hire number is negative.
+     * @throws GameException if the player does not have enough money to hire the employees.
+     */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
         if (!playerProfile.isAdvancedPlayer()) {
@@ -36,7 +46,7 @@ public class HireEmployeeCommand implements Command {
     }
 
     @Override
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }

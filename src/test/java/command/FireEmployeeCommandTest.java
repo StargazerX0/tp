@@ -50,6 +50,6 @@ class FireEmployeeCommandTest {
     @Test
     void canGenerateEvent() {
         FireEmployeeCommand fireEmployeeCommand = new FireEmployeeCommand(1);
-        assertTrue(fireEmployeeCommand.canGenerateEvent());
+        assertTrue(fireEmployeeCommand.isAnAction());
     }
 }

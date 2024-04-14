@@ -42,6 +42,6 @@ class HelpCommandTest {
     @Test
     void canGenerateEvent() {
         HelpCommand helpCommand = new HelpCommand();
-        assertFalse(helpCommand.canGenerateEvent());
+        assertFalse(helpCommand.isAnAction());
     }
 }

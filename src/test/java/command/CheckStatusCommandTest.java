@@ -7,6 +7,7 @@ import player.PlayerProfile;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ui.ResponseManager.GREEN;
 import static ui.ResponseManager.RESET;
@@ -33,5 +34,17 @@ class CheckStatusCommandTest {
         assertTrue(outContent.toString().contains("Current Status:")
                 && outContent.toString().contains("Your name is: test")
                 && outContent.toString().contains("|" + GREEN + "#".repeat(10) + RESET + "|"));
+    }
+
+    @Test
+    void isExit_emptyInput_returnsFalse() {
+        CheckStatusCommand checkStatusCommand = new CheckStatusCommand();
+        assertFalse(checkStatusCommand.isExit());
+    }
+
+    @Test
+    void isAnAction_emptyInput_returnsFalse() {
+        CheckStatusCommand checkStatusCommand = new CheckStatusCommand();
+        assertFalse(checkStatusCommand.isAnAction());
     }
 }
