@@ -4,6 +4,7 @@ import player.PlayerProfile;
 import ui.ResponseManager;
 
 public class HelpCommand implements Command {
+    @Override
     public void execute(PlayerProfile playerProfile) {
         ResponseManager.printHelp();
     }
@@ -12,7 +13,7 @@ public class HelpCommand implements Command {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return false;
     }
 }

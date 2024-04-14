@@ -59,6 +59,6 @@ class HireEmployeeCommandTest {
     @Test
     void canGenerateEvent() {
         HireEmployeeCommand hireEmployeeCommand = new HireEmployeeCommand(2);
-        assertTrue(hireEmployeeCommand.canGenerateEvent());
+        assertTrue(hireEmployeeCommand.isAnAction());
     }
 }

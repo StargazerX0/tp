@@ -6,6 +6,14 @@ import player.PlayerProfile;
 import static ui.ResponseManager.indentPrint;
 
 public class UpgradeCommand implements Command {
+    /**
+     * {@inheritDoc}
+     *
+     * Upgrades the player's profile if the player has not upgraded before and has enough money.
+     *
+     * @param playerProfile the player profile to be updated.
+     * @throws GameException if the player has already upgraded before or does not have enough money.
+     */
     @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
         if (playerProfile.isAdvancedPlayer()) {
@@ -25,7 +33,7 @@ public class UpgradeCommand implements Command {
     }
 
     @Override
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return false;
     }
 }

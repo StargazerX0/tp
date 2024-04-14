@@ -60,6 +60,6 @@ class UpgradeCommandTest {
 
     @Test
     void canGenerateEvent_emptyInput_returnsFalse() {
-        assertFalse(upgradeCommand.canGenerateEvent());
+        assertFalse(upgradeCommand.isAnAction());
     }
 }

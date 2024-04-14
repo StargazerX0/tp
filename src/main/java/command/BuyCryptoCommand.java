@@ -18,7 +18,7 @@ public class BuyCryptoCommand implements Command {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }

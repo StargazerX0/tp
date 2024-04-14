@@ -141,7 +141,7 @@ public class EconoCraftLogic {
                 command.execute(playerProfile);
                 exitFlag = command.isExit();
 
-                if (command.canGenerateEvent()) {
+                if (command.isAnAction()) {
                     playerProfile.nextAction();
                 }
                 if (!playerProfile.canAct()) {

@@ -18,7 +18,7 @@ public class BuyBondCommand implements Command {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    public boolean isAnAction() {
         return true;
     }
 }

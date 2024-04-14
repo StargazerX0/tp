@@ -10,14 +10,28 @@ public class WorkCommand implements Command {
     private static final int PASS_ACCURACY = 50;
     private static final int PERCENT_RATIO = 100;
 
-    public void execute(PlayerProfile player) {
+    /**
+     * {@inheritDoc}
+     *
+     * Executes the work command by starting the typing game and updating the player's profile.
+     *
+     * @param playerProfile the player profile to be updated.
+     */
+    @Override
+    public void execute(PlayerProfile playerProfile) {
         TypingGame game = new TypingGame();
         game.startGame();
         game.outputResult();
-        player.loseHealth(HEALTH_LOSS);
-        updatePlayer(player, game);
+        playerProfile.loseHealth(HEALTH_LOSS);
+        updatePlayer(playerProfile, game);
     }
 
+    /**
+     * Updates the player's profile based on the outcome of the typing game.
+     *
+     * @param player the player profile to be updated.
+     * @param game the typing game to be evaluated.
+     */
     private static void updatePlayer(PlayerProfile player, TypingGame game) {
         if (game.getAccuracy() >= PASS_ACCURACY) {
             assert game.getAccuracy() <= 100 : "Accuracy should not exceed 100";
@@ -30,11 +44,13 @@ public class WorkCommand implements Command {
         }
     }
 
+    @Override
     public boolean isExit() {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    @Override
+    public boolean isAnAction() {
         return true;
     }
 }

@@ -4,6 +4,7 @@ import minigame.MCQGame;
 import player.PlayerProfile;
 
 public class RestCommand implements Command {
+    @Override
     public void execute(PlayerProfile playerProfile) {
         MCQGame game = new MCQGame();
         game.startGame();
@@ -13,11 +14,13 @@ public class RestCommand implements Command {
         }
     }
 
+    @Override
     public boolean isExit() {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    @Override
+    public boolean isAnAction() {
         return true;
     }
 }

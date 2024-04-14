@@ -6,6 +6,7 @@ import player.PlayerProfile;
 import minigame.stockgame.StockActivate;
 
 public class StockCommand implements Command {
+    @Override
     public void execute(PlayerProfile playerProfile) throws GameException {
         if (!playerProfile.isAdvancedPlayer()) {
             throw new LockedFeatureException();
@@ -14,11 +15,13 @@ public class StockCommand implements Command {
         System.out.println("StockCommand executed");
     }
 
+    @Override
     public boolean isExit() {
         return false;
     }
 
-    public boolean canGenerateEvent() {
+    @Override
+    public boolean isAnAction() {
         return true;
     }
 }
