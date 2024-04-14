@@ -9,7 +9,7 @@ public class RestCommand implements Command {
         game.startGame();
         game.outputResult();
         if (game.getCorrectCount() >= 1) {
-            playerProfile.increaseHealth(20);
+            playerProfile.addHealth(20);
         }
     }
 

@@ -81,7 +81,7 @@ public class ExerciseCommand implements Command {
         TicTacToe game = new TicTacToe(playerMark);
         game.startGame();
         if (game.getStatus() == 1) {
-            playerProfile.increaseHealth(10);
+            playerProfile.addHealth(10);
         } else if (game.getStatus() == -1) {
             playerProfile.loseHealth(5);
         }
@@ -96,7 +96,7 @@ public class ExerciseCommand implements Command {
         Hangman game = new Hangman();
         game.startGame();
         if (game.getStatus() == 1) {
-            playerProfile.increaseHealth(10);
+            playerProfile.addHealth(10);
         } else if (game.getStatus() == -1) {
             playerProfile.loseHealth(5);
         }

@@ -53,13 +53,13 @@ class ExerciseCommandTest {
             @Override
             public void playHangman(PlayerProfile profile) {
                 mockHangman.startGame();  // Simulate starting the game
-                profile.increaseHealth(10);    // Simulate outcome
+                profile.addHealth(10);    // Simulate outcome
             }
         };
 
         command.execute(playerProfile);
         verify(mockHangman, times(1)).startGame();
-        verify(playerProfile, times(1)).increaseHealth(10);
+        verify(playerProfile, times(1)).addHealth(10);
     }
 
     /**

@@ -80,7 +80,7 @@ public class PlayerProfile {
         this.health.deductHealth(amount);
     }
 
-    public void increaseHealth(int amount) {
+    public void addHealth(int amount) {
         this.health.addHealth(amount);
     }
 
