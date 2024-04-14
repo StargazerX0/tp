@@ -17,7 +17,7 @@ class DecisionEventTest {
     private final PlayerProfile playerProfile = mock(PlayerProfile.class);
 
     @Test
-    void triggerEvent_EmptyInputAndPlayerReject_modifiesPlayerProfile() {
+    void triggerEvent_emptyInputAndPlayerReject_modifiesPlayerProfile() {
         DecisionEvent event = new DecisionEvent(1.0);
         for (int i = 0; i < ITERATION; i++) {
             String simulatedInput = "no";
@@ -34,7 +34,7 @@ class DecisionEventTest {
     }
 
     @Test
-    void triggerEvent_EmptyInputAndPlayerAccept_modifiesPlayerProfile() {
+    void triggerEvent_emptyInputAndPlayerAccept_modifiesPlayerProfile() {
         DecisionEvent event = new DecisionEvent(1.0);
         for (int i = 0; i < ITERATION; i++) {
             String simulatedInput = "yes";

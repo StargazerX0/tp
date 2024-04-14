@@ -71,5 +71,4 @@ class ExerciseCommandTest {
         System.setIn(in);
         assertEquals(1, command.getGameChoice(), "Should return 1 for Tic Tac Toe choice");
     }
-
 }

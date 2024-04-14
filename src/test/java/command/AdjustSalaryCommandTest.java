@@ -16,9 +16,8 @@ import static ui.ResponseManager.RESET;
 
 class AdjustSalaryCommandTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
     private final PrintStream originalOut = System.out;
-    PlayerProfile playerProfile = new PlayerProfile("test", "test", 100, 100, 1, true);
+    private final PlayerProfile playerProfile = new PlayerProfile("test", "test", 100, 100, 1, true);
     private final AdjustSalaryCommand lowerSalaryCommand = new AdjustSalaryCommand("lower", 100);
     private final AdjustSalaryCommand raiseSalaryCommand = new AdjustSalaryCommand("raise", 100);
     private final AdjustSalaryCommand raiseSalaryCommandExceedLimit = new AdjustSalaryCommand("raise", 1000);
@@ -51,5 +50,4 @@ class AdjustSalaryCommandTest {
     void execute_raiseSalaryCommandExceedLimit_throwsGameException() {
         assertThrows(GameException.class, () -> raiseSalaryCommandExceedLimit.execute(playerProfile));
     }
-
 }
