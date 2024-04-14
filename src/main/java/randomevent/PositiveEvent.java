@@ -68,7 +68,6 @@ class PositiveEvent extends RandomEvent {
     private static void familyDinnerEvent(PlayerProfile playerProfile) {
         System.out.println(POSITIVE_EVENT[1]);
         playerProfile.addHealth(10);
-        System.out.println("Your health has been increased by 10!");
     }
 
     private static void bonusEvent(PlayerProfile playerProfile) {

@@ -37,13 +37,15 @@ public class AdjustSalaryCommand implements Command {
             if (amount > playerProfile.getEmployeeSalary()) {
                 throw new GameException("Extent of lowering salary cannot be more than the employee's salary.\n");
             }
-            indentPrint("You have successfully lowered the salary by $" + RED + amount + RESET + ".\n");
+            indentPrint("You have successfully lowered the salary by $" + RED + amount + RESET + ".\n"
+                    + "The new salary is $" + playerProfile.getEmployeeSalary() + ".\n");
             amount = -amount;
         } else {
             if (amount > ADJUSTMENT_LIMIT) {
                 throw new GameException("Extent of rising salary cannot be more than $" + ADJUSTMENT_LIMIT + ".\n");
             }
-            indentPrint("You have successfully raised the salary by $" + GREEN + amount + RESET + ".\n");
+            indentPrint("You have successfully raised the salary by $" + GREEN + amount + RESET + ".\n"
+                    + "The new salary is $" + playerProfile.getEmployeeSalary() + ".\n");
         }
         playerProfile.updateSalary(amount);
     }
