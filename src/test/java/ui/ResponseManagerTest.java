@@ -44,7 +44,7 @@ class ResponseManagerTest {
         assertEquals("Current round: 5\nyou have " +
                         GREEN + "15" + RESET +
                         " rounds left before the game ends!\n" +
-                        INDENTATION, outputStreamCaptor.toString().trim());
+                        INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
@@ -54,7 +54,7 @@ class ResponseManagerTest {
         assertEquals("Current round: 16\nyou have " +
                 YELLOW + "4" + RESET +
                 " rounds left before the game ends!\n" +
-                INDENTATION, outputStreamCaptor.toString().trim());
+                INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
@@ -62,15 +62,15 @@ class ResponseManagerTest {
         int testRound = 20;
         ResponseManager.printCurrentRound(testRound);
         assertEquals("THIS IS THE " + RED + "LAST" + RESET +
-                " ROUND!\n" + ResponseManager.INDENTATION, outputStreamCaptor.toString().trim());
+                " ROUND!\n" + ResponseManager.INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
     void indentPrint_validInput_printsIndentedMsg() {
         String testMessage = "Hello, World!";
         ResponseManager.indentPrint(testMessage);
-        assertEquals(INDENTATION + "\n" + testMessage + INDENTATION,
-                outputStreamCaptor.toString().trim());
+        assertEquals(INDENTATION + "\n" + testMessage + INDENTATION + "\n",
+                outputStreamCaptor.toString());
     }
 
     @Test
@@ -86,7 +86,7 @@ class ResponseManagerTest {
                 "Crypto Earned: $" + GREEN + "300" + RESET + "\n" +
                 "\n" +
                 "Total Earned: $" + GREEN + "600" + RESET + "\n" +
-                INDENTATION, outputStreamCaptor.toString().trim());
+                INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
@@ -102,7 +102,7 @@ class ResponseManagerTest {
                 "Crypto Lost: -$" + RED + "300" + RESET + "\n" +
                 "\n" +
                 "Total Lost: -$" + RED + "600" + RESET + "\n" +
-                INDENTATION, outputStreamCaptor.toString().trim());
+                INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
@@ -114,7 +114,7 @@ class ResponseManagerTest {
         assertEquals(INDENTATION + "\n" +
                 BLUE + "ROUND SUMMARY:\n" + RESET +
                 "No earnings or losses this round!\n" +
-                INDENTATION, outputStreamCaptor.toString().trim());
+                INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
@@ -123,7 +123,7 @@ class ResponseManagerTest {
         ResponseManager.printActionLeft(testActionsLeft);
         assertEquals("You have 1 action left\n" +
                 "Input your action! If needed, type 'help' for more info\n" +
-                INDENTATION, outputStreamCaptor.toString().trim());
+                INDENTATION + "\n", outputStreamCaptor.toString());
     }
 
     @Test
