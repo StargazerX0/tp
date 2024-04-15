@@ -4,6 +4,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Quick Start](#quick-start)
+- [Command Summary](#command-summary)
 - [Features](#features)
   - [Work](#feature---work)
   - [Exercise](#feature---exercise)
@@ -25,6 +26,7 @@
   - [Random Events](#feature---random-events)
   - [Company Status](#company-status)
   - [Random Events](#feature---random-events)
+- [FAQ](#faq)
 
 ## Introduction
 
@@ -48,6 +50,26 @@ help students prepare for the future challenges.
 > * The game would prompt you to enter your action during the game.
 > * If you are stuck, you can use the `help` command to see a list of commands that you can use.
 > * For advanced user, only normal modification is allowed. Extreme data modification may result in game progress reset.
+
+## Command Summary
+
+| Description            | Command                              |
+|------------------------|--------------------------------------|
+| Work                   | `work`                               |
+| Exercise               | `exercise`                           |
+| Rest                   | `rest`                               |
+| Check Player Status    | `status`                             |
+| Check Company Status   | `company`                            |
+| Help                   | `help`                               |
+| Sell Stock             | `sellstock`                          |
+| Buy Stock              | `stock`                              |
+| Buy Bond               | `bond`                               |
+| Buy Crypto             | `crypto`                             |
+| Upgrade                | `upgrade`                            |
+| Hire Employee          | `hire <employee number>`             |
+| Fire Employee          | `fire <employee number>`             |
+| Adjust Employee Salary | `raise <amount>` or `lower <amount>` |
+| Exit                   | `bye`                                |
 
 ## Features
 
@@ -736,22 +758,4 @@ If you are stuck, you can use the `help` command to see a list of commands that 
 **A**: Yes you can! The record is stored as `PlayerProfile.json` in `data` folder. The data in json file will be restored
 by loader class during initialization, if the folder is empty, the program will open a new record. To transfer the
 record, you can copy your current json file into `data` folder at your new computer.
-
-## Command Summary
-
-| Description            | Command                              |
-|------------------------|--------------------------------------|
-| Work                   | `work`                               |
-| Exercise               | `exercise`                           |
-| Rest                   | `rest`                               |
-| Check Status           | `status`                             |
-| Help                   | `help`                               |
-| Sell Stock             | `sellstock`                          |
-| Buy Stock              | `stock`                              |
-| Upgrade                | `upgrade`                            |
-| Hire Employee          | `hire <employee number>`             |
-| Fire Employee          | `fire <employee number>`             |
-| Adjust Employee Salary | `raise <amount>` or `lower <amount>` |
-| Exit                   | `bye`                                |
-
 

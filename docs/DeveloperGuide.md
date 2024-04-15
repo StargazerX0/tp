@@ -133,8 +133,6 @@ The mechanism:
 4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
 
 
-
-
 ## MiniGame components
 
 Here is the partial class diagram of the `MiniGame` component:
@@ -145,6 +143,7 @@ The `MiniGame` mechanism:
 1. For command `work`, `rest`, and `exercise`, they would have their respective mini-games.
 2. When these commands are generated and executed in `EconoCraftLogic`, the respective mini-game would be played.
 3. The command would then update the player profile according to the mini-game result.
+
 
 # Implementation
 
@@ -233,6 +232,10 @@ user based on the stock's current price.
 4. Player would be prompted to make a decision based on the event.
 5. Based on the decision made and the event type, the player would receive different rewards or punishments.
 6. The event would add uncertainty and excitement to the game.
+
+> [!NOTE]
+> - Random event triggered is based on probability of each event type defined in `EventGenerator` class.
+> - However, the probability of each event type can be adjusted based on the player's status. E.g. if the player's health is low, the probability of getting sick will be higher.
 
 ## File Management
 ![Save.png](UML%20diagram%2FSave.png)
