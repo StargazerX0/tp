@@ -242,26 +242,31 @@ public class Asset {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public String toString() {
+    public String investReturn() {
         String output = "";
         for (int i = 0; i < stockList.size(); i++) {
             int stockNum = stockCount.get(i);
             output += stockNum == 0 ? "" :
                     stockList.get(i).returnStockName() + " current share count : "
-                    + stockNum + "\n";
+                            + stockNum + "\n";
         }
         for (int i = 0; i < bondList.size(); i++) {
             int bondNum = bondCount.get(i);
             output += bondNum == 0 ? "" :
                     bondList.get(i).returnBondName() + " current bond count : "
-                    + bondNum + "\n";
+                            + bondNum + "\n";
         }
         for (int i = 0; i < cryptoList.size(); i++) {
             int cryptoNum = cryptoCount.get(i);
             output += cryptoNum == 0 ? "" :
                     cryptoList.get(i).returnCryptoName() + " current crypto count : "
-                    + cryptoNum + "\n";
+                            + cryptoNum + "\n";
         }
+        return output;
+    }
+
+    public String toString() {
+        String output = investReturn();
 
         String investmentInfo = output.isEmpty() ? output :
                 INDENTATION + "\n" +

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * number of correct responses. It's designed to be engaging and informative, providing a fun
  * way to test knowledge on different subjects.
  */
-public class MCQGame implements MiniGame {
+public class TrueFalseGame implements MiniGame {
     private static final Logger logger = Logger.getLogger("MCQLog");
     private static final String INSTRUCTION_MESSAGE = "Type T for true and F for false\n";
     private static final String QUESTION_1 =
@@ -86,18 +86,28 @@ public class MCQGame implements MiniGame {
     }
 
     /**
+     * Constructs a true and false game constructor that only sets up the possible questions.
+     * Used solely for testing purposes.
+     */
+    public void testActivate() {
+        gameSetUp();
+    }
+
+    /**
      * Starts the MCQ game session. It presents a series of True or False questions to the player,
      * collects their responses, and evaluates the correctness of each answer. The game tracks the
      * number of correct answers and provides immediate feedback for each response.
      */
     public void startGame() {
         correctCount = 0;
-        gameSetUp();
+        if (questionList.isEmpty()) {
+            gameSetUp();
+        }
         Scanner scanner = new Scanner(System.in);
         ResponseManager.indentPrint(START_MSG);
         for (int i = 0; i < 2; i++) {
             int index = getRandomNumber(0, questionList.size() - 1);
-            assert index <= 3 : "Should not have index larger three!!!";
+            assert i <= 1 : "Should not have i larger than 2!!!";
             ResponseManager.indentPrint(questionList.get(index));
             ResponseManager.indentPrint(INSTRUCTION_MESSAGE);
             String response = scanner.nextLine();
