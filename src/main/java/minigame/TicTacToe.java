@@ -231,14 +231,6 @@ public class TicTacToe implements MiniGame {
 
     /**
      * Manages the Tic Tac Toe gameplay loop. Alternates turns between the player and the AI, handling the game logic.
-     *
-     * The gameplay loop includes:
-     * - Displaying the game board.
-     * - Prompting the player for a move and validating it. Moves must target an empty cell and be within the
-     * board's bounds.
-     * - Updating the board, checking for wins or a draw, and displaying the updated state.
-     * - If no win or draw is detected, the AI makes a move, followed by an update and check for game termination.
-     *
      * The loop continues until a player wins or the board is filled completely (draw).
      * Inputs are validated for correctness, and incorrect inputs allow for re-entry without penalties.
      */

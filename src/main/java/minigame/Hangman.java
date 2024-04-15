@@ -89,15 +89,6 @@ public class Hangman implements MiniGame {
 
     /**
      * Manages the Hangman game loop, guiding players through up to 5 rounds or until three incorrect guesses occur.
-     *
-     * Gameplay steps:
-     * - Welcome the player and display game instructions.
-     * - For each round:
-     *   - Select and display a new word with one letter hidden.
-     *   - Prompt for a guess and validate it as a single alphabetic character.
-     *   - Check the guess, update the game state, and show the updated word.
-     * - End the game by showing the result (win, loss, or draw).
-     *
      * This method handles game dynamics and player interactions, ensuring the gameplay follows the defined rules
      * and progresses effectively.
      */
