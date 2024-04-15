@@ -8,22 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Handles the initialization, storage, and trading of stocks within the stock market mini-game.
- * This class provides the functionality for setting up available stocks, engaging players in the
- * trading process, and performing the necessary calculations and updates based on player actions.
- * It acts as the core component managing stock transactions in the game environment.
+ * Handles the initialization, storage, and purchase of stocks within the virtual stock market.
  */
 public class StockStorage {
     private final List<Stock> stocksAvailable = new ArrayList<>();
     private boolean completeTrade = false;
     private final PlayerProfile playerProfile;
 
-    /**
-     * Constructs a new instance of StockStorage, associated with a specific player profile.
-     * This setup links stock transactions directly to the player's game state and financial assets.
-     *
-     * @param playerProfile The profile of the player involved in stock transactions.
-     */
     public StockStorage(PlayerProfile playerProfile) {
         this.playerProfile = playerProfile;
     }

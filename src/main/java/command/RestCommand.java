@@ -4,6 +4,14 @@ import minigame.TrueFalseGame;
 import player.PlayerProfile;
 
 public class RestCommand implements Command {
+
+    /**
+     * {@inheritDoc}
+     *
+     * Executes the rest command by starting the True and False game and update player's profile.
+     *
+     * @param playerProfile the player profile to be updated.
+     */
     @Override
     public void execute(PlayerProfile playerProfile) {
         TrueFalseGame game = new TrueFalseGame();
