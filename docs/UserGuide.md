@@ -31,7 +31,7 @@
 ## Introduction
 
 EconoCraft is a single player text adventure game where a player takes on the role of a business owner or manager,
-tasked with growing their company from a small startup to a large corporation. The game would simulate real-world
+tasked with growing his or her company from a small startup to a large corporation. The game would simulate real-world
 business challenges, including resource management, market analysis, product development, and financial planning to
 help students prepare for the future challenges.
 
@@ -196,7 +196,7 @@ O O O
 - - X 
 ===========================================================================
 ===========================================================================
-Siuuuuu, player O wins!
+Congratulations, you win!
 ===========================================================================
 ```
 This would increase 10% of the player's health if player wins the game.
