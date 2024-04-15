@@ -9,7 +9,7 @@ into future business hurdles.
 # "CONTRIBUTIONS"
 
 # Code contributions:
-https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23
+[RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23)
 
 # Enhancement implemented:
  New Feature 1:Bond Investment Mechanism

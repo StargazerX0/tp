@@ -13,6 +13,11 @@
   * [MiniGame - Typing Game](#miniGame---typing-Game)
   * [MiniGame - Tic Tac Toe](#miniGame---tic-tac-toe)
   * [MiniGame - True or False](#miniGame---true-or-false)
+  * [Investment game - Stock](#investment-game---stock)
+  * [Investment game - Bond](#investment-game---bond)
+  * [Investment game - Crypto](#investment-game---crypto)
+  * [Company Management](#company-management)
+  * [Random Event](#random-event)
 * [Product scope](#product-scope)
   * [Target user playerProfile](#target-user-playerprofile)
   * [Value proposition](#value-proposition)
@@ -48,19 +53,19 @@ is in charge of the game initialization and starting the main game loop.
 
 The functionality of the game is divided into different components, each responsible for a different aspect of the game.
 
-* `PlayerProfile`: Represents the player's profile and is responsible for storing and updating the player's information.
-* `Parser`: Responsible for parsing the user input.
-* `ResponseManager`: Responsible for generating the response to the user input.
-* `EconoCraftLogic`: Responsible for executing user command and updating the game state.
-* `MiniGame`: Responsible for handling the mini-games that the player can play to gain rewards.
-* `CommandFactory`: Responsible for using the parsed user input to produce executable commands.
+* `Model`: Represents the player's profile and is responsible for storing and updating the player's information.
+* `UI`: Responsible for handling user input and output which includes `Parser` and `ResponseManager`.
+* `Logic`: Responsible for generating and executing user command and updating the game state.
+* `SubLogic`: Responsible for executing the mini-games, randomEvent and updating the player profile accordingly.
 
 #### Component interaction:
 
-The *Sequence Diagram* below showcases the interaction between the different components of the EconoCraft Pro 
-application when a user inputs a command `work`.
+The components interact with each other in the following way when a user enters a `stock` command to but stocks:
+![Interaction.png](UML%20diagram%2FInteraction.png)
 
-For `CommandFactory` and `Minigame`,
+Under `Logic` and `SubLogic` component there are:
+
+`CommandFactory`, `Minigame` and `RandomEvent` components:
 * Each defines its API for creating commands and mini-games respectively, where
   `Command` is the API for `CommandFactory` and `MiniGame` is the API for `MiniGame`.
 * Implements its functionality with concrete classes such as `WorkCommand` and `TypingGame`.
@@ -105,8 +110,6 @@ The `EconoCraftLogic` mechanism:
 
 Here is the sequence diagram of `stock` command:
 
-![Stock.jpeg](UML%20diagram%2FStock.jpeg)
-
 The mechanism:
 1. `stock` command invoke the `StockCommand` class.
 2. `StockCommand` invokes the `start` method for `StockActivate` class.
@@ -114,8 +117,6 @@ The mechanism:
 4. `StockStorage` class will new execute its play function and enable user to buy stocks.
 
 Here is the sequence diagram of `sellstock` command:
-
-![SellStock.jpeg](UML%20diagram%2FSellStock.jpeg)
 
 The mechanism:
 1. `sellstock` command invoke the `SellStockCommand` class.
@@ -140,6 +141,17 @@ The mechanism:
 3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex 
 data structures.
 4. `Loader` returns the `PlayerProfile` class to load the previous information.
+
+>[!NOTE]
+> * Corrupted data file will be handled by `Loader` class and return a new `PlayerProfile` class to replace the corrupted data.
+> ```
+> {
+>"name": "jj",
+>"occupation": "Artificial intelligence",
+>"health": -1,
+>"currentRound": 1,
+> ```
+> In the above example, the health value is -1 which is not a valid value. The `Loader` class will restart the game.
 
 
 ## MiniGame components
@@ -251,11 +263,13 @@ user based on the stock's current price.
 ## Product scope
 ### Target user playerProfile
 
-{Describe the target user playerProfile}
+The target user of the application is a computer engineering student who is interested in raising financial awareness and learning about business concepts.
+The user would be someone who enjoys playing text-based games and is looking for a fun and engaging way to learn about business concepts. 
+The user would also be someone who is looking for a challenge and enjoys problem-solving.
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+The value proposition of the application is to provide an engaging and fun way for users to learn about business concepts and raise financial awareness。
 
 ## User Stories
 
@@ -269,7 +283,7 @@ user based on the stock's current price.
 | v2.0    | user             | find a to-do item by name                                      | locate a to-do without having to go through the entire list             |
 | v2.0    | user             | restart the game                                               | reset the progess when a bad decision is made                           |
 | v2.0    | user             | check current game progress via a progress percentage bar      | be clear about how many more task needs to be done to complete the game |
-| v2.0    | user             | set finantial task to be completed                             | complete task to increase game progress                                 |
+| v2.0    | user             | set financial task to be completed                             | complete task to increase game progress                                 |
 | v2.0    | user             | track my in-game money flow                                    | play the game more strategically                                        |
 | v2.0    | first-time user  | view tips for playing the game                                 | familiarise with the game faster                                        |
 | v2.0    | first-time user  | view the background story of the game                          | have a better understanding on what the game is about                   |
@@ -280,31 +294,34 @@ user based on the stock's current price.
 | v2.0    | player           | task with different challenge when entered command             | feel more engaged to the game                                           |
 | v2.0    | user             | want to have random event at the end of each round             | enjoy the uncertainty within the gameplay process                       |
 | v2.0    | user             | save my personal profile                                       | not to lose any progress when I play again                              |
-| v2.0    | user             | see different game ending from different decision made in game | gain a sense of satisfaction when good ending happens                   |
-| v2.0    | user             | have 3-4 saved progresses                                      | choose the progress based on my preference                              |
 | v2.0    | user             | name each progress                                             | differentiate saved progresses                                          |
 | v2.0    | user             | delete saved progresses                                        | delete the saved data when the data has no use                          |
 | v2.0    | advanced player  | modify the saved file                                          | adjust my game information when possible                                |
-| v2.0    | user             | choose level of difficulties of the game                       | adjust the difficulties based on my skills                              |
 | v2.0    | user             | learn different player skills                                  | complete mission and task easier                                        |
 | v2.0    | user             | have lucky draw to gain interesting rewards                    | feel the excitement and joy of the game                                 |
 | v2.0    | user             | get loan from the virtual bank                                 | use for the investment and expand the businesses                        |
-| v2.0    | user             | negotiate with game NPCs                                       | feel more engaged to the game                                           |
 | v2.0    | busy-user        | save the game data into local                                  | continue the saved progress next time                                   |
 | v2.0    | first-time user  | see what actions I can do in different player level            | type correct command to complete the tasks                              |
 | v2.0    | user             | trigger random event                                           | feel more insterested to the game                                       |
 
-
-
-
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+* OS compatibility: The application should be able to run on Windows, MacOS, and Linux.
+* Easy to use: The application should be user-friendly and commands should be easy to understand and type.
+* Easy to understand: The application should have clear instructions and explanations for the user.
+* Enjoyable to play: The application should be engaging and fun to play.
 
 ## Glossary
 
-* *glossary item* - Definition
+* **PlayerProfile**: Represents the player's profile and is responsible for storing and updating the player's information.
+* **EconoCraftLogic**: Responsible for executing user command and updating the game state.
+* **OS**: Operating System.
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### Manual Testing
+Refer to the [User Guide](UserGuide.md) for the detailed instructions on how to manually test the application.
+
+### Automated Testing
+JUnit tests are available in the [test](../src/test/java) folder. 
+
