@@ -99,11 +99,12 @@ class AssetTest {
         assertTrue(asset.bondReturn() > 100);
     }
 
+
     @Test
     void testAsset_checkCryptoReturn() {
         Litecoin testCrypto = new Litecoin();
         asset.addCrypto(testCrypto, 1000);
-        assertTrue((asset.bondReturn() == 0 ) || (asset.bondReturn() > 100));
+        assertTrue((asset.cryptoReturn() == 0 ) || (asset.cryptoReturn() > 100));
     }
 
     /**
