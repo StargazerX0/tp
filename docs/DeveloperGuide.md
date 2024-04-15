@@ -124,24 +124,6 @@ The mechanism:
 3. `Asset` class executes the `sellStock()` function and sell all of the stocks the player currently possess.
 4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
 
-![Save.png](UML%20diagram%2FSave.png)
-
-The mechanism:
-1. `Saver` will be called within `startEcono` method after one command is executed.
-2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
-3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
-into Json format.
-4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
-
-![Load.png](UML%20diagram%2FLoad.png)
-
-The mechanism:
-1. `Loader` will be called within `initializeGame` method once the program is initialized.
-2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
-3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex 
-data structures.
-4. `Loader` returns the `PlayerProfile` class to load the previous information.
-
 >[!NOTE]
 > * Corrupted data file will be handled by `Loader` class and return a new `PlayerProfile` class to replace the corrupted data.
 > ```
@@ -260,6 +242,23 @@ user based on the stock's current price.
 5. Based on the decision made and the event type, the player would receive different rewards or punishments.
 6. The event would add uncertainty and excitement to the game.
 
+## File Management
+![Save.png](UML%20diagram%2FSave.png)
+The above is the save process called by gameLogic.
+1. `Saver` will be called within `startEcono` method after one command is executed.
+2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
+3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
+   into Json format.
+4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
+
+![Load.png](UML%20diagram%2FLoad.png)
+The above is the load process called by gameLogic.
+1. `Loader` will be called within `initializeGame` method once the program is initialized.
+2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
+3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex
+   data structures.
+4. `Loader` returns the `PlayerProfile` class to load the previous information.
+
 ## Product scope
 ### Target user playerProfile
 
@@ -314,7 +313,7 @@ The value proposition of the application is to provide an engaging and fun way f
 ## Glossary
 
 * **PlayerProfile**: Represents the player's profile and is responsible for storing and updating the player's information.
-* **EconoCraftLogic**: Responsible for executing user command and updating the game state.
+* **gameLogic**: Responsible for executing user command, updating the game state, and calling file management methods.
 * **OS**: Operating System.
 
 ## Instructions for manual testing
