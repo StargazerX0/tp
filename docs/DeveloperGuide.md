@@ -110,6 +110,8 @@ The `EconoCraftLogic` mechanism:
 
 Here is the sequence diagram of `stock` command:
 
+![Stock.PNG](UML%20diagram%2FStock.PNG)
+
 The mechanism:
 1. `stock` command invoke the `StockCommand` class.
 2. `StockCommand` invokes the `start` method for `StockActivate` class.
@@ -117,6 +119,8 @@ The mechanism:
 4. `StockStorage` class will new execute its play function and enable user to buy stocks.
 
 Here is the sequence diagram of `sellstock` command:
+
+![SellStock.PNG](UML%20diagram%2FSellStock.PNG)
 
 The mechanism:
 1. `sellstock` command invoke the `SellStockCommand` class.
@@ -235,15 +239,8 @@ user based on the stock's current price.
 
 ## Investment game - Crypto
 
-1. The process to purchase cryptos can be invoked by the 'CryptoCommand' when the user enters 'Crypto'.
-2. The system uses 'ResponseManager' to display a list of available cryptos and guide the user through the selection process.
-3. Users are prompted to select which crypto they wish to buy by entering a number corresponding to the crypto displayed on the screen.
-4. They are then prompted to enter the amount of USD they wish to invest in their selected cryptocurrency.
-5. After the investment amount is entered, the system calculates potential returns based on current market trends and adjusts the user's assets accordingly.
-6. A confirmation message is displayed to the user detailing the investment amount and the expected changes due to market conditions.
-7. The cryptocurrencies bought are added to the user’s 'Asset' class, displaying both the amount invested and the type of cryptocurrency.
-8. By typing 'status', users can check their cryptocurrency holdings and the current market value of these investments.
-9. The game dynamically simulates market changes, which can affect the value of the cryptocurrencies held by the user, and these changes are reflected in the updated asset information. Reflected in the user's asset status.
+1. Similar implementation to bonds
+2. But have the risk of getting confiscated by the government.
 
 ## Company Management
 1. Players are able to invoke different commands to manage their company.

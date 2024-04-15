@@ -271,17 +271,16 @@ Format: `rest`
 
 Expected outcome:
 ```
-==============================
+===========================================================================
 Welcome to the MCQ Game!
 Answer the following questions:
-==============================
-==============================
-As per the textbook, brown-field projects are usually 
-harder than green-field projects. True or False?
-==============================
-==============================
+===========================================================================
+===========================================================================
+Retailing business sells products to other businesses rather than the final customer? 
+===========================================================================
+===========================================================================
 Type T for true and F for false
-==============================
+===========================================================================
 ```
 Player would then enter `T` or `F` to answer the question.
 
@@ -291,15 +290,21 @@ Example of usage:`T`
 
 Expected outcome:
 ```
-==============================
+===========================================================================
 Incorrect!
-==============================
+===========================================================================
 ```
 After two questions, the player would be informed of their score.
 
 Examples:
 ```
-You answered 1 questions correctly.
+===========================================================================
+You answered 1 question correctly.
+
+===========================================================================
+Your have gained 20 health.
+Your current health is: 70
+===========================================================================
 ```
 
 This would increase 20% of the player's health if player achieves more than 50% correct answers.
