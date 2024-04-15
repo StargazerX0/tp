@@ -2,8 +2,8 @@
 
 ## Project: EconoCraft Pro
 
-EconoCraft is a single player text adventure game where a player would start form from trying to achieve work-life balance to managing financial assets and a company.
-This is a fun game that is full of uncertainty, which helps user to raise their financial awareness and management skills.
+EconoCraft is a single player text adventure game where a player would start from trying to achieve work-life balance to managing financial assets and a company.
+This is a fun game that is full of uncertainty and excitement, which helps user to raise their financial awareness and management skills.
 
 Given below are my contributions to the project:
 
@@ -21,7 +21,7 @@ Given below are my contributions to the project:
 
 * **New Features**: Added status commands that allow players to check their status.
 * **New Features**: Added help command that allows players to check the available commands.
-
+<div style="page-break-after: always;"></div>
 
 * **Code Quality Enhancement**: Abstracted main components of the project. [#30](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/30) [#80](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/80)
     * What it does: adds interfaces to manage the commands, miniGames, and random events.
@@ -36,7 +36,6 @@ Given below are my contributions to the project:
 
 * **Code contributed**: [RepoSense link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=zminghuiz&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
-<div style="page-break-after: always;"></div>
 
 * **Project management**:
   * Managed issues, milestones creation and allocation from release v1.0 to v2.1.
@@ -55,7 +54,7 @@ Given below are my contributions to the project:
     * Updated documentation for `work`, `company management`, `status check`, `upgrade`, `help` and `random events` features. [#190](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/190)
   * Developer Guide:
     * Added overall architecture and components interaction explanation with diagram. [#65](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/65)
-    * Updated implementation details for the `work`, `company management`, and `random events` features. [#65](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/65)
+    * Updated implementation details for the `work`, `company management`, and `random events` features. [#65](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/65) [#197](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/197)
     * Added flowchart to explain the game logic. [#84](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/84)
 
 

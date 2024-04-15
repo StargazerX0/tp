@@ -42,6 +42,7 @@ help students prepare for the future challenges.
 5. Run the command `java -jar econoCraft.jar` to start the game. The chatbot should start and display the welcome message.
 6. Follow the game instructions to start playing.
 7. Your game progress will be auto saved in the `data` folder as `PlayerProfile.json`.
+8. You will need to earn **$100000** to win the game.
 
 >[!Note]
 > * The game would prompt you to enter your action during the game.
