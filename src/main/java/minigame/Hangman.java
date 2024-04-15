@@ -48,8 +48,9 @@ public class Hangman implements MiniGame {
     private void initializeGame() {
         int randomIndex = (int) (Math.random() * WORDS.length);
         chosenWord = WORDS[randomIndex];
-        guessedLetters = new HashSet<>();
+        assert chosenWord != null && !chosenWord.isEmpty() : "Chosen word must not be null or empty";
 
+        guessedLetters = new HashSet<>();
         char letterToHide = chosenWord.charAt((int) (Math.random() * chosenWord.length()));
         for (char c : chosenWord.toCharArray()) {
             if (c != letterToHide) {
