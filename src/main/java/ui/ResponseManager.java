@@ -155,7 +155,7 @@ public class ResponseManager {
      * Asks the player if they want to restart the game.
      */
     public static void promptRestart() {
-        indentPrint("Do you want to restart the game? (yes/no)");
+        indentPrint("Do you want to restart the game? (yes/no)\n");
     }
 
     public static void printRoundEarned(int companyProfit, int bondProfit, int cryptoProfit) {
