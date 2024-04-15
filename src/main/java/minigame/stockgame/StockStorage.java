@@ -20,8 +20,7 @@ public class StockStorage {
     }
 
     /**
-     * Initializes the list of available stocks for trading. This method populates the stock
-     * storage with a predefined set of stock entities, ready for player interaction.
+     * Initialises the list of available stocks for trading.
      */
     private void setUp() {
         stocksAvailable.add(new StockOne());
@@ -37,11 +36,9 @@ public class StockStorage {
     }
 
     /**
-     * Begins the trading process, allowing the player to engage in stock market transactions.
-     * This method orchestrates the trading session, presenting stock options to the player and
-     * processing their buy or sell decisions.
+     * Begins the trading process by presenting a random stock with respective information.
      *
-     * @throws GameException if an error occurs that prevents the continuation of the trading process.
+     * @throws GameException if player input an invalid number or does not have enough money.
      */
     public void play() throws GameException {
         if (stocksAvailable.isEmpty()) {
@@ -50,20 +47,18 @@ public class StockStorage {
         int index = getRandomNumber(0, stocksAvailable.size() - 1);
         Stock current = stocksAvailable.get(index);
         current.printInfo(playerProfile);
-        stockCalculation(index, current);
+        stockCalculation(current);
 
     }
 
     /**
-     * Manages the purchase calculations for a selected stock and updates the player's portfolio
-     * and financial status accordingly. It ensures that transactions are valid and that the player
-     * has sufficient assets for the purchase.
+     * Calculates the money required to purchase a certain number of stocks and add them
+     * to player profile.
      *
-     * @param index   The index of the currently selected stock in the available stocks list.
-     * @param current The stock entity being purchased.
-     * @throws GameException If the transaction is invalid due to insufficient assets or other constraints.
+     * @param current the stock that is going to be purchased.
+     * @throws GameException if the player have invalid input or not enough money.
      */
-    private void stockCalculation(int index, Stock current) throws GameException {
+    private void stockCalculation(Stock current) throws GameException {
         Scanner scanner = new Scanner(System.in);
         while (!completeTrade) {
             try {
@@ -100,12 +95,11 @@ public class StockStorage {
     }
 
     /**
-     * Utility method for generating a random integer within a specified range. This can be used
-     * for selecting random stocks or simulating market movements.
+     * Generates a random integer within a certain range.
      *
-     * @param min The minimum value (inclusive).
-     * @param max The maximum value (exclusive).
-     * @return A random integer between the specified min (inclusive) and max (exclusive).
+     * @param min the lower bound of the range.
+     * @param max the upper bound of the range.
+     * @return the random integer generated within the range.
      */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);

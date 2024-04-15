@@ -65,6 +65,9 @@ public class CryptoCurrencyStorage {
                     System.out.println("How much in USD do you want to invest in " + current.returnCryptoName() +
                             "? Input 0 if you want none");
                     int response = Integer.parseInt(scanner.nextLine());
+                    if (response == 0) {
+                        completeTrade = true;
+                    }
                     if (response >= current.returnCurrentPrice() && playerProfile.getAsset().getAsset() >= response) {
                         int changeAmount = current.calculateChange(response);
                         playerProfile.getAsset().deductAsset(response);
