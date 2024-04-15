@@ -8,7 +8,8 @@ import player.PlayerProfile;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SellStockCommandTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
