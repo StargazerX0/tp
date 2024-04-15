@@ -38,35 +38,29 @@ Given below are my contributions to the project.
   * and user input handling mechanism is improved with forgiving input system that aligns with common user behaviors 
   * and expectations.
 
-* **Code Quality Enhancement**: Abstracted main components of the project. [#30](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/30) [#80](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/80)
-  * What it does: adds interfaces to manage the commands, miniGames, and random events.
-  * Justification: improves the code maintainability and extensibility of the project and follows the SOLID principles of OOP.
-  * Highlights: uses factory pattern to create commands and random events.
+* **Code Quality Enhancement**: Extracted methods to form new classes in file packages  [#161](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/161)
+  * What it does: extracted methods from `Saver` and `Loader` classes to form `Serializer` and `Decoder`.
+  * Justification: readability `Saver` and `Loader` classes with methods extracted and code becomes more OOP.
+  * Highlights: more reasonable split of classes, `Saver` and `Loader` handle the Json file while 
+  * `Serializer` and `Decoder` handle the data in Json.
+
+* **Code contributed**: [RepoSense link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=stargazerx0&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **General Contribution**:
-  * Designed the general logic of the application.
-  * Refactored the code structure to improve the code quality. [#24](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/24) [#156](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/156)
-
-* **Code contributed**: [RepoSense link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=zminghuiz&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
+  * Tested and reported bugs in game.
 
 * Project management:
-  * Managed issues, milestones creation and allocation from release v1.0 to v2.1.
-  * Managed the project's release cycle, ensuring that the project is on track to meet the deadline.
+  * Reviewed and approved the pull requests of other team members on GitHub. [#76](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/76)[#80](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/80)
 
 * Enhancements to existing features:
-  * Improved the typing game's accuracy calculation algorithm. [#156](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/156)
-  * Improved the robustness of the file loader. [#189](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/189)
-  * Formatted UI output and used ANSI escape codes to improve the game's visual effects in Terminal. [#187](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/187)  [#49](https://github.com/AY2324S2-CS2113-T11-4/tp/issues/49)
+  * Added randomness to the typing game. [#79](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/79)
+  * Improve user experience for Hangman. [#162 ](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/162)
 
 * Documentation:
   * User Guide:
-    * Added documentation for `v1.0` and `v2.0` features. [#59](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/59) [#92](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/92)
-    * Updated documentation for `work`, `company management`, `status check`, `upgrade`, `help` and `random events` features. [#190](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/190)
+    * Added documentation for `exercise`, `tic tac toe`, `hangman`, `save` and `load` features. [#186](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/186) [#186](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/186)
   * Developer Guide:
-    * Added overall architecture and components interaction explanation with diagram. [#65](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/65)
-    * Updated implementation details for the `work`, `company management`, and `random events` features. [#65](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/65)
-    * Added flowchart to explain the game logic. [#84](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/84)
+    * Updated implementation details for the `save` and `load` features. [#178](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/178)
 
 * Community:
-  * Pull requests reviewed (with non-trivial review comments): [#81](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/81#discussion_r1545932644) [#77](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/77#discussion_r1545442772) [#78](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/78#discussion_r1545451873) [#83](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/83#discussion_r1547968340)
-  * Organized unofficial user testing sessions with another team and test each other's projects. **Honourable Mention**: [CS2113-F14-2](https://ay2324s2-cs2113-f14-2.github.io/tp/)
+  * Request to use org.json library in CS2113 Forum. [#40](https://github.com/nus-cs2113-AY2324S2/forum/issues/40)
