@@ -32,7 +32,7 @@ class AssetTest {
      */
     @Test
     void outputAsset() {
-        assertEquals(5000, asset.getAsset(),
+        assertEquals(5000, asset.outputMoney(),
                 "The outputMoney method should return the current total asset.");
     }
 
@@ -42,7 +42,7 @@ class AssetTest {
     @Test
     void testAddAsset() {
         asset.addAsset(1000);
-        assertEquals(6000, asset.getAsset(),
+        assertEquals(6000, asset.outputMoney(),
                 "Adding 1000 to the asset should increase total asset to 6000.");
     }
 
@@ -52,7 +52,7 @@ class AssetTest {
     @Test
     void testDeductAsset() {
         asset.deductAsset(1000);
-        assertEquals(4000, asset.getAsset(),
+        assertEquals(4000, asset.outputMoney(),
                 "Deducting 1000 from the asset should decrease total asset to 4000.");
     }
 

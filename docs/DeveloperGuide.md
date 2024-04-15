@@ -110,6 +110,8 @@ The `EconoCraftLogic` mechanism:
 
 Here is the sequence diagram of `stock` command:
 
+![Stock.PNG](UML%20diagram%2FStock.PNG)
+
 The mechanism:
 1. `stock` command invoke the `StockCommand` class.
 2. `StockCommand` invokes the `start` method for `StockActivate` class.
@@ -118,29 +120,13 @@ The mechanism:
 
 Here is the sequence diagram of `sellstock` command:
 
+![SellStock.PNG](UML%20diagram%2FSellStock.PNG)
+
 The mechanism:
 1. `sellstock` command invoke the `SellStockCommand` class.
 2. `SellStockCommand` invokes the `getAsset` method for `PlayerProfile` and fetch the `Asset` class.
 3. `Asset` class executes the `sellStock()` function and sell all of the stocks the player currently possess.
 4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
-
-![Save.png](UML%20diagram%2FSave.png)
-
-The mechanism:
-1. `Saver` will be called within `startEcono` method after one command is executed.
-2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
-3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
-into Json format.
-4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
-
-![Load.png](UML%20diagram%2FLoad.png)
-
-The mechanism:
-1. `Loader` will be called within `initializeGame` method once the program is initialized.
-2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
-3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex 
-data structures.
-4. `Loader` returns the `PlayerProfile` class to load the previous information.
 
 >[!NOTE]
 > * Corrupted data file will be handled by `Loader` class and return a new `PlayerProfile` class to replace the corrupted data.
@@ -235,15 +221,8 @@ user based on the stock's current price.
 
 ## Investment game - Crypto
 
-1. The process to purchase cryptos can be invoked by the 'CryptoCommand' when the user enters 'Crypto'.
-2. The system uses 'ResponseManager' to display a list of available cryptos and guide the user through the selection process.
-3. Users are prompted to select which crypto they wish to buy by entering a number corresponding to the crypto displayed on the screen.
-4. They are then prompted to enter the amount of USD they wish to invest in their selected cryptocurrency.
-5. After the investment amount is entered, the system calculates potential returns based on current market trends and adjusts the user's assets accordingly.
-6. A confirmation message is displayed to the user detailing the investment amount and the expected changes due to market conditions.
-7. The cryptocurrencies bought are added to the user’s 'Asset' class, displaying both the amount invested and the type of cryptocurrency.
-8. By typing 'status', users can check their cryptocurrency holdings and the current market value of these investments.
-9. The game dynamically simulates market changes, which can affect the value of the cryptocurrencies held by the user, and these changes are reflected in the updated asset information. Reflected in the user's asset status.
+1. Similar implementation to bonds
+2. But have the risk of getting confiscated by the government.
 
 ## Company Management
 1. Players are able to invoke different commands to manage their company.
@@ -259,6 +238,23 @@ user based on the stock's current price.
 4. Player would be prompted to make a decision based on the event.
 5. Based on the decision made and the event type, the player would receive different rewards or punishments.
 6. The event would add uncertainty and excitement to the game.
+
+## File Management
+![Save.png](UML%20diagram%2FSave.png)
+The above is the save process called by gameLogic.
+1. `Saver` will be called within `startEcono` method after one command is executed.
+2. `Saver` creates a new `file` class to write the `PlayerProfile` class into Json file.
+3. `Saver` class calls `constructionJson` method from `Serializer` class to handle complex data structures convert them
+   into Json format.
+4. `Saver` class calls `write` and `flush` method from the `file` class to write to the json file.
+
+![Load.png](UML%20diagram%2FLoad.png)
+The above is the load process called by gameLogic.
+1. `Loader` will be called within `initializeGame` method once the program is initialized.
+2. `Loader` invokes the `readJsonFromFile` method to read data from the Json file and creates a new `file` class.
+3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex
+   data structures.
+4. `Loader` returns the `PlayerProfile` class to load the previous information.
 
 ## Product scope
 ### Target user playerProfile
@@ -314,7 +310,7 @@ The value proposition of the application is to provide an engaging and fun way f
 ## Glossary
 
 * **PlayerProfile**: Represents the player's profile and is responsible for storing and updating the player's information.
-* **EconoCraftLogic**: Responsible for executing user command and updating the game state.
+* **gameLogic**: Responsible for executing user command, updating the game state, and calling file management methods.
 * **OS**: Operating System.
 
 ## Instructions for manual testing

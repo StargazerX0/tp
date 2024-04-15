@@ -85,7 +85,7 @@ public class BondStorage {
                     } else {
                         int cost = response * current.returnBondPrice();
                         double totalInterest = current.calculateInterest(cost);
-                        if (playerProfile.getAsset().getAsset() >= cost) {
+                        if (playerProfile.getAsset().outputMoney() >= cost) {
                             playerProfile.getAsset().deductAsset(cost);
                             playerProfile.getAsset().addBond(current, response);
                             completeTrade = true;
