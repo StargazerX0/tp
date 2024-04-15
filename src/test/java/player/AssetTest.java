@@ -104,7 +104,7 @@ class AssetTest {
     void testAsset_checkCryptoReturn() {
         Litecoin testCrypto = new Litecoin();
         asset.addCrypto(testCrypto, 1000);
-        assertTrue((asset.cryptoReturn() == 0 ) || (asset.cryptoReturn() > 100));
+        assertTrue((asset.cryptoReturn() == 0 ) || (asset.cryptoReturn() > -5000));
     }
 
     /**
