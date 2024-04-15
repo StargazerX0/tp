@@ -192,6 +192,21 @@ public class TicTacToe implements MiniGame {
         Random rand = new Random();
         int row;
         int column;
+        boolean foundEmpty = false;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '-') {
+                    foundEmpty = true;
+                    break;
+                }
+            }
+            if (foundEmpty) {
+                break;
+            }
+        }
+        assert foundEmpty : "No empty space available for AI to place mark";
+
         do {
             row = rand.nextInt(3);
             column = rand.nextInt(3);
