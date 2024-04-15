@@ -3,6 +3,7 @@ package file;
 import company.Company;
 import exception.LoadProfileException;
 
+import exception.NameInputException;
 import minigame.stockgame.Stock;
 import minigame.stockgame.StockOne;
 import minigame.stockgame.StockTwo;
@@ -31,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import player.Asset;
 import player.PlayerProfile;
+import ui.Parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +61,7 @@ public class Decoder {
             int currentRound = jsonObj.getInt("currentRound");
             int actionCount = jsonObj.getInt("actionCount");
             boolean isAdvancedPlayer = jsonObj.getBoolean("isAdvancedPlayer");
+            checkPlayerInfoValidity(name, occupation);
             checkPlayerDataValidity(health, currentRound, actionCount);
             
             Asset asset = decodeAsset(jsonObj.getJSONObject("asset").toString());
@@ -71,6 +74,32 @@ public class Decoder {
         }
     }
 
+    /**
+     * Checks the validity of player's name and occupation.
+     *
+     * @param name The player's name.
+     * @param occupation The player's occupation.
+     */
+    private static void checkPlayerInfoValidity(String name, String occupation) throws LoadProfileException {
+        if (!occupation.equals("Robotics") &&
+                !occupation.equals("Semi-conductor") &&
+                !occupation.equals("Artificial intelligence")) {
+            throw new LoadProfileException("Invalid player info.\n");
+        }
+        try {
+            Parser.parseName(name);
+        } catch (NameInputException e) {
+            throw new LoadProfileException("Invalid player info.\n");
+        }
+    }
+
+    /**
+     * Checks the validity of player's numerical data.
+     *
+     * @param health The player's health.
+     * @param currentRound The current round the player is on.
+     * @param actionCount The number of actions the player has left.
+     */
     private static void checkPlayerDataValidity(
             int health, int currentRound, int actionCount) throws LoadProfileException {
         if (health < 0 || health > 100 ||
@@ -305,7 +334,7 @@ public class Decoder {
             throw new LoadProfileException("Error decoding company data.\n");
         }
     }
-    
+
     private static void checkCompanyDataValidity(
             int numberOfEmployees, int employeeSalary, int revenuePerEmployee) throws LoadProfileException {
         if (numberOfEmployees < 0 || employeeSalary < 0 || revenuePerEmployee < 0) {

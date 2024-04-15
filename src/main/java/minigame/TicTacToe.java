@@ -192,6 +192,21 @@ public class TicTacToe implements MiniGame {
         Random rand = new Random();
         int row;
         int column;
+        boolean foundEmpty = false;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '-') {
+                    foundEmpty = true;
+                    break;
+                }
+            }
+            if (foundEmpty) {
+                break;
+            }
+        }
+        assert foundEmpty : "No empty space available for AI to place mark";
+
         do {
             row = rand.nextInt(3);
             column = rand.nextInt(3);
@@ -215,21 +230,17 @@ public class TicTacToe implements MiniGame {
     }
 
     /**
-     * Initiates and manages the Tic Tac Toe gameplay loop, controlling the sequence of player and AI turns.
-     * This method handles game initialization, turn management, input validation, and game termination checks.
+     * Manages the Tic Tac Toe gameplay loop. Alternates turns between the player and the AI, handling the game logic.
      *
-     * Steps in the gameplay loop:
-     * 1. Display the current game board.
-     * 2. Prompt the player for a move, validating the input to ensure it is within the allowed range and
-     * targeting an empty cell.
-     * 3. Update the board with the player's move, check for a win or draw, and display the updated board.
-     * 4. If the game continues, allow the AI to make a move, update the board, and check for game termination
-     * conditions.
-     * 5. Repeat steps 2-4 until the game ends due to a win or a draw.
+     * The gameplay loop includes:
+     * - Displaying the game board.
+     * - Prompting the player for a move and validating it. Moves must target an empty cell and be within the
+     * board's bounds.
+     * - Updating the board, checking for wins or a draw, and displaying the updated state.
+     * - If no win or draw is detected, the AI makes a move, followed by an update and check for game termination.
      *
-     * Inputs are checked for validity (must be integers within 1-3). Incorrect inputs prompt a re-entry without
-     * penalty.
-     * The game alternates turns between the player and AI until a win condition or a draw is achieved.
+     * The loop continues until a player wins or the board is filled completely (draw).
+     * Inputs are validated for correctness, and incorrect inputs allow for re-entry without penalties.
      */
     public void startGame() {
         Scanner scanner = new Scanner(System.in);

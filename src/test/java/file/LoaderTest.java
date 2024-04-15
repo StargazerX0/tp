@@ -32,7 +32,7 @@ class LoaderTest {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(profileFile))) {
             writer.write("{\n" +
                 "\"name\": \"John Doe\",\n" +
-                "\"occupation\": \"Explorer\",\n" +
+                "\"occupation\": \"Robotics\",\n" +
                 "\"health\": 100,\n" +
                 "\"currentRound\": 5,\n" +
                 "\"actionCount\": 2,\n" +
@@ -55,7 +55,7 @@ class LoaderTest {
 
         assertNotNull(loadedProfile, "Loaded profile should not be null.");
         assertEquals("John Doe", loadedProfile.getName(), "Names should match.");
-        assertEquals("Explorer", loadedProfile.getOccupation(), "Occupations should match.");
+        assertEquals("Robotics", loadedProfile.getOccupation(), "Occupations should match.");
     }
 
     /**

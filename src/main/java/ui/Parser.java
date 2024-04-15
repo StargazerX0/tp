@@ -27,14 +27,14 @@ public class Parser {
      * @throws NameInputException If the name input is invalid or more than 15 characters.
      */
     public static String parseName(String input) throws NameInputException {
-        if (input.matches(NAME)) {
-            return input;
-        }
-        if (input.length() <= NAME_LENGTH_LIMIT) {
+        if (!input.matches(NAME)) {
             throw new NameInputException("please enter a valid name, try again!\n");
         }
-        throw new NameInputException(
-                "Oops! Your name is too long! Please enter a name with less than 15 characters.\n");
+        if (input.length() > NAME_LENGTH_LIMIT) {
+            throw new NameInputException(
+                    "Oops! Your name is too long! Please enter a name with less than 15 characters.\n");
+        }
+        return input;
     }
 
     /**

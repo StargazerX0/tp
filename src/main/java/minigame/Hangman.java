@@ -48,8 +48,9 @@ public class Hangman implements MiniGame {
     private void initializeGame() {
         int randomIndex = (int) (Math.random() * WORDS.length);
         chosenWord = WORDS[randomIndex];
-        guessedLetters = new HashSet<>();
+        assert chosenWord != null && !chosenWord.isEmpty() : "Chosen word must not be null or empty";
 
+        guessedLetters = new HashSet<>();
         char letterToHide = chosenWord.charAt((int) (Math.random() * chosenWord.length()));
         for (char c : chosenWord.toCharArray()) {
             if (c != letterToHide) {
@@ -87,22 +88,18 @@ public class Hangman implements MiniGame {
     }
 
     /**
-     * Initiates and manages the gameplay loop for Hangman, processing player guesses and advancing game rounds until
-     * completion.
+     * Manages the Hangman game loop, guiding players through up to 5 rounds or until three incorrect guesses occur.
      *
-     * Key functionalities include:
-     * 1. Displaying game instructions and welcoming the player.
-     * 2. Executing a game loop that continues through a maximum of 5 rounds or until the player accumulates three
-     * wrong guesses.
-     * 3. Each round involves:
-     *    - Initializing the game state with a new word, hiding one letter.
-     *    - Displaying the current word state and prompting for a guess.
-     *    - Validating the player's input to ensure it is a single alphabetic character.
-     *    - Checking the guess against the chosen word, updating the game state accordingly.
-     * 4. Concludes the game by displaying the final result based on the game's outcome (win, loss, or draw).
+     * Gameplay steps:
+     * - Welcome the player and display game instructions.
+     * - For each round:
+     *   - Select and display a new word with one letter hidden.
+     *   - Prompt for a guess and validate it as a single alphabetic character.
+     *   - Check the guess, update the game state, and show the updated word.
+     * - End the game by showing the result (win, loss, or draw).
      *
-     * This method is central to the player interaction and game logic, ensuring that gameplay progresses smoothly
-     * and rules are enforced.
+     * This method handles game dynamics and player interactions, ensuring the gameplay follows the defined rules
+     * and progresses effectively.
      */
     public void startGame() {
         Scanner scanner = new Scanner(System.in);
