@@ -3,47 +3,39 @@ package minigame.stockgame;
 import player.PlayerProfile;
 
 /**
- * Represents the fundamental behaviors that all stock entities must implement in the stock market
- * mini-game. This interface is designed to encapsulate the essential actions that can be performed
- * with stocks, including obtaining information about the stock, calculating potential investment gains,
- * and accessing basic stock details like name and price. It allows players to interact with different
- * types of stocks in a unified manner within the game's investment environment.
+ * Represents the virtual stock market accessed by players inside the game. Including
+ * stock graphs, stock information, price, hidden information, and stock fluctuation
+ * metrics.
  */
 public interface Stock {
 
     /**
-     * Displays information about the stock to a player. This may include details such as the stock's
-     * current price, performance history, and any other relevant information that can influence
-     * the player's decision-making process regarding buying, holding, or selling the stock.
+     * Displays information about the stock to player including stock graph, relevant information,
+     * and current stock price. In order to help the player to make a more rational decision.
      *
-     * @param playerProfile The player's profile, which may be used to tailor the information
-     *                      displayed based on the player's past interactions or preferences.
+     * @param playerProfile the player profile obtained to access player's information.
      */
     public void printInfo(PlayerProfile playerProfile);
 
     /**
-     * Calculates the potential gain from an investment in a specified amount of stock. This method
-     * is essential for players to estimate the profitability of their investment decisions within
-     * the game's economic model.
+     * Calculates the financial profits for a particular stock if the player sells it.
      *
-     * @param stockAmount The amount of stock being considered for investment.
-     * @return The calculated potential investment gain as an integer.
+     * @param stockAmount The number of stock the player currently possess.
+     * @return The calculated financial profit from selling the stock.
      */
     public int investmentGain(int stockAmount);
 
     /**
-     * Retrieves the name of the stock. This is a unique identifier for the stock within the game's
-     * financial universe and is used for displaying to players and for transaction processing.
+     * Retrieves the name of a particular stock.
      *
-     * @return The name of the stock as a String.
+     * @return the name of the stock.
      */
     public String returnStockName();
 
     /**
-     * Obtains the current market price of the stock. This price is crucial for all financial
-     * transactions involving the stock, including buying and selling actions by the player.
+     * Retrieves the current market price of a particular stock.
      *
-     * @return The current price of the stock as an integer.
+     * @return The current purchase price of a stock.
      */
     public int returnStockPrice();
 

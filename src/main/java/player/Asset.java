@@ -113,10 +113,10 @@ public class Asset {
     }
 
     /**
-     * Adds a specified number of stocks to the player's portfolio.
+     * Add a certain number of stocks to player's asset.
      *
-     * @param stock The stock to add.
-     * @param count The number of shares to add.
+     * @param stock the stock to add to the list.
+     * @param count the number of stocks to add to the list.
      */
     public void addStock(Stock stock, int count) {
         boolean duplication = false;
@@ -137,6 +137,9 @@ public class Asset {
         }
     }
 
+    /**
+     * Sell all the stocks the player currently possess.
+     */
     public void sellStock() {
         if (stockList.isEmpty()) {
             ResponseManager.indentPrint("You have nothing to sell! \n");
@@ -171,6 +174,11 @@ public class Asset {
         }
     }
 
+    /**
+     * Calculates the bond return for each round.
+     *
+     * @return the bond return for the current round.
+     */
     public int bondReturn() {
         if (bondList.isEmpty()) {
             return 0;
@@ -199,6 +207,11 @@ public class Asset {
         }
     }
 
+    /**
+     * Calculates the crypto return for each round and the chance of it getting confiscated.
+     *
+     * @return the crypto return for this round.
+     */
     public int cryptoReturn() {
         if (cryptoList.isEmpty()) {
             return 0;
@@ -230,7 +243,7 @@ public class Asset {
         return totalAsset <= 0;
     }
 
-    public int getAsset() {
+    public int outputMoney() {
         return totalAsset;
     }
 
@@ -242,6 +255,9 @@ public class Asset {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+    /**
+     * Returns the assets in investment category possessed by the player.
+     */
     public String investReturn() {
         String output = "";
         for (int i = 0; i < stockList.size(); i++) {

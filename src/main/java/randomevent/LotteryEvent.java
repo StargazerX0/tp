@@ -22,7 +22,7 @@ public class LotteryEvent extends RandomEvent {
      */
     @Override
     public void triggerEvent(PlayerProfile playerProfile) {
-        if (playerProfile.getAsset().getAsset() < TICKET_PRICE) {
+        if (playerProfile.getAsset().outputMoney() < TICKET_PRICE) {
             System.out.println("A peaceful round.");
             return;
         }

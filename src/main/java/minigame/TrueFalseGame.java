@@ -11,10 +11,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 /**
- * Implements a Multiple Choice Question (MCQ) game with a focus on True or False questions,
- * covering a variety of topics. The game challenges players to answer correctly and tracks the
- * number of correct responses. It's designed to be engaging and informative, providing a fun
- * way to test knowledge on different subjects.
+ * Implements the true and false game for the player.
  */
 public class TrueFalseGame implements MiniGame {
     private static final Logger logger = Logger.getLogger("MCQLog");
@@ -56,9 +53,7 @@ public class TrueFalseGame implements MiniGame {
     private int correctCount;
 
     /**
-     * Sets up the game environment, including initializing question and answer lists,
-     * and configuring logging settings. This method is called before the game starts
-     * to ensure all necessary components are ready for the gameplay.
+     * Sets up the available questions and their corresponding answers into two lists.
      */
     private void gameSetUp() {
         questionList.add(QUESTION_1);
@@ -94,9 +89,7 @@ public class TrueFalseGame implements MiniGame {
     }
 
     /**
-     * Starts the MCQ game session. It presents a series of True or False questions to the player,
-     * collects their responses, and evaluates the correctness of each answer. The game tracks the
-     * number of correct answers and provides immediate feedback for each response.
+     * Starts the true and false game for the player and keep track of their result.
      */
     public void startGame() {
         correctCount = 0;
@@ -116,9 +109,7 @@ public class TrueFalseGame implements MiniGame {
     }
 
     /**
-     * Evaluates the correctness of the player's response to a given question. It compares the player's
-     * input against the correct answer and updates the game state accordingly. This method also handles
-     * invalid inputs by providing appropriate feedback.
+     * Evaluates the correctness of player's response to a question.
      *
      * @param index The index of the current question in the question list.
      * @param input The player's response to the current question.
@@ -138,17 +129,14 @@ public class TrueFalseGame implements MiniGame {
     }
 
     /**
-     * Returns the total number of questions the player has answered correctly during the game session.
-     *
-     * @return The count of correctly answered questions.
+     * Returns the number of questions player answered correctly.
      */
     public int getCorrectCount() {
         return correctCount;
     }
 
     /**
-     * Outputs the game results, displaying the total number of questions correctly answered by the player.
-     * This method concludes the game session and provides a summary of the player's performance.
+     * Outputs the number of questions answered correctly to the player
      */
     public void outputResult() {
         String question = correctCount > 1 ? " questions" : " question";
@@ -159,12 +147,11 @@ public class TrueFalseGame implements MiniGame {
     }
 
     /**
-     * Generates a random integer within a specified range. This utility method is used to select
-     * questions randomly from the question list for the game session.
+     * Generates a random integer within a certain range.
      *
-     * @param min The minimum value (inclusive) of the range.
-     * @param max The maximum value (exclusive) of the range.
-     * @return A random integer within the specified range.
+     * @param min the lower bound of the range.
+     * @param max the upper bound of the range.
+     * @return the random integer generated within the range.
      */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);

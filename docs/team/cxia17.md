@@ -26,26 +26,51 @@ command.
 ## Contributions to the project
 ### Feature contribution
 - Designed and implemented True and False Game for `rest` command.
+  [PR #33](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/33)
+  - What it does: Allows player to gain health by answer different questions relating to entrepreneurship.
 - Designed and implemented virtual stock market inside the game where users can 
-purchase stock through `stock` command and sell all of the stock they possess by `sellstock command.
-- Made the virtual crypto and bond market more playble by setting different properties to both of the
+purchase stock through `stock` command and sell all the stock they possess by `sellstock` command.
+  [PR #81](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/81)
+  - What it does: Allow users to purchase stock based on the current money they possess and the market
+  information they have access to. Player can gain or lose money inside the virtual stock market.
+- Made the virtual crypto and bond market more playable by setting different properties to both of the
 markets and invoked uncertain events inside each of the markets.
+  [PR #166](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/166)
+  - What it does: Enables user from gaining financial returns at the end of every round.
 - Allow the program to sum up player's performance in different markets at the end of each round.
+  [PR #175](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/175)
+  - What it does: Sums up player's performance in investments for the last round.
 ### Project management
-- Managed release v1.0 and v2.o on github.
+- Managed release v1.0 and v2.0 on github.
+
+    [Release v2.0](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/tag/v2.0)
+
+    [Release v1.0](https://github.com/AY2324S2-CS2113-T11-4/tp/releases/tag/v1.0)
+
 ### Feature enhancement
-- Wrote additional test cases to improve test coverage.
+  - Wrote additional test cases to obtain a 100% method coverage to `stockCommand`, `sellStockCommand`
+  `restCommand`, `stockActivate`, `stockStorage`, and `TrueFalseGame` class. 
+
+    [PR #195](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/195)
+
 ### Documentation
+Added documentation to all public methods relating to the virtual stock market feature, True&False game
+feature, and asset management features.
 
 ### Community contribution
 - Actively communicating within the group to find bugs and potential improvements to the program.
+- Organised multiple group meetings to share our thoughts and brainstorm ideas and features.
 - Organised multiple internal smoke tests and Beta tests to strengthen the test coverage of our program.
+- Improved class test coverage and method test coverage from 50% to 78% and 70%.
+  [PR-branchTest](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/195)
 
 ## Review/mentoring contributions
 Reviewed dozens fo pull requests and leaved multiple comments and suggestions to every pull request.
-- [Linked to PR reviewed]()
+- [Linked to PR reviewed: random event feature](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/80)
+- [Linked to PR reviewed: PR #89](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/89)
+- [Linked to PR reviewed: PR #73](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/73)
 
-## Contributions beyond project team
+
 
 
 

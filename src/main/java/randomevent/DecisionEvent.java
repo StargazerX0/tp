@@ -238,6 +238,6 @@ public class DecisionEvent extends RandomEvent {
     }
 
     private boolean hasEnoughMoney(PlayerProfile playerProfile, int requiredAsset) {
-        return playerProfile.getAsset().getAsset() >= requiredAsset;
+        return playerProfile.getAsset().outputMoney() >= requiredAsset;
     }
 }

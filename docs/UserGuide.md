@@ -271,17 +271,16 @@ Format: `rest`
 
 Expected outcome:
 ```
-==============================
+===========================================================================
 Welcome to the MCQ Game!
 Answer the following questions:
-==============================
-==============================
-As per the textbook, brown-field projects are usually 
-harder than green-field projects. True or False?
-==============================
-==============================
+===========================================================================
+===========================================================================
+Retailing business sells products to other businesses rather than the final customer? 
+===========================================================================
+===========================================================================
 Type T for true and F for false
-==============================
+===========================================================================
 ```
 Player would then enter `T` or `F` to answer the question.
 
@@ -291,15 +290,21 @@ Example of usage:`T`
 
 Expected outcome:
 ```
-==============================
+===========================================================================
 Incorrect!
-==============================
+===========================================================================
 ```
 After two questions, the player would be informed of their score.
 
 Examples:
 ```
-You answered 1 questions correctly.
+===========================================================================
+You answered 1 question correctly.
+
+===========================================================================
+Your have gained 20 health.
+Your current health is: 70
+===========================================================================
 ```
 
 This would increase 20% of the player's health if player achieves more than 50% correct answers.
@@ -589,23 +594,6 @@ Input your action! If needed, type 'help' for more info
 ============================================================
 ```
 
-Player can also type `status` to check the bond that they are currently holding.
-```
-============================================================
-Current Status:
-Your name is: MA
-occupation: Robotics
-current health: |####      | 40%
-current money: $0, you need $1000000 more to win the game
-============================================================
-Your current investments are:
-Government Stability Bond current bond count : 1
-
-============================================================
-You have 2 actions left
-Input your action! If needed, type 'help' for more info
-============================================================
-```
 Player would enter an integer to indicate which type of crypto to purchase.
 
 Expected outcome（choose number 1）:
@@ -658,72 +646,10 @@ Input your action! If needed, type 'help' for more info
 
 ### Feature - Crypto
 
-#### Buy Crypto
-
-Allows player to buy crypto from the virtual crypto market.
-
-Format: 'crypto'
-
-Expected outcome:
-
-```
-Select a cryptocurrency to invest in:
-1: Bitcoin
-2: Ethereum
-3: Litecoin
-4: Cardano
-```
-
-Player would enter an integer to indicate which type of crypto to purchase.
-
-Expected outcome（choose number 1）:
-```
-============================================================
-Bitcoin, as the first decentralized digital currency, has led the way in blockchain technology. 
-It offers a peer-to-peer system without a central authority, 
-making it a revolutionary approach to currency. 
-It provides return to you every round, but it might be listed as illegal items.
-
-Crypto Name: Bitcoin
-Current Price: 10000 USD
-============================================================
-How much in USD do you want to invest in Bitcoin? Input 0 if you want none
-```
-
-Player would enter an integer to indicate the number of cryptos to purchase.
-
-Expected outcome (choose integer 10000 )
-
-```
-Positive news has increased the value of Bitcoin by 3%.
-============================================================
-$10000 has been deducted from ur asset.
- Your total asset is now $974630.
-============================================================
-You've successfully invested 10000 USD in Bitcoin.
-BuyCryptoCommand executed
-You have 2 actions left
-Input your action! If needed, type 'help' for more info
-============================================================
-```
-
-Player can also type `status` to check the crypto that they are currently holding.
-```
-============================================================
-Current Status:
-Your name is: MA
-occupation: Robotics
-current health: |#####     | 50%
-current money: $974630, you need $25370 more to win the game
-============================================================
-Your current investments are: 
-Bitcoin current crypto count : 1
-
-============================================================
-You have 2 actions left
-Input your action! If needed, type 'help' for more info
-============================================================
-```
+Purchase for crypto is similar to bond.
+>[!NOTE]
+> * It provides more financial return.
+> * It might be confiscated by the government.
 
 ### Feature - Help
 
