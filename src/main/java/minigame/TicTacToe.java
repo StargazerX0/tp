@@ -132,6 +132,7 @@ public class TicTacToe implements MiniGame {
      * @throws InvalidMoveException if the move is invalid (e.g., outside the board or spot already taken)
      */
     private void placeMark(int row, int column) throws InvalidMoveException {
+        currentMark = playerMark;
         if (row >= 0 && row < 3 && column >= 0 && column < 3 && board[row][column] == '-') {
             board[row][column] = playerMark;
             printBoard();
@@ -189,6 +190,7 @@ public class TicTacToe implements MiniGame {
      * Handles the AI's turn, placing a mark in a random empty spot.
      */
     private void placeAIMark() {
+        currentMark = aiMark;
         Random rand = new Random();
         int row;
         int column;
@@ -224,8 +226,8 @@ public class TicTacToe implements MiniGame {
         if (isDraw) {
             ResponseManager.indentPrint("It's a draw!\n");
         } else {
-            ResponseManager.indentPrint("Congratulations, " + (currentMark == playerMark ? "you win!" :
-                "AI wins!") + "\n");
+            ResponseManager.indentPrint((currentMark == playerMark ? "Congratulations, you win!" :
+                "Sorry, AI wins!") + "\n");
         }
     }
 
