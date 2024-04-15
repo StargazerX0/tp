@@ -243,7 +243,7 @@ public class Asset {
         return totalAsset <= 0;
     }
 
-    public int getAsset() {
+    public int outputMoney() {
         return totalAsset;
     }
 

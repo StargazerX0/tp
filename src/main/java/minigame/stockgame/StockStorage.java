@@ -75,7 +75,7 @@ public class StockStorage {
                     completeTrade = true;
                 }
 
-                if ((response * current.returnStockPrice()) > playerProfile.getAsset().getAsset()) {
+                if ((response * current.returnStockPrice()) > playerProfile.getAsset().outputMoney()) {
                     throw new GameException("Your current asset cannot afford this many stock.");
                 } else {
                     playerProfile.getAsset().deductAsset(response * current.returnStockPrice());

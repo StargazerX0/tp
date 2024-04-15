@@ -68,7 +68,7 @@ public class Serializer {
     private static String serializeAssets(Asset asset) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("{\n")
-            .append(" \"money\": ").append(asset.getAsset()).append(",\n")
+            .append(" \"money\": ").append(asset.outputMoney()).append(",\n")
             .append(" \"stocks\": ").append(serializeStocks(asset.getStockList(),
                 asset.getStockCount())).append(",\n")
             .append(" \"bonds\": ").append(serializeBonds(asset.getBondList(),

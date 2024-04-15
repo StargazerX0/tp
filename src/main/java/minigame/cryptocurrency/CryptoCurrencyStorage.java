@@ -68,7 +68,7 @@ public class CryptoCurrencyStorage {
                     if (response == 0) {
                         completeTrade = true;
                     }
-                    if (response >= current.returnCurrentPrice() && playerProfile.getAsset().getAsset() >= response) {
+                    if (response >= current.returnCurrentPrice() && playerProfile.getAsset().outputMoney() >= response) {
                         int changeAmount = current.calculateChange(response);
                         playerProfile.getAsset().deductAsset(response);
                         playerProfile.getAsset().addCrypto(current, response);
