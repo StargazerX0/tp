@@ -64,7 +64,7 @@ public class CryptoCurrencyStorage {
 
                     System.out.println("How much in USD do you want to invest in " + current.returnCryptoName() +
                             "? Input 0 if you want none");
-                    System.out.println("Please input a value larger than the crypto price because you are no longer" +
+                    System.out.println("Please input a value larger than the crypto price because you are no longer\n" +
                             " inputting quantities, you are just inputting the amount of money you want to invest in");
                     int response = Integer.parseInt(scanner.nextLine());
                     if (response == 0) {
