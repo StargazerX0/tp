@@ -6,9 +6,7 @@ aiming to grow a startup into a large corporation. It simulates real-world busin
 management, market analysis, product development, and financial planning, providing students with practical insights
 into future business hurdles.
 
-# "CONTRIBUTIONS"
-
-# Code contributions:
+## Code contributions:
 [RepoSense Link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=jamar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2024-02-23)
 
 # Enhancement implemented:
