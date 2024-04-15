@@ -2,28 +2,65 @@
 
 ## Project: Econocraft Pro
 
-EconCraft is a single player text adventure game where a player takes on the role of a business owner or manager, tasked with growing their company from a small startup to a large corporation. The game would simulate real-world business challenges, including resource management, market analysis, product development, and financial planning to help students prepare for the future challenges.
+EconoCraft is a single player text adventure game where a player takes on the role of a business owner or manager,
+tasked with growing their company from a small startup to a large corporation. The game would simulate real-world
+business challenges, including resource management, market analysis, product development, and financial planning to
+help students prepare for the future challenges.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Implemented the Save and Load functionality for player profiles, including detailed asset management of stock, bond and crypto packages.
-  * What it does: This feature allows the user to save their current game state, including detailed financial assets (stocks, bonds, and cryptocurrencies), and load it back at a later time. This functionality enhances the user experience by providing the ability to preserve game progress and resume from the exact state left off.
-  * Justification: This feature is crucial for the product as it provides a mechanism for persisting user progress and enables long-term engagement with the game. Users can take breaks and return to their game without losing their progress, which is essential for user retention and satisfaction.
-  * Highlights: Implementing this feature required a thorough understanding of object serialization and file management in Java. It involved designing the JSON structure for saving complex objects and ensuring backward compatibility for future extensions of the game model. The challenge was to efficiently serialize and deserialize game objects, including hierarchical relationships like assets containing stocks, bonds, and cryptocurrencies, while maintaining the integrity and security of the data.
-  * Credits: The JSON parsing was facilitated by the `org.json` library, which simplified the handling of JSON data structures. However, the design of the data model and the integration of save/load functionality into the game's flow were original contributions that required careful planning and implementation.
+* **New Features**: Added file management support to save player's profile when they exit the game and load player's
+* profile when they continue to play.
+  * What it does: save their current game state, including complex assets (stocks, bonds, and cryptocurrencies), and 
+  * load it back at a later time. 
+  * Justification: enhances the user experience by providing the ability to preserve game progress and resume from the 
+  * exact state left off.
+  * Highlights: a `Serializer` class is developed to convert complex data structures into Json file and a `Decoder` 
+  * class is used to convert the Json file back to data structures. The `Loader` and `Saver` class will check the
+  * location of Json file and create a new record if the file is missing.
+  * Credits: `org.json` library is used in `Decoder` to help Json file decoding by simplifying the conversion of 
+    * String array and this improve readability. But the design of the `Decoder` required careful planning and thorough
+    * understanding of the game.
+* **New Features**: Added a Tic Tac Toe Game to simulate the player's exercise action when player typed `exercise` in 
+* terminal and select option `1` .
+  * What it does: allows users to place mark against AI player to simulate exercise action by playing a game.
+  * Justification: makes the game more challenging and engaging for users, and improved the user interaction with the 
+  * validation checks for input.
+  * Highlights: AI is deployed to make the game more challenging, and special attention was given to the user interface 
+  * to ensure that players receive clear instructions and immediate feedback on their actions.  
+* **New Features**: Added a Hangman Game to simulate the player's exercise action when player typed `exercise` in
+* terminal and select option `2` .
+  * What it does: allow users to learn from the game by guessing words related to CS2113 software engineering concepts, 
+  * providing an educational twist to the game experience.
+  * Justification: makes the game more challenging and engaging for users, and improved the user interaction with the
+  * validation checks for input.
+  * Highlights: educational theme is implemented by adding a list of software engineering-related concepts in CS2113,
+  * and user input handling mechanism is improved with forgiving input system that aligns with common user behaviors 
+  * and expectations.
 
-* **New Feature**: Implemented Hangman game with Software Engineering Concepts and Improved User Input Handling
-  * What it does: The updated Hangman game now includes words related to software engineering concepts, providing an educational twist to the game experience.
-  * Justification: This feature significantly improves the product by making the game more relevant and educational for users interested in software engineering. Furthermore, the input validation feature enhances user experience by preventing common input mistakes and allowing users to rectify them without consequence.
-  * Highlights: Implementing the educational theme involved curating a list of software engineering-related words, integrating them into the game, and testing to ensure coherence and relevance. Improving the input handling mechanism involved designing a user-friendly and forgiving input system that aligns with common user behaviors and expectations.
-  * Credits: The inspiration for enhancing the Hangman game came from my experience playing traditional Hangman. Motivated to add educational value, I innovated by integrating software engineering concepts, making the game not only enjoyable but also informative. The enhanced input validation was a result of observing common user input mistakes in classic Hangman games, leading to a more user-friendly and error-tolerant design.
+* **Code Quality Enhancement**: Extracted methods to form new classes in file packages  [#161](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/161)
+  * What it does: extracted methods from `Saver` and `Loader` classes to form `Serializer` and `Decoder`.
+  * Justification: readability `Saver` and `Loader` classes with methods extracted and code becomes more OOP.
+  * Highlights: more reasonable split of classes, `Saver` and `Loader` handle the Json file while 
+  * `Serializer` and `Decoder` handle the data in Json.
 
-* **New Feature**: Enhanced Tic Tac Toe Game with AI and improved User Interaction
-  * What it does: This enhancement refines the Tic Tac Toe game by introducing an AI opponent and improving user interaction. The game now actively validates player input, ensuring that only valid moves are accepted and processed.
-  * Justification: Enhancing the AI makes the game more challenging and engaging for users. Improved input validation enhances user experience by preventing common mistakes, thereby making the game more enjoyable and less frustrating.
-  * Highlights: This enhancement required a detailed review and modification of the game logic, particularly in how the AI decides its moves and how the game handles user input. Special attention was given to the user interface to ensure that players receive clear instructions and immediate feedback on their actions.
-  * Credits: The inspiration for this project came from classic Tic Tac Toe games and their variations. While the foundational game logic was based on standard Tic Tac Toe rules, significant modifications were made to the AI logic and user input handling to create a more engaging and user-friendly experience.
+* **Code contributed**: [RepoSense link](https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=stargazerx0&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
+* **General Contribution**:
+  * Tested and reported bugs in game.
 
-* **Code contributed**: https://nus-cs2113-ay2324s2.github.io/tp-dashboard/?search=stargazerx0&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2024-02-23&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other
+* Project management:
+  * Reviewed and approved the pull requests of other team members on GitHub. [#76](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/76)[#80](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/80)
 
+* Enhancements to existing features:
+  * Added randomness to the typing game. [#79](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/79)
+  * Improve user experience for Hangman. [#162 ](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/162)
+
+* Documentation:
+  * User Guide:
+    * Added documentation for `exercise`, `tic tac toe`, `hangman`, `save` and `load` features. [#186](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/186) [#186](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/186)
+  * Developer Guide:
+    * Updated implementation details for the `save` and `load` features. [#178](https://github.com/AY2324S2-CS2113-T11-4/tp/pull/178)
+
+* Community:
+  * Request to use org.json library in CS2113 Forum. [#40](https://github.com/nus-cs2113-AY2324S2/forum/issues/40)
