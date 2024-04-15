@@ -27,7 +27,8 @@
 
 ## Acknowledgements
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* [org.json](https://github.com/stleary/JSON-java) - Handles read and write JSON files.
+* [mockito](https://site.mockito.org/) - Mocking framework for unit tests.
 
 ## Design
 
@@ -63,12 +64,15 @@ The functionality of the game is divided into different components, each respons
 The components interact with each other in the following way when a user enters a `stock` command to but stocks:
 ![Interaction.png](UML%20diagram%2FInteraction.png)
 
-Under `Logic` and `SubLogic` component there are:
+> [!NOTE]
+> - The lifeline for SubLogic should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 
-`CommandFactory`, `Minigame` and `RandomEvent` components:
+Under `Logic` and `SubLogic` components are:
+
+`CommandFactory`, `Minigame` and `RandomEvent` components.
 * Each defines its API for creating commands and mini-games respectively, where
-  `Command` is the API for `CommandFactory` and `MiniGame` is the API for `MiniGame`.
-* Implements its functionality with concrete classes such as `WorkCommand` and `TypingGame`.
+  `Command` is the API for `CommandFactory`, `MiniGame` is the API for `MiniGame` and `RandomEvent` is the API for `RandomEvent`.
+* Implements its functionality with concrete classes such as `WorkCommand`, `TypingGame` or `PositiveEvent`.
 
 The sections below would give more details of each component.
 
@@ -128,16 +132,7 @@ The mechanism:
 3. `Asset` class executes the `sellStock()` function and sell all of the stocks the player currently possess.
 4. Information related to stocks will be updated inside `Asset` and `PlayerProfile` class.
 
->[!NOTE]
-> * Corrupted data file will be handled by `Loader` class and return a new `PlayerProfile` class to replace the corrupted data.
-> ```
-> {
->"name": "jj",
->"occupation": "Artificial intelligence",
->"health": -1,
->"currentRound": 1,
-> ```
-> In the above example, the health value is -1 which is not a valid value. The `Loader` class will restart the game.
+
 
 
 ## MiniGame components
@@ -255,6 +250,18 @@ The above is the load process called by gameLogic.
 3. `Loader` invokes the `decodePlayerProfile` from `Decoder` method to handle Json file and convert it into complex
    data structures.
 4. `Loader` returns the `PlayerProfile` class to load the previous information.
+
+>[!NOTE]
+> * Corrupted data file will be handled by `Loader` class and return a new `PlayerProfile` class to replace the corrupted data.
+> ```
+> {
+>"name": "jj",
+>"occupation": "Artificial intelligence",
+>"health": -1,
+>"currentRound": 1,
+> ```
+> In the above example, the health value is -1 which is not a valid value. The `Loader` class will restart the game.
+
 
 ## Product scope
 ### Target user playerProfile
